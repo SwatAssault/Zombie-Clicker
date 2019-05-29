@@ -1,0 +1,37 @@
+{
+"com.badlogic.gdx.graphics.g2d.BitmapFont": {
+	"Pangolin-Regular": {
+		"file": "Pangolin-Regular.fnt"
+	}
+},
+"com.badlogic.gdx.graphics.Color": {
+	"RGBA_0_0_0_255": {
+		"r": 0,
+		"g": 0,
+		"b": 0,
+		"a": 1
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable": {
+	"buy": {
+		"region": "buy",
+		"minWidth": 100,
+		"minHeight": 50
+	},
+	"buy_disabled": {
+		"region": "buy_disabled",
+		"minWidth": 100,
+		"minHeight": 50
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
+	"default": {
+		"font": "Pangolin-Regular",
+		"up": "buy",
+		"down": "buy_pressed",
+		"disabled": "buy_disabled",
+		"pressedOffsetX": -1,
+		"pressedOffsetY": -1
+	}
+}
+}
