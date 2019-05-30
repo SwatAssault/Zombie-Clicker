@@ -26,7 +26,7 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-public class Shop implements Screen {          //КЛАСС ТЕСТИРУЕТСЯ
+public class Shop implements Screen {
 
     private final ZombieClicker zombieClicker;
     private Stage stage;
@@ -189,7 +189,7 @@ public class Shop implements Screen {          //КЛАСС ТЕСТИРУЕТС
         item_widht = 530;
         items_amount = 11;
 
-        skin1 = new Skin(Gdx.files.internal("SkinJson/buybtn.json"));
+        skin1 = zombieClicker.get_assets().get_asset_manager().get("SkinJson/buybtn.json", Skin.class);
 
         fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Pangolin-Regular.ttf"));
         fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
@@ -230,7 +230,7 @@ public class Shop implements Screen {          //КЛАСС ТЕСТИРУЕТС
         description_8 = new Label("Ускорим процесс.", style_for_description);
         description_9 = new Label("А ямы все глубже...", style_for_description);
         description_10 = new Label("Хватит насилия.", style_for_description);
-        description_11 = new Label("Как в старые" + "\n" + "добрые времена...", style_for_description);
+        description_11 = new Label("     Как в старые" + "\n" + "добрые времена...", style_for_description);
 
         number_label1 = new Label("" + (100 - zombieClicker.getShopNumerics().getItem1_number()), style_for_description);
         number_label2 = new Label("" + (100 - zombieClicker.getShopNumerics().getItem2_number()), style_for_description);
@@ -457,7 +457,7 @@ public class Shop implements Screen {          //КЛАСС ТЕСТИРУЕТС
             public void clicked(InputEvent event, float x, float y) {
                 if (zombieClicker.getShopNumerics().getItem11_number() > 0 && !b11.isDisabled()) {
 
-                    //zombieClicker.getNumerics().minus_Gold(zombieClicker.getShopNumerics().getItem11_cost());
+                    zombieClicker.getNumerics().minus_Gold(zombieClicker.getShopNumerics().getItem11_cost());
                     zombieClicker.getShopNumerics().plusItem11_cost();
                     b11.setText(zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getShopNumerics().getItem11_cost()));
                     zombieClicker.getShopNumerics().plus_Item11_value();
@@ -675,7 +675,7 @@ public class Shop implements Screen {          //КЛАСС ТЕСТИРУЕТС
 
         intable11.add(name_of_item11).expand().right().top().padRight((item_widht - 231) / 2 - 110);
         intable11.row();
-        intable11.add(description_11).expand().right().padRight((item_widht - 127) / 2 - 110);
+        intable11.add(description_11).expand().right().padRight((item_widht - 180) / 2 - 110);
         intable11.add(b11).padRight(10).bottom().padBottom(10);
 
         table = new Table();
@@ -758,9 +758,10 @@ public class Shop implements Screen {          //КЛАСС ТЕСТИРУЕТС
         if (zombieClicker.getNumerics().getGold().compareTo(zombieClicker.getShopNumerics().getItem10_cost()) < 0) {
             b10.setDisabled(true);
         }
-//        if (zombieClicker.getNumerics().getGold().compareTo(zombieClicker.getShopNumerics().getItem11_cost()) < 0) {
-//            b11.setDisabled(true);
-//        }
+        if (zombieClicker.getNumerics().getGold().compareTo(zombieClicker.getShopNumerics().getItem11_cost()) < 0) {
+            b11.setDisabled(true);
+        }
+
     }
 
     @Override

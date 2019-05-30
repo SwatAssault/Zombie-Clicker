@@ -84,21 +84,21 @@ public class ZombieClicker extends Game {
     ////////////SET SCREEN METHODS/////////////
     public void setMainGame(){
         menuScreen = null;
-        System.gc();
+        //System.gc();
         mainGame = new MainGame(instance);
         setScreen(mainGame);
     }
 
     public void setMenuScreen(){
         mainGame = null;
-        System.gc();
+        //System.gc();
         menuScreen = new MenuScreen(instance);
         setScreen(menuScreen);
     }
 
     public void setShopScreen(){
         shop = null;
-        System.gc();
+        //System.gc();
         shop = new Shop(instance);
         setScreen(shop);
     }

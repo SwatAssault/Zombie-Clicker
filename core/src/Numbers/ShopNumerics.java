@@ -290,11 +290,9 @@ public class ShopNumerics {
     public void setItem9_number(int x){
         item9_number = x;
     }
-
     public void setItem10_number(int x){
         item10_number = x;
     }
-
     public void setItem11_number(int x){
         item11_number = x;
     }

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeType;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class Assets {
 
@@ -40,6 +41,7 @@ public class Assets {
     }
 
     public void load_assets_for_Shop(){
+        assetManager.load("SkinJson/buybtn.json", Skin.class);
         assetManager.load("Background/shopbg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
@@ -65,6 +67,7 @@ public class Assets {
 
     public void dispose_Shop_assets(){
         assetManager.unload("Background/shopbg.png");
+        assetManager.unload("SkinJson/buybtn.json");
     }
     /////////DISPOSE ASSETS/////////
 
