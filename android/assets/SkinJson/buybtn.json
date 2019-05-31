@@ -2,6 +2,9 @@
 "com.badlogic.gdx.graphics.g2d.BitmapFont": {
 	"Pangolin-Regular": {
 		"file": "Pangolin-Regular.fnt"
+	},
+	"Pangolin-RegularWhite": {
+		"file": "Pangolin-Regular.fnt"
 	}
 },
 "com.badlogic.gdx.graphics.Color": {
@@ -9,6 +12,12 @@
 		"r": 0,
 		"g": 0,
 		"b": 0,
+		"a": 1
+	},
+	"RGBA_255_255_255_255": {
+		"r": 1,
+		"g": 1,
+		"b": 1,
 		"a": 1
 	}
 },
@@ -26,7 +35,7 @@
 },
 "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
 	"default": {
-		"font": "Pangolin-Regular",
+		"font": "Pangolin-RegularWhite",
 		"up": "buy",
 		"down": "buy_pressed",
 		"disabled": "buy_disabled",

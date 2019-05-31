@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -35,7 +36,7 @@ public class Shop implements Screen {
     private Image ImageBG;
     private ScrollPane scrollPane;
     private Table table;
-    private ImageButton goback_bth;
+    private Button goback_bth;
     private SpriteBatch batch;
     private int item_widht;
     private int items_amount;   //сколько предметов в магазине
@@ -165,6 +166,7 @@ public class Shop implements Screen {
     private Label plus_label11;
 
     private Skin skin1;
+    private Skin goback_skin;
 
     //ВРЕМЕННО
     private BitmapFont bitmapFont;
@@ -185,11 +187,12 @@ public class Shop implements Screen {
         zombieClicker.get_assets().load_assets_for_Shop();
         ImageBG = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/shopbg.png", Texture.class));
         batch = new SpriteBatch();
-        goback_bth = new ImageButton(new TextureRegionDrawable(new Texture("Buttons/back.png")));
         item_widht = 530;
         items_amount = 11;
 
         skin1 = zombieClicker.get_assets().get_asset_manager().get("SkinJson/buybtn.json", Skin.class);
+        goback_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/goback_btn.json", Skin.class);
+        goback_bth = new Button(goback_skin);
 
         fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Pangolin-Regular.ttf"));
         fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
@@ -200,12 +203,12 @@ public class Shop implements Screen {
 
         fontParameter.size = 23;
         font_for_description = fontGenerator.generateFont(fontParameter);
-        style_for_description = new Label.LabelStyle(font_for_description, Color.BLACK);
-        style_for_name = new Label.LabelStyle(bitmapFont, Color.BLACK);
+        style_for_description = new Label.LabelStyle(font_for_description, Color.WHITE);
+        style_for_name = new Label.LabelStyle(bitmapFont, Color.WHITE);
         fontParameter.size = 20;
         font_for_description = fontGenerator.generateFont(fontParameter);
         font_for_plus = fontGenerator.generateFont(fontParameter);
-        style_for_plus = new Label.LabelStyle(font_for_plus, Color.BLACK);
+        style_for_plus = new Label.LabelStyle(font_for_plus, Color.WHITE);
 
 
         name_of_item1 = new Label("Деревянная лопата", style_for_name);
@@ -264,7 +267,7 @@ public class Shop implements Screen {
             }
         });
 
-        goback_bth.setPosition(0, 850);
+        goback_bth.setPosition(35, 755);
 
         b1 = new TextButton("", skin1);
         b2 = new TextButton("", skin1);
@@ -707,8 +710,8 @@ public class Shop implements Screen {
 
 
         scrollPane = new ScrollPane(table);
-        scrollPane.setPosition((540 - item_widht) / 2, 30);
-        scrollPane.setHeight(130 * 6);
+        scrollPane.setPosition((540 - item_widht) / 2, 0);
+        scrollPane.setHeight(140 * 5 - 20);
         scrollPane.setWidth(item_widht);
         scrollPane.setSmoothScrolling(true);
 
@@ -772,7 +775,7 @@ public class Shop implements Screen {
         stage.draw();
 
         batch.begin();
-        bitmapFont.draw(batch, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getGold()), 250, 850);
+        bitmapFont.draw(batch, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getGold()), 320, 730);
         batch.end();
 
         batch.setProjectionMatrix(camera.combined);

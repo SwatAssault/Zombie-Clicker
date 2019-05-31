@@ -14,8 +14,10 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -39,8 +41,11 @@ public class MainGame implements Screen {
     private boolean is_mainButton_pressed;
 
     private Image mainButton;
-    private ImageButton go_back_btn;
-    private ImageButton goTo_shop_btn;
+    private Button go_back_btn;
+    private Button goTo_shop_btn;
+
+    private Skin goback_skin;
+    private Skin shop_skin;
 
     private Texture hpBarbg;
     private Texture hpBar;
@@ -53,7 +58,10 @@ public class MainGame implements Screen {
     private double regen_time;
     private double time;
 
+
     private BitmapFont bitmapFont;
+    private BitmapFont HP_font;
+    private BitmapFont diamond_font;
     private FreeTypeFontGenerator fontGenerator;
     private FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
 
@@ -63,12 +71,16 @@ public class MainGame implements Screen {
         time = System.currentTimeMillis();
         animationManager = new AnimationManager(zc);
 
+
         fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Pangolin-Regular.ttf"));
         fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        fontParameter.size = 24;
+        fontParameter.size = 40;
         fontParameter.color = Color.WHITE;
         bitmapFont = fontGenerator.generateFont(fontParameter);
-
+        fontParameter.size = 30;
+        HP_font = fontGenerator.generateFont(fontParameter);
+        fontParameter.size = 18;
+        diamond_font = fontGenerator.generateFont(fontParameter);
 
         camera = new OrthographicCamera();
         viewport = new StretchViewport(540, 960, camera);
@@ -82,10 +94,10 @@ public class MainGame implements Screen {
         hpBarBody = new TextureRegion(hpBar, 10, 0, 195, hpBar.getHeight());
         hpBarEnd = new TextureRegion(hpBar, 10 + 195, 0, 10, hpBar.getHeight());
         HP_positionX = 160;
-        HP_positionY = 130;
+        HP_positionY = 240;
 
         mainButton = new Image();
-        mainButton.setPosition(160, 200);
+        mainButton.setPosition(160, 300);
         mainButton.setWidth(217);
         mainButton.setHeight(331);
         mainButton.addListener(new InputListener() {
@@ -108,11 +120,11 @@ public class MainGame implements Screen {
             }
         });
 
-        go_back_btn = new ImageButton(
-                new TextureRegionDrawable(zombieClicker.get_assets().get_asset_manager().get("Buttons/back.png", Texture.class))
-        );
+        goback_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/goback_btn.json", Skin.class);
 
-        go_back_btn.setPosition(450, 800);
+        go_back_btn = new Button(goback_skin);
+
+        go_back_btn.setPosition(5, 853);
 
         go_back_btn.addListener(new ClickListener() {
 
@@ -125,11 +137,11 @@ public class MainGame implements Screen {
             }
         });
 
-        goTo_shop_btn = new ImageButton(
-                new TextureRegionDrawable(zombieClicker.get_assets().get_asset_manager().get("Buttons/shop_btn.png", Texture.class))
-        );
+        shop_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/shopbtn.json");
 
-        goTo_shop_btn.setPosition(0, 800);
+        goTo_shop_btn = new Button(shop_skin);
+
+        goTo_shop_btn.setPosition(5, 700);
 
         goTo_shop_btn.addListener(new ClickListener() {
 
@@ -190,15 +202,20 @@ public class MainGame implements Screen {
     //ТЕКСТА РАБОТАЮТ ТОЛЬКО В ЭТОМ КЛАССЕ. КАКОГО ХЕРА?
 
     public void draw_text() {
-        bitmapFont.draw(batch, "CLICKS : " + zombieClicker.getNumerics().getGlobal_tap_count(), 100, 50);
-        bitmapFont.draw(batch, "LEVEL : " + zombieClicker.getNumerics().getLevel_count(), 100, 800);
+        zombieClicker.getFontManager().getLayout().setText(HP_font, "" + zombieClicker.getNumerics().getLevel_count());
+        HP_font.draw(batch, "" + zombieClicker.getNumerics().getLevel_count(), 540 / 2 - zombieClicker.getFontManager().getLayout().width / 2, 790);
         if (zombieClicker.getNumerics().get_bossFight()) {
-            bitmapFont.draw(batch, "HP : " + zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getBoss_health()), 200, 180);
-        } else
-            bitmapFont.draw(batch, "HP : " + zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getZombie_health()), 200, 180);
-        bitmapFont.draw(batch, "KILLS : " + zombieClicker.getNumerics().getZombie_kills(), 300, 800);
-        bitmapFont.draw(batch, "GOLD : " + zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getGold()), 300, 700);
-        bitmapFont.draw(batch, "DIAMONDS : " + zombieClicker.getNumerics().getDiamonds(), 300, 600);
+            zombieClicker.getFontManager().getLayout().setText(HP_font, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getBoss_health()));
+            HP_font.draw(batch, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getBoss_health()), 540 / 2 - zombieClicker.getFontManager().getLayout().width / 2, 293);
+        } else {
+            zombieClicker.getFontManager().getLayout().setText(HP_font, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getZombie_health()));
+            HP_font.draw(batch, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getZombie_health()), 540 / 2 - zombieClicker.getFontManager().getLayout().width / 2, 293);
+        }
+
+        zombieClicker.getFontManager().getLayout().setText(bitmapFont, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getGold()));
+        bitmapFont.draw(batch, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getGold()), 540 / 2 - zombieClicker.getFontManager().getLayout().width / 2, 918);
+        zombieClicker.getFontManager().getLayout().setText(diamond_font, "" + zombieClicker.getNumerics().getDiamonds());
+        diamond_font.draw(batch, "" + zombieClicker.getNumerics().getDiamonds(), 540 / 2 - zombieClicker.getFontManager().getLayout().width / 2, 860);
     }
 
     @Override
@@ -275,7 +292,8 @@ public class MainGame implements Screen {
 
     @Override
     public void dispose() {
-        if(fontGenerator != null) fontGenerator.dispose();
+        if (bitmapFont != null) bitmapFont.dispose();
+        if (fontGenerator != null) fontGenerator.dispose();
         zombieClicker.get_assets().dispose_Game_assets();
         if (stage != null) stage.dispose();
         if (batch != null) batch.dispose();

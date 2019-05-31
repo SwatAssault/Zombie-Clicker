@@ -34,10 +34,10 @@ public class Numerics {
         boss_health = new BigInteger("20");
         max_boss_health = new BigInteger("20");
         global_tap_count = new BigInteger("0");
-        gold = new BigInteger("100000");
+        gold = new BigInteger("0");
         zombie_kills = new BigInteger("0");
         punch_power = new BigInteger("2");
-        zombie_kill_reward = new BigInteger("500");
+        zombie_kill_reward = new BigInteger("50000000");
         last_kills = new BigInteger("0");
         how_fast_passive_damage = 0.1f;
         passive_damage = new BigInteger("0");
