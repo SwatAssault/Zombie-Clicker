@@ -43,9 +43,11 @@ public class MainGame implements Screen {
     private Image mainButton;
     private Button go_back_btn;
     private Button goTo_shop_btn;
+    private Button achievement_btn;
 
     private Skin goback_skin;
     private Skin shop_skin;
+    private Skin ach_skin;
 
     private Texture hpBarbg;
     private Texture hpBar;
@@ -71,8 +73,7 @@ public class MainGame implements Screen {
         time = System.currentTimeMillis();
         animationManager = new AnimationManager(zc);
 
-
-        fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Pangolin-Regular.ttf"));
+        fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Ubuntu-Regular.ttf"));
         fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         fontParameter.size = 40;
         fontParameter.color = Color.WHITE;
@@ -120,12 +121,9 @@ public class MainGame implements Screen {
             }
         });
 
-        goback_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/goback_btn.json", Skin.class);
-
+        goback_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/goback_btn.json");
         go_back_btn = new Button(goback_skin);
-
         go_back_btn.setPosition(5, 853);
-
         go_back_btn.addListener(new ClickListener() {
 
             @Override
@@ -138,11 +136,8 @@ public class MainGame implements Screen {
         });
 
         shop_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/shopbtn.json");
-
         goTo_shop_btn = new Button(shop_skin);
-
         goTo_shop_btn.setPosition(5, 700);
-
         goTo_shop_btn.addListener(new ClickListener() {
 
             @Override
@@ -154,8 +149,20 @@ public class MainGame implements Screen {
             }
         });
 
+        ach_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/ach_btn.json");
+        achievement_btn = new Button(ach_skin);
+        achievement_btn.setPosition(435,853);
+        achievement_btn.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                zombieClicker.setAchievementScreen();
+                dispose();
+            }
+        });
+
         stage.addActor(BGimage);
         stage.addActor(goTo_shop_btn);
+        stage.addActor(achievement_btn);
         stage.addActor(mainButton);
         stage.addActor(go_back_btn);
 
@@ -248,7 +255,7 @@ public class MainGame implements Screen {
             time = System.currentTimeMillis();
         }
 
-        zombieClicker.getAchievements().keep_track_of_achievements();
+        zombieClicker.getKeepTrackAch().keep_track_of_achievements();
 
     }
 
@@ -292,6 +299,7 @@ public class MainGame implements Screen {
 
     @Override
     public void dispose() {
+        if(diamond_font != null) diamond_font.dispose();
         if (bitmapFont != null) bitmapFont.dispose();
         if (fontGenerator != null) fontGenerator.dispose();
         zombieClicker.get_assets().dispose_Game_assets();

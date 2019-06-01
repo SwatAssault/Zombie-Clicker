@@ -13,22 +13,22 @@ Pangolin-Regular
   index: -1
 buy
   rotate: false
-  xy: 1, 394
-  size: 100, 50
-  orig: 100, 50
+  xy: 1, 389
+  size: 110, 55
+  orig: 110, 55
   offset: 0, 0
   index: -1
 buy_disabled
   rotate: false
-  xy: 103, 394
-  size: 100, 50
-  orig: 100, 50
+  xy: 113, 389
+  size: 110, 55
+  orig: 110, 55
   offset: 0, 0
   index: -1
 buy_pressed
   rotate: false
-  xy: 1, 342
-  size: 100, 50
-  orig: 100, 50
+  xy: 1, 332
+  size: 110, 55
+  orig: 110, 55
   offset: 0, 0
   index: -1

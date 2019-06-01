@@ -7,7 +7,8 @@ import Managers.FontManager;
 import Managers.SoundManager;
 import Numbers.Numerics;
 import Numbers.ShopNumerics;
-import Other.Achievements;
+import Other.KeepTrackAch;
+import Screens.Achievements;
 import Screens.MainGame;
 import Screens.MenuScreen;
 import Screens.Shop;
@@ -21,11 +22,12 @@ public class ZombieClicker extends Game {
     private SoundManager soundManager;
     private FontManager fontManager;
     private ShopNumerics shopNumerics;
-    private Achievements achievements;
+    private KeepTrackAch keepTrackAch;
 
     private MainGame mainGame;
     private MenuScreen menuScreen;
     private Shop shop;
+    private Achievements achievements;
 
     public ZombieClicker() {
         instance = this;
@@ -34,7 +36,7 @@ public class ZombieClicker extends Game {
         soundManager = new SoundManager(instance);
         fontManager = new FontManager(instance);
         shopNumerics = new ShopNumerics();
-        achievements = new Achievements(instance);
+        keepTrackAch = new KeepTrackAch(instance);
     }
 
     //////////GETTERS FOR SCREENS//////////
@@ -63,6 +65,10 @@ public class ZombieClicker extends Game {
 
     public ShopNumerics getShopNumerics(){
         return shopNumerics;
+    }
+
+    public KeepTrackAch getKeepTrackAch(){
+        return keepTrackAch;
     }
 
     public Achievements getAchievements(){
@@ -101,6 +107,12 @@ public class ZombieClicker extends Game {
         //System.gc();
         shop = new Shop(instance);
         setScreen(shop);
+    }
+
+    public void setAchievementScreen(){
+        achievements = null;
+        achievements = new Achievements(instance);
+        setScreen(achievements);
     }
     ////////////SET SCREEN METHODS/////////////
 

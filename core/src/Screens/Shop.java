@@ -23,6 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -113,6 +114,54 @@ public class Shop implements Screen {
     private TextButton b10;
     private TextButton b11;
 
+    String name1_rus;
+    String name2_rus;
+    String name3_rus;
+    String name4_rus;
+    String name5_rus;
+    String name6_rus;
+    String name7_rus;
+    String name8_rus;
+    String name9_rus;
+    String name10_rus;
+    String name11_rus;
+
+    String name1_eng;
+    String name2_eng;
+    String name3_eng;
+    String name4_eng;
+    String name5_eng;
+    String name6_eng;
+    String name7_eng;
+    String name8_eng;
+    String name9_eng;
+    String name10_eng;
+    String name11_eng;
+
+    String description1_rus;
+    String description2_rus;
+    String description3_rus;
+    String description4_rus;
+    String description5_rus;
+    String description6_rus;
+    String description7_rus;
+    String description8_rus;
+    String description9_rus;
+    String description10_rus;
+    String description11_rus;
+
+    String description1_eng;
+    String description2_eng;
+    String description3_eng;
+    String description4_eng;
+    String description5_eng;
+    String description6_eng;
+    String description7_eng;
+    String description8_eng;
+    String description9_eng;
+    String description10_eng;
+    String description11_eng;
+
     //НАЗВАНИЕ КАЖДОГО ПРЕДМЕТА
     private Label name_of_item1;
     private Label name_of_item2;
@@ -194,46 +243,101 @@ public class Shop implements Screen {
         goback_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/goback_btn.json", Skin.class);
         goback_bth = new Button(goback_skin);
 
-        fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Pangolin-Regular.ttf"));
+        fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Ubuntu-Regular.ttf"));
         fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        fontParameter.size = 30;
+        fontParameter.size = 25;
         fontParameter.characters = FONT_CHARACTERS;
         bitmapFont = fontGenerator.generateFont(fontParameter);
         bitmapFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
-        fontParameter.size = 23;
+        fontParameter.size = 22;
         font_for_description = fontGenerator.generateFont(fontParameter);
         style_for_description = new Label.LabelStyle(font_for_description, Color.WHITE);
         style_for_name = new Label.LabelStyle(bitmapFont, Color.WHITE);
-        fontParameter.size = 20;
+        fontParameter.size = 18;
         font_for_description = fontGenerator.generateFont(fontParameter);
         font_for_plus = fontGenerator.generateFont(fontParameter);
         style_for_plus = new Label.LabelStyle(font_for_plus, Color.WHITE);
 
+        /////////////РУССКИЙ///////////////
+        name1_rus = "Деревянная лопата";
+        name2_rus = "Кирка";
+        name3_rus = "Деревянный гроб";
+        name4_rus = "Вилы и факел";
+        name5_rus = "Осиновый кол";
+        name6_rus = "Револьвер 1864 года";
+        name7_rus = "Контактная мина";
+        name8_rus = "Пулемет";
+        name9_rus = "Бульдозер";
+        name10_rus = "Святой Альманах";
+        name11_rus = "Крест и дробовик";
 
-        name_of_item1 = new Label("Деревянная лопата", style_for_name);
-        name_of_item2 = new Label("Кирка", style_for_name);
-        name_of_item3 = new Label("Деревянный гроб", style_for_name);
-        name_of_item4 = new Label("Вилы и факел", style_for_name);
-        name_of_item5 = new Label("Осиновый кол", style_for_name);
-        name_of_item6 = new Label("Револьвер 1864 года", style_for_name);
-        name_of_item7 = new Label("Контактная мина", style_for_name);
-        name_of_item8 = new Label("Пулемет", style_for_name);
-        name_of_item9 = new Label("Бульдозер", style_for_name);
-        name_of_item10 = new Label("Святой Альманах", style_for_name);
-        name_of_item11 = new Label("Крест и дробовик", style_for_name);
+        description1_rus = " Теперь я могу" + "\n" + "их закапывать!";
+        description2_rus = "         Это все, что я" + "\n" + "могу для тебя сделать.";
+        description3_rus = "Спи спокойно.";
+        description4_rus = "Ты не пройдешь!";
+        description5_rus = "А вдруг сработает?";
+        description6_rus = "Наконец-то я могу" + "\n" + "     не подходить.";
+        description7_rus = "      Эх, теперь по" + "\n" + "кусочкам собирать...";
+        description8_rus = "Ускорим процесс.";
+        description9_rus = "А ямы все глубже...";
+        description10_rus = "Хватит насилия.";
+        description11_rus ="     Как в старые" + "\n" + "добрые времена...";
+        /////////////РУССКИЙ///////////////
 
-        description_1 = new Label("Теперь я могу" + "\n" + "их закапывать!", style_for_description);
-        description_2 = new Label("         Это все, что я" + "\n" + "могу для тебя сделать.", style_for_description);
-        description_3 = new Label("Спи спокойно.", style_for_description);
-        description_4 = new Label("Ты не пройдешь!", style_for_description);
-        description_5 = new Label("А вдруг сработает?", style_for_description);
-        description_6 = new Label("Наконец-то я могу" + "\n" + "     не подходить.", style_for_description);
-        description_7 = new Label("      Эх, теперь по" + "\n" + "кусочкам собирать...", style_for_description);
-        description_8 = new Label("Ускорим процесс.", style_for_description);
-        description_9 = new Label("А ямы все глубже...", style_for_description);
-        description_10 = new Label("Хватит насилия.", style_for_description);
-        description_11 = new Label("     Как в старые" + "\n" + "добрые времена...", style_for_description);
+        /////////////ENGLISH///////////////
+        name1_eng = "Wooden shovel";
+        name2_eng = "Pick axe";
+        name3_eng = "Wooden coffin";
+        name4_eng = "Forks and torch";
+        name5_eng = "Aspen stake";
+        name6_eng = "1864 year revolver";
+        name7_eng = "Contact mine";
+        name8_eng = "Machine gun";
+        name9_eng = "Bulldozer";
+        name10_eng = "Holy Almanac";
+        name11_eng = "Cross with a shotgun";
+
+        description1_eng = "They can be" + "\n" + "buried now!";
+        description2_eng = "That's all I can" + "\n" + "   do for you...";
+        description3_eng = "Rest in peace.";
+        description4_eng = "You shall not pass!";
+        description5_eng = "What if it works?";
+        description6_eng = "I can finally stay further.";
+        description7_eng = "   Oh, now I must" + "\n" + "care about pieces...";
+        description8_eng = "Lets speed it up.";
+        description9_eng = "Pits are getting deeper...";
+        description10_eng = "Enough violence.";
+        description11_eng = "Like good old times...";
+        /////////////ENGLISH///////////////
+
+        //ЕСЛИ В НАСТРОЙКАХ ТАКОЙ ТО ЯЗЫК, ТАКИМИ ТО СТРИНГАМИ ЗАПОЛНЯТЬ ЛЕЙБЛЫ
+
+        name_of_item1 = new Label(name1_rus, style_for_name);
+        name_of_item2 = new Label(name2_rus, style_for_name);
+        name_of_item3 = new Label(name3_rus, style_for_name);
+        name_of_item4 = new Label(name4_rus, style_for_name);
+        name_of_item5 = new Label(name5_rus, style_for_name);
+        name_of_item6 = new Label(name6_rus, style_for_name);
+        name_of_item7 = new Label(name7_rus, style_for_name);
+        name_of_item8 = new Label(name8_rus, style_for_name);
+        name_of_item9 = new Label(name9_rus, style_for_name);
+        name_of_item10 = new Label(name10_rus, style_for_name);
+        name_of_item11 = new Label(name11_rus, style_for_name);
+
+        description_1 = new Label(description1_rus, style_for_description);
+        description_2 = new Label(description2_rus, style_for_description);
+        description_3 = new Label(description3_rus, style_for_description);
+        description_4 = new Label(description4_rus, style_for_description);
+        description_5 = new Label(description5_rus, style_for_description);
+        description_6 = new Label(description6_rus, style_for_description);
+        description_7 = new Label(description7_rus, style_for_description);
+        description_8 = new Label(description8_rus, style_for_description);
+        description_9 = new Label(description9_rus, style_for_description);
+        description_10 = new Label(description10_rus, style_for_description);
+        description_11 = new Label(description11_rus, style_for_description);
+
+        //КОНЕЦ ЕСЛИ
 
         number_label1 = new Label("" + (100 - zombieClicker.getShopNumerics().getItem1_number()), style_for_description);
         number_label2 = new Label("" + (100 - zombieClicker.getShopNumerics().getItem2_number()), style_for_description);
@@ -306,7 +410,8 @@ public class Shop implements Screen {
                     b1.setText(zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getShopNumerics().getItem1_cost()));   //обновляем текст цены
                     zombieClicker.getShopNumerics().setItem1_number(zombieClicker.getShopNumerics().getItem1_number() - 1);  //прибавляем 1 к счетчику сколько раз купили
                     number_label1.setText(100 - zombieClicker.getShopNumerics().getItem1_number());  //обновляем текст сколько раз куплено
-                    plus_label1.setText("+" + zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getShopNumerics().getItem1_value())); //обновляем текст сколько прибавляе
+                    plus_label1.setText("+" + zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getShopNumerics().getItem1_value())); //обновляем текст сколько прибавляет
+                    plus_label1.setPosition(100,20);
                 }
             }
         });
@@ -568,9 +673,10 @@ public class Shop implements Screen {
         table_for_nums10 = new Table();
         table_for_nums11 = new Table();
 
+
         table_for_nums1.add(number_label1).expandX().right().top().padTop(5).padRight(10);
         table_for_nums1.row();
-        table_for_nums1.add(plus_label1).expand().right().top().padRight(20);
+        table_for_nums1.add(plus_label1).expand().right().top().padRight(10);
 
         table_for_nums2.add(number_label2).expandX().right().top().padTop(5).padRight(5);
         table_for_nums2.row();
@@ -624,61 +730,59 @@ public class Shop implements Screen {
         s10.add(table_for_nums10);
         s11.add(table_for_nums11);
 
-        //name_of_item1.getGlyphLayout().width; - ширина текста В КОНСТРУКТОРЕ НЕ ОПРЕДЕЛЕНА почему-то - ЭТО ПРОБЛЕМА
-
-        intable1.add(name_of_item1).expand().right().top().padRight((item_widht - 249) / 2 - 110); // 530 - ширина окна предмета, 249 - ширина текста, 110 - ширина колонки с кнопкой
+        intable1.add(name_of_item1).expand().right().top().padTop(5).padRight((item_widht - name_of_item1.getPrefWidth()) / 2 - 110); // 530 - ширина окна предмета, 110 - ширина колонки с кнопкой
         intable1.row();
-        intable1.add(description_1).expand().right().padRight((item_widht - 156) / 2 - 110);
+        intable1.add(description_1).expand().padBottom(15).right().padRight((item_widht - description_1.getPrefWidth()) / 2 - 110);
         intable1.add(b1).padRight(10).bottom().padBottom(10);
 
-        intable2.add(name_of_item2).expand().right().top().padRight((item_widht - 73) / 2 - 110);
+        intable2.add(name_of_item2).expand().right().top().padTop(5).padRight((item_widht - name_of_item2.getPrefWidth()) / 2 - 110);
         intable2.row();
-        intable2.add(description_2).expand().right().padRight((item_widht - 238) / 2 - 110);
+        intable2.add(description_2).expand().right().padRight((item_widht - description_2.getPrefWidth()) / 2 - 110);
         intable2.add(b2).padRight(10).bottom().padBottom(10);
 
-        intable3.add(name_of_item3).expand().right().top().padRight((item_widht - 221) / 2 - 110);
+        intable3.add(name_of_item3).expand().right().top().padTop(5).padRight((item_widht - name_of_item3.getPrefWidth()) / 2 - 110);
         intable3.row();
-        intable3.add(description_3).expand().right().padRight((item_widht - 140) / 2 - 110);
+        intable3.add(description_3).expand().right().padRight((item_widht - description_3.getPrefWidth()) / 2 - 110);
         intable3.add(b3).padRight(10).bottom().padBottom(10);
 
-        intable4.add(name_of_item4).expand().right().top().padRight((item_widht - 175) / 2 - 110);
+        intable4.add(name_of_item4).expand().right().top().padTop(5).padRight((item_widht - name_of_item4.getPrefWidth()) / 2 - 110);
         intable4.row();
-        intable4.add(description_4).expand().right().padRight((item_widht - 169) / 2 - 110);
+        intable4.add(description_4).expand().right().padRight((item_widht - description_4.getPrefWidth()) / 2 - 110);
         intable4.add(b4).padRight(10).bottom().padBottom(10);
 
-        intable5.add(name_of_item5).expand().right().top().padRight((item_widht - 180) / 2 - 110);
+        intable5.add(name_of_item5).expand().right().top().padTop(5).padRight((item_widht - name_of_item5.getPrefWidth()) / 2 - 110);
         intable5.row();
-        intable5.add(description_5).expand().right().padRight((item_widht - 196) / 2 - 110);
+        intable5.add(description_5).expand().right().padRight((item_widht - description_5.getPrefWidth()) / 2 - 110);
         intable5.add(b5).padRight(10).bottom().padBottom(10);
 
-        intable6.add(name_of_item6).expand().right().top().padRight((item_widht - 274) / 2 - 110);
+        intable6.add(name_of_item6).expand().right().top().padTop(5).padRight((item_widht - name_of_item6.getPrefWidth()) / 2 - 110);
         intable6.row();
-        intable6.add(description_6).expand().right().padRight((item_widht - 188) / 2 - 110);
+        intable6.add(description_6).expand().right().padRight((item_widht - description_6.getPrefWidth()) / 2 - 110);
         intable6.add(b6).padRight(10).bottom().padBottom(10);
 
-        intable7.add(name_of_item7).expand().right().top().padRight((item_widht - 220) / 2 - 110);
+        intable7.add(name_of_item7).expand().right().top().padTop(5).padRight((item_widht - name_of_item7.getPrefWidth()) / 2 - 110);
         intable7.row();
-        intable7.add(description_7).expand().right().padRight((item_widht - 207) / 2 - 110);
+        intable7.add(description_7).expand().right().padRight((item_widht - description_7.getPrefWidth()) / 2 - 110);
         intable7.add(b7).padRight(10).bottom().padBottom(10);
 
-        intable8.add(name_of_item8).expand().right().top().padRight((item_widht - 114) / 2 - 110);
+        intable8.add(name_of_item8).expand().right().top().padTop(5).padRight((item_widht - name_of_item8.getPrefWidth()) / 2 - 110);
         intable8.row();
-        intable8.add(description_8).expand().right().padRight((item_widht - 180) / 2 - 110);
+        intable8.add(description_8).expand().right().padRight((item_widht - description_8.getPrefWidth()) / 2 - 110);
         intable8.add(b8).padRight(10).bottom().padBottom(10);
 
-        intable9.add(name_of_item9).expand().right().top().padRight((item_widht - 140) / 2 - 110);
+        intable9.add(name_of_item9).expand().right().top().padTop(5).padRight((item_widht - name_of_item9.getPrefWidth()) / 2 - 110);
         intable9.row();
-        intable9.add(description_9).expand().right().padRight((item_widht - 191) / 2 - 110);
+        intable9.add(description_9).expand().right().padRight((item_widht - description_9.getPrefWidth()) / 2 - 110);
         intable9.add(b9).padRight(10).bottom().padBottom(10);
 
-        intable10.add(name_of_item10).expand().right().top().padRight((item_widht - 226) / 2 - 110);
+        intable10.add(name_of_item10).expand().right().top().padTop(5).padRight((item_widht - name_of_item10.getPrefWidth()) / 2 - 110);
         intable10.row();
-        intable10.add(description_10).expand().right().padRight((item_widht - 157) / 2 - 110);
+        intable10.add(description_10).expand().right().padRight((item_widht - description_10.getPrefWidth()) / 2 - 110);
         intable10.add(b10).padRight(10).bottom().padBottom(10);
 
-        intable11.add(name_of_item11).expand().right().top().padRight((item_widht - 231) / 2 - 110);
+        intable11.add(name_of_item11).expand().right().top().padTop(5).padRight((item_widht - name_of_item11.getPrefWidth()) / 2 - 110);
         intable11.row();
-        intable11.add(description_11).expand().right().padRight((item_widht - 180) / 2 - 110);
+        intable11.add(description_11).expand().right().padRight((item_widht - description_11.getPrefWidth()) / 2 - 110);
         intable11.add(b11).padRight(10).bottom().padBottom(10);
 
         table = new Table();

@@ -1,0 +1,41 @@
+
+kills.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+clicks
+  rotate: false
+  xy: 1, 1
+  size: 104, 107
+  orig: 104, 107
+  offset: 0, 0
+  index: -1
+clicks_pressed
+  rotate: false
+  xy: 107, 110
+  size: 104, 107
+  orig: 104, 107
+  offset: 0, 0
+  index: -1
+kills
+  rotate: false
+  xy: 1, 219
+  size: 104, 107
+  orig: 104, 107
+  offset: 0, 0
+  index: -1
+kills_pressed
+  rotate: false
+  xy: 107, 219
+  size: 104, 107
+  orig: 104, 107
+  offset: 0, 0
+  index: -1
+locked
+  rotate: false
+  xy: 1, 110
+  size: 104, 107
+  orig: 104, 107
+  offset: 0, 0
+  index: -1
