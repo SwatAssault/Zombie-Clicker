@@ -51,6 +51,9 @@ public class Achievements implements Screen { //КЛАСС НУЖЕН ДЛЯ В�
 
     private Skin kills_skin;
     private Skin click_skin;
+    private Skin back_skin;
+
+    private Button back_btn;
 
     private ArrayList<String> name_translated_mass;
     private ArrayList<String> description_translated_mass;
@@ -75,7 +78,37 @@ public class Achievements implements Screen { //КЛАСС НУЖЕН ДЛЯ В�
     private String desc_for_10k_kills_rus;
     private String desc_for_100k_kills_rus;
     private String desc_for_500k_kills_rus;
+    private String desc_for_100_clicks_rus;
+    private String desc_for_500_clicks_rus;
+    private String desc_for_1000_clicks_rus;
+    private String desc_for_10k_clicks_rus;
+    private String desc_for_100k_clicks_rus;
 
+    private String name_for_10_kills_eng;
+    private String name_for_100_kills_eng;
+    private String name_for_500kills_eng;
+    private String name_for_1000_kills_eng;
+    private String name_for_10k_kills_eng;
+    private String name_for_100k_kills_eng;
+    private String name_for_500k_kills_eng;
+    private String name_for_100_clicks_eng;
+    private String name_for_500_clicks_eng;
+    private String name_for_1000_clicks_eng;
+    private String name_for_10k_clicks_eng;
+    private String name_for_100k_clicks_eng;
+
+    private String desc_for_10_kills_eng;
+    private String desc_for_100_kills_eng;
+    private String desc_for_500_kills_eng;
+    private String desc_for_1000_kills_eng;
+    private String desc_for_10k_kills_eng;
+    private String desc_for_100k_kills_eng;
+    private String desc_for_500k_kills_eng;
+    private String desc_for_100_clicks_eng;
+    private String desc_for_500_clicks_eng;
+    private String desc_for_1000_clicks_eng;
+    private String desc_for_10k_clicks_eng;
+    private String desc_for_100k_clicks_eng;
 
     private String name;
     private String description;
@@ -97,6 +130,17 @@ public class Achievements implements Screen { //КЛАСС НУЖЕН ДЛЯ В�
         kills_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/kills.json");
         click_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/clicks.json");
         bgImage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/achbg.png", Texture.class));
+
+        back_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/goback_btn.json");
+        back_btn = new Button(back_skin);
+        back_btn.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                zombieClicker.setMainGame();
+                dispose();
+            }
+        });
+        back_btn.setPosition(5, 850);
 
         fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Ubuntu-Regular.ttf"));
         fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
@@ -127,14 +171,46 @@ public class Achievements implements Screen { //КЛАСС НУЖЕН ДЛЯ В�
         desc_for_10k_kills_rus = "Вы убили 10k зомби";
         desc_for_100k_kills_rus = "Вы убили 100k зомби";
         desc_for_500k_kills_rus = "Вы убили 500k зомби";
+        desc_for_100_clicks_rus = "Вы сделали 100 кликов";
+        desc_for_500_clicks_rus = "Вы сделали 500 кликов";
+        desc_for_1000_clicks_rus = "Вы сделали 1000 кликов";
+        desc_for_10k_clicks_rus = "Вы сделали 10k кликов";
+        desc_for_100k_clicks_rus = "Вы сделали 100k кликов";
         ///////////РУССКИЙ////////////
+
+        ///////////ENGLISH////////////
+        name_for_10_kills_eng = "Graveyard keeper";
+        name_for_100_kills_eng = "";
+        name_for_500kills_eng = "";
+        name_for_1000_kills_eng = "";
+        name_for_10k_kills_eng = "";
+        name_for_100k_kills_eng = "";
+        name_for_500k_kills_eng = "";
+        name_for_100_clicks_eng = "";
+        name_for_500_clicks_eng = "";
+        name_for_1000_clicks_eng = "";
+        name_for_10k_clicks_eng = "";
+        name_for_100k_clicks_eng = "";
+        desc_for_10_kills_eng = "";
+        desc_for_100_kills_eng = "";
+        desc_for_500_kills_eng = "";
+        desc_for_1000_kills_eng = "";
+        desc_for_10k_kills_eng = "";
+        desc_for_100k_kills_eng = "";
+        desc_for_500k_kills_eng = "";
+        desc_for_100_clicks_eng = "";
+        desc_for_500_clicks_eng = "";
+        desc_for_1000_clicks_eng = "";
+        desc_for_10k_clicks_eng = "";
+        desc_for_100k_clicks_eng = "";
+        ///////////ENGLISH////////////
 
         //В ЗАВИСИМОСТИ КАКОЙ ЯЗЫК ВЫБРАН В НАСТРОЙКАХ ТАКИМИ СТРОКАМИ И ЗАПОЛНЯТЬ ЭТИ МАССИВЫ
         name_translated_mass = new ArrayList<String>(Arrays.asList(name_for_10_kills_rus, name_for_100_kills_rus, name_for_500kills_rus, name_for_1000_kills_rus, name_for_10k_kills_rus, name_for_100k_kills_rus,
-                name_for_500k_kills_rus));
+                name_for_500k_kills_rus, name_for_100_clicks_rus, name_for_500_clicks_rus, name_for_1000_clicks_rus, name_for_10k_clicks_rus, name_for_100k_clicks_rus));
 
         description_translated_mass = new ArrayList<String>(Arrays.asList(desc_for_10_kills_rus, desc_for_100_kills_rus, desc_for_500_kills_rus, desc_for_1000_kills_rus, desc_for_10k_kills_rus,
-                desc_for_100k_kills_rus, desc_for_500k_kills_rus));
+                desc_for_100k_kills_rus, desc_for_500k_kills_rus, desc_for_100_clicks_rus, desc_for_500_clicks_rus, desc_for_1000_clicks_rus, desc_for_10k_clicks_rus, desc_for_100k_clicks_rus));
         //
 
         name = "";
@@ -255,6 +331,56 @@ public class Achievements implements Screen { //КЛАСС НУЖЕН ДЛЯ В�
             }
         });
 
+        clicks100.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if (!clicks100.isDisabled()) {
+                    name = name_translated_mass.get(7);
+                    description = description_translated_mass.get(7);
+                }
+            }
+        });
+
+        clicks500.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if (!clicks500.isDisabled()) {
+                    name = name_translated_mass.get(8);
+                    description = description_translated_mass.get(8);
+                }
+            }
+        });
+
+        clicks1000.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if (!clicks1000.isDisabled()) {
+                    name = name_translated_mass.get(9);
+                    description = description_translated_mass.get(9);
+                }
+            }
+        });
+
+        clicks10k.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if (!clicks10k.isDisabled()) {
+                    name = name_translated_mass.get(10);
+                    description = description_translated_mass.get(10);
+                }
+            }
+        });
+
+        clicks100k.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if (!clicks100k.isDisabled()) {
+                    name = name_translated_mass.get(11);
+                    description = description_translated_mass.get(11);
+                }
+            }
+        });
+
 
         stage.addActor(bgImage);
         stage.addActor(kills10);
@@ -269,6 +395,7 @@ public class Achievements implements Screen { //КЛАСС НУЖЕН ДЛЯ В�
         stage.addActor(clicks1000);
         stage.addActor(clicks10k);
         stage.addActor(clicks100k);
+        stage.addActor(back_btn);
 
 
         Gdx.input.setInputProcessor(stage);

@@ -57,6 +57,7 @@ public class Assets {
     public void load_assets_for_achievements(){
         assetManager.load("SkinJson/kills.json", Skin.class);
         assetManager.load("SkinJson/clicks.json", Skin.class);
+        assetManager.load("SkinJson/goback_btn.json", Skin.class);
         assetManager.load("Background/achbg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
@@ -94,6 +95,7 @@ public class Assets {
 
     public void dispose_assets_for_achiements(){
         assetManager.unload("SkinJson/kills.json");
+        assetManager.unload("SkinJson/goback_btn.json");
         assetManager.unload("SkinJson/clicks.json");
         assetManager.unload("Background/achbg.png");
     }
