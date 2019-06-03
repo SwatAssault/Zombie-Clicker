@@ -25,7 +25,7 @@ public class KeepTrackAch { //КЛАСС НУЖЕН ДЛЯ ОТСЛЕЖИВАН�
 
     public KeepTrackAch(final ZombieClicker zc){
         zombieClicker = zc;
-        achievement_mass = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true};
+        achievement_mass = new boolean[]{false, false, false, false, false, false, false, false, false, false, false, false, false};
 
     }
 

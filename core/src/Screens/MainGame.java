@@ -336,7 +336,22 @@ public class MainGame implements Screen {
         zombieClicker.getNumerics().plus_Boss_health();
         zombieClicker.getNumerics().setZombie_health(zombieClicker.getNumerics().getMax_zombie_health());
         zombieClicker.getNumerics().setBoss_health(zombieClicker.getNumerics().getMax_boss_health());
-        zombieClicker.getNumerics().plus_level_count(1);
+        if(zombieClicker.getNumerics().getSelected_level().equals("level_1")){
+            zombieClicker.getNumerics().plusLevel_count1(1);
+            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count1());
+        }
+        if(zombieClicker.getNumerics().getSelected_level().equals("level_2")){
+            zombieClicker.getNumerics().plusLevel_count2(1);
+            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count2());
+        }
+        if(zombieClicker.getNumerics().getSelected_level().equals("level_3")){
+            zombieClicker.getNumerics().plusLevel_count3(1);
+            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count3());
+        }
+        if(zombieClicker.getNumerics().getSelected_level().equals("level_4")){
+            zombieClicker.getNumerics().plusLevel_count4(1);
+            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count4());
+        }
         zombieClicker.getNumerics().plus_zombie_kills(BigInteger.valueOf(1));
         zombieClicker.getNumerics().plus_diamonds(1);
         zombieClicker.getNumerics().setLast_kills(zombieClicker.getNumerics().getZombie_kills());

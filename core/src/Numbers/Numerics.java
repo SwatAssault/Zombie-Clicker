@@ -153,6 +153,22 @@ public class Numerics {
         level_count5 = x;
     }
 
+    public void plusLevel_count1(int x){
+        level_count1 += x;
+    }
+
+    public void plusLevel_count2(int x){
+        level_count2 += x;
+    }
+
+    public void plusLevel_count3(int x){
+        level_count3 += x;
+    }
+
+    public void plusLevel_count4(int x){
+        level_count4 += x;
+    }
+
     public void setDiamonds(int x) {
         diamonds = x;
     }

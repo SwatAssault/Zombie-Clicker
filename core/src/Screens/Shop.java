@@ -411,7 +411,7 @@ public class Shop implements Screen {
                     zombieClicker.getShopNumerics().setItem1_number(zombieClicker.getShopNumerics().getItem1_number() - 1);  //прибавляем 1 к счетчику сколько раз купили
                     number_label1.setText(100 - zombieClicker.getShopNumerics().getItem1_number());  //обновляем текст сколько раз куплено
                     plus_label1.setText("+" + zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getShopNumerics().getItem1_value())); //обновляем текст сколько прибавляет
-                    plus_label1.setPosition(100,20);
+                    //plus_label1.setPosition(100,20);
                 }
             }
         });
