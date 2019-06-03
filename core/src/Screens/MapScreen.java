@@ -69,9 +69,11 @@ public class MapScreen implements Screen {
         location_btn2.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                zombieClicker.getNumerics().setSelected_level("level_2");
-                zombieClicker.setMainGame();
-                dispose();
+                if(!location_btn2.isDisabled()){
+                    zombieClicker.getNumerics().setSelected_level("level_2");
+                    zombieClicker.setMainGame();
+                    dispose();
+                }
             }
         });
 
@@ -80,9 +82,11 @@ public class MapScreen implements Screen {
         location_btn3.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                zombieClicker.getNumerics().setSelected_level("level_3");
-                zombieClicker.setMainGame();
-                dispose();
+                if(!location_btn3.isDisabled()){
+                    zombieClicker.getNumerics().setSelected_level("level_3");
+                    zombieClicker.setMainGame();
+                    dispose();
+                }
             }
         });
 
@@ -91,15 +95,17 @@ public class MapScreen implements Screen {
         location_btn4.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                zombieClicker.getNumerics().setSelected_level("level_4");
-                zombieClicker.setMainGame();
-                dispose();
+                if(!location_btn4.isDisabled()){
+                    zombieClicker.getNumerics().setSelected_level("level_4");
+                    zombieClicker.setMainGame();
+                    dispose();
+                }
             }
         });
 
-//        location_btn2.setDisabled(true);
-//        location_btn3.setDisabled(true);
-//        location_btn4.setDisabled(true);
+        location_btn2.setDisabled(true);
+        location_btn3.setDisabled(true);
+        location_btn4.setDisabled(true);
 
         stage.addActor(imageBG);
         stage.addActor(back_btn);
