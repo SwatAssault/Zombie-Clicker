@@ -44,10 +44,12 @@ public class MainGame implements Screen {
     private Button go_back_btn;
     private Button goTo_shop_btn;
     private Button achievement_btn;
+    private Button map_btn;
 
     private Skin goback_skin;
     private Skin shop_skin;
     private Skin ach_skin;
+    private Skin map_skin;
 
     private Texture hpBarbg;
     private Texture hpBar;
@@ -71,7 +73,6 @@ public class MainGame implements Screen {
         zombieClicker = zc;
         zombieClicker.get_assets().load_assets_for_Game();
         time = System.currentTimeMillis();
-        animationManager = new AnimationManager(zc);
 
         fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Ubuntu-Regular.ttf"));
         fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
@@ -87,7 +88,56 @@ public class MainGame implements Screen {
         viewport = new StretchViewport(540, 960, camera);
         stage = new Stage(viewport);
         batch = new SpriteBatch();
-        BGimage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/gamebg.png", Texture.class));
+
+
+        //////////УСТАНОВКА ЛОКАЦИИ////////////
+        if(zombieClicker.getNumerics().getSelected_level().equals("level_1")){     //если первая локация
+            //загрузить анимации зомби для 1 локации
+            //И НЕ ЗАБЫТЬ ВЫГРУЗИТЬ ПОТОМ!!!
+            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count1());
+            zombieClicker.get_assets().load_assets_for_location_1();
+            BGimage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/location_1_bg.png", Texture.class));
+            //и прочее
+        }
+
+        if(zombieClicker.getNumerics().getSelected_level().equals("level_2")){
+            //загрузить анимации зомби для 2 локации
+            //И НЕ ЗАБЫТЬ ВЫГРУЗИТЬ ПОТОМ!!!
+            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count2());
+            zombieClicker.get_assets().load_assets_for_location_2();
+            BGimage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/location_2_bg.png", Texture.class));
+            //и прочее
+        }
+
+        if(zombieClicker.getNumerics().getSelected_level().equals("level_3")){
+            //загрузить анимации зомби для 3 локации
+            //И НЕ ЗАБЫТЬ ВЫГРУЗИТЬ ПОТОМ!!!
+            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count3());
+            zombieClicker.get_assets().load_assets_for_location_3();
+            BGimage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/location_3_bg.png", Texture.class));
+            //и прочее
+        }
+
+        if(zombieClicker.getNumerics().getSelected_level().equals("level_4")){
+            //загрузить анимации зомби для 4 локации
+            //И НЕ ЗАБЫТЬ ВЫГРУЗИТЬ ПОТОМ!!!
+            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count4());
+            zombieClicker.get_assets().load_assets_for_location_4();
+            BGimage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/location_4_bg.png", Texture.class));
+            //и прочее
+        }
+
+        if(zombieClicker.getNumerics().getSelected_level().equals("level_5")){
+            //загрузить анимации зомби для 5 локации
+            //И НЕ ЗАБЫТЬ ВЫГРУЗИТЬ ПОТОМ!!!
+            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count5());
+//            zombieClicker.get_assets().load_assets_for_location_5();
+//            BGimage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/location_5_bg.png", Texture.class));
+            //и прочее
+        }
+        //////////УСТАНОВКА ЛОКАЦИИ////////////
+
+        animationManager = new AnimationManager(zc);
 
         hpBarbg = zombieClicker.get_assets().get_asset_manager().get("HP/hp_bg.png");
         hpBar = zombieClicker.get_assets().get_asset_manager().get("HP/hp.png");
@@ -155,7 +205,22 @@ public class MainGame implements Screen {
         achievement_btn.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                zombieClicker.getNumerics().setZombie_health(zombieClicker.getNumerics().getMax_zombie_health());
+                zombieClicker.getNumerics().setBoss_health(zombieClicker.getNumerics().getMax_boss_health());
                 zombieClicker.setAchievementScreen();
+                dispose();
+            }
+        });
+
+        map_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/map_btn.json");
+        map_btn = new Button(map_skin);
+        map_btn.setPosition(430, 700);
+        map_btn.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                zombieClicker.getNumerics().setZombie_health(zombieClicker.getNumerics().getMax_zombie_health());
+                zombieClicker.getNumerics().setBoss_health(zombieClicker.getNumerics().getMax_boss_health());
+                zombieClicker.setMapScreen();
                 dispose();
             }
         });
@@ -165,6 +230,7 @@ public class MainGame implements Screen {
         stage.addActor(achievement_btn);
         stage.addActor(mainButton);
         stage.addActor(go_back_btn);
+        stage.addActor(map_btn);
 
         Gdx.input.setInputProcessor(stage);
     }
@@ -279,7 +345,7 @@ public class MainGame implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        //stage.getViewport().update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        stage.getViewport().update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     @Override
@@ -305,5 +371,17 @@ public class MainGame implements Screen {
         zombieClicker.get_assets().dispose_Game_assets();
         if (stage != null) stage.dispose();
         if (batch != null) batch.dispose();
+        if(zombieClicker.getNumerics().getSelected_level().equals("level_1")){
+            zombieClicker.get_assets().dispose_assets_for_location_1();
+        }
+        if(zombieClicker.getNumerics().getSelected_level().equals("level_2")){
+            zombieClicker.get_assets().dispose_assets_for_location_2();
+        }
+        if(zombieClicker.getNumerics().getSelected_level().equals("level_3")){
+            zombieClicker.get_assets().dispose_assets_for_location_3();
+        }
+        if(zombieClicker.getNumerics().getSelected_level().equals("level_4")){
+            zombieClicker.get_assets().dispose_assets_for_location_4();
+        }
     }
 }

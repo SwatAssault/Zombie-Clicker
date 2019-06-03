@@ -1,0 +1,27 @@
+
+location_btn.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+location_btn
+  rotate: false
+  xy: 1, 124
+  size: 80, 121
+  orig: 80, 121
+  offset: 0, 0
+  index: -1
+location_btn_locked
+  rotate: false
+  xy: 83, 124
+  size: 80, 121
+  orig: 80, 121
+  offset: 0, 0
+  index: -1
+location_btn_pressed
+  rotate: false
+  xy: 1, 1
+  size: 80, 121
+  orig: 80, 121
+  offset: 0, 0
+  index: -1

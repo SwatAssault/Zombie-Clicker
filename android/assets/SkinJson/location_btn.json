@@ -1,0 +1,9 @@
+{
+"com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
+	"default": {
+		"up": "location_btn",
+		"down": "location_btn_pressed",
+		"disabled": "location_btn_locked"
+	}
+}
+}

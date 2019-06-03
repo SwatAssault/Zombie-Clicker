@@ -24,10 +24,10 @@ public class Assets {
     }
 
     public void load_assets_for_Game() {
-        assetManager.load("Background/gamebg.png", Texture.class);
         assetManager.load("SkinJson/goback_btn.json", Skin.class);
         assetManager.load("SkinJson/ach_btn.json", Skin.class);
         assetManager.load("SkinJson/shopbtn.json", Skin.class);
+        assetManager.load("SkinJson/map_btn.json", Skin.class);
         assetManager.load("Buttons/shop_btn.png", Texture.class);
         assetManager.load("Sounds/punch.wav", Sound.class);
         assetManager.load("HP/hp.png", Texture.class);
@@ -54,11 +54,43 @@ public class Assets {
 
     }
 
+    public void load_assets_for_map(){
+        assetManager.load("Background/mapbg.png", Texture.class);
+        assetManager.load("SkinJson/goback_btn.json", Skin.class);
+        assetManager.load("SkinJson/location_btn.json", Skin.class);
+        assetManager.update();
+        assetManager.finishLoading();
+    }
+
     public void load_assets_for_achievements(){
         assetManager.load("SkinJson/kills.json", Skin.class);
         assetManager.load("SkinJson/clicks.json", Skin.class);
         assetManager.load("SkinJson/goback_btn.json", Skin.class);
         assetManager.load("Background/achbg.png", Texture.class);
+        assetManager.update();
+        assetManager.finishLoading();
+    }
+
+    public void load_assets_for_location_1(){
+        assetManager.load("Background/location_1_bg.png", Texture.class);
+        assetManager.update();
+        assetManager.finishLoading();
+    }
+
+    public void load_assets_for_location_2(){
+        assetManager.load("Background/location_2_bg.png", Texture.class);
+        assetManager.update();
+        assetManager.finishLoading();
+    }
+
+    public void load_assets_for_location_3(){
+        assetManager.load("Background/location_3_bg.png", Texture.class);
+        assetManager.update();
+        assetManager.finishLoading();
+    }
+
+    public void load_assets_for_location_4(){
+        assetManager.load("Background/location_4_bg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
@@ -73,8 +105,8 @@ public class Assets {
         assetManager.unload("SkinJson/goback_btn.json");
         assetManager.unload("SkinJson/shopbtn.json");
         assetManager.unload("SkinJson/ach_btn.json");
+        assetManager.unload("SkinJson/map_btn.json");
         assetManager.unload("Buttons/shop_btn.png");
-        assetManager.unload("Background/gamebg.png");
         assetManager.unload("Animations/zombie1.atlas");
         assetManager.unload("Animations/zombie2.atlas");
         assetManager.unload("Animations/zombie3.atlas");
@@ -93,11 +125,33 @@ public class Assets {
 
     }
 
+    public void dispose_assets_for_map(){
+        assetManager.unload("Background/mapbg.png");
+        assetManager.unload("SkinJson/location_btn.json");
+        assetManager.unload("SkinJson/goback_btn.json");
+    }
+
     public void dispose_assets_for_achiements(){
         assetManager.unload("SkinJson/kills.json");
         assetManager.unload("SkinJson/goback_btn.json");
         assetManager.unload("SkinJson/clicks.json");
         assetManager.unload("Background/achbg.png");
+    }
+
+    public void dispose_assets_for_location_1(){
+        assetManager.unload("Background/location_1_bg.png");
+    }
+
+    public void dispose_assets_for_location_2(){
+        assetManager.unload("Background/location_2_bg.png");
+    }
+
+    public void dispose_assets_for_location_3(){
+        assetManager.unload("Background/location_3_bg.png");
+    }
+
+    public void dispose_assets_for_location_4(){
+        assetManager.unload("Background/location_4_bg.png");
     }
     /////////DISPOSE ASSETS/////////
 

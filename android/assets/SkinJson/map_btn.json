@@ -1,0 +1,8 @@
+{
+"com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
+	"default": {
+		"up": "map_btn",
+		"down": "map_btn_pressed"
+	}
+}
+}

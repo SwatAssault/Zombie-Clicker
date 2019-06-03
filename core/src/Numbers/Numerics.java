@@ -6,8 +6,13 @@ public class Numerics {
 
     private BigInteger zombie_health;          //в начале каждого уровня := max_zombie_health
     private BigInteger global_tap_count;
-    private long level_count = 1;
-    private int diamonds = 0;                  //доп валюта
+    private int level_count;              //левел на текущей локации!!!
+    private int level_count1 = 1;             //левел на 1 локации!!!
+    private int level_count2 = 1;             //левел на 2 локации!!!
+    private int level_count3 = 1;             //левел на 3 локации!!!
+    private int level_count4 = 1;             //левел на 4 локации!!!
+    private int level_count5 = 1;             //левел на 5 локации!!!
+    private int diamonds = 0;                 //доп валюта
     private BigInteger zombie_kills;
     private BigInteger gold;                   //основная валюта
     private BigInteger punch_power;            //сила одного удара(клика)
@@ -27,6 +32,8 @@ public class Numerics {
     private String before_dot;
     private String after_dot;
 
+    private String selected_level;
+
     public Numerics() {
         //ЧТОБЫ ПОМЕНЯТЬ ХП ЗОМБИ ИЛИ БОССА, МЕНЯТЬ И МАКС ХП ТОЖЕ!!!
         zombie_health = new BigInteger("10");
@@ -44,6 +51,7 @@ public class Numerics {
         oneTrillion = new BigInteger("1000000000000");
         oneQuadrillion = new BigInteger("1000000000000000");
 
+        selected_level = "level_1";
         bossFight = false;
     }
 
@@ -121,8 +129,28 @@ public class Numerics {
         global_tap_count = x;
     }
 
-    public void setLevel_count(long x) {
+    public void setLevel_count(int x) {
         level_count = x;
+    }
+
+    public void setLevel_count1(int x){
+        level_count1 = x;
+    }
+
+    public void setLevel_count2(int x){
+        level_count2 = x;
+    }
+
+    public void setLevel_count3(int x){
+        level_count3 = x;
+    }
+
+    public void setLevel_count4(int x){
+        level_count4 = x;
+    }
+
+    public void setLevel_count5(int x){
+        level_count5 = x;
     }
 
     public void setDiamonds(int x) {
@@ -216,6 +244,10 @@ public class Numerics {
     public void setHow_fast_passive_damage(float x){
         how_fast_passive_damage = x;
     }
+
+    public void setSelected_level(String x){
+        selected_level = x;
+    }
     /////////////////SETTERS//////////////////
 
 
@@ -228,8 +260,28 @@ public class Numerics {
         return global_tap_count;
     }
 
-    public long getLevel_count() {
+    public int getLevel_count() {
         return level_count;
+    }
+
+    public int getLevel_count1() {
+        return level_count1;
+    }
+
+    public int getLevel_count2() {
+        return level_count2;
+    }
+
+    public int getLevel_count3() {
+        return level_count3;
+    }
+
+    public int getLevel_count4() {
+        return level_count4;
+    }
+
+    public int getLevel_count5() {
+        return level_count5;
     }
 
     public int getDiamonds() {
@@ -278,6 +330,10 @@ public class Numerics {
 
     public float getHow_fast_passive_damage(){
         return how_fast_passive_damage;
+    }
+
+    public String getSelected_level(){
+        return selected_level;
     }
     ////////////////GETTERS//////////////////
 }

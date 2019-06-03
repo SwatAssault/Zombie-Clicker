@@ -10,6 +10,7 @@ import Numbers.ShopNumerics;
 import Other.KeepTrackAch;
 import Screens.Achievements;
 import Screens.MainGame;
+import Screens.MapScreen;
 import Screens.MenuScreen;
 import Screens.Shop;
 
@@ -28,6 +29,7 @@ public class ZombieClicker extends Game {
     private MenuScreen menuScreen;
     private Shop shop;
     private Achievements achievements;
+    private MapScreen mapScreen;
 
     public ZombieClicker() {
         instance = this;
@@ -113,6 +115,12 @@ public class ZombieClicker extends Game {
         achievements = null;
         achievements = new Achievements(instance);
         setScreen(achievements);
+    }
+
+    public void setMapScreen(){
+        mapScreen = null;
+        mapScreen = new MapScreen(instance);
+        setScreen(mapScreen);
     }
     ////////////SET SCREEN METHODS/////////////
 
