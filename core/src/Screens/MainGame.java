@@ -62,7 +62,6 @@ public class MainGame implements Screen {
     private double regen_time;
     private double time;
 
-
     private BitmapFont bitmapFont;
     private BitmapFont HP_font;
     private BitmapFont diamond_font;
