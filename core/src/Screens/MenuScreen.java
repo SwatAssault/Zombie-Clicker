@@ -49,6 +49,9 @@ public class MenuScreen implements Screen {
 
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                zombieClicker.get_assets().load_assets_for_location_1();
+                zombieClicker.getNumerics().setCurrent_num_location(0);
+                zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_1_bg.png");
                 zombieClicker.setMainGame();
                 dispose();
             }

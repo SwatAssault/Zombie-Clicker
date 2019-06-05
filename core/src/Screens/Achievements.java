@@ -136,6 +136,7 @@ public class Achievements implements Screen { //КЛАСС НУЖЕН ДЛЯ В�
         back_btn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                zombieClicker.get_assets().load_assets_for_anyLocation(zombieClicker);
                 zombieClicker.setMainGame();
                 dispose();
             }

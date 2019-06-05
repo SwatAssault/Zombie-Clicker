@@ -1,6 +1,10 @@
 package Numbers;
 
+import com.awprecords.zombieclicker.ZombieClicker;
+
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Numerics {
 
@@ -34,8 +38,27 @@ public class Numerics {
 
     private String selected_level;
 
-    public Numerics() {
+    private int current_location;
+    private ArrayList<Location> location;
+
+    public Numerics(ZombieClicker zc) {
         //ЧТОБЫ ПОМЕНЯТЬ ХП ЗОМБИ ИЛИ БОССА, МЕНЯТЬ И МАКС ХП ТОЖЕ!!!
+
+        //TODO скорее всего придется это переделать когда появятся сохранения
+        //BigInteger zombie_health, int level_count, BigInteger zombie_kills, BigInteger boss_health, BigInteger zombie_kill_reward,
+        //                    int boss_kill_reward, long betweenBoss, final ZombieClicker zc
+        location = new ArrayList<Location>(Arrays.asList(
+                new Location(new BigInteger("8"), 1, new BigInteger("0"), new BigInteger("12"), new BigInteger("50000"),
+                        1, 3, zc),
+                new Location(new BigInteger("12"), 1, new BigInteger("0"), new BigInteger("15"), new BigInteger("70000"),
+                        2, 4, zc),
+                new Location(new BigInteger("15"), 1, new BigInteger("0"), new BigInteger("18"), new BigInteger("90000"),
+                        3, 5,  zc),
+                new Location(new BigInteger("18"), 1, new BigInteger("0"), new BigInteger("21"), new BigInteger("110000"),
+                        4, 6,  zc)));
+
+        current_location = 0;
+
         zombie_health = new BigInteger("10");
         max_zombie_health = new BigInteger("10");
         boss_health = new BigInteger("20");
@@ -51,49 +74,47 @@ public class Numerics {
         oneTrillion = new BigInteger("1000000000000");
         oneQuadrillion = new BigInteger("1000000000000000");
 
+
         selected_level = "level_1";
         bossFight = false;
     }
 
     //   XXX.XXXM(B,T,Q) FORMAT
-    public String bigInteger_to_string(BigInteger x){
+    public String bigInteger_to_string(BigInteger x) {
         String y;
         string_to_cut = x.toString();
-        if(string_to_cut.length() >= 7 && string_to_cut.length() <= 9){       //ЕСЛИ ЧИСЛО В МИЛЛИОНАХ
+        if (string_to_cut.length() >= 7 && string_to_cut.length() <= 9) {       //ЕСЛИ ЧИСЛО В МИЛЛИОНАХ
             before_dot = x.divide(BigInteger.valueOf(1000000)).toString();
-            if(before_dot.length() == 1){
+            if (before_dot.length() == 1) {
                 before_dot = "00" + before_dot;
-            } else if(before_dot.length() == 2){
+            } else if (before_dot.length() == 2) {
                 before_dot = "0" + before_dot;
             }
             after_dot = string_to_cut.substring(3, 6);
             y = before_dot + "." + after_dot + "M";
-        } else
-        if(string_to_cut.length() >= 10 && string_to_cut.length() <= 12){       //ЕСЛИ ЧИСЛО В МИЛЛИАРДАХ
+        } else if (string_to_cut.length() >= 10 && string_to_cut.length() <= 12) {       //ЕСЛИ ЧИСЛО В МИЛЛИАРДАХ
             before_dot = x.divide(BigInteger.valueOf(1000000000)).toString();
-            if(before_dot.length() == 1){
+            if (before_dot.length() == 1) {
                 before_dot = "00" + before_dot;
-            } else if(before_dot.length() == 2){
+            } else if (before_dot.length() == 2) {
                 before_dot = "0" + before_dot;
             }
             after_dot = string_to_cut.substring(3, 6);
             y = before_dot + "." + after_dot + "B";
-        } else
-        if(string_to_cut.length() >= 13 && string_to_cut.length() <= 15){       //ЕСЛИ ЧИСЛО В ТРИЛЛИОНАХ
+        } else if (string_to_cut.length() >= 13 && string_to_cut.length() <= 15) {       //ЕСЛИ ЧИСЛО В ТРИЛЛИОНАХ
             before_dot = x.divide(oneTrillion).toString();
-            if(before_dot.length() == 1){
+            if (before_dot.length() == 1) {
                 before_dot = "00" + before_dot;
-            } else if(before_dot.length() == 2){
+            } else if (before_dot.length() == 2) {
                 before_dot = "0" + before_dot;
             }
             after_dot = string_to_cut.substring(3, 6);
             y = before_dot + "." + after_dot + "T";
-        } else
-        if(string_to_cut.length() >= 16 && string_to_cut.length() <= 18){       //ЕСЛИ ЧИСЛО В КВАДРИЛЛИОНАХ
+        } else if (string_to_cut.length() >= 16 && string_to_cut.length() <= 18) {       //ЕСЛИ ЧИСЛО В КВАДРИЛЛИОНАХ
             before_dot = x.divide(oneQuadrillion).toString();
-            if(before_dot.length() == 1){
+            if (before_dot.length() == 1) {
                 before_dot = "00" + before_dot;
-            } else if(before_dot.length() == 2){
+            } else if (before_dot.length() == 2) {
                 before_dot = "0" + before_dot;
             }
             after_dot = string_to_cut.substring(3, 6);
@@ -104,70 +125,70 @@ public class Numerics {
         return y;
     }
 
-    public void passive_punch(){
-            if(bossFight){
-                boss_health = boss_health.subtract(passive_damage);
-            } else
-                zombie_health = zombie_health.subtract(passive_damage);
-    }
+//    public void passive_punch() {
+//        if (bossFight) {
+//            boss_health = boss_health.subtract(passive_damage);
+//        } else
+//            zombie_health = zombie_health.subtract(passive_damage);
+//    }
 
     //БОЛЬШИНСТВО СЕТТЕРОВ НУЖНЫ ДЛЯ ОПРЕДЕЛЕНИЯ ЗНАЧЕНИЙ ПРИ ЗАГРУЗКЕ СОХРАНЕНИЯ
     /////////////////SETTERS//////////////////
-    public void setZombie_health(BigInteger x) {
-        zombie_health = x;
-    }
+//    public void setMaxZombie_health(BigInteger x) {
+//        zombie_health = x;
+//    }
 
-    public void setMax_zombie_health(BigInteger x) {
-        max_zombie_health = x;
-    }
+//    public void set_zombie_health(BigInteger x) {
+//        max_zombie_health = x;
+//    }
 
-    public void setMax_boss_health(BigInteger x) {
-        max_boss_health = x;
-    }
+//    public void set_boss_health(BigInteger x) {
+//        max_boss_health = x;
+//    }
 
     public void setGlobal_tap_count(BigInteger x) {
         global_tap_count = x;
     }
 
-    public void setLevel_count(int x) {
-        level_count = x;
-    }
+//    public void setLevel_count(int x) {
+//        level_count = x;
+//    }
+//
+//    public void setLevel_count1(int x) {
+//        level_count1 = x;
+//    }
+//
+//    public void setLevel_count2(int x) {
+//        level_count2 = x;
+//    }
+//
+//    public void setLevel_count3(int x) {
+//        level_count3 = x;
+//    }
+//
+//    public void setLevel_count4(int x) {
+//        level_count4 = x;
+//    }
+//
+//    public void setLevel_count5(int x) {
+//        level_count5 = x;
+//    }
 
-    public void setLevel_count1(int x){
-        level_count1 = x;
-    }
-
-    public void setLevel_count2(int x){
-        level_count2 = x;
-    }
-
-    public void setLevel_count3(int x){
-        level_count3 = x;
-    }
-
-    public void setLevel_count4(int x){
-        level_count4 = x;
-    }
-
-    public void setLevel_count5(int x){
-        level_count5 = x;
-    }
-
-    public void plusLevel_count1(int x){
-        level_count1 += x;
-    }
-
-    public void plusLevel_count2(int x){
-        level_count2 += x;
-    }
-
-    public void plusLevel_count3(int x){
-        level_count3 += x;
-    }
-
-    public void plusLevel_count4(int x){
-        level_count4 += x;
-    }
+//    public void plusLevel_count1(int x) {
+//        level_count1 += x;
+//    }
+//
+//    public void plusLevel_count2(int x) {
+//        level_count2 += x;
+//    }
+//
+//    public void plusLevel_count3(int x) {
+//        level_count3 += x;
+//    }
+//
+//    public void plusLevel_count4(int x) {
+//        level_count4 += x;
+//    }
 
     public void setDiamonds(int x) {
         diamonds = x;
@@ -185,9 +206,9 @@ public class Numerics {
         punch_power = x;
     }
 
-    public void setBoss_health(BigInteger x) {
-        boss_health = x;
-    }
+//    public void setMaxBoss_health(BigInteger x) {
+//        boss_health = x;
+//    }
 
     public void setZombie_kill_reward(BigInteger x) {
         zombie_kill_reward = x;
@@ -197,23 +218,23 @@ public class Numerics {
         boss_kill_reward = x;
     }
 
-    public void minusHealth(BigInteger x) {
-        zombie_health = zombie_health.subtract(x);
-    }
+//    public void minusHealth(BigInteger x) {
+//        zombie_health = zombie_health.subtract(x);
+//    }
 
     public void plus_global_tap_count(BigInteger x) {
         global_tap_count = global_tap_count.add(x);
     }
 
-    public void plus_level_count(long x) {
-        level_count += x;
-    }
+//    public void plus_level_count(long x) {
+//        level_count += x;
+//    }
 
     public void plus_diamonds(int x) {
         diamonds += x;
     }
 
-    public void minus_Gold(BigInteger x){
+    public void minus_Gold(BigInteger x) {
         gold = gold.subtract(x);
     }
 
@@ -231,38 +252,42 @@ public class Numerics {
         punch_power = punch_power.add(x);
     }
 
-    public void minus_Boss_health(BigInteger x) {
-        boss_health = boss_health.subtract(x);
-    }
+//    public void minus_Boss_health(BigInteger x) {
+//        boss_health = boss_health.subtract(x);
+//    }
 
     public void plus_Zombie_kill_reward(BigInteger x) {
         zombie_kills = zombie_kills.add(x);
     }
 
-    public void plus_Boss_health() {
-        //формула увеличения хп босса (пока с каждым уровнем увеличивается в полтора раза)
-        max_boss_health = max_boss_health.add(max_boss_health.divide(BigInteger.valueOf(2)));
-    }
-
-    public void plus_zombie_health() {
-        //формула увеличения хп зомби (пока с каждым уровнем увеличивается в полтора раза)
-        max_zombie_health = max_zombie_health.add(max_zombie_health.divide(BigInteger.valueOf(2)));
-    }
+//    public void plus_Boss_health() {
+//        //формула увеличения хп босса (пока с каждым уровнем увеличивается в полтора раза)
+//        max_boss_health = max_boss_health.add(max_boss_health.divide(BigInteger.valueOf(2)));
+//    }
+//
+//    public void plus_zombie_health() {
+//        //формула увеличения хп зомби (пока с каждым уровнем увеличивается в полтора раза)
+//        max_zombie_health = max_zombie_health.add(max_zombie_health.divide(BigInteger.valueOf(2)));
+//    }
 
     public void setLast_kills(BigInteger x) {
         last_kills = x;
     }
 
-    public void set_bossFight(boolean x) {
-        bossFight = x;
-    }
+//    public void set_bossFight(boolean x) {
+//        bossFight = x;
+//    }
 
-    public void setHow_fast_passive_damage(float x){
+    public void setHow_fast_passive_damage(float x) {
         how_fast_passive_damage = x;
     }
 
-    public void setSelected_level(String x){
+    public void setSelected_level(String x) {
         selected_level = x;
+    }
+
+    public void setCurrent_num_location(int x) {
+        current_location = x;
     }
     /////////////////SETTERS//////////////////
 
@@ -344,12 +369,24 @@ public class Numerics {
         return bossFight;
     }
 
-    public float getHow_fast_passive_damage(){
+    public float getHow_fast_passive_damage() {
         return how_fast_passive_damage;
     }
 
-    public String getSelected_level(){
+    public String getSelected_level() {
         return selected_level;
+    }
+
+    public BigInteger getPassive_damage() {
+        return passive_damage;
+    }
+
+    public int getCurrent_num_location() {
+        return current_location;
+    }
+
+    public Location getCurrent_location(){
+        return location.get(current_location);
     }
     ////////////////GETTERS//////////////////
 }

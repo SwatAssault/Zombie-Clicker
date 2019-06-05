@@ -1,5 +1,6 @@
 package Managers;
 
+import com.awprecords.zombieclicker.ZombieClicker;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,6 +15,32 @@ public class Assets {
 
     public AssetManager get_asset_manager() {
         return assetManager;
+    }
+
+    public void load_assets_for_anyLocation(ZombieClicker zombieClicker){
+        if(zombieClicker.getNumerics().getCurrent_num_location() == 0)
+        {
+            load_assets_for_location_1();
+            zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_1_bg.png");
+        }
+
+        if(zombieClicker.getNumerics().getCurrent_num_location() == 1)
+        {
+            load_assets_for_location_2();
+            zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_2_bg.png");
+        }
+
+        if(zombieClicker.getNumerics().getCurrent_num_location() == 2)
+        {
+            load_assets_for_location_3();
+            zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_3_bg.png");
+        }
+
+        if(zombieClicker.getNumerics().getCurrent_num_location() == 3)
+        {
+            load_assets_for_location_4();
+            zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_4_bg.png");
+        }
     }
 
     public void load_assets_for_Menu() {

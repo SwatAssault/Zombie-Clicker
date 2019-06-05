@@ -366,6 +366,7 @@ public class Shop implements Screen {
         goback_bth.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                zombieClicker.get_assets().load_assets_for_anyLocation(zombieClicker);
                 zombieClicker.setMainGame();
                 dispose();
             }
