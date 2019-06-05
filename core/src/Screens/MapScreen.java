@@ -16,6 +16,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import Numbers.Location;
+
 public class MapScreen implements Screen {
 
     private final ZombieClicker zombieClicker;
@@ -34,6 +40,7 @@ public class MapScreen implements Screen {
 
     public MapScreen(final ZombieClicker zc) {
         zombieClicker = zc;
+
         camera = new OrthographicCamera();
         viewport = new StretchViewport(540, 960, camera);
         stage = new Stage(viewport);
@@ -44,9 +51,12 @@ public class MapScreen implements Screen {
         back_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/goback_btn.json", Skin.class);
         back_btn = new Button(back_skin);
         back_btn.setPosition(10, 853);
-        back_btn.addListener(new ClickListener(){
+        back_btn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+//                zombieClicker.get_assets().load_assets_for_location_1();
+//                zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_1_bg.png");
+                zombieClicker.get_assets().load_assets_for_anyLocation(zombieClicker);
                 zombieClicker.setMainGame();
                 dispose();
             }
@@ -54,23 +64,30 @@ public class MapScreen implements Screen {
 
         location_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/location_btn.json");
         location_btn1 = new Button(location_skin);
-        location_btn1.setPosition(55,220);
-        location_btn1.addListener(new ClickListener(){
+        location_btn1.setPosition(55, 220);
+        location_btn1.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                //TODO хз надо удалять или нет
                 zombieClicker.getNumerics().setSelected_level("level_1");
+                zombieClicker.get_assets().load_assets_for_location_1();
+                zombieClicker.getNumerics().setCurrent_num_location(0);
+                zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_1_bg.png");
                 zombieClicker.setMainGame();
                 dispose();
             }
         });
 
         location_btn2 = new Button(location_skin);
-        location_btn2.setPosition(330,210);
-        location_btn2.addListener(new ClickListener(){
+        location_btn2.setPosition(330, 210);
+        location_btn2.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                if(!location_btn2.isDisabled()){
+                if (!location_btn2.isDisabled()) {
                     zombieClicker.getNumerics().setSelected_level("level_2");
+                    zombieClicker.get_assets().load_assets_for_location_2();
+                    zombieClicker.getNumerics().setCurrent_num_location(1);
+                    zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_2_bg.png");
                     zombieClicker.setMainGame();
                     dispose();
                 }
@@ -78,12 +95,15 @@ public class MapScreen implements Screen {
         });
 
         location_btn3 = new Button(location_skin);
-        location_btn3.setPosition(200,450);
-        location_btn3.addListener(new ClickListener(){
+        location_btn3.setPosition(200, 450);
+        location_btn3.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                if(!location_btn3.isDisabled()){
+                if (!location_btn3.isDisabled()) {
                     zombieClicker.getNumerics().setSelected_level("level_3");
+                    zombieClicker.get_assets().load_assets_for_location_3();
+                    zombieClicker.getNumerics().setCurrent_num_location(2);
+                    zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_3_bg.png");
                     zombieClicker.setMainGame();
                     dispose();
                 }
@@ -91,20 +111,23 @@ public class MapScreen implements Screen {
         });
 
         location_btn4 = new Button(location_skin);
-        location_btn4.setPosition(440,500);
-        location_btn4.addListener(new ClickListener(){
+        location_btn4.setPosition(440, 500);
+        location_btn4.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                if(!location_btn4.isDisabled()){
+                if (!location_btn4.isDisabled()) {
                     zombieClicker.getNumerics().setSelected_level("level_4");
+                    zombieClicker.get_assets().load_assets_for_location_4();
+                    zombieClicker.getNumerics().setCurrent_num_location(3);
+                    zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_4_bg.png");
                     zombieClicker.setMainGame();
                     dispose();
                 }
             }
         });
 
-        location_btn2.setDisabled(true);
-        location_btn3.setDisabled(true);
+        location_btn2.setDisabled(false);
+        location_btn3.setDisabled(false);
         location_btn4.setDisabled(true);
 
         stage.addActor(imageBG);
@@ -157,8 +180,8 @@ public class MapScreen implements Screen {
 
     @Override
     public void dispose() {
-        if(batch != null) batch.dispose();
-        if(stage != null) stage.dispose();
+        if (batch != null) batch.dispose();
+        if (stage != null) stage.dispose();
         zombieClicker.get_assets().dispose_assets_for_map();
     }
 }

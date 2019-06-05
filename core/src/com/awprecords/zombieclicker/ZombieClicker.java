@@ -5,6 +5,7 @@ import com.badlogic.gdx.Game;
 import Managers.Assets;
 import Managers.FontManager;
 import Managers.SoundManager;
+import Numbers.Location;
 import Numbers.Numerics;
 import Numbers.ShopNumerics;
 import Other.KeepTrackAch;
@@ -34,7 +35,7 @@ public class ZombieClicker extends Game {
     public ZombieClicker() {
         instance = this;
         assets = new Assets();
-        numerics = new Numerics();
+        numerics = new Numerics(instance);
         soundManager = new SoundManager(instance);
         fontManager = new FontManager(instance);
         shopNumerics = new ShopNumerics();
@@ -93,7 +94,7 @@ public class ZombieClicker extends Game {
     public void setMainGame(){
         menuScreen = null;
         //System.gc();
-        mainGame = new MainGame(instance);
+        mainGame = new MainGame(instance, numerics.getCurrent_location());
         setScreen(mainGame);
     }
 
