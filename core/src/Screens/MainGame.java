@@ -91,54 +91,6 @@ public class MainGame implements Screen {
         stage = new Stage(viewport);
         batch = new SpriteBatch();
 
-        /*
-        //////////УСТАНОВКА ЛОКАЦИИ////////////
-        if(zombieClicker.getNumerics().getSelected_level().equals("level_1")){     //если первая локация
-            //загрузить анимации зомби для 1 локации
-            //И НЕ ЗАБЫТЬ ВЫГРУЗИТЬ ПОТОМ!!!
-//            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count1());
-//            zombieClicker.get_assets().load_assets_for_location_1();
-            BGimage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/location_1_bg.png", Texture.class));
-            //и прочее
-        }
-
-        if(zombieClicker.getNumerics().getSelected_level().equals("level_2")){
-            //загрузить анимации зомби для 2 локации
-            //И НЕ ЗАБЫТЬ ВЫГРУЗИТЬ ПОТОМ!!!
-//            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count2());
-//            zombieClicker.get_assets().load_assets_for_location_2();
-            BGimage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/location_2_bg.png", Texture.class));
-            //и прочее
-        }
-
-        if(zombieClicker.getNumerics().getSelected_level().equals("level_3")){
-            //загрузить анимации зомби для 3 локации
-            //И НЕ ЗАБЫТЬ ВЫГРУЗИТЬ ПОТОМ!!!
-//            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count3());
-//            zombieClicker.get_assets().load_assets_for_location_3();
-            BGimage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/location_3_bg.png", Texture.class));
-            //и прочее
-        }
-
-        if(zombieClicker.getNumerics().getSelected_level().equals("level_4")){
-            //загрузить анимации зомби для 4 локации
-            //И НЕ ЗАБЫТЬ ВЫГРУЗИТЬ ПОТОМ!!!
-//            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count4());
-//            zombieClicker.get_assets().load_assets_for_location_4();
-            BGimage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/location_4_bg.png", Texture.class));
-            //и прочее
-        }
-
-        if(zombieClicker.getNumerics().getSelected_level().equals("level_5")){
-            //загрузить анимации зомби для 5 локации
-            //И НЕ ЗАБЫТЬ ВЫГРУЗИТЬ ПОТОМ!!!
-            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count5());
-//            zombieClicker.get_assets().load_assets_for_location_5();
-//            BGimage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/location_5_bg.png", Texture.class));
-            //и прочее
-        }
-        //////////УСТАНОВКА ЛОКАЦИИ////////////
-        */
         animationManager = new AnimationManager(zc);
 
         hpBarbg = zombieClicker.get_assets().get_asset_manager().get("HP/hp_bg.png");
@@ -181,8 +133,6 @@ public class MainGame implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
-//                zombieClicker.getNumerics().setMaxZombie_health(zombieClicker.getNumerics().getMax_zombie_health());
-//                zombieClicker.getNumerics().setMaxBoss_health(zombieClicker.getNumerics().getMax_boss_health());
                 location.setMaxZombie_health();
                 location.setMaxBoss_health();
                 zombieClicker.setMenuScreen();
@@ -197,8 +147,6 @@ public class MainGame implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
-//                zombieClicker.getNumerics().setMaxZombie_health(zombieClicker.getNumerics().getMax_zombie_health());
-//                zombieClicker.getNumerics().setMaxBoss_health(zombieClicker.getNumerics().getMax_boss_health());
                 location.setMaxZombie_health();
                 location.setMaxBoss_health();
                 zombieClicker.setShopScreen();
@@ -212,8 +160,6 @@ public class MainGame implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
-//                zombieClicker.getNumerics().setMaxZombie_health(zombieClicker.getNumerics().getMax_zombie_health());
-//                zombieClicker.getNumerics().setMaxBoss_health(zombieClicker.getNumerics().getMax_boss_health());
                 location.setMaxZombie_health();
                 location.setMaxBoss_health();
                 zombieClicker.setAchievementScreen();
@@ -227,8 +173,6 @@ public class MainGame implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
-//                zombieClicker.getNumerics().setMaxZombie_health(zombieClicker.getNumerics().getMax_zombie_health());
-//                zombieClicker.getNumerics().setMaxBoss_health(zombieClicker.getNumerics().getMax_boss_health());
                 location.setMaxZombie_health();
                 location.setMaxBoss_health();
                 zombieClicker.setMapScreen();
@@ -291,7 +235,7 @@ public class MainGame implements Screen {
             zombieClicker.getFontManager().getLayout().setText(HP_font, zombieClicker.getNumerics().bigInteger_to_string(location.getBoss_health()));
             HP_font.draw(batch, zombieClicker.getNumerics().bigInteger_to_string(location.getBoss_health()), 540 / 2 - zombieClicker.getFontManager().getLayout().width / 2, 293);
         } else {
-            zombieClicker.getFontManager().getLayout().setText(HP_font, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getZombie_health()));
+            zombieClicker.getFontManager().getLayout().setText(HP_font, zombieClicker.getNumerics().bigInteger_to_string(location.getZombie_health()));
             HP_font.draw(batch, zombieClicker.getNumerics().bigInteger_to_string(location.getZombie_health()), 540 / 2 - zombieClicker.getFontManager().getLayout().width / 2, 293);
         }
 
@@ -320,11 +264,7 @@ public class MainGame implements Screen {
 
     private void update() {
 
-//        if (location.getZombie_kills().subtract(location.getLast_kills()).compareTo(BigInteger.valueOf(5)) == 0) {
-//            location.setBossFight(true);
-//        }
-        if (location.getCount_death_zombies_betweenBoss() == location.getBetweenBoss())
-        {
+        if (location.getCount_death_zombies_betweenBoss() == location.getBetweenBoss()) {
             location.setBossFight(true);
             location.setCount_death_zombies_betweenBoss(0);
         }
@@ -347,43 +287,18 @@ public class MainGame implements Screen {
         //ПОЛУЧЕНИЕ АЛМАЗОВ ЗА ПРОХОЖДЕНИЕ УРОВНЯ
         //И ВСЕ ОСТАЛЬНОЕ
         System.out.println("new level");
-//        zombieClicker.getNumerics().plus_zombie_health();
-//        zombieClicker.getNumerics().plus_Boss_health();
-//        zombieClicker.getNumerics().setMaxZombie_health(zombieClicker.getNumerics().getMax_zombie_health());
-//        zombieClicker.getNumerics().setMaxBoss_health(zombieClicker.getNumerics().getMax_boss_health());
 
         location.plus_zombie_health();
         location.plus_Boss_health();
         location.setMaxZombie_health();
         location.setMaxBoss_health();
 
-//        if (zombieClicker.getNumerics().getSelected_level().equals("level_1")) {
-//            zombieClicker.getNumerics().plusLevel_count1(1);
-//            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count1());
-//        }
-//        if (zombieClicker.getNumerics().getSelected_level().equals("level_2")) {
-//            zombieClicker.getNumerics().plusLevel_count2(1);
-//            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count2());
-//        }
-//        if (zombieClicker.getNumerics().getSelected_level().equals("level_3")) {
-//            zombieClicker.getNumerics().plusLevel_count3(1);
-//            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count3());
-//        }
-//        if (zombieClicker.getNumerics().getSelected_level().equals("level_4")) {
-//            zombieClicker.getNumerics().plusLevel_count4(1);
-//            zombieClicker.getNumerics().setLevel_count(zombieClicker.getNumerics().getLevel_count4());
-//        }
-
         location.upLevel(1);
         location.plus_count_kill_boss();
         location.plus_zombie_kills(BigInteger.valueOf(1));
         location.setBossFight(false);
-//        zombieClicker.getNumerics().plus_zombie_kills(BigInteger.valueOf(1));
         zombieClicker.getNumerics().plus_diamonds(location.getBoss_kill_reward());
 
-        //TODO блядь я уже запутался
-//        zombieClicker.getNumerics().getCurrent_location().setLast_kills(zombieClicker.getNumerics().getZombie_kills());
-//        zombieClicker.getNumerics().set_bossFight(false);
     }
 
     @Override

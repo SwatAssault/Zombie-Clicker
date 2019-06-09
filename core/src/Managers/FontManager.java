@@ -36,13 +36,7 @@ public class FontManager {
     }
 
     public void draw_text_forGame(SpriteBatch batch) {
-        bitmapFont.draw(batch, "LEVEL : " + zombieClicker.getNumerics().getLevel_count(), 100, 800);
-        if (zombieClicker.getNumerics().get_bossFight()) {
-            bitmapFont.draw(batch, "HP : " + zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getBoss_health()), 200, 180);
-        } else
-            bitmapFont.draw(batch, "HP : " + zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getZombie_health()), 200, 180);
-        bitmapFont.draw(batch, "" + zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getGold()), 300, 700);
-        bitmapFont.draw(batch, "DIAMONDS : " + zombieClicker.getNumerics().getDiamonds(), 300, 600);
+
     }
 
     public void draw_text_forShop(){

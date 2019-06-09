@@ -47,7 +47,7 @@ public class Location {
         this.betweenBoss = betweenBoss;
 
         bossFight = false;
-        //TODO Загрузить из сахронения
+        //TODO Загрузить из сохранения
         count_kill_zombies = new BigInteger("0");
         count_kill_boss = new BigInteger("0");
         count_death_zombies_betweenBoss = 0;

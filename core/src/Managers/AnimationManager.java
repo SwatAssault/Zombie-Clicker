@@ -66,14 +66,6 @@ public class AnimationManager {
             zombieClicker.getNumerics().getCurrent_location().setMaxZombie_health();
             zombie_animation = zombie_animations_arr.get(MathUtils.random(0, 2));
 
-            // тут может быть пиздец
-//            if (zombieClicker.getNumerics().getCurrent_location().getZombie_kills().
-//                    subtract(zombieClicker.getNumerics().getCurrent_location().getLast_kills()).compareTo(BigInteger.valueOf(5)) == 0) {
-//                zombieClicker.getNumerics().getCurrent_location().setBossFight(true);
-//                zombie_animation = boss_animations_arr.get(0);
-//                System.out.println("boss appears");
-//            }
-
             if (zombieClicker.getNumerics().getCurrent_location().getCount_death_zombies_betweenBoss() == zombieClicker.getNumerics().getCurrent_location().getBetweenBoss()) {
                 zombieClicker.getNumerics().getCurrent_location().setBossFight(true);
                 zombie_animation = boss_animations_arr.get(0);

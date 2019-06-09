@@ -55,7 +55,7 @@ public class MapScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 //                zombieClicker.get_assets().load_assets_for_location_1();
-//                zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_1_bg.png");
+               // zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_1_bg.png");
                 zombieClicker.get_assets().load_assets_for_anyLocation(zombieClicker);
                 zombieClicker.setMainGame();
                 dispose();
@@ -69,7 +69,7 @@ public class MapScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 //TODO хз надо удалять или нет
-                zombieClicker.getNumerics().setSelected_level("level_1");
+               // zombieClicker.getNumerics().setSelected_level("level_1");
                 zombieClicker.get_assets().load_assets_for_location_1();
                 zombieClicker.getNumerics().setCurrent_num_location(0);
                 zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_1_bg.png");
@@ -84,7 +84,7 @@ public class MapScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if (!location_btn2.isDisabled()) {
-                    zombieClicker.getNumerics().setSelected_level("level_2");
+                  //  zombieClicker.getNumerics().setSelected_level("level_2");
                     zombieClicker.get_assets().load_assets_for_location_2();
                     zombieClicker.getNumerics().setCurrent_num_location(1);
                     zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_2_bg.png");
@@ -100,7 +100,7 @@ public class MapScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if (!location_btn3.isDisabled()) {
-                    zombieClicker.getNumerics().setSelected_level("level_3");
+                   // zombieClicker.getNumerics().setSelected_level("level_3");
                     zombieClicker.get_assets().load_assets_for_location_3();
                     zombieClicker.getNumerics().setCurrent_num_location(2);
                     zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_3_bg.png");
@@ -116,7 +116,7 @@ public class MapScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if (!location_btn4.isDisabled()) {
-                    zombieClicker.getNumerics().setSelected_level("level_4");
+                   // zombieClicker.getNumerics().setSelected_level("level_4");
                     zombieClicker.get_assets().load_assets_for_location_4();
                     zombieClicker.getNumerics().setCurrent_num_location(3);
                     zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_4_bg.png");
