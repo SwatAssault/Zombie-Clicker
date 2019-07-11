@@ -23,7 +23,6 @@ public class MenuScreen implements Screen {
     private Image BGimage;
     private ImageButton play_button;
 
-
     private final ZombieClicker zombieClicker;
 
     public MenuScreen(final ZombieClicker zc) {

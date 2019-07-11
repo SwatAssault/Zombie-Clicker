@@ -34,7 +34,7 @@ public class MainGame implements Screen {
 
     private Stage stage;
     private Camera camera;
-    private Image BGimage;
+  //  private Image BGimage;
     private Viewport viewport;
 
     private boolean is_mainButton_pressed;
@@ -81,10 +81,13 @@ public class MainGame implements Screen {
         fontParameter.size = 40;
         fontParameter.color = Color.WHITE;
         bitmapFont = fontGenerator.generateFont(fontParameter);
+        bitmapFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         fontParameter.size = 30;
         HP_font = fontGenerator.generateFont(fontParameter);
+        HP_font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         fontParameter.size = 18;
         diamond_font = fontGenerator.generateFont(fontParameter);
+        diamond_font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
         camera = new OrthographicCamera();
         viewport = new StretchViewport(540, 960, camera);

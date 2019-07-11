@@ -84,32 +84,6 @@ public class Achievements implements Screen { //КЛАСС НУЖЕН ДЛЯ В�
     private String desc_for_10k_clicks_rus;
     private String desc_for_100k_clicks_rus;
 
-    private String name_for_10_kills_eng;
-    private String name_for_100_kills_eng;
-    private String name_for_500kills_eng;
-    private String name_for_1000_kills_eng;
-    private String name_for_10k_kills_eng;
-    private String name_for_100k_kills_eng;
-    private String name_for_500k_kills_eng;
-    private String name_for_100_clicks_eng;
-    private String name_for_500_clicks_eng;
-    private String name_for_1000_clicks_eng;
-    private String name_for_10k_clicks_eng;
-    private String name_for_100k_clicks_eng;
-
-    private String desc_for_10_kills_eng;
-    private String desc_for_100_kills_eng;
-    private String desc_for_500_kills_eng;
-    private String desc_for_1000_kills_eng;
-    private String desc_for_10k_kills_eng;
-    private String desc_for_100k_kills_eng;
-    private String desc_for_500k_kills_eng;
-    private String desc_for_100_clicks_eng;
-    private String desc_for_500_clicks_eng;
-    private String desc_for_1000_clicks_eng;
-    private String desc_for_10k_clicks_eng;
-    private String desc_for_100k_clicks_eng;
-
     private String name;
     private String description;
 
@@ -179,40 +153,11 @@ public class Achievements implements Screen { //КЛАСС НУЖЕН ДЛЯ В�
         desc_for_100k_clicks_rus = "Вы сделали 100k кликов";
         ///////////РУССКИЙ////////////
 
-        ///////////ENGLISH////////////
-        name_for_10_kills_eng = "Graveyard keeper";
-        name_for_100_kills_eng = "";
-        name_for_500kills_eng = "";
-        name_for_1000_kills_eng = "";
-        name_for_10k_kills_eng = "";
-        name_for_100k_kills_eng = "";
-        name_for_500k_kills_eng = "";
-        name_for_100_clicks_eng = "";
-        name_for_500_clicks_eng = "";
-        name_for_1000_clicks_eng = "";
-        name_for_10k_clicks_eng = "";
-        name_for_100k_clicks_eng = "";
-        desc_for_10_kills_eng = "";
-        desc_for_100_kills_eng = "";
-        desc_for_500_kills_eng = "";
-        desc_for_1000_kills_eng = "";
-        desc_for_10k_kills_eng = "";
-        desc_for_100k_kills_eng = "";
-        desc_for_500k_kills_eng = "";
-        desc_for_100_clicks_eng = "";
-        desc_for_500_clicks_eng = "";
-        desc_for_1000_clicks_eng = "";
-        desc_for_10k_clicks_eng = "";
-        desc_for_100k_clicks_eng = "";
-        ///////////ENGLISH////////////
-
-        //В ЗАВИСИМОСТИ КАКОЙ ЯЗЫК ВЫБРАН В НАСТРОЙКАХ ТАКИМИ СТРОКАМИ И ЗАПОЛНЯТЬ ЭТИ МАССИВЫ
         name_translated_mass = new ArrayList<String>(Arrays.asList(name_for_10_kills_rus, name_for_100_kills_rus, name_for_500kills_rus, name_for_1000_kills_rus, name_for_10k_kills_rus, name_for_100k_kills_rus,
                 name_for_500k_kills_rus, name_for_100_clicks_rus, name_for_500_clicks_rus, name_for_1000_clicks_rus, name_for_10k_clicks_rus, name_for_100k_clicks_rus));
 
         description_translated_mass = new ArrayList<String>(Arrays.asList(desc_for_10_kills_rus, desc_for_100_kills_rus, desc_for_500_kills_rus, desc_for_1000_kills_rus, desc_for_10k_kills_rus,
                 desc_for_100k_kills_rus, desc_for_500k_kills_rus, desc_for_100_clicks_rus, desc_for_500_clicks_rus, desc_for_1000_clicks_rus, desc_for_10k_clicks_rus, desc_for_100k_clicks_rus));
-        //
 
         name = "";
         description = "";

@@ -126,18 +126,6 @@ public class Shop implements Screen {
     String name10_rus;
     String name11_rus;
 
-    String name1_eng;
-    String name2_eng;
-    String name3_eng;
-    String name4_eng;
-    String name5_eng;
-    String name6_eng;
-    String name7_eng;
-    String name8_eng;
-    String name9_eng;
-    String name10_eng;
-    String name11_eng;
-
     String description1_rus;
     String description2_rus;
     String description3_rus;
@@ -149,18 +137,6 @@ public class Shop implements Screen {
     String description9_rus;
     String description10_rus;
     String description11_rus;
-
-    String description1_eng;
-    String description2_eng;
-    String description3_eng;
-    String description4_eng;
-    String description5_eng;
-    String description6_eng;
-    String description7_eng;
-    String description8_eng;
-    String description9_eng;
-    String description10_eng;
-    String description11_eng;
 
     //НАЗВАНИЕ КАЖДОГО ПРЕДМЕТА
     private Label name_of_item1;
@@ -252,11 +228,13 @@ public class Shop implements Screen {
 
         fontParameter.size = 22;
         font_for_description = fontGenerator.generateFont(fontParameter);
+        font_for_description.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         style_for_description = new Label.LabelStyle(font_for_description, Color.WHITE);
         style_for_name = new Label.LabelStyle(bitmapFont, Color.WHITE);
         fontParameter.size = 18;
         font_for_description = fontGenerator.generateFont(fontParameter);
         font_for_plus = fontGenerator.generateFont(fontParameter);
+        font_for_plus.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         style_for_plus = new Label.LabelStyle(font_for_plus, Color.WHITE);
 
         /////////////РУССКИЙ///////////////
@@ -284,34 +262,6 @@ public class Shop implements Screen {
         description10_rus = "Хватит насилия.";
         description11_rus ="     Как в старые" + "\n" + "добрые времена...";
         /////////////РУССКИЙ///////////////
-
-        /////////////ENGLISH///////////////
-        name1_eng = "Wooden shovel";
-        name2_eng = "Pick axe";
-        name3_eng = "Wooden coffin";
-        name4_eng = "Forks and torch";
-        name5_eng = "Aspen stake";
-        name6_eng = "1864 year revolver";
-        name7_eng = "Contact mine";
-        name8_eng = "Machine gun";
-        name9_eng = "Bulldozer";
-        name10_eng = "Holy Almanac";
-        name11_eng = "Cross with a shotgun";
-
-        description1_eng = "They can be" + "\n" + "buried now!";
-        description2_eng = "That's all I can" + "\n" + "   do for you...";
-        description3_eng = "Rest in peace.";
-        description4_eng = "You shall not pass!";
-        description5_eng = "What if it works?";
-        description6_eng = "I can finally stay further.";
-        description7_eng = "   Oh, now I must" + "\n" + "care about pieces...";
-        description8_eng = "Lets speed it up.";
-        description9_eng = "Pits are getting deeper...";
-        description10_eng = "Enough violence.";
-        description11_eng = "Like good old times...";
-        /////////////ENGLISH///////////////
-
-        //ЕСЛИ В НАСТРОЙКАХ ТАКОЙ ТО ЯЗЫК, ТАКИМИ ТО СТРИНГАМИ ЗАПОЛНЯТЬ ЛЕЙБЛЫ
 
         name_of_item1 = new Label(name1_rus, style_for_name);
         name_of_item2 = new Label(name2_rus, style_for_name);

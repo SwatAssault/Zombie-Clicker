@@ -16,9 +16,9 @@ public class FontManager {
 
     private final ZombieClicker zombieClicker;
 
-    private BitmapFont bitmapFont;
-    private FreeTypeFontGenerator fontGenerator;
-    private FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
+//    private BitmapFont bitmapFont;
+//    private FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Ubuntu-Regular.ttf"));
+//    private FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
 
     private GlyphLayout layout;
 
@@ -27,7 +27,7 @@ public class FontManager {
 
         layout = new GlyphLayout();
         //ПОЧЕМУ НУЛЛ??
-//        fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Pangolin-Regular.ttf"));
+//     //   fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Ubuntu-Regular.ttf"));
 //        fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 //        fontParameter.size = 24;
 //        fontParameter.color = Color.WHITE;
