@@ -93,7 +93,6 @@ public class ShopItem {
     }
 
 
-    //;kio
 
     ////////////////////GETTERS////////////////////////
     public Table getTable(){
