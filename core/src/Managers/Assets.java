@@ -66,7 +66,7 @@ public class Assets {
     }
 
     public void load_assets_for_Shop(){
-        assetManager.load("SkinJson/buybtn.json", Skin.class);
+
         assetManager.load("SkinJson/goback_btn.json", Skin.class);
         assetManager.load("Background/shopbg.png", Texture.class);
         assetManager.update();
@@ -141,7 +141,6 @@ public class Assets {
     public void dispose_Shop_assets(){
         assetManager.unload("SkinJson/goback_btn.json");
         assetManager.unload("Background/shopbg.png");
-        assetManager.unload("SkinJson/buybtn.json");
     }
 
     public void dispose_assets_for_settings(){
