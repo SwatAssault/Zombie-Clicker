@@ -153,6 +153,7 @@ public class MainGame implements Screen {
                 location.setMaxZombie_health();
                 location.setMaxBoss_health();
                 zombieClicker.setShopScreen();
+                Gdx.input.setInputProcessor(zombieClicker.getShop().getStage());
             }
         });
 
