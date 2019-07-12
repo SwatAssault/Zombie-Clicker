@@ -456,6 +456,7 @@ public class MainGame implements Screen {
 
     @Override
     public void dispose() {
+
         if (diamond_font != null) diamond_font.dispose();
         if (bitmapFont != null) bitmapFont.dispose();
         if (fontGenerator != null) fontGenerator.dispose();
