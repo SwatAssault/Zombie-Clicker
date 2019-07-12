@@ -1,6 +1,10 @@
 package com.awprecords.zombieclicker;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
 import Managers.Assets;
 import Managers.FontManager;
@@ -32,6 +36,13 @@ public class ZombieClicker extends Game {
     private Achievements achievements;
     private MapScreen mapScreen;
 
+    private BitmapFont bitmapFont;
+    private BitmapFont font_for_plus;
+    private FreeTypeFontGenerator fontGenerator;
+    private FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
+    private BitmapFont font_for_description;
+    private final String FONT_CHARACTERS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;,{}\"´`'<>";
+
     public ZombieClicker() {
         instance = this;
         assets = new Assets();
@@ -40,11 +51,17 @@ public class ZombieClicker extends Game {
         fontManager = new FontManager(instance);
         shopNumerics = new ShopNumerics();
         keepTrackAch = new KeepTrackAch(instance);
+
+      //  shop = new Shop(instance);
     }
 
     //////////GETTERS FOR SCREENS//////////
     public MainGame getMainGame() {
         return mainGame;
+    }
+
+    public Shop getShop(){
+        return shop;
     }
     //////////GETTERS FOR SCREENS//////////
 
@@ -77,6 +94,7 @@ public class ZombieClicker extends Game {
     public Achievements getAchievements(){
         return achievements;
     }
+
     /////////////OTHER GETTERS/////////////
 
     public ZombieClicker get_ZombieClicker() {
@@ -106,9 +124,9 @@ public class ZombieClicker extends Game {
     }
 
     public void setShopScreen(){
-        shop = null;
-        //System.gc();
-        shop = new Shop(instance);
+        if(shop == null){
+            shop = new Shop(instance);
+        }
         setScreen(shop);
     }
 

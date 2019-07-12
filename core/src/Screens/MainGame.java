@@ -178,6 +178,7 @@ public class MainGame implements Screen {
                 location.setMaxZombie_health();
                 location.setMaxBoss_health();
                 zombieClicker.setShopScreen();
+                Gdx.input.setInputProcessor(zombieClicker.getShop().getStage());
             }
         });
 
@@ -402,6 +403,7 @@ public class MainGame implements Screen {
             location.passive_punch();
             time = System.currentTimeMillis();
         }
+
 
         zombieClicker.getKeepTrackAch().keep_track_of_achievements();
 
