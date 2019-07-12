@@ -41,13 +41,13 @@ public class Numerics {
         //                    int boss_kill_reward, long betweenBoss, final ZombieClicker zc
         location = new ArrayList<Location>(Arrays.asList(
                 new Location(new BigInteger("8"), 1, new BigInteger("0"), new BigInteger("12"), new BigInteger("50000"),
-                        1, 3, zc),
+                        1, 3, 3000, zc),
                 new Location(new BigInteger("12"), 1, new BigInteger("0"), new BigInteger("15"), new BigInteger("70000"),
-                        2, 4, zc),
+                        2, 4, 33000, zc),
                 new Location(new BigInteger("15"), 1, new BigInteger("0"), new BigInteger("18"), new BigInteger("90000"),
-                        3, 5,  zc),
+                        3, 5,28000,  zc),
                 new Location(new BigInteger("18"), 1, new BigInteger("0"), new BigInteger("21"), new BigInteger("110000"),
-                        4, 6,  zc)));
+                        4, 6,25000,  zc)));
 
         current_location = 0;
 

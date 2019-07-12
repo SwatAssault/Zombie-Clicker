@@ -48,28 +48,35 @@ public class AnimationManager {
 
     public void render_zombie(SpriteBatch batch) {
         timePassed += Gdx.graphics.getDeltaTime();
+
+        if(!zombieClicker.getNumerics().getCurrent_location().isBossFight())
+            if(zombie_animation == boss_animations_arr.get(0))
+                zombie_animation = zombie_animations_arr.get(MathUtils.random(0, 2));
+
         if (zombieClicker.getNumerics().getCurrent_location().isBossFight()) {                                                   //ЕСЛИ ИДЕТ БОССФАЙТ
             if (zombieClicker.getNumerics().getCurrent_location().getBoss_health().compareTo(BigInteger.valueOf(0)) <= 0) {        //УБИЙСТВО БОССА
-                zombieClicker.getMainGame().next_level();
+                zombieClicker.getMainGame().next_level(1);
                 System.out.println("boss dead");
                 zombie_animation = zombie_animations_arr.get(MathUtils.random(0, 2));
             }
-        } else if (zombieClicker.getNumerics().getCurrent_location().getZombie_health().compareTo(BigInteger.valueOf(0)) <= 0) {          //УБИЙСТВО ЗОМБИ
+        } else {
+            if (zombieClicker.getNumerics().getCurrent_location().getZombie_health().compareTo(BigInteger.valueOf(0)) <= 0) {          //УБИЙСТВО ЗОМБИ
 
-            zombieClicker.getNumerics().getCurrent_location().setCount_death_zombies_betweenBoss(
-                    zombieClicker.getNumerics().getCurrent_location().getCount_death_zombies_betweenBoss() + 1
-            );
+                zombieClicker.getNumerics().getCurrent_location().setCount_death_zombies_betweenBoss(
+                        zombieClicker.getNumerics().getCurrent_location().getCount_death_zombies_betweenBoss() + 1
+                );
 
-            zombieClicker.getNumerics().plus_zombie_kills(BigInteger.valueOf(1));
-            zombieClicker.getNumerics().plus_gold(zombieClicker.getNumerics().getCurrent_location().getZombie_kill_reward());
-            System.out.println("zombie dead");
-            zombieClicker.getNumerics().getCurrent_location().setMaxZombie_health();
-            zombie_animation = zombie_animations_arr.get(MathUtils.random(0, 2));
+                zombieClicker.getNumerics().plus_zombie_kills(BigInteger.valueOf(1));
+                zombieClicker.getNumerics().plus_gold(zombieClicker.getNumerics().getCurrent_location().getZombie_kill_reward());
+                System.out.println("zombie dead");
+                zombieClicker.getNumerics().getCurrent_location().setMaxZombie_health();
+                zombie_animation = zombie_animations_arr.get(MathUtils.random(0, 2));
 
-            if (zombieClicker.getNumerics().getCurrent_location().getCount_death_zombies_betweenBoss() == zombieClicker.getNumerics().getCurrent_location().getBetweenBoss()) {
-                zombieClicker.getNumerics().getCurrent_location().setBossFight(true);
-                zombie_animation = boss_animations_arr.get(0);
-                System.out.println("boss appears");
+//                if (zombieClicker.getNumerics().getCurrent_location().getCount_death_zombies_betweenBoss() == zombieClicker.getNumerics().getCurrent_location().getBetweenBoss()) {
+////                    zombieClicker.getNumerics().getCurrent_location().setBossFight(true);
+//                    zombie_animation = boss_animations_arr.get(0);
+//                    System.out.println("boss appears");
+//                }
             }
         }
         if (zombieClicker.getMainGame().get_is_mainButton_pressed()) {

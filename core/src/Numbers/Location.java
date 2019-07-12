@@ -21,6 +21,7 @@ public class Location {
     private BigInteger last_kills;             //последнее убийство на предыдущем уровне
 
     private boolean bossFight;
+    private double durationBossFight;          // длительность мочилова с боссом. (ms)
 
     private BigInteger count_kill_zombies;     // кол-во убитых зомби на локации
     private BigInteger count_kill_boss;        // кол-во убитых боссов на локации
@@ -28,9 +29,10 @@ public class Location {
 
     private int count_death_zombies_betweenBoss;
     private long betweenBoss;
+    private boolean loseBoss;
 
     public Location(BigInteger zombie_health, int level_count, BigInteger zombie_kills, BigInteger boss_health, BigInteger zombie_kill_reward,
-                    int boss_kill_reward, long betweenBoss, final ZombieClicker zc) {
+                    int boss_kill_reward, long betweenBoss, double durationBossFight, final ZombieClicker zc) {
 
         zombieClicker = zc;
 
@@ -45,8 +47,9 @@ public class Location {
         last_kills = new BigInteger("0");
 
         this.betweenBoss = betweenBoss;
-
+        loseBoss = false;
         bossFight = false;
+        this.durationBossFight = durationBossFight;
         //TODO Загрузить из сохранения
         count_kill_zombies = new BigInteger("0");
         count_kill_boss = new BigInteger("0");
@@ -130,6 +133,18 @@ public class Location {
     public long getBetweenBoss() {
         return betweenBoss;
     }
+
+    public boolean isBossFight() {
+        return bossFight;
+    }
+
+    public double getDurationBossFight() {
+        return durationBossFight;
+    }
+
+    public boolean getLoseBoss(){
+        return loseBoss;
+    }
     ////////////////////// GETTER ///////////////////////////
 
     ////////////////////// SETTER ///////////////////////////
@@ -137,7 +152,7 @@ public class Location {
         this.zombie_health = max_zombie_health;
     }
 
-    public void upLevel(int level_count) {
+    public void upLevel(long level_count) {
         this.level_count += level_count;
     }
 
@@ -169,10 +184,6 @@ public class Location {
         this.bossFight = bossFight;
     }
 
-    public boolean isBossFight() {
-        return bossFight;
-    }
-
     public void setBGimage(String bg_texture) {
         BGimage = new Image(zombieClicker.get_assets().get_asset_manager().get(bg_texture, Texture.class));
     }
@@ -184,8 +195,12 @@ public class Location {
         System.out.println(count_kill_boss);
     }
 
-    public void plus_count_kill_boss() {
-        count_kill_boss = count_kill_boss.add(BigInteger.ONE);
+    public void plus_count_kill_boss(long x) {
+        count_kill_boss = count_kill_boss.add(BigInteger.valueOf(x));
+    }
+
+    public void setLoseBoss(boolean value) {
+        loseBoss = value;
     }
     ////////////////////// SETTER ///////////////////////////
 }

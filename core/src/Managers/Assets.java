@@ -55,6 +55,7 @@ public class Assets {
         assetManager.load("Sounds/punch.wav", Sound.class);
         assetManager.load("HP/hp.png", Texture.class);
         assetManager.load("HP/hp_bg.png", Texture.class);
+        assetManager.load("BossTime/time.png", Texture.class);
 
         assetManager.load("Animations/zombie1.atlas", TextureAtlas.class);
         assetManager.load("Animations/zombie2.atlas", TextureAtlas.class);
