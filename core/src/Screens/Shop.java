@@ -193,6 +193,8 @@ public class Shop implements Screen {
     private Skin skin1;
     private Skin goback_skin;
 
+    private Button test_btn;
+
     //ВРЕМЕННО
     private BitmapFont bitmapFont;
     private BitmapFont font_for_plus;
@@ -218,6 +220,7 @@ public class Shop implements Screen {
         skin1 = zombieClicker.get_assets().get_asset_manager().get("SkinJson/buybtn.json", Skin.class);
         goback_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/goback_btn.json", Skin.class);
         goback_bth = new Button(goback_skin);
+        test_btn = new Button(goback_skin);
 
         fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Ubuntu-Regular.ttf"));
         fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
@@ -287,8 +290,6 @@ public class Shop implements Screen {
         description_10 = new Label(description10_rus, style_for_description);
         description_11 = new Label(description11_rus, style_for_description);
 
-        //КОНЕЦ ЕСЛИ
-
         number_label1 = new Label("" + (100 - zombieClicker.getShopNumerics().getItem1_number()), style_for_description);
         number_label2 = new Label("" + (100 - zombieClicker.getShopNumerics().getItem2_number()), style_for_description);
         number_label3 = new Label("" + (100 - zombieClicker.getShopNumerics().getItem3_number()), style_for_description);
@@ -322,7 +323,15 @@ public class Shop implements Screen {
             }
         });
 
+        test_btn.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                table.setVisible(false);
+            }
+        });
+
         goback_bth.setPosition(35, 755);
+        test_btn.setPosition(135,755);
 
         b1 = new TextButton("", skin1);
         b2 = new TextButton("", skin1);
@@ -773,6 +782,7 @@ public class Shop implements Screen {
 
         stage.addActor(ImageBG);
         stage.addActor(goback_bth);
+        stage.addActor(test_btn);
         stage.addActor(scrollPane);
         //stage.setDebugAll(true);
 
