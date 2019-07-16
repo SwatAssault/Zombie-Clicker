@@ -62,6 +62,7 @@ public class Assets {
 
         assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("Buttons/tab_skin.json", Skin.class);
+        assetManager.load("LabelSkins/name_label_skin.json", Skin.class);
         assetManager.load("Background/shopbg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
@@ -130,6 +131,7 @@ public class Assets {
     public void dispose_Shop_assets(){
         assetManager.unload("Buttons/back_btn.json");
         assetManager.unload("Buttons/tab_skin.json");
+        assetManager.unload("LabelSkins/name_label_skin.json");
         assetManager.unload("Background/shopbg.png");
     }
 

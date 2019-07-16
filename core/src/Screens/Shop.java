@@ -62,6 +62,7 @@ public class Shop implements Screen {
 
     private Skin goback_skin;
     private Skin tab_skin;
+    private Skin name_label_skin;
 
     private Button shop_tab_btn;
     private Button squad_tab_btn;
@@ -71,9 +72,6 @@ public class Shop implements Screen {
     private FreeTypeFontGenerator fontGenerator;
     private FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
     private final String FONT_CHARACTERS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;,{}\"´`'<>";
-    private Label.LabelStyle style_for_description;
-    private Label.LabelStyle style_for_name;
-    private Label.LabelStyle style_for_plus;
 
     public Shop(final ZombieClicker zc) {
         zombieClicker = zc;
@@ -88,6 +86,7 @@ public class Shop implements Screen {
 
         goback_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json", Skin.class);
         tab_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/tab_skin.json", Skin.class);
+        name_label_skin = zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class);
         goback_bth = new Button(goback_skin);
         shop_tab_btn = new Button(tab_skin);
         squad_tab_btn = new Button(tab_skin);
@@ -142,43 +141,43 @@ public class Shop implements Screen {
 
 
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
-        shopItem1 = new ShopItem(zc);
+        shopItem1 = new ShopItem(zc, "Gun", "lol");
         shopItem1.setItem_cost(100);
         shopItem1.setItem_value(5);
 
-        shopItem2 = new ShopItem(zc);
+        shopItem2 = new ShopItem(zc, "Gun", "lol");
         shopItem2.setItem_cost(200);
         shopItem2.setItem_value(10);
 
-        shopItem3 = new ShopItem(zc);
+        shopItem3 = new ShopItem(zc, "Gun", "lol");
         shopItem3.setItem_cost(200);
         shopItem3.setItem_value(10);
 
-        shopItem4 = new ShopItem(zc);
+        shopItem4 = new ShopItem(zc, "Gun", "lol");
         shopItem4.setItem_cost(200);
         shopItem4.setItem_value(10);
 
-        shopItem5 = new ShopItem(zc);
+        shopItem5 = new ShopItem(zc, "Gun", "lol");
         shopItem5.setItem_cost(200);
         shopItem5.setItem_value(10);
 
-        shopItem6 = new ShopItem(zc);
+        shopItem6 = new ShopItem(zc, "Gun", "lol");
         shopItem6.setItem_cost(200);
         shopItem6.setItem_value(10);
 
-        shopItem7 = new ShopItem(zc);
+        shopItem7 = new ShopItem(zc, "Gun", "lol");
         shopItem7.setItem_cost(200);
         shopItem7.setItem_value(10);
 
-        shopItem8 = new ShopItem(zc);
+        shopItem8 = new ShopItem(zc, "Gun", "lol");
         shopItem8.setItem_cost(200);
         shopItem8.setItem_value(10);
 
-        shopItem9 = new ShopItem(zc);
+        shopItem9 = new ShopItem(zc, "Gun", "lol");
         shopItem9.setItem_cost(200);
         shopItem9.setItem_value(10);
 
-        shopItem10 = new ShopItem(zc);
+        shopItem10 = new ShopItem(zc, "Gun", "lol");
         shopItem10.setItem_cost(200);
         shopItem10.setItem_value(10);
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
@@ -241,9 +240,15 @@ public class Shop implements Screen {
         Gdx.input.setInputProcessor(stage);
     }
 
+    ///////////////GETTERS//////////////////////
     public Stage getStage(){
         return stage;
     }
+
+    public Skin getName_label_skin(){
+        return name_label_skin;
+    }
+    ///////////////GETTERS//////////////////////
 
     @Override
     public void show() {
@@ -263,6 +268,18 @@ public class Shop implements Screen {
         } else
             shopItem2.disable_button(false);
 
+
+
+        shopItem1.update_cost_label();
+        shopItem2.update_cost_label();
+        shopItem3.update_cost_label();
+        shopItem4.update_cost_label();
+        shopItem5.update_cost_label();
+        shopItem6.update_cost_label();
+        shopItem7.update_cost_label();
+        shopItem8.update_cost_label();
+        shopItem9.update_cost_label();
+        shopItem10.update_cost_label();
 
     }
 
