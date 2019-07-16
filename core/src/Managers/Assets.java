@@ -39,13 +39,6 @@ public class Assets {
         }
     }
 
-    public void load_assets_for_Menu() {
-        assetManager.load("Background/menubg.png", Texture.class);
-        assetManager.load("Buttons/play_btn.png", Texture.class);
-        assetManager.update();
-        assetManager.finishLoading();
-    }
-
     public void load_assets_for_Game() {
         assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("SkinJson/ach_btn.json", Skin.class);
@@ -119,10 +112,6 @@ public class Assets {
     }
 
     /////////DISPOSE ASSETS/////////
-    public void dispose_Menu_assets(){
-        assetManager.unload("Background/menubg.png");
-        assetManager.unload("Buttons/play_btn.png");
-    }
 
     public void dispose_Game_assets(){
         assetManager.unload("Buttons/back_btn.json");

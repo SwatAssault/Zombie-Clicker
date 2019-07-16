@@ -97,7 +97,11 @@ public class ZombieClicker extends Game {
     @Override
     public void create() {
 
-        setMenuScreen();
+        get_assets().load_assets_for_location_1();
+        getNumerics().setCurrent_num_location(0);
+        getNumerics().getCurrent_location().setBGimage("Background/location_1_bg.png");
+        setMainGame();
+        // setMenuScreen();
 
     }
 

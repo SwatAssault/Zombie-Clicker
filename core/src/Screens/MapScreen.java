@@ -48,7 +48,7 @@ public class MapScreen implements Screen {
         zombieClicker.get_assets().load_assets_for_map();
         imageBG = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/mapbg.png", Texture.class));
 
-        back_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/goback_btn.json", Skin.class);
+        back_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json", Skin.class);
         back_btn = new Button(back_skin);
         back_btn.setPosition(10, 853);
         back_btn.addListener(new ClickListener() {

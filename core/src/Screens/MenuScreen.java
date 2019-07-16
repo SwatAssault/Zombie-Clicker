@@ -32,7 +32,7 @@ public class MenuScreen implements Screen {
         viewport = new StretchViewport(540, 960, camera);
         stage = new Stage(viewport);
 
-        zombieClicker.get_assets().load_assets_for_Menu();
+     //   zombieClicker.get_assets().load_assets_for_Menu();
 
         BGimage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/menubg.png", Texture.class));
 
@@ -97,6 +97,6 @@ public class MenuScreen implements Screen {
     @Override
     public void dispose() {
         if (stage != null) stage.dispose();
-        zombieClicker.get_assets().dispose_Menu_assets();
+      //  zombieClicker.get_assets().dispose_Menu_assets();
     }
 }
