@@ -50,13 +50,13 @@ public class ShopItem {
         table_for_nums = new Table();
         item_number = 0;
 
-        zombieClicker.get_assets().get_asset_manager().load("SkinJson/buybtn.json", Skin.class);
+        zombieClicker.get_assets().get_asset_manager().load("Buttons/buybtn.json", Skin.class);
         zombieClicker.get_assets().get_asset_manager().load("item1.png", Texture.class);
         zombieClicker.get_assets().get_asset_manager().update();
         zombieClicker.get_assets().get_asset_manager().finishLoading();
-        buy_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/buybtn.json", Skin.class);
+        buy_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/buybtn.json", Skin.class);
         upgrade_btn = new TextButton("", buy_skin);
-      //  upgrade_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(item_cost));
+        upgrade_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(item_cost));
         image = new Image(zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
 
 
@@ -86,9 +86,10 @@ public class ShopItem {
 //        table_for_nums.add(value_label).expand().right().top().padRight(10);
         stack.add(table_for_nums);
 //        intable.add(name).expand().right().top().padTop(5).padRight((item_widht - name.getPrefWidth()) / 2 - 110); // 530 - ширина окна предмета, 110 - ширина колонки с кнопкой
+        intable.setFillParent(true);
         intable.row();
         //intable.add(description).expand().padBottom(15).right().padRight((item_widht - description.getPrefWidth()) / 2 - 110);
-        //intable.add(upgrade_btn).padRight(10).bottom().padBottom(10);
+        intable.add(upgrade_btn).expandX().right().padTop(5);
 
     }
 
@@ -110,11 +111,12 @@ public class ShopItem {
 
     ////////////////////SETTERS////////////////////////
 
-    public void setItem_value(String x){
-        item_value = new BigInteger(x);
+    public void setItem_value(long x){
+        item_value = BigInteger.valueOf(x);
     }
-    public void setItem_cost(String x){
-        item_cost = new BigInteger(x);
+
+    public void setItem_cost(long x){
+        item_cost = BigInteger.valueOf(x);
     }
 
     public void plusItem_cost(){
@@ -143,7 +145,7 @@ public class ShopItem {
     ////////////////////SETTERS////////////////////////
 
     public void dispose(){
-        zombieClicker.get_assets().get_asset_manager().unload("SkinJson/buybtn.json");
+        zombieClicker.get_assets().get_asset_manager().unload("Buttons/buybtn.json");
     }
 
 }

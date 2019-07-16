@@ -47,7 +47,7 @@ public class Shop implements Screen {
     private SquadItem squad1;
     ////////////////SQUADS//////////////////
 
-    ///////////////ITEMS///////////////////
+    ///////////////SHOP ITEMS///////////////////
     private ShopItem shopItem1;
     private ShopItem shopItem2;
     private ShopItem shopItem3;
@@ -58,7 +58,7 @@ public class Shop implements Screen {
     private ShopItem shopItem8;
     private ShopItem shopItem9;
     private ShopItem shopItem10;
-    ///////////////ITEMS///////////////////
+    ///////////////SHOP ITEMS///////////////////
 
     private Skin goback_skin;
     private Skin tab_skin;
@@ -68,10 +68,8 @@ public class Shop implements Screen {
 
     //ВРЕМЕННО
     private BitmapFont bitmapFont;
-    private BitmapFont font_for_plus;
     private FreeTypeFontGenerator fontGenerator;
     private FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
-    private BitmapFont font_for_description;
     private final String FONT_CHARACTERS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;,{}\"´`'<>";
     private Label.LabelStyle style_for_description;
     private Label.LabelStyle style_for_name;
@@ -86,7 +84,7 @@ public class Shop implements Screen {
         ImageBG = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/shopbg.png", Texture.class));
         batch = new SpriteBatch();
         item_widht = 474;
-        items_amount = 11;
+        items_amount = 10;
 
         goback_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json", Skin.class);
         tab_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/tab_skin.json", Skin.class);
@@ -101,17 +99,6 @@ public class Shop implements Screen {
         bitmapFont = fontGenerator.generateFont(fontParameter);
         bitmapFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
-        fontParameter.size = 22;
-        font_for_description = fontGenerator.generateFont(fontParameter);
-        font_for_description.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-
-        style_for_description = new Label.LabelStyle(font_for_description, Color.WHITE);
-        style_for_name = new Label.LabelStyle(bitmapFont, Color.WHITE);
-        fontParameter.size = 18;
-        font_for_description = fontGenerator.generateFont(fontParameter);
-        font_for_plus = fontGenerator.generateFont(fontParameter);
-        font_for_plus.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        style_for_plus = new Label.LabelStyle(font_for_plus, Color.WHITE);
 
         goback_bth.addListener(new ClickListener() {
             @Override
@@ -153,52 +140,47 @@ public class Shop implements Screen {
 
         goback_bth.setPosition(10, 10);
 
-//        name_of_item1 = new Label(name1_rus, style_for_name);
-//        description_1 = new Label(description1_rus, style_for_description);
-//        number_label1 = new Label("" + (100 - zombieClicker.getShopNumerics().getItem1_number()), style_for_description);
-//        plus_label1 = new Label("+" + zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getShopNumerics().getItem1_value()), style_for_plus);
-
 
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
         shopItem1 = new ShopItem(zc);
-        shopItem1.setItem_cost("100");
-        shopItem1.setItem_value("5");
+        shopItem1.setItem_cost(100);
+        shopItem1.setItem_value(5);
 
         shopItem2 = new ShopItem(zc);
-        shopItem2.setItem_cost("200");
-        shopItem2.setItem_value("10");
+        shopItem2.setItem_cost(200);
+        shopItem2.setItem_value(10);
 
         shopItem3 = new ShopItem(zc);
-        shopItem3.setItem_cost("200");
-        shopItem3.setItem_value("10");
+        shopItem3.setItem_cost(200);
+        shopItem3.setItem_value(10);
 
         shopItem4 = new ShopItem(zc);
-        shopItem4.setItem_cost("200");
-        shopItem4.setItem_value("10");
+        shopItem4.setItem_cost(200);
+        shopItem4.setItem_value(10);
 
         shopItem5 = new ShopItem(zc);
-        shopItem5.setItem_cost("200");
-        shopItem5.setItem_value("10");
+        shopItem5.setItem_cost(200);
+        shopItem5.setItem_value(10);
 
         shopItem6 = new ShopItem(zc);
-        shopItem6.setItem_cost("200");
-        shopItem6.setItem_value("10");
+        shopItem6.setItem_cost(200);
+        shopItem6.setItem_value(10);
 
         shopItem7 = new ShopItem(zc);
-        shopItem7.setItem_cost("200");
-        shopItem7.setItem_value("10");
+        shopItem7.setItem_cost(200);
+        shopItem7.setItem_value(10);
 
         shopItem8 = new ShopItem(zc);
-        shopItem8.setItem_cost("200");
-        shopItem8.setItem_value("10");
+        shopItem8.setItem_cost(200);
+        shopItem8.setItem_value(10);
 
         shopItem9 = new ShopItem(zc);
-        shopItem9.setItem_cost("200");
-        shopItem9.setItem_value("10");
+        shopItem9.setItem_cost(200);
+        shopItem9.setItem_value(10);
 
         shopItem10 = new ShopItem(zc);
-        shopItem10.setItem_cost("200");
-        shopItem10.setItem_value("10");
+        shopItem10.setItem_cost(200);
+        shopItem10.setItem_value(10);
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
 
         table = new Table();
@@ -292,7 +274,7 @@ public class Shop implements Screen {
         stage.draw();
 
         batch.begin();
-        bitmapFont.draw(batch, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getGold()), 320, 730);
+        bitmapFont.draw(batch, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getGold()), 320, 945);
         batch.end();
 
         batch.setProjectionMatrix(camera.combined);
@@ -320,8 +302,6 @@ public class Shop implements Screen {
 
     @Override
     public void dispose() {
-        if (font_for_description != null) font_for_description.dispose();
-        if (font_for_plus != null) font_for_plus.dispose();
         if (fontGenerator != null) fontGenerator.dispose();
         if (bitmapFont != null) bitmapFont.dispose();
         zombieClicker.get_assets().dispose_Shop_assets();
