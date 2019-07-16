@@ -139,7 +139,6 @@ public class ShopItem {
             upgrade_btn.setDisabled(true);
         else
             upgrade_btn.setDisabled(false);
-
     }
     ////////////////////SETTERS////////////////////////
 

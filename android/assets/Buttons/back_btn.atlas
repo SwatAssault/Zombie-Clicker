@@ -1,20 +1,20 @@
 
-goback_btn.png
+back_btn.png
 size: 256,256
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-go_back_pressed
+back button
   rotate: false
-  xy: 1, 93
-  size: 100, 100
-  orig: 100, 100
+  xy: 1, 97
+  size: 93, 94
+  orig: 93, 94
   offset: 0, 0
   index: -1
-back
+back button_pressed
   rotate: false
   xy: 1, 1
-  size: 90, 90
-  orig: 90, 90
+  size: 93, 94
+  orig: 93, 94
   offset: 0, 0
   index: -1

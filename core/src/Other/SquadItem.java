@@ -40,6 +40,8 @@ public class SquadItem {
 
         table.add(stack);
         stack.add(image);
+        stack.add(intable);
+
 
 
     }

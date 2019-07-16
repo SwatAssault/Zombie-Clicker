@@ -153,7 +153,7 @@ public class MainGame implements Screen {
             }
         });
 
-        goback_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/goback_btn.json");
+        goback_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json");
         go_back_btn = new Button(goback_skin);
         go_back_btn.setPosition(5, 853);
         go_back_btn.addListener(new ClickListener() {
