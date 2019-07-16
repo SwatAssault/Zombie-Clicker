@@ -79,7 +79,7 @@ public class Shop implements Screen {
         item_widht = 530;
         items_amount = 11;
 
-        goback_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/goback_btn.json", Skin.class);
+        goback_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json", Skin.class);
         goback_bth = new Button(goback_skin);
         shop_tab_btn = new Button(goback_skin);
         squad_tab_btn = new Button(goback_skin);
@@ -138,10 +138,10 @@ public class Shop implements Screen {
             }
         });
 
-        goback_bth.setPosition(35, 755);
         shop_tab_btn.setPosition(235,755);
         squad_tab_btn.setPosition(335,755);
 
+        goback_bth.setPosition(10, 10);
 
 //        name_of_item1 = new Label(name1_rus, style_for_name);
 //        description_1 = new Label(description1_rus, style_for_description);
@@ -191,12 +191,13 @@ public class Shop implements Screen {
 
 
         stage.addActor(ImageBG);
-        stage.addActor(goback_bth);
+
         stage.addActor(shop_tab_btn);
         stage.addActor(squad_tab_btn);
         stage.addActor(squads_scrollPane);
         stage.addActor(scrollPane);
-        //stage.setDebugAll(true);
+        stage.addActor(goback_bth);
+        stage.setDebugAll(true);
 
 
         Gdx.input.setInputProcessor(stage);

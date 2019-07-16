@@ -47,11 +47,10 @@ public class Assets {
     }
 
     public void load_assets_for_Game() {
-        assetManager.load("SkinJson/goback_btn.json", Skin.class);
+        assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("SkinJson/ach_btn.json", Skin.class);
         assetManager.load("SkinJson/shopbtn.json", Skin.class);
         assetManager.load("SkinJson/map_btn.json", Skin.class);
-        assetManager.load("Buttons/shop_btn.png", Texture.class);
         assetManager.load("Sounds/punch.wav", Sound.class);
         assetManager.load("HP/hp.png", Texture.class);
         assetManager.load("HP/hp_bg.png", Texture.class);
@@ -63,12 +62,12 @@ public class Assets {
         assetManager.load("Animations/boss1.atlas", TextureAtlas.class);
 
         assetManager.update();
-        assetManager.finishLoading();
+       assetManager.finishLoading();
     }
 
     public void load_assets_for_Shop(){
 
-        assetManager.load("SkinJson/goback_btn.json", Skin.class);
+        assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("Background/shopbg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
@@ -80,7 +79,7 @@ public class Assets {
 
     public void load_assets_for_map(){
         assetManager.load("Background/mapbg.png", Texture.class);
-        assetManager.load("SkinJson/goback_btn.json", Skin.class);
+        assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("SkinJson/location_btn.json", Skin.class);
         assetManager.update();
         assetManager.finishLoading();
@@ -89,7 +88,7 @@ public class Assets {
     public void load_assets_for_achievements(){
         assetManager.load("SkinJson/kills.json", Skin.class);
         assetManager.load("SkinJson/clicks.json", Skin.class);
-        assetManager.load("SkinJson/goback_btn.json", Skin.class);
+        assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("Background/achbg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
@@ -126,11 +125,10 @@ public class Assets {
     }
 
     public void dispose_Game_assets(){
-        assetManager.unload("SkinJson/goback_btn.json");
+        assetManager.unload("Buttons/back_btn.json");
         assetManager.unload("SkinJson/shopbtn.json");
         assetManager.unload("SkinJson/ach_btn.json");
         assetManager.unload("SkinJson/map_btn.json");
-        assetManager.unload("Buttons/shop_btn.png");
         assetManager.unload("Animations/zombie1.atlas");
         assetManager.unload("Animations/zombie2.atlas");
         assetManager.unload("Animations/zombie3.atlas");
@@ -140,7 +138,7 @@ public class Assets {
     }
 
     public void dispose_Shop_assets(){
-        assetManager.unload("SkinJson/goback_btn.json");
+        assetManager.unload("Buttons/back_btn.json");
         assetManager.unload("Background/shopbg.png");
     }
 
@@ -151,12 +149,12 @@ public class Assets {
     public void dispose_assets_for_map(){
         assetManager.unload("Background/mapbg.png");
         assetManager.unload("SkinJson/location_btn.json");
-        assetManager.unload("SkinJson/goback_btn.json");
+        assetManager.unload("Buttons/back_btn.json");
     }
 
     public void dispose_assets_for_achiements(){
         assetManager.unload("SkinJson/kills.json");
-        assetManager.unload("SkinJson/goback_btn.json");
+        assetManager.unload("Buttons/back_btn.json");
         assetManager.unload("SkinJson/clicks.json");
         assetManager.unload("Background/achbg.png");
     }

@@ -105,7 +105,7 @@ public class Achievements implements Screen { //КЛАСС НУЖЕН ДЛЯ В�
         click_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/clicks.json");
         bgImage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/achbg.png", Texture.class));
 
-        back_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/goback_btn.json");
+        back_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json");
         back_btn = new Button(back_skin);
         back_btn.addListener(new ClickListener() {
             @Override

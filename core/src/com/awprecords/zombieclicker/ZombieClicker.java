@@ -11,7 +11,6 @@ import Managers.FontManager;
 import Managers.SoundManager;
 import Numbers.Location;
 import Numbers.Numerics;
-import Numbers.ShopNumerics;
 import Other.KeepTrackAch;
 import Screens.Achievements;
 import Screens.MainGame;
@@ -27,7 +26,6 @@ public class ZombieClicker extends Game {
     private Numerics numerics;
     private SoundManager soundManager;
     private FontManager fontManager;
-    private ShopNumerics shopNumerics;
     private KeepTrackAch keepTrackAch;
 
     private MainGame mainGame;
@@ -49,7 +47,6 @@ public class ZombieClicker extends Game {
         numerics = new Numerics(instance);
         soundManager = new SoundManager(instance);
         fontManager = new FontManager(instance);
-        shopNumerics = new ShopNumerics();
         keepTrackAch = new KeepTrackAch(instance);
 
       //  shop = new Shop(instance);
@@ -81,10 +78,6 @@ public class ZombieClicker extends Game {
 
     public FontManager getFontManager(){
         return fontManager;
-    }
-
-    public ShopNumerics getShopNumerics(){
-        return shopNumerics;
     }
 
     public KeepTrackAch getKeepTrackAch(){
