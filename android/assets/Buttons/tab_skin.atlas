@@ -1,0 +1,27 @@
+
+tab_skin.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+active_tab
+  rotate: false
+  xy: 1, 53
+  size: 187, 43
+  orig: 187, 43
+  offset: 0, 0
+  index: -1
+inactive_tab
+  rotate: false
+  xy: 1, 143
+  size: 187, 43
+  orig: 187, 43
+  offset: 0, 0
+  index: -1
+inactive_tab_pressed
+  rotate: false
+  xy: 1, 98
+  size: 187, 43
+  orig: 187, 43
+  offset: 0, 0
+  index: -1

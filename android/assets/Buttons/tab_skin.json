@@ -1,0 +1,9 @@
+{
+"com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
+	"default": {
+		"up": "inactive_tab",
+		"down": "inactive_tab_pressed",
+		"disabled": "active_tab"
+	}
+}
+}

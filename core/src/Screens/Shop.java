@@ -50,9 +50,18 @@ public class Shop implements Screen {
     ///////////////ITEMS///////////////////
     private ShopItem shopItem1;
     private ShopItem shopItem2;
+    private ShopItem shopItem3;
+    private ShopItem shopItem4;
+    private ShopItem shopItem5;
+    private ShopItem shopItem6;
+    private ShopItem shopItem7;
+    private ShopItem shopItem8;
+    private ShopItem shopItem9;
+    private ShopItem shopItem10;
     ///////////////ITEMS///////////////////
 
     private Skin goback_skin;
+    private Skin tab_skin;
 
     private Button shop_tab_btn;
     private Button squad_tab_btn;
@@ -76,13 +85,14 @@ public class Shop implements Screen {
         zombieClicker.get_assets().load_assets_for_Shop();
         ImageBG = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/shopbg.png", Texture.class));
         batch = new SpriteBatch();
-        item_widht = 530;
+        item_widht = 474;
         items_amount = 11;
 
         goback_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json", Skin.class);
+        tab_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/tab_skin.json", Skin.class);
         goback_bth = new Button(goback_skin);
-        shop_tab_btn = new Button(goback_skin);
-        squad_tab_btn = new Button(goback_skin);
+        shop_tab_btn = new Button(tab_skin);
+        squad_tab_btn = new Button(tab_skin);
 
         fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Ubuntu-Regular.ttf"));
         fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
@@ -138,8 +148,8 @@ public class Shop implements Screen {
             }
         });
 
-        shop_tab_btn.setPosition(235,755);
-        squad_tab_btn.setPosition(335,755);
+        shop_tab_btn.setPosition(65,770);
+        squad_tab_btn.setPosition(280,770);
 
         goback_bth.setPosition(10, 10);
 
@@ -157,19 +167,67 @@ public class Shop implements Screen {
         shopItem2 = new ShopItem(zc);
         shopItem2.setItem_cost("200");
         shopItem2.setItem_value("10");
+
+        shopItem3 = new ShopItem(zc);
+        shopItem3.setItem_cost("200");
+        shopItem3.setItem_value("10");
+
+        shopItem4 = new ShopItem(zc);
+        shopItem4.setItem_cost("200");
+        shopItem4.setItem_value("10");
+
+        shopItem5 = new ShopItem(zc);
+        shopItem5.setItem_cost("200");
+        shopItem5.setItem_value("10");
+
+        shopItem6 = new ShopItem(zc);
+        shopItem6.setItem_cost("200");
+        shopItem6.setItem_value("10");
+
+        shopItem7 = new ShopItem(zc);
+        shopItem7.setItem_cost("200");
+        shopItem7.setItem_value("10");
+
+        shopItem8 = new ShopItem(zc);
+        shopItem8.setItem_cost("200");
+        shopItem8.setItem_value("10");
+
+        shopItem9 = new ShopItem(zc);
+        shopItem9.setItem_cost("200");
+        shopItem9.setItem_value("10");
+
+        shopItem10 = new ShopItem(zc);
+        shopItem10.setItem_cost("200");
+        shopItem10.setItem_value("10");
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
 
         table = new Table();
-        table.setWidth(530);
+        table.setWidth(474);
         table.setHeight(130 * items_amount);
 
-        table.add(shopItem1.getTable().padBottom(10));
+        table.add(shopItem1.getTable());
         table.row();
-        table.add(shopItem2.getTable().padBottom(15));
+        table.add(shopItem2.getTable());
+        table.row();
+        table.add(shopItem3.getTable());
+        table.row();
+        table.add(shopItem4.getTable());
+        table.row();
+        table.add(shopItem5.getTable());
+        table.row();
+        table.add(shopItem6.getTable());
+        table.row();
+        table.add(shopItem7.getTable());
+        table.row();
+        table.add(shopItem8.getTable());
+        table.row();
+        table.add(shopItem9.getTable());
+        table.row();
+        table.add(shopItem10.getTable());
 
         scrollPane = new ScrollPane(table);
-        scrollPane.setPosition((540 - item_widht) / 2, 0);
-        scrollPane.setHeight(140 * 5 - 20);
+        scrollPane.setPosition((540 - item_widht) / 2, 110);
+        scrollPane.setHeight(140 * 5 - 40);
         scrollPane.setWidth(item_widht);
 
         /////////////////////SQUAD ITEMS INITIALIZATION/////////////////////
@@ -178,7 +236,7 @@ public class Shop implements Screen {
         /////////////////////SQUAD ITEMS INITIALIZATION/////////////////////
 
         table_squads = new Table();
-        table_squads.setWidth(530);
+        table_squads.setWidth(474);
         table_squads.setVisible(false);
 
         table_squads.add(squad1.get_table());
@@ -191,13 +249,11 @@ public class Shop implements Screen {
 
 
         stage.addActor(ImageBG);
-
         stage.addActor(shop_tab_btn);
         stage.addActor(squad_tab_btn);
         stage.addActor(squads_scrollPane);
         stage.addActor(scrollPane);
         stage.addActor(goback_bth);
-        stage.setDebugAll(true);
 
 
         Gdx.input.setInputProcessor(stage);

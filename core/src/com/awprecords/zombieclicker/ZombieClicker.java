@@ -15,7 +15,6 @@ import Other.KeepTrackAch;
 import Screens.Achievements;
 import Screens.MainGame;
 import Screens.MapScreen;
-import Screens.MenuScreen;
 import Screens.Shop;
 
 
@@ -29,7 +28,6 @@ public class ZombieClicker extends Game {
     private KeepTrackAch keepTrackAch;
 
     private MainGame mainGame;
-    private MenuScreen menuScreen;
     private Shop shop;
     private Achievements achievements;
     private MapScreen mapScreen;
@@ -107,17 +105,9 @@ public class ZombieClicker extends Game {
 
     ////////////SET SCREEN METHODS/////////////
     public void setMainGame(){
-        menuScreen = null;
         //System.gc();
         mainGame = new MainGame(instance, numerics.getCurrent_location());
         setScreen(mainGame);
-    }
-
-    public void setMenuScreen(){
-        mainGame = null;
-        //System.gc();
-        menuScreen = new MenuScreen(instance);
-        setScreen(menuScreen);
     }
 
     public void setShopScreen(){

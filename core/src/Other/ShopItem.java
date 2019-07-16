@@ -88,7 +88,7 @@ public class ShopItem {
 //        intable.add(name).expand().right().top().padTop(5).padRight((item_widht - name.getPrefWidth()) / 2 - 110); // 530 - ширина окна предмета, 110 - ширина колонки с кнопкой
         intable.row();
         //intable.add(description).expand().padBottom(15).right().padRight((item_widht - description.getPrefWidth()) / 2 - 110);
-        intable.add(upgrade_btn).padRight(10).bottom().padBottom(10);
+        //intable.add(upgrade_btn).padRight(10).bottom().padBottom(10);
 
     }
 
