@@ -15,12 +15,14 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -56,6 +58,7 @@ public class Shop implements Screen {
     private SquadItem squad3;
     private SquadItem squad4;
     private SquadItem squad5;
+    private Array<SquadItem> squadItems_array;
     ////////////////SQUADS//////////////////
 
     ///////////////SHOP ITEMS///////////////////
@@ -69,14 +72,14 @@ public class Shop implements Screen {
     private ShopItem shopItem8;
     private ShopItem shopItem9;
     private ShopItem shopItem10;
+    private Array<ShopItem> shopItems_array;
     ///////////////SHOP ITEMS///////////////////
 
     private Skin goback_skin;
     private Skin tab_skin;
-    private Skin name_label_skin;
     private Skin header_label_skin;
 
-    private String squads_tab_string = "SQUADS";
+    private String squads_tab_string = "ОТРЯДЫ";
     private String items_tab_string = "ITEMS";
     private String other_tab_string = "OTHER";
     private String header_string = "SHOP";
@@ -107,7 +110,6 @@ public class Shop implements Screen {
 
         goback_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json", Skin.class);
         tab_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/tab_skin.json", Skin.class);
-        name_label_skin = zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class);
         header_label_skin = zombieClicker.get_assets().get_asset_manager().get("LabelSkins/header_label_skin.json", Skin.class);
         header_label = new Label(header_string, header_label_skin);
         goback_bth = new Button(goback_skin);
@@ -191,17 +193,18 @@ public class Shop implements Screen {
 
         goback_bth.setPosition(10, 10);
 
+        header_label.setPosition(540 / 2 - header_label.getGlyphLayout().width / 2, 900);
 
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
-        shopItem1 = new ShopItem(zc, "GUN", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
+        shopItem1 = new ShopItem(zc, "ANNIHILATION GUN", "TAP DAMAGE", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem1.setItem_cost(100);
         shopItem1.setItem_value(5);
 
-        shopItem2 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
+        shopItem2 = new ShopItem(zc, "Gun", "DPS", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem2.setItem_cost(200);
         shopItem2.setItem_value(10);
 
-        shopItem3 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
+        shopItem3 = new ShopItem(zc, "Gun", "kek", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem3.setItem_cost(200);
         shopItem3.setItem_value(10);
 
@@ -232,31 +235,30 @@ public class Shop implements Screen {
         shopItem10 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem10.setItem_cost(200);
         shopItem10.setItem_value(10);
+
+        //Заполняю объекты в массив, чтобы было легче работать
+        shopItems_array = new Array<ShopItem>();
+        shopItems_array.add(shopItem1);
+        shopItems_array.add(shopItem2);
+        shopItems_array.add(shopItem3);
+        shopItems_array.add(shopItem4);
+        shopItems_array.add(shopItem5);
+        shopItems_array.add(shopItem6);
+        shopItems_array.add(shopItem7);
+        shopItems_array.add(shopItem8);
+        shopItems_array.add(shopItem9);
+        shopItems_array.add(shopItem10);
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
 
         table = new Table();
         table.setWidth(474);
         table.setHeight(130 * items_amount);
 
-        table.add(shopItem1.getTable());
-        table.row();
-        table.add(shopItem2.getTable());
-        table.row();
-        table.add(shopItem3.getTable());
-        table.row();
-        table.add(shopItem4.getTable());
-        table.row();
-        table.add(shopItem5.getTable());
-        table.row();
-        table.add(shopItem6.getTable());
-        table.row();
-        table.add(shopItem7.getTable());
-        table.row();
-        table.add(shopItem8.getTable());
-        table.row();
-        table.add(shopItem9.getTable());
-        table.row();
-        table.add(shopItem10.getTable());
+        for(int i = 0; i < items_amount; i++){
+            table.add(shopItems_array.get(i).getTable());
+            table.row();
+        }
+
 
         stack_table = new Table();
         stack_table.setWidth(item_widht);
@@ -278,6 +280,14 @@ public class Shop implements Screen {
         squad3 = new SquadItem(zc);
         squad4 = new SquadItem(zc);
         squad5 = new SquadItem(zc);
+
+        //Заполняю объекты в массив, чтобы было легче работать
+        squadItems_array = new Array<SquadItem>();
+        squadItems_array.add(squad1);
+        squadItems_array.add(squad2);
+        squadItems_array.add(squad3);
+        squadItems_array.add(squad4);
+        squadItems_array.add(squad5);
         /////////////////////SQUAD ITEMS INITIALIZATION/////////////////////
 
         table_squads = new Table();
@@ -317,14 +327,14 @@ public class Shop implements Screen {
         other_scrollPane.setZIndex(0);
 
         stage.addActor(ImageBG);
-       // stage.addActor(header_label);
+        stage.addActor(header_label);
         stage.addActor(shop_tab_btn);
         stage.addActor(squad_tab_btn);
         stage.addActor(other_tab_btn);
         stage.addActor(stack_table);
         stage.addActor(goback_bth);
 
-      //  stage.setDebugAll(true);
+     //   stage.setDebugAll(true);
 
         Gdx.input.setInputProcessor(stage);
     }
@@ -332,10 +342,6 @@ public class Shop implements Screen {
     ///////////////GETTERS//////////////////////
     public Stage getStage(){
         return stage;
-    }
-
-    public Skin getName_label_skin(){
-        return name_label_skin;
     }
     ///////////////GETTERS//////////////////////
 
@@ -345,33 +351,39 @@ public class Shop implements Screen {
     }
 
     public void update() {
-        //проверка на бабло
-        if (zombieClicker.getNumerics().getGold().compareTo(shopItem1.getItem_cost()) < 0) {
-            shopItem1.disable_button(true);
-        } else
-            shopItem1.disable_button(false);
 
 
-        if (zombieClicker.getNumerics().getGold().compareTo(shopItem2.getItem_cost()) < 0) {
-            shopItem2.disable_button(true);
-        } else
-            shopItem2.disable_button(false);
-
-
+        check_money();
         update_labels();
     }
 
+    public void check_money(){
+
+        //shop items
+        for(int i = 0; i < items_amount; i++)
+            if (zombieClicker.getNumerics().getGold().compareTo(shopItems_array.get(i).getItem_cost()) < 0) {
+                shopItems_array.get(i).disable_button(true);
+            } else
+                shopItems_array.get(i).disable_button(false);
+
+        //squad items
+
+        //other items
+    }
+
     public void update_labels(){
-        shopItem1.update_cost_label();
-        shopItem2.update_cost_label();
-        shopItem3.update_cost_label();
-        shopItem4.update_cost_label();
-        shopItem5.update_cost_label();
-        shopItem6.update_cost_label();
-        shopItem7.update_cost_label();
-        shopItem8.update_cost_label();
-        shopItem9.update_cost_label();
-        shopItem10.update_cost_label();
+
+        //shop items
+        for(int i = 0; i < items_amount; i++){
+            shopItems_array.get(i).update_cost_label();
+            shopItems_array.get(i).update_value_label();
+        }
+
+
+        //squad items
+
+        //other items
+
     }
 
     @Override

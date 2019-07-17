@@ -1,10 +1,16 @@
 {
 "com.badlogic.gdx.graphics.g2d.BitmapFont": {
-	"Rubik": {
-		"file": "Rubik.fnt"
+	"Rubik21": {
+		"file": "Rubik21.fnt"
 	}
 },
 "com.badlogic.gdx.graphics.Color": {
+	"RGBA_0_0_0_255": {
+		"r": 0,
+		"g": 0,
+		"b": 0,
+		"a": 1
+	},
 	"RGBA_180_90_0_255": {
 		"r": 0.7058824,
 		"g": 0.3529412,
@@ -16,11 +22,18 @@
 		"g": 1,
 		"b": 1,
 		"a": 1
+	},
+	"RGBA_78_38_35_255": {
+		"r": 0.30588236,
+		"g": 0.14901961,
+		"b": 0.13725491,
+		"a": 1
 	}
 },
 "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
 	"default": {
-		"font": "Rubik",
+		"font": "Rubik21",
+		"fontColor": "RGBA_180_90_0_255",
 		"disabledFontColor": "RGBA_255_255_255_255",
 		"up": "inactive_tab",
 		"down": "inactive_tab_pressed",

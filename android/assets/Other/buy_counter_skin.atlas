@@ -1,0 +1,20 @@
+
+buy_counter_skin.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+buy_counter
+  rotate: false
+  xy: 1, 369
+  size: 66, 34
+  orig: 66, 34
+  offset: 0, 0
+  index: -1
+Rubik
+  rotate: false
+  xy: 1, 405
+  size: 506, 100
+  orig: 506, 100
+  offset: 0, 0
+  index: -1

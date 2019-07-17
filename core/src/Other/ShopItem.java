@@ -22,23 +22,26 @@ public class ShopItem {
     private BigInteger item_cost;
     private BigInteger item_value;
     private int item_number;
-    private int item_widht = 530;
+    private int item_widht = 474;
 
     private Stack stack;
     private Table table;
     private Table intable;
+    private Table description_table;
     private Image image;
     private Table table_for_nums;
     private TextButton upgrade_btn;
-    private String name_of_item = "78";
+    private TextButton buy_counter_btn;
+    private String name_of_item;
     private String description_of_item;
     private Label name_label;
-    private Label description;
-    private Label number_label;
+    private Label description_label;
     private Label value_label;
 
     private Skin label_skin;
     private Skin buy_skin;
+    private Skin description_skin;
+    private Skin buy_counter_skin;
 
     public ShopItem(ZombieClicker zc, String name, String description, Texture texture){
         zombieClicker = zc;
@@ -46,20 +49,27 @@ public class ShopItem {
         stack = new Stack();
         table = new Table();
         intable = new Table();
+        description_table = new Table();
         table_for_nums = new Table();
         item_number = 0;
         item_cost = new BigInteger("0");
+        item_value = new BigInteger("0");
 
         zombieClicker.get_assets().get_asset_manager().load("Buttons/buybtn.json", Skin.class);
         zombieClicker.get_assets().get_asset_manager().update();
         zombieClicker.get_assets().get_asset_manager().finishLoading();
         buy_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/buybtn.json", Skin.class);
+        buy_counter_skin = zombieClicker.get_assets().get_asset_manager().get("Other/buy_counter_skin.json", Skin.class);
+        buy_counter_btn = new TextButton("0", buy_counter_skin);
         upgrade_btn = new TextButton("", buy_skin);
         label_skin = new Skin(Gdx.files.internal("LabelSkins/name_label_skin.json"));
+        description_skin = new Skin(Gdx.files.internal("LabelSkins/description_label_skin.json"));
         upgrade_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(item_cost));
         image = new Image(texture);
 
         name_label = new Label(name, label_skin);
+        description_label = new Label(description, description_skin);
+        value_label = new Label(zombieClicker.getNumerics().bigInteger_to_string(item_cost), description_skin);
 
 
         upgrade_btn.addListener(new ClickListener() {
@@ -69,12 +79,8 @@ public class ShopItem {
                     zombieClicker.getNumerics().minus_Gold(item_cost);  //вычитаем бабло за покупку
                     plusValue();   //увеличиваем прибавку на следующую покупку
                     plusItem_cost();     //увеличиваем цену на след покупку
-                    //upgrade_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(item_cost));   //обновляем текст цены
                     item_number++;  //прибавляем 1 к счетчику сколько раз купили
-                    //number_label.setText(item_number);
-                    //value_label.setText("+" + zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getShopNumerics().getItem1_value())); //обновляем текст сколько прибавляет
-
-
+                    buy_counter_btn.setText(Integer.toString(item_number));
                 }
             }
         });
@@ -82,14 +88,15 @@ public class ShopItem {
         table.add(stack);
         stack.add(image);
         stack.add(intable);
-//        table_for_nums.add(number_label).expandX().right().top().padTop(5).padRight(10);
-//        table_for_nums.row();
-//        table_for_nums.add(value_label).expand().right().top().padRight(10);
-
-        intable.add(name_label).expandY().top().padTop(10); // 530 - ширина окна предмета, 110 - ширина колонки с кнопкой
+        intable.add(name_label).colspan(2).top().padTop(10);
         intable.row();
-        intable.add(upgrade_btn).expandY().expandX().right().padTop(5);
+        intable.add(upgrade_btn).expandY().expandX().right();
         stack.add(table_for_nums);
+        table_for_nums.add(buy_counter_btn).expandX().right().expandY().top().padTop(10);
+        stack.add(description_table);
+        description_table.add(description_label).expandY().padTop(45);
+        description_table.row();
+        description_table.add(value_label).expandY().padBottom(15);
 
     }
 
@@ -97,6 +104,10 @@ public class ShopItem {
 
     public void update_cost_label(){
         upgrade_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(item_cost));
+    }
+
+    public void update_value_label() {
+        value_label.setText("+" + zombieClicker.getNumerics().bigInteger_to_string(item_value));
     }
 
     ////////////////////GETTERS////////////////////////

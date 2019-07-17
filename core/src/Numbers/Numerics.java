@@ -40,7 +40,7 @@ public class Numerics {
         //BigInteger zombie_health, int level_count, BigInteger zombie_kills, BigInteger boss_health, BigInteger zombie_kill_reward,
         //                    int boss_kill_reward, long betweenBoss, final ZombieClicker zc
         location = new ArrayList<Location>(Arrays.asList(
-                new Location(new BigInteger("8"), 1, new BigInteger("0"), new BigInteger("12"), new BigInteger("50000"),
+                new Location(new BigInteger("8"), 1, new BigInteger("0"), new BigInteger("12"), new BigInteger("1000"),
                         1, 3, 3000, zc),
                 new Location(new BigInteger("12"), 1, new BigInteger("0"), new BigInteger("15"), new BigInteger("70000"),
                         2, 4, 33000, zc),

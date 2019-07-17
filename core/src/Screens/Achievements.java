@@ -27,7 +27,7 @@ import java.util.Arrays;
 
 import sun.util.cldr.CLDRLocaleDataMetaInfo;
 
-public class Achievements implements Screen { //КЛАСС НУЖЕН ДЛЯ ВИЗУАЛЬНОГО ПРЕДСТАВЛЕНИЯ АЧИВОК (СКРИН)
+public class Achievements implements Screen {
 
     final ZombieClicker zombieClicker;
     private Stage stage;
@@ -117,7 +117,7 @@ public class Achievements implements Screen { //КЛАСС НУЖЕН ДЛЯ В�
         });
         back_btn.setPosition(5, 850);
 
-        fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Ubuntu-Regular.ttf"));
+        fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Rubik.ttf"));
         fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         fontParameter.size = 25;
         fontParameter.color = Color.WHITE;

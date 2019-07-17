@@ -2,9 +2,6 @@
 "com.badlogic.gdx.graphics.g2d.BitmapFont": {
 	"Rubik": {
 		"file": "Rubik.fnt"
-	},
-	"Rubik18": {
-		"file": "Rubik.fnt"
 	}
 },
 "com.badlogic.gdx.graphics.Color": {
@@ -18,9 +15,7 @@
 "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
 	"default": {
 		"font": "Rubik",
-		"up": "buy_btn",
-		"down": "buy_btn_pressed",
-		"disabled": "buy_btn_disabled"
+		"up": "buy_counter"
 	}
 }
 }

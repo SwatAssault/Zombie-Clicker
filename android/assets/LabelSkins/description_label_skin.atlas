@@ -1,10 +1,10 @@
 
-name_label_skin.png
+description_label_skin.png
 size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Rubik22
+Rubik
   rotate: false
   xy: 1, 1
   size: 512, 512
