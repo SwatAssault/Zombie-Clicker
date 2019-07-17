@@ -35,7 +35,7 @@ public class MainGame implements Screen {
 
     private Stage stage;
     private Camera camera;
-    //  private Image BGimage;
+    private Image heart_image;
     private Viewport viewport;
 
     private boolean is_mainButton_pressed;
@@ -53,6 +53,7 @@ public class MainGame implements Screen {
     private Skin ach_skin;
     private Skin map_skin;
 
+    private Texture heart_texture;
     private Texture hpBarbg;
     private Texture hpBar;
     private TextureRegion hpBarStart;
@@ -114,14 +115,17 @@ public class MainGame implements Screen {
 
         hpBarbg = zombieClicker.get_assets().get_asset_manager().get("HP/hp_bg.png");
         hpBar = zombieClicker.get_assets().get_asset_manager().get("HP/hp.png");
-        hpBarStart = new TextureRegion(hpBar, 0, 0, 10, hpBar.getHeight());
-        hpBarBody = new TextureRegion(hpBar, 10, 0, 195, hpBar.getHeight());
-        hpBarEnd = new TextureRegion(hpBar, 10 + 195, 0, 10, hpBar.getHeight());
-        HP_positionX = 160;
+        hpBarStart = new TextureRegion(hpBar, 0, 0, 5, hpBar.getHeight());
+        hpBarBody = new TextureRegion(hpBar, 5, 0, 137, hpBar.getHeight());
+        hpBarEnd = new TextureRegion(hpBar, 5 + 137, 0, 5, hpBar.getHeight());
+        HP_positionX = 210;
         HP_positionY = 240;
 
+        heart_texture = zombieClicker.get_assets().get_asset_manager().get("Other/heart.png", Texture.class);
+        heart_texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        heart_image = new Image(heart_texture);
+        heart_image.setPosition(150, 230);
 
-        //TODO текстура JSON-хуйон
         timeBossBar = zombieClicker.get_assets().get_asset_manager().get("BossTime/time.png");
         timeBossBarStart = new TextureRegion(timeBossBar, 0, 0, 1, timeBossBar.getHeight());
         timeBossBarBody = new TextureRegion(timeBossBar, 1, 0, 243, timeBossBar.getHeight());
@@ -242,6 +246,7 @@ public class MainGame implements Screen {
         stage.addActor(map_btn);
         stage.addActor(bossFight_btn);
         stage.addActor(leaveBossFight_btn);
+        stage.addActor(heart_image);
 
 
         if (location.getLoseBoss()) {

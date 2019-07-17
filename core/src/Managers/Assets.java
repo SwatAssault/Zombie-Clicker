@@ -48,6 +48,7 @@ public class Assets {
         assetManager.load("HP/hp.png", Texture.class);
         assetManager.load("HP/hp_bg.png", Texture.class);
         assetManager.load("BossTime/time.png", Texture.class);
+        assetManager.load("Other/heart.png", Texture.class);
 
         assetManager.load("Animations/zombie1.atlas", TextureAtlas.class);
         assetManager.load("Animations/zombie2.atlas", TextureAtlas.class);
@@ -130,6 +131,8 @@ public class Assets {
         assetManager.unload("Animations/boss1.atlas");
         assetManager.unload("HP/hp.png");
         assetManager.unload("HP/hp_bg.png");
+        assetManager.unload("Other/heart.png");
+        assetManager.unload("BossTime/time.png");
     }
 
     public void dispose_Shop_assets(){
