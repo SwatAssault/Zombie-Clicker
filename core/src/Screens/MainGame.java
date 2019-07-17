@@ -166,7 +166,7 @@ public class MainGame implements Screen {
             }
         });
 
-        shop_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/shopbtn.json");
+        shop_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/shop_btn.json");
         goTo_shop_btn = new Button(shop_skin);
         goTo_shop_btn.setPosition(5, 700);
         goTo_shop_btn.addListener(new ClickListener() {

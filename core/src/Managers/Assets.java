@@ -42,7 +42,7 @@ public class Assets {
     public void load_assets_for_Game() {
         assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("SkinJson/ach_btn.json", Skin.class);
-        assetManager.load("SkinJson/shopbtn.json", Skin.class);
+        assetManager.load("Buttons/shop_btn.json", Skin.class);
         assetManager.load("SkinJson/map_btn.json", Skin.class);
         assetManager.load("Sounds/punch.wav", Sound.class);
         assetManager.load("HP/hp.png", Texture.class);
@@ -124,7 +124,7 @@ public class Assets {
 
     public void dispose_Game_assets(){
         assetManager.unload("Buttons/back_btn.json");
-        assetManager.unload("SkinJson/shopbtn.json");
+        assetManager.unload("Buttons/shop_btn.json");
         assetManager.unload("SkinJson/ach_btn.json");
         assetManager.unload("SkinJson/map_btn.json");
         assetManager.unload("Animations/zombie1.atlas");
