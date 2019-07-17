@@ -40,7 +40,7 @@ public class ShopItem {
     private Skin label_skin;
     private Skin buy_skin;
 
-    public ShopItem(ZombieClicker zc, String name, String description){
+    public ShopItem(ZombieClicker zc, String name, String description, Texture texture){
         zombieClicker = zc;
 
         stack = new Stack();
@@ -51,16 +51,16 @@ public class ShopItem {
         item_cost = new BigInteger("0");
 
         zombieClicker.get_assets().get_asset_manager().load("Buttons/buybtn.json", Skin.class);
-        zombieClicker.get_assets().get_asset_manager().load("item1.png", Texture.class);
         zombieClicker.get_assets().get_asset_manager().update();
         zombieClicker.get_assets().get_asset_manager().finishLoading();
         buy_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/buybtn.json", Skin.class);
         upgrade_btn = new TextButton("", buy_skin);
         label_skin = new Skin(Gdx.files.internal("LabelSkins/name_label_skin.json"));
         upgrade_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(item_cost));
-        image = new Image(zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
+        image = new Image(texture);
 
         name_label = new Label(name, label_skin);
+
 
         upgrade_btn.addListener(new ClickListener() {
             @Override

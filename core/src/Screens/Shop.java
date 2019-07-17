@@ -34,17 +34,28 @@ public class Shop implements Screen {
     private Camera camera;
     private Viewport viewport;
     private Image ImageBG;
+    private Label header_label;
     private ScrollPane scrollPane;
-    private ScrollPane squads_scrollPane;
+    private ScrollPane squad_scrollPane;
+    private ScrollPane other_scrollPane;
+    private Stack scroll_stack;
+    private Table stack_table;
     private Table table;
     private Table table_squads;
+    private Table table_other;
     private Button goback_bth;
     private SpriteBatch batch;
     private int item_widht;
     private int items_amount;
+    private int squads_amount;
+    private int other_items_amount;
 
     ////////////////SQUADS//////////////////
     private SquadItem squad1;
+    private SquadItem squad2;
+    private SquadItem squad3;
+    private SquadItem squad4;
+    private SquadItem squad5;
     ////////////////SQUADS//////////////////
 
     ///////////////SHOP ITEMS///////////////////
@@ -63,9 +74,16 @@ public class Shop implements Screen {
     private Skin goback_skin;
     private Skin tab_skin;
     private Skin name_label_skin;
+    private Skin header_label_skin;
 
-    private Button shop_tab_btn;
-    private Button squad_tab_btn;
+    private String squads_tab_string = "SQUADS";
+    private String items_tab_string = "ITEMS";
+    private String other_tab_string = "OTHER";
+    private String header_string = "SHOP";
+
+    private TextButton shop_tab_btn;
+    private TextButton squad_tab_btn;
+    private TextButton other_tab_btn;
 
     //ВРЕМЕННО
     private BitmapFont bitmapFont;
@@ -81,17 +99,23 @@ public class Shop implements Screen {
         zombieClicker.get_assets().load_assets_for_Shop();
         ImageBG = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/shopbg.png", Texture.class));
         batch = new SpriteBatch();
+
         item_widht = 474;
         items_amount = 10;
+        squads_amount = 5;
+        other_items_amount = 0;
 
         goback_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json", Skin.class);
         tab_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/tab_skin.json", Skin.class);
         name_label_skin = zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class);
+        header_label_skin = zombieClicker.get_assets().get_asset_manager().get("LabelSkins/header_label_skin.json", Skin.class);
+        header_label = new Label(header_string, header_label_skin);
         goback_bth = new Button(goback_skin);
-        shop_tab_btn = new Button(tab_skin);
-        squad_tab_btn = new Button(tab_skin);
+        shop_tab_btn = new TextButton(items_tab_string, tab_skin);
+        squad_tab_btn = new TextButton(squads_tab_string, tab_skin);
+        other_tab_btn = new TextButton(other_tab_string, tab_skin);
 
-        fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Ubuntu-Regular.ttf"));
+        fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Rubik.ttf"));
         fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         fontParameter.size = 25;
         fontParameter.characters = FONT_CHARACTERS;
@@ -116,8 +140,13 @@ public class Shop implements Screen {
                 if(!shop_tab_btn.isDisabled()){
                     table_squads.setVisible(false);
                     table.setVisible(true);
+                    table_other.setVisible(false);
                     shop_tab_btn.setDisabled(true);
                     squad_tab_btn.setDisabled(false);
+                    other_tab_btn.setDisabled(false);
+                    scrollPane.setZIndex(1);
+                    other_scrollPane.setZIndex(0);
+                    squad_scrollPane.setZIndex(0);
                 }
             }
         });
@@ -128,56 +157,79 @@ public class Shop implements Screen {
                 if(!squad_tab_btn.isDisabled()){
                     table_squads.setVisible(true);
                     table.setVisible(false);
+                    table_other.setVisible(false);
                     squad_tab_btn.setDisabled(true);
                     shop_tab_btn.setDisabled(false);
+                    other_tab_btn.setDisabled(false);
+                    scrollPane.setZIndex(0);
+                    squad_scrollPane.setZIndex(1);
+                    other_scrollPane.setZIndex(0);
                 }
             }
         });
 
-        shop_tab_btn.setPosition(65,770);
-        squad_tab_btn.setPosition(280,770);
+        other_tab_btn.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if(!other_tab_btn.isDisabled()){
+                    table_other.setVisible(true);
+                    table.setVisible(false);
+                    table_squads.setVisible(false);
+                    other_tab_btn.setDisabled(true);
+                    shop_tab_btn.setDisabled(false);
+                    squad_tab_btn.setDisabled(false);
+                    scrollPane.setZIndex(0);
+                    other_scrollPane.setZIndex(1);
+                    squad_scrollPane.setZIndex(0);
+                }
+            }
+        });
+
+        shop_tab_btn.setPosition(40,770);
+        squad_tab_btn.setPosition(195,770);
+        other_tab_btn.setPosition(350,770);
 
         goback_bth.setPosition(10, 10);
 
 
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
-        shopItem1 = new ShopItem(zc, "Gun", "lol");
+        shopItem1 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem1.setItem_cost(100);
         shopItem1.setItem_value(5);
 
-        shopItem2 = new ShopItem(zc, "Gun", "lol");
+        shopItem2 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem2.setItem_cost(200);
         shopItem2.setItem_value(10);
 
-        shopItem3 = new ShopItem(zc, "Gun", "lol");
+        shopItem3 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem3.setItem_cost(200);
         shopItem3.setItem_value(10);
 
-        shopItem4 = new ShopItem(zc, "Gun", "lol");
+        shopItem4 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem4.setItem_cost(200);
         shopItem4.setItem_value(10);
 
-        shopItem5 = new ShopItem(zc, "Gun", "lol");
+        shopItem5 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem5.setItem_cost(200);
         shopItem5.setItem_value(10);
 
-        shopItem6 = new ShopItem(zc, "Gun", "lol");
+        shopItem6 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem6.setItem_cost(200);
         shopItem6.setItem_value(10);
 
-        shopItem7 = new ShopItem(zc, "Gun", "lol");
+        shopItem7 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem7.setItem_cost(200);
         shopItem7.setItem_value(10);
 
-        shopItem8 = new ShopItem(zc, "Gun", "lol");
+        shopItem8 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem8.setItem_cost(200);
         shopItem8.setItem_value(10);
 
-        shopItem9 = new ShopItem(zc, "Gun", "lol");
+        shopItem9 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem9.setItem_cost(200);
         shopItem9.setItem_value(10);
 
-        shopItem10 = new ShopItem(zc, "Gun", "lol");
+        shopItem10 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem10.setItem_cost(200);
         shopItem10.setItem_value(10);
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
@@ -206,34 +258,70 @@ public class Shop implements Screen {
         table.row();
         table.add(shopItem10.getTable());
 
+        stack_table = new Table();
+        stack_table.setWidth(item_widht);
+        stack_table.setHeight(140 * 5 - 40);
+        stack_table.setPosition((540 - item_widht) / 2, 110);
+
+        scroll_stack = new Stack();
+        stack_table.add(scroll_stack);
+
         scrollPane = new ScrollPane(table);
-        scrollPane.setPosition((540 - item_widht) / 2, 110);
         scrollPane.setHeight(140 * 5 - 40);
         scrollPane.setWidth(item_widht);
+        scroll_stack.add(scrollPane);
+        scrollPane.setZIndex(1);
 
         /////////////////////SQUAD ITEMS INITIALIZATION/////////////////////
         squad1 = new SquadItem(zc);
-
+        squad2 = new SquadItem(zc);
+        squad3 = new SquadItem(zc);
+        squad4 = new SquadItem(zc);
+        squad5 = new SquadItem(zc);
         /////////////////////SQUAD ITEMS INITIALIZATION/////////////////////
 
         table_squads = new Table();
-        table_squads.setWidth(474);
+        table_squads.setWidth(item_widht);
         table_squads.setVisible(false);
 
         table_squads.add(squad1.get_table());
+        table_squads.row();
+        table_squads.add(squad2.get_table());
+        table_squads.row();
+        table_squads.add(squad3.get_table());
+        table_squads.row();
+        table_squads.add(squad4.get_table());
+        table_squads.row();
+        table_squads.add(squad5.get_table());
+
+        squad_scrollPane = new ScrollPane(table_squads);
+        squad_scrollPane.setHeight(140 * 5 - 40);
+        squad_scrollPane.setWidth(item_widht);
+        scroll_stack.add(squad_scrollPane);
+        squad_scrollPane.setZIndex(0);
+
+        ///////////////////OTHER ITEMS INITIALIZATION///////////////////////
+
+        ///////////////////OTHER ITEMS INITIALIZATION///////////////////////
+
+        table_other = new Table();
+        table_other.setWidth(item_widht);
+        table_other.setVisible(false);
 
 
-        squads_scrollPane = new ScrollPane(table_squads);
-        squads_scrollPane.setPosition((540 - item_widht) / 2, 0);
-        squads_scrollPane.setHeight(140 * 5 - 20);
-        squads_scrollPane.setWidth(item_widht);
 
+        other_scrollPane = new ScrollPane(table_other);
+        other_scrollPane.setHeight(140 * 5 - 40);
+        other_scrollPane.setWidth(item_widht);
+        scroll_stack.add(other_scrollPane);
+        other_scrollPane.setZIndex(0);
 
         stage.addActor(ImageBG);
+        stage.addActor(header_label);
         stage.addActor(shop_tab_btn);
         stage.addActor(squad_tab_btn);
-        stage.addActor(squads_scrollPane);
-        stage.addActor(scrollPane);
+        stage.addActor(other_tab_btn);
+        stage.addActor(stack_table);
         stage.addActor(goback_bth);
 
 
@@ -269,7 +357,10 @@ public class Shop implements Screen {
             shopItem2.disable_button(false);
 
 
+        update_labels();
+    }
 
+    public void update_labels(){
         shopItem1.update_cost_label();
         shopItem2.update_cost_label();
         shopItem3.update_cost_label();
@@ -280,7 +371,6 @@ public class Shop implements Screen {
         shopItem8.update_cost_label();
         shopItem9.update_cost_label();
         shopItem10.update_cost_label();
-
     }
 
     @Override

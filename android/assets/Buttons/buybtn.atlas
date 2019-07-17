@@ -4,31 +4,31 @@ size: 512,512
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Ubuntu-Regular
-  rotate: false
-  xy: 1, 399
-  size: 506, 106
-  orig: 506, 106
-  offset: 0, 0
-  index: -1
 buy_btn
   rotate: false
-  xy: 1, 332
-  size: 151, 65
-  orig: 151, 65
+  xy: 1, 326
+  size: 135, 65
+  orig: 135, 65
   offset: 0, 0
   index: -1
 buy_btn_disabled
   rotate: false
-  xy: 154, 332
-  size: 151, 65
-  orig: 151, 65
+  xy: 1, 259
+  size: 135, 65
+  orig: 135, 65
   offset: 0, 0
   index: -1
 buy_btn_pressed
   rotate: false
-  xy: 1, 265
-  size: 151, 65
-  orig: 151, 65
+  xy: 138, 326
+  size: 135, 65
+  orig: 135, 65
+  offset: 0, 0
+  index: -1
+Rubik
+  rotate: false
+  xy: 1, 393
+  size: 506, 112
+  orig: 506, 112
   offset: 0, 0
   index: -1

@@ -1,0 +1,31 @@
+{
+"com.badlogic.gdx.graphics.g2d.BitmapFont": {
+	"Rubik": {
+		"file": "Rubik.fnt"
+	}
+},
+"com.badlogic.gdx.graphics.Color": {
+	"RGBA_115_115_115_255": {
+		"r": 0.45333335,
+		"g": 0.45333335,
+		"b": 0.45333335,
+		"a": 1
+	},
+	"RGBA_255_255_255_255": {
+		"r": 1,
+		"g": 1,
+		"b": 1,
+		"a": 1
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+	"default": {
+		"font": "Rubik"
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle": {
+	"default": {
+		"label": "default"
+	}
+}
+}

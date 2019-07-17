@@ -1,0 +1,13 @@
+
+header_label_skin.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Rubik
+  rotate: false
+  xy: 1, 399
+  size: 506, 106
+  orig: 506, 106
+  offset: 0, 0
+  index: -1

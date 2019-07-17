@@ -1,6 +1,27 @@
 {
-"com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
+"com.badlogic.gdx.graphics.g2d.BitmapFont": {
+	"Rubik": {
+		"file": "Rubik.fnt"
+	}
+},
+"com.badlogic.gdx.graphics.Color": {
+	"RGBA_180_90_0_255": {
+		"r": 0.7058824,
+		"g": 0.3529412,
+		"b": 0,
+		"a": 1
+	},
+	"RGBA_255_255_255_255": {
+		"r": 1,
+		"g": 1,
+		"b": 1,
+		"a": 1
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
 	"default": {
+		"font": "Rubik",
+		"disabledFontColor": "RGBA_255_255_255_255",
 		"up": "inactive_tab",
 		"down": "inactive_tab_pressed",
 		"disabled": "active_tab"

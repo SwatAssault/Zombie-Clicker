@@ -63,7 +63,11 @@ public class Assets {
         assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("Buttons/tab_skin.json", Skin.class);
         assetManager.load("LabelSkins/name_label_skin.json", Skin.class);
+        assetManager.load("LabelSkins/header_label_skin.json", Skin.class);
         assetManager.load("Background/shopbg.png", Texture.class);
+        assetManager.load("item1.png", Texture.class);
+
+        assetManager.load("item1.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
@@ -132,6 +136,7 @@ public class Assets {
         assetManager.unload("Buttons/back_btn.json");
         assetManager.unload("Buttons/tab_skin.json");
         assetManager.unload("LabelSkins/name_label_skin.json");
+        assetManager.unload("LabelSkins/header_label_skin.json");
         assetManager.unload("Background/shopbg.png");
     }
 
