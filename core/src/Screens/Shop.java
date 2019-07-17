@@ -193,7 +193,7 @@ public class Shop implements Screen {
 
 
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
-        shopItem1 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
+        shopItem1 = new ShopItem(zc, "GUN", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem1.setItem_cost(100);
         shopItem1.setItem_value(5);
 
@@ -317,13 +317,14 @@ public class Shop implements Screen {
         other_scrollPane.setZIndex(0);
 
         stage.addActor(ImageBG);
-        stage.addActor(header_label);
+       // stage.addActor(header_label);
         stage.addActor(shop_tab_btn);
         stage.addActor(squad_tab_btn);
         stage.addActor(other_tab_btn);
         stage.addActor(stack_table);
         stage.addActor(goback_bth);
 
+      //  stage.setDebugAll(true);
 
         Gdx.input.setInputProcessor(stage);
     }

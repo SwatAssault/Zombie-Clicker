@@ -1,25 +1,20 @@
 {
 "com.badlogic.gdx.graphics.g2d.BitmapFont": {
-	"Ubuntu-Regular": {
-		"file": "Ubuntu-Regular.fnt"
+	"Rubik": {
+		"file": "Rubik.fnt"
 	}
 },
 "com.badlogic.gdx.graphics.Color": {
-	"RGBA_0_0_0_255": {
-		"r": 0,
-		"g": 0,
-		"b": 0,
+	"RGBA_78_38_35_255": {
+		"r": 0.30588236,
+		"g": 0.14901961,
+		"b": 0.13725491,
 		"a": 1
-	}
-},
-"com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
-	"default": {
-		"up": "buy_btn"
 	}
 },
 "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
 	"default": {
-		"font": "Ubuntu-Regular"
+		"font": "Rubik"
 	}
 },
 "com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle": {

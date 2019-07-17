@@ -85,12 +85,11 @@ public class ShopItem {
 //        table_for_nums.add(number_label).expandX().right().top().padTop(5).padRight(10);
 //        table_for_nums.row();
 //        table_for_nums.add(value_label).expand().right().top().padRight(10);
-        stack.add(table_for_nums);
-        intable.add(name_label).expand().right().top().padTop(5).padRight((item_widht - name_label.getPrefWidth()) / 2 - 110); // 530 - ширина окна предмета, 110 - ширина колонки с кнопкой
-        intable.setFillParent(true);
+
+        intable.add(name_label).expandY().top().padTop(10); // 530 - ширина окна предмета, 110 - ширина колонки с кнопкой
         intable.row();
-        //intable.add(description).expand().padBottom(15).right().padRight((item_widht - description.getPrefWidth()) / 2 - 110);
-        intable.add(upgrade_btn).expandX().right().padTop(5);
+        intable.add(upgrade_btn).expandY().expandX().right().padTop(5);
+        stack.add(table_for_nums);
 
     }
 
