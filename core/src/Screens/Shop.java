@@ -51,6 +51,7 @@ public class Shop implements Screen {
     private int items_amount;
     private int squads_amount;
     private int other_items_amount;
+    private int spare_squads_counter;   //сколько свободных отрядов
 
     ////////////////SQUADS//////////////////
     private SquadItem squad1;
@@ -345,6 +346,12 @@ public class Shop implements Screen {
         return stage;
     }
     ///////////////GETTERS//////////////////////
+
+    ///////////////SETTERS//////////////////////
+    public void setSpare_squads_counter(int x){
+        spare_squads_counter += x;
+    }
+    ///////////////SETTERS//////////////////////
 
     @Override
     public void show() {

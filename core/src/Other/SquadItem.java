@@ -39,6 +39,9 @@ public class SquadItem {
     private TextButton send_to_location_btn;
     private TextButton number_btn;
 
+    private boolean busy; //находится на локации или нет
+    private boolean bought; //куплен или нет
+
     public SquadItem(ZombieClicker zc, String name, String description, Texture texture){
         zombieClicker = zc;
 
@@ -52,6 +55,8 @@ public class SquadItem {
         buy_number = 0;
         squad_cost = new BigInteger("0");
         dps = new BigInteger("0");
+        busy = false;
+        bought = false;
 
         buy_btn = new TextButton("0", zombieClicker.get_assets().get_asset_manager().get("Buttons/buybtn.json", Skin.class));
         name_of_squad = new Label(name, zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class));
@@ -70,10 +75,18 @@ public class SquadItem {
                     number_btn.setText(Integer.toString(buy_number));
                     send_to_location_btn.setVisible(true);
                     plus_cost();
+                    if(!bought) zombieClicker.getShop().setSpare_squads_counter(1);
+                    bought = true;
                 }
             }
         });
 
+        send_to_location_btn.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                send_to_location_btn.setDisabled(true);
+            }
+        });
 
 
         table.add(stack);
@@ -107,17 +120,11 @@ public class SquadItem {
     }
 
     public void disable_buy_btn(boolean x){
-        if(x)
-            buy_btn.setDisabled(true);
-        else
-            buy_btn.setDisabled(false);
+            buy_btn.setDisabled(x);
     }
 
     public void disable_send_btn(boolean x){
-        if(x)
-            send_to_location_btn.setDisabled(true);
-        else
-            send_to_location_btn.setDisabled(false);
+            send_to_location_btn.setDisabled(x);
     }
 
     //////////////////GETTERS////////////////////////
@@ -132,12 +139,28 @@ public class SquadItem {
     public TextButton getBuy_btn(){
         return buy_btn;
     }
+
+    private boolean is_busy(){
+        return busy;
+    }
+
+    private boolean isBought(){
+        return bought;
+    }
     //////////////////GETTERS////////////////////////
 
 
     //////////////////SETTERS////////////////////////
     public void setSquad_cost(BigInteger x){
         squad_cost = x;
+    }
+
+    public void setBusy(boolean x){
+        busy = x;
+    }
+
+    public void setBought(boolean x){
+        bought = x;
     }
     //////////////////SETTERS////////////////////////
 

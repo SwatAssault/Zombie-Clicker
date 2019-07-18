@@ -146,11 +146,7 @@ public class ShopItem {
     }
 
     public void disable_button(Boolean x){
-        //x ? upgrade_btn.setDisabled(true) : upgrade_btn.setDisabled(false);
-        if(x)
-            upgrade_btn.setDisabled(true);
-        else
-            upgrade_btn.setDisabled(false);
+            upgrade_btn.setDisabled(x);
     }
     ////////////////////SETTERS////////////////////////
 

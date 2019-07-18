@@ -12,10 +12,12 @@ import Managers.SoundManager;
 import Numbers.Location;
 import Numbers.Numerics;
 import Other.KeepTrackAch;
+import Other.SquadItem;
 import Screens.Achievements;
 import Screens.MainGame;
 import Screens.MapScreen;
 import Screens.Shop;
+import Screens.SquadsDistScreen;
 
 
 public class ZombieClicker extends Game {
@@ -26,18 +28,12 @@ public class ZombieClicker extends Game {
     private SoundManager soundManager;
     private FontManager fontManager;
     private KeepTrackAch keepTrackAch;
+    private SquadsDistScreen squadsDistScreen;
 
     private MainGame mainGame;
     private Shop shop;
     private Achievements achievements;
     private MapScreen mapScreen;
-
-    private BitmapFont bitmapFont;
-    private BitmapFont font_for_plus;
-    private FreeTypeFontGenerator fontGenerator;
-    private FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
-    private BitmapFont font_for_description;
-    private final String FONT_CHARACTERS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;,{}\"´`'<>";
 
     public ZombieClicker() {
         instance = this;
@@ -108,6 +104,11 @@ public class ZombieClicker extends Game {
         //System.gc();
         mainGame = new MainGame(instance, numerics.getCurrent_location());
         setScreen(mainGame);
+    }
+
+    public void setSquadsDistScreen(ZombieClicker zc, SquadItem squadItem){
+        squadsDistScreen = new SquadsDistScreen(zc, squadItem);
+        setScreen(squadsDistScreen);
     }
 
     public void setShopScreen(){
