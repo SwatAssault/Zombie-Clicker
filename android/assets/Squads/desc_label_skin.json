@@ -1,0 +1,17 @@
+{
+"com.badlogic.gdx.graphics.g2d.BitmapFont": {
+	"marmelad14": {
+		"file": "marmelad14.fnt"
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+	"default": {
+		"font": "marmelad14"
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle": {
+	"default": {
+		"label": "default"
+	}
+}
+}
