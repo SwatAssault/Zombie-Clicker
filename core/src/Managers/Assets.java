@@ -65,6 +65,7 @@ public class Assets {
         assetManager.load("Buttons/tab_skin.json", Skin.class);
         assetManager.load("Buttons/buybtn.json", Skin.class);
         assetManager.load("Squads/send_btn_skin.json", Skin.class);
+        assetManager.load("Squads/desc_label_skin.json", Skin.class);
         assetManager.load("Other/buy_counter_skin.json", Skin.class);
         assetManager.load("LabelSkins/name_label_skin.json", Skin.class);
         assetManager.load("LabelSkins/header_label_skin.json", Skin.class);
@@ -145,6 +146,7 @@ public class Assets {
         assetManager.unload("Buttons/tab_skin.json");
         assetManager.unload("Buttons/buybtn.json");
         assetManager.unload("Squads/send_btn_skin.json");
+        assetManager.unload("Squads/desc_label_skin.json");
         assetManager.unload("Other/buy_counter_skin.json");
         assetManager.unload("LabelSkins/name_label_skin.json");
         assetManager.unload("LabelSkins/header_label_skin.json");
