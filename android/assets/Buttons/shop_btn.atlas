@@ -1,0 +1,20 @@
+
+shop_btn.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+back_btn
+  rotate: false
+  xy: 1, 97
+  size: 93, 94
+  orig: 93, 94
+  offset: 0, 0
+  index: -1
+back_btn_pressed
+  rotate: false
+  xy: 1, 1
+  size: 93, 94
+  orig: 93, 94
+  offset: 0, 0
+  index: -1

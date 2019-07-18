@@ -63,6 +63,8 @@ public class Assets {
 
         assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("Buttons/tab_skin.json", Skin.class);
+        assetManager.load("Buttons/buybtn.json", Skin.class);
+        assetManager.load("Squads/send_btn_skin.json", Skin.class);
         assetManager.load("Other/buy_counter_skin.json", Skin.class);
         assetManager.load("LabelSkins/name_label_skin.json", Skin.class);
         assetManager.load("LabelSkins/header_label_skin.json", Skin.class);
@@ -71,6 +73,7 @@ public class Assets {
         assetManager.load("item1.png", Texture.class);
 
         assetManager.load("item1.png", Texture.class);
+        assetManager.load("Squads/squad_item_bg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
@@ -140,11 +143,16 @@ public class Assets {
     public void dispose_Shop_assets(){
         assetManager.unload("Buttons/back_btn.json");
         assetManager.unload("Buttons/tab_skin.json");
+        assetManager.unload("Buttons/buybtn.json");
+        assetManager.unload("Squads/send_btn_skin.json");
         assetManager.unload("Other/buy_counter_skin.json");
         assetManager.unload("LabelSkins/name_label_skin.json");
         assetManager.unload("LabelSkins/header_label_skin.json");
         assetManager.unload("LabelSkins/description_label_skin.json");
         assetManager.unload("Background/shopbg.png");
+
+        assetManager.unload("Squads/squad_item_bg.png");
+        assetManager.unload("item1.png");
     }
 
     public void dispose_assets_for_settings(){

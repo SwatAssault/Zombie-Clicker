@@ -3,11 +3,16 @@ package Other;
 
 import com.awprecords.zombieclicker.ZombieClicker;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+
+import java.math.BigInteger;
 
 public class SquadItem {
 
@@ -16,34 +21,84 @@ public class SquadItem {
     private Stack stack;
     private Table table;
     private Table intable;
+    private Table name_table;
     private Image image;
-    private TextButton buy_squad_btn;
-    private TextButton upgrade_squad_btn;
     private Label name_of_squad;
     private Label descriotion_of_squad;
+    private int buy_number;
+    private BigInteger squad_cost;
 
-    public SquadItem(ZombieClicker zc){
+    private String send_btn_string = "ОТПРАВИТЬ";
+
+    private TextButton buy_btn;
+    private TextButton send_to_location_btn;
+    private TextButton number_btn;
+
+    public SquadItem(ZombieClicker zc, String name, String description, Texture texture){
         zombieClicker = zc;
 
         stack = new Stack();
         table = new Table();
         intable = new Table();
+        name_table = new Table();
+        image = new Image(texture);
+        buy_number = 0;
+        squad_cost = new BigInteger("0");
 
-        zombieClicker.get_assets().get_asset_manager().load("Shop/squad_item_bg.png", Texture.class);
-        zombieClicker.get_assets().get_asset_manager().update();
-        zombieClicker.get_assets().get_asset_manager().finishLoading();
+        buy_btn = new TextButton("0", zombieClicker.get_assets().get_asset_manager().get("Buttons/buybtn.json", Skin.class));
+        name_of_squad = new Label(name, zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class));
+        send_to_location_btn = new TextButton(send_btn_string, zombieClicker.get_assets().get_asset_manager().get("Squads/send_btn_skin.json", Skin.class));
+        number_btn = new TextButton(Integer.toString(buy_number), zombieClicker.get_assets().get_asset_manager().get("Other/buy_counter_skin.json", Skin.class));
 
-        image = new Image(zombieClicker.get_assets().get_asset_manager().get("Shop/squad_item_bg.png", Texture.class));
+        send_to_location_btn.setVisible(false);
 
+        buy_btn.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if(!buy_btn.isDisabled()){
+                    buy_number++;
+                    number_btn.setText(Integer.toString(buy_number));
+                    send_to_location_btn.setVisible(true);
+                    plus_cost();
+                }
+            }
+        });
 
 
 
         table.add(stack);
         stack.add(image);
         stack.add(intable);
+        intable.add(number_btn).expand().right().padTop(5);
+        intable.row();
+        intable.add(buy_btn).expand().right();
+        intable.row();
+        intable.add(send_to_location_btn).expand().right();
+        stack.add(name_table);
+        name_table.add(name_of_squad).expandY().top().padTop(10);
 
+    }
 
+    public void update_buy_label(){
+        buy_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(squad_cost));
+    }
 
+    public void plus_cost(){
+        squad_cost = squad_cost.add(BigInteger.valueOf(25));
+    }
+
+    public void disable_buy_btn(boolean x){
+        if(x)
+            buy_btn.setDisabled(true);
+        else
+            buy_btn.setDisabled(false);
+    }
+
+    public void disable_send_btn(boolean x){
+        if(x)
+            send_to_location_btn.setDisabled(true);
+        else
+            send_to_location_btn.setDisabled(false);
     }
 
     //////////////////GETTERS////////////////////////
@@ -51,12 +106,20 @@ public class SquadItem {
         return table;
     }
 
+    public TextButton getSend_to_location_btn(){
+        return send_to_location_btn;
+    }
 
+    public TextButton getBuy_btn(){
+        return buy_btn;
+    }
     //////////////////GETTERS////////////////////////
 
 
     //////////////////SETTERS////////////////////////
-
+    public void setSquad_cost(BigInteger x){
+        squad_cost = x;
+    }
     //////////////////SETTERS////////////////////////
 
     public void dispose(){

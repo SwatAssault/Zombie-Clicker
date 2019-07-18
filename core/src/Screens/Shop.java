@@ -275,11 +275,12 @@ public class Shop implements Screen {
         scrollPane.setZIndex(1);
 
         /////////////////////SQUAD ITEMS INITIALIZATION/////////////////////
-        squad1 = new SquadItem(zc);
-        squad2 = new SquadItem(zc);
-        squad3 = new SquadItem(zc);
-        squad4 = new SquadItem(zc);
-        squad5 = new SquadItem(zc);
+        squad1 = new SquadItem(zc, "ПОВАРЫ", "kek", zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
+        squad2 = new SquadItem(zc, "ФИЗРУКИ", "kek", zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
+        squad3 = new SquadItem(zc, "S.W.A.T.", "kek", zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
+        squad4 = new SquadItem(zc, "lil", "kek", zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
+        squad5 = new SquadItem(zc, "lil", "kek", zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
+
 
         //Заполняю объекты в массив, чтобы было легче работать
         squadItems_array = new Array<SquadItem>();
@@ -381,7 +382,9 @@ public class Shop implements Screen {
 
 
         //squad items
-
+        for(int i = 0; i < squads_amount; i++){
+            squadItems_array.get(i).update_buy_label();
+        }
         //other items
 
     }

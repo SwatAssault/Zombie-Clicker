@@ -55,15 +55,13 @@ public class ShopItem {
         item_cost = new BigInteger("0");
         item_value = new BigInteger("0");
 
-        zombieClicker.get_assets().get_asset_manager().load("Buttons/buybtn.json", Skin.class);
-        zombieClicker.get_assets().get_asset_manager().update();
-        zombieClicker.get_assets().get_asset_manager().finishLoading();
         buy_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/buybtn.json", Skin.class);
         buy_counter_skin = zombieClicker.get_assets().get_asset_manager().get("Other/buy_counter_skin.json", Skin.class);
+        label_skin = zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class);
+        description_skin = zombieClicker.get_assets().get_asset_manager().get("LabelSkins/description_label_skin.json", Skin.class);
+
         buy_counter_btn = new TextButton("0", buy_counter_skin);
         upgrade_btn = new TextButton("", buy_skin);
-        label_skin = new Skin(Gdx.files.internal("LabelSkins/name_label_skin.json"));
-        description_skin = new Skin(Gdx.files.internal("LabelSkins/description_label_skin.json"));
         upgrade_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(item_cost));
         image = new Image(texture);
 
@@ -99,8 +97,6 @@ public class ShopItem {
         description_table.add(value_label).expandY().padBottom(15);
 
     }
-
-    //TODO можно оптимизировать SKIN для Label (создается для кадого предмета) - неизвестно как 16.07.2019
 
     public void update_cost_label(){
         upgrade_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(item_cost));
