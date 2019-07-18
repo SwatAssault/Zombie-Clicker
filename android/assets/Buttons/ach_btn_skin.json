@@ -1,0 +1,8 @@
+{
+"com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
+	"default": {
+		"up": "achieve_btn",
+		"down": "achieve_btn_pressed"
+	}
+}
+}

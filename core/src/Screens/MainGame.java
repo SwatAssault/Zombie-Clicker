@@ -182,7 +182,7 @@ public class MainGame implements Screen {
         });
 
 
-        ach_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/ach_btn.json");
+        ach_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/ach_btn_skin.json");
         achievement_btn = new Button(ach_skin);
         achievement_btn.setPosition(435, 853);
         achievement_btn.addListener(new ClickListener() {
