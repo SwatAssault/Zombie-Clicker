@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -17,6 +18,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import Other.SquadItem;
+import Other.SquadsActivity;
 
 public class SquadsDistScreen implements Screen {
 
@@ -31,9 +33,11 @@ public class SquadsDistScreen implements Screen {
     private Button back_btn;
 
     private Button send_to_location1_btn;
+    private final SquadItem squad;
 
     public SquadsDistScreen(ZombieClicker zc, SquadItem squadItem){
         zombieClicker = zc;
+        this.squad = squadItem;
 
         camera = new OrthographicCamera();
         viewport = new StretchViewport(540, 960, camera);
@@ -41,6 +45,9 @@ public class SquadsDistScreen implements Screen {
         batch = new SpriteBatch();
         table = new Table();
 
+        zombieClicker.get_assets().load_assets_for_SquadDistScreen();
+
+        back_image = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/achbg.png", Texture.class));
         send_to_location1_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/shop_btn.json", Skin.class));
         back_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json", Skin.class));
         send_to_location1_btn.setPosition(250,500);
@@ -50,11 +57,24 @@ public class SquadsDistScreen implements Screen {
         send_to_location1_btn.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-
+                new SquadsActivity(zombieClicker, squad, zombieClicker.getNumerics().get_location(1));
+                zombieClicker.getMyThread().start();
+                zombieClicker.setShopScreen();
+                Gdx.input.setInputProcessor(zombieClicker.getShop().getStage());
+                dispose();
             }
         });
 
+        back_btn.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                zombieClicker.setShopScreen();
+                Gdx.input.setInputProcessor(zombieClicker.getShop().getStage());
+                dispose();
+            }
+        });
 
+        stage.addActor(back_image);
         stage.addActor(back_btn);
         stage.addActor(send_to_location1_btn);
 
@@ -109,6 +129,7 @@ public class SquadsDistScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        zombieClicker.get_assets().dispose_assets_for_SquadDistScreen();
+        if(stage != null) stage.dispose();
     }
 }

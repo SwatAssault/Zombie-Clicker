@@ -262,5 +262,9 @@ public class Numerics {
     public Location getCurrent_location(){
         return location.get(current_location);
     }
+
+    public Location get_location(int x){
+        return location.get(x - 1);
+    }
     ////////////////GETTERS//////////////////
 }

@@ -42,7 +42,7 @@ public class SquadItem {
     private boolean busy; //находится на локации или нет
     private boolean bought; //куплен или нет
 
-    public SquadItem(ZombieClicker zc, String name, String description, Texture texture){
+    public SquadItem(final ZombieClicker zc, String name, String description, Texture texture){
         zombieClicker = zc;
 
         stack = new Stack();
@@ -54,9 +54,10 @@ public class SquadItem {
         image = new Image(texture);
         buy_number = 0;
         squad_cost = new BigInteger("0");
-        dps = new BigInteger("0");
+        dps = new BigInteger("20");
         busy = false;
         bought = false;
+
 
         buy_btn = new TextButton("0", zombieClicker.get_assets().get_asset_manager().get("Buttons/buybtn.json", Skin.class));
         name_of_squad = new Label(name, zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class));
@@ -85,6 +86,7 @@ public class SquadItem {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 send_to_location_btn.setDisabled(true);
+                zombieClicker.setSquadsDistScreen(zombieClicker, getSquadItem());
             }
         });
 
@@ -105,6 +107,10 @@ public class SquadItem {
         description_table.add(description_label).expand().left().bottom();
 
 
+    }
+
+    public SquadItem getSquadItem(){
+        return this;
     }
 
     public void update_buy_label(){
@@ -140,12 +146,16 @@ public class SquadItem {
         return buy_btn;
     }
 
-    private boolean is_busy(){
+    public boolean is_busy(){
         return busy;
     }
 
-    private boolean isBought(){
+    public boolean isBought(){
         return bought;
+    }
+
+    public BigInteger getDps(){
+        return dps;
     }
     //////////////////GETTERS////////////////////////
 

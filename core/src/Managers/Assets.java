@@ -56,7 +56,7 @@ public class Assets {
         assetManager.load("Animations/boss1.atlas", TextureAtlas.class);
 
         assetManager.update();
-       assetManager.finishLoading();
+        assetManager.finishLoading();
     }
 
     public void load_assets_for_Shop(){
@@ -87,6 +87,13 @@ public class Assets {
         assetManager.load("Background/mapbg.png", Texture.class);
         assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("SkinJson/location_btn.json", Skin.class);
+        assetManager.update();
+        assetManager.finishLoading();
+    }
+
+    public void load_assets_for_SquadDistScreen(){
+        assetManager.load("Buttons/shop_btn.json", Skin.class);
+        assetManager.load("Background/achbg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
@@ -171,6 +178,11 @@ public class Assets {
         assetManager.unload("SkinJson/kills.json");
         assetManager.unload("Buttons/back_btn.json");
         assetManager.unload("SkinJson/clicks.json");
+        assetManager.unload("Background/achbg.png");
+    }
+
+    public void dispose_assets_for_SquadDistScreen(){
+        assetManager.unload("Buttons/shop_btn.json");
         assetManager.unload("Background/achbg.png");
     }
 

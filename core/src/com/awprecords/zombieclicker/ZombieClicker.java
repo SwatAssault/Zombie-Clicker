@@ -12,6 +12,7 @@ import Managers.SoundManager;
 import Numbers.Location;
 import Numbers.Numerics;
 import Other.KeepTrackAch;
+import Other.MyThread;
 import Other.SquadItem;
 import Screens.Achievements;
 import Screens.MainGame;
@@ -21,6 +22,8 @@ import Screens.SquadsDistScreen;
 
 
 public class ZombieClicker extends Game {
+
+    private MyThread myThread;
 
     private ZombieClicker instance;
     private Assets assets;
@@ -37,6 +40,8 @@ public class ZombieClicker extends Game {
 
     public ZombieClicker() {
         instance = this;
+        myThread = new MyThread(instance);
+        //myThread.start();
         assets = new Assets();
         numerics = new Numerics(instance);
         soundManager = new SoundManager(instance);
@@ -58,6 +63,10 @@ public class ZombieClicker extends Game {
 
 
     /////////////OTHER GETTERS/////////////
+    public MyThread getMyThread(){
+        return myThread;
+    }
+
     public Numerics getNumerics() {
         return numerics;
     }
