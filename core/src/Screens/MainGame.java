@@ -323,8 +323,6 @@ public class MainGame implements Screen {
         }
     }
 
-    //ТЕКСТА РАБОТАЮТ ТОЛЬКО В ЭТОМ КЛАССЕ. КАКОГО ХЕРА?
-
     public void draw_text() {
         zombieClicker.getFontManager().getLayout().setText(HP_font, "" + zombieClicker.getNumerics().getCurrent_location().getLevel_count());
         HP_font.draw(batch, "" + zombieClicker.getNumerics().getCurrent_location().getLevel_count(), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 790);

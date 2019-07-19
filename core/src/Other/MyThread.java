@@ -1,6 +1,7 @@
 package Other;
 
 import com.awprecords.zombieclicker.ZombieClicker;
+import com.badlogic.gdx.math.MathUtils;
 
 import java.math.BigInteger;
 
@@ -23,9 +24,9 @@ public class MyThread extends Thread {
         for(;true;){
             try{
               //  System.out.println("Thread working");
-                Thread.sleep(1000);
-                zombieClicker.getNumerics().get_location(1).minusHealth(BigInteger.valueOf(1));
-                System.out.println(zombieClicker.getNumerics().get_location(1).getZombie_health());
+                Thread.sleep(300);
+
+
             } catch (InterruptedException e){
                 System.out.println("Thread Problem");
             }
