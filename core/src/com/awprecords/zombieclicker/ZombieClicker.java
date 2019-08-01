@@ -15,8 +15,11 @@ import Other.KeepTrackAch;
 import Other.MyThread;
 import Other.SquadItem;
 import Screens.Achievements;
+import Screens.Inventory;
 import Screens.MainGame;
 import Screens.MapScreen;
+import Screens.Missions;
+import Screens.PlayerCreate;
 import Screens.Shop;
 import Screens.SquadsDistScreen;
 
@@ -37,16 +40,15 @@ public class ZombieClicker extends Game {
     private Shop shop;
     private Achievements achievements;
     private MapScreen mapScreen;
+    private Inventory inventory;
+    private PlayerCreate playerCreate;
+    private Missions missions;
 
     public ZombieClicker() {
         instance = this;
         myThread = new MyThread(instance);
         //myThread.start();
-        assets = new Assets();
-        numerics = new Numerics(instance);
-        soundManager = new SoundManager(instance);
-        fontManager = new FontManager(instance);
-        keepTrackAch = new KeepTrackAch(instance);
+
 
       //  shop = new Shop(instance);
     }
@@ -100,6 +102,12 @@ public class ZombieClicker extends Game {
     @Override
     public void create() {
 
+        assets = new Assets();
+        numerics = new Numerics(instance);
+        soundManager = new SoundManager(instance);
+        fontManager = new FontManager(instance);
+        keepTrackAch = new KeepTrackAch(instance);
+
         get_assets().load_assets_for_location_1();
         getNumerics().setCurrent_num_location(0);
         getNumerics().getCurrent_location().setBGimage("Background/location_1_bg.png");
@@ -137,6 +145,24 @@ public class ZombieClicker extends Game {
         mapScreen = null;
         mapScreen = new MapScreen(instance);
         setScreen(mapScreen);
+    }
+
+    public void setInventoryScreen(){
+        inventory = null;
+        inventory = new Inventory(instance);
+        setScreen(inventory);
+    }
+
+    public void setPlayerCreateScreen(){
+        playerCreate = null;
+        playerCreate = new PlayerCreate(instance);
+        setScreen(playerCreate);
+    }
+
+    public void setMissionsScreen(){
+        missions = null;
+        missions = new Missions(instance);
+        setScreen(missions);
     }
     ////////////SET SCREEN METHODS/////////////
 

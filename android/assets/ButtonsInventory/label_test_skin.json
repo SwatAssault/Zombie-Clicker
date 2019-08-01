@@ -1,0 +1,17 @@
+{
+"com.badlogic.gdx.graphics.g2d.BitmapFont": {
+	"rubik14_outline": {
+		"file": "rubik14_outline.fnt"
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+	"default": {
+		"font": "rubik14_outline"
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle": {
+	"default": {
+		"label": "default"
+	}
+}
+}

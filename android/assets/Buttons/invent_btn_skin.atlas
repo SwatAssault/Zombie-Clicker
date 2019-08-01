@@ -1,0 +1,20 @@
+
+invent_btn_skin.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+invent_btn
+  rotate: false
+  xy: 1, 96
+  size: 93, 93
+  orig: 93, 93
+  offset: 0, 0
+  index: -1
+invent_btn_pressed
+  rotate: false
+  xy: 1, 1
+  size: 93, 93
+  orig: 93, 93
+  offset: 0, 0
+  index: -1

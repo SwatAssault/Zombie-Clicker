@@ -1,0 +1,28 @@
+{
+"com.badlogic.gdx.graphics.g2d.BitmapFont": {
+	"Rubik_invent": {
+		"file": "Rubik.fnt"
+	}
+},
+"com.badlogic.gdx.graphics.Color": {
+	"RGBA_255_255_255_255": {
+		"r": 1,
+		"g": 1,
+		"b": 1,
+		"a": 1
+	},
+	"RGBA_71_42_40_255": {
+		"r": 0.2784314,
+		"g": 0.16470589,
+		"b": 0.15686275,
+		"a": 1
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle": {
+	"default": {
+		"checkboxOn": "checkBox_on",
+		"checkboxOff": "checkBox_off",
+		"font": "Rubik_invent"
+	}
+}
+}

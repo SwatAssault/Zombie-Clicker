@@ -8,18 +8,32 @@ import java.util.Arrays;
 
 public class Numerics {
 
- //   private BigInteger zombie_health;          //в начале каждого уровня := max_zombie_health
+    private int player_bg;
+    private int player_body;
+    private int player_ear;
+    private int player_face;
+    private int player_freckless;
+    private int player_eyes;
+    private int player_nose;
+    private int player_mouth;
+    private int player_hair;
+    private int player_bread;
+    private int player_brows;
+    private String player_name;
+
+    //   private BigInteger zombie_health;          //в начале каждого уровня := max_zombie_health
     private BigInteger global_tap_count;
     private int diamonds = 0;                 //доп валюта
     private BigInteger zombie_kills;
+    private long boss_kills;
     private BigInteger gold;                   //основная валюта
     private BigInteger punch_power;            //сила одного удара(клика)
- //   private BigInteger boss_health;            //в начале каждого уровня := max_boss_health
-   // private BigInteger zombie_kill_reward;     //награда за убийство зомби(золото)
-   // private int boss_kill_reward = 1;          //нагарада за убийство босса(алмазы)
-  //  private BigInteger max_boss_health;        //увеличивается с каждым уровнем
-  //  private BigInteger max_zombie_health;      //увеличивается с каждым уровнем
-  //  private BigInteger last_kills;             //последнее убийство на предыдущем уровне
+    //   private BigInteger boss_health;            //в начале каждого уровня := max_boss_health
+    // private BigInteger zombie_kill_reward;     //награда за убийство зомби(золото)
+    // private int boss_kill_reward = 1;          //нагарада за убийство босса(алмазы)
+    //  private BigInteger max_boss_health;        //увеличивается с каждым уровнем
+    //  private BigInteger max_zombie_health;      //увеличивается с каждым уровнем
+    //  private BigInteger last_kills;             //последнее убийство на предыдущем уровне
     private float how_fast_passive_damage;     //насколько быстро (автоматически) отнимается хп (чем меньше значение, тем быстрее)
     private BigInteger passive_damage;
     private BigInteger oneTrillion;
@@ -33,7 +47,28 @@ public class Numerics {
     private int current_location;
     private ArrayList<Location> location;
 
+    private int countCraftItem_1;
+    private int countCraftItem_2;
+    private int countCraftItem_3;
+    private int countCraftItem_4;
+
     public Numerics(ZombieClicker zc) {
+
+
+        //TODO загрузить из сохранения
+        player_bg = 0;
+        player_body = 0;
+        player_ear = 0;
+        player_face = 0;
+        player_freckless = -1;
+        player_eyes = 0;
+        player_nose = 0;
+        player_mouth = 0;
+        player_hair = 0;
+        player_bread = -1;
+        player_brows = 0;
+        player_name = "GUSTAV";
+
         //ЧТОБЫ ПОМЕНЯТЬ ХП ЗОМБИ ИЛИ БОССА, МЕНЯТЬ И МАКС ХП ТОЖЕ!!!
 
         //TODO скорее всего придется это переделать когда появятся сохранения
@@ -45,29 +80,35 @@ public class Numerics {
                 new Location(new BigInteger("12"), 1, new BigInteger("0"), new BigInteger("15"), new BigInteger("70000"),
                         2, 4, 33000, zc),
                 new Location(new BigInteger("15"), 1, new BigInteger("0"), new BigInteger("18"), new BigInteger("90000"),
-                        3, 5,28000,  zc),
+                        3, 5, 28000, zc),
                 new Location(new BigInteger("18"), 1, new BigInteger("0"), new BigInteger("21"), new BigInteger("110000"),
-                        4, 6,25000,  zc)));
+                        4, 6, 25000, zc)));
 
         current_location = 0;
 
-     //   zombie_health = new BigInteger("10");
-     //   max_zombie_health = new BigInteger("10");
-     //   boss_health = new BigInteger("20");
-      //  max_boss_health = new BigInteger("20");
+        //   zombie_health = new BigInteger("10");
+        //   max_zombie_health = new BigInteger("10");
+        //   boss_health = new BigInteger("20");
+        //  max_boss_health = new BigInteger("20");
         global_tap_count = new BigInteger("0");
         gold = new BigInteger("0");
         zombie_kills = new BigInteger("0");
+        boss_kills = 0;
         punch_power = new BigInteger("2");
-     //   zombie_kill_reward = new BigInteger("50000000");
-     //   last_kills = new BigInteger("0");
+        //   zombie_kill_reward = new BigInteger("50000000");
+        //   last_kills = new BigInteger("0");
         how_fast_passive_damage = 0.1f;
         passive_damage = new BigInteger("0");
         oneTrillion = new BigInteger("1000000000000");
         oneQuadrillion = new BigInteger("1000000000000000");
 
-
         bossFight = false;
+
+        //TODO считывать из сохранения
+        countCraftItem_1 = 10;
+        countCraftItem_2 = 10;
+        countCraftItem_3 = 10;
+        countCraftItem_4 = 10;
     }
 
     //   XXX.XXXM(B,T,Q) FORMAT
@@ -171,6 +212,10 @@ public class Numerics {
         zombie_kills = zombie_kills.add(x);
     }
 
+    public void plus_boss_kills(long x) {
+        boss_kills += x;
+    }
+
     public void plus_punch_power(BigInteger x) {
         //вызывается при покупке улучшения на урон в магазине
         punch_power = punch_power.add(x);
@@ -190,6 +235,70 @@ public class Numerics {
 
     public void setCurrent_num_location(int x) {
         current_location = x;
+    }
+
+    public void minusCountCraftItem_1(int value) {
+        countCraftItem_1 -= value;
+    }
+
+    public void minusCountCraftItem_2(int value) {
+        countCraftItem_2 -= value;
+    }
+
+    public void minusCountCraftItem_3(int value) {
+        countCraftItem_3 -= value;
+    }
+
+    public void minusCountCraftItem_4(int value) {
+        countCraftItem_4 -= value;
+    }
+
+    public void setPlayer_bg(int value) {
+        player_bg = value;
+    }
+
+    public void setPlayer_body(int value) {
+        player_body = value;
+    }
+
+    public void setPlayer_ear(int value) {
+        player_ear = value;
+    }
+
+    public void setPlayer_face(int value) {
+        player_face = value;
+    }
+
+    public void setPlayer_freckless(int value) {
+        player_freckless = value;
+    }
+
+    public void setPlayer_eyes(int value) {
+        player_eyes = value;
+    }
+
+    public void setPlayer_nose(int value) {
+        player_nose = value;
+    }
+
+    public void setPlayer_mouth(int value) {
+        player_mouth = value;
+    }
+
+    public void setPlayer_hair(int value) {
+        player_hair = value;
+    }
+
+    public void setPlayer_bread(int value) {
+        player_bread = value;
+    }
+
+    public void setPlayer_brows(int value) {
+        player_brows = value;
+    }
+
+    public void setPlayer_name(String name) {
+        player_name = name;
     }
     /////////////////SETTERS//////////////////
 
@@ -213,6 +322,10 @@ public class Numerics {
 
     public BigInteger getZombie_kills() {
         return zombie_kills;
+    }
+
+    public long getBoss_kills() {
+        return boss_kills;
     }
 
     public BigInteger getPunch_power() {
@@ -259,12 +372,76 @@ public class Numerics {
         return current_location;
     }
 
-    public Location getCurrent_location(){
+    public Location getCurrent_location() {
         return location.get(current_location);
     }
 
-    public Location get_location(int x){
+    public Location get_location(int x) {
         return location.get(x - 1);
+    }
+
+    public int getCountCraftItem_1() {
+        return countCraftItem_1;
+    }
+
+    public int getCountCraftItem_2() {
+        return countCraftItem_2;
+    }
+
+    public int getCountCraftItem_3() {
+        return countCraftItem_3;
+    }
+
+    public int getCountCraftItem_4() {
+        return countCraftItem_4;
+    }
+
+    public int getPlayer_bg() {
+        return player_bg;
+    }
+
+    public int getPlayer_body() {
+        return player_body;
+    }
+
+    public int getPlayer_ear() {
+        return player_ear;
+    }
+
+    public int getPlayer_face() {
+        return player_face;
+    }
+
+    public int getPlayer_freckless() {
+        return player_freckless;
+    }
+
+    public int getPlayer_eyes() {
+        return player_eyes;
+    }
+
+    public int getPlayer_nose() {
+        return player_nose;
+    }
+
+    public int getPlayer_mouth() {
+        return player_mouth;
+    }
+
+    public int getPlayer_hair() {
+        return player_hair;
+    }
+
+    public int getPlayer_bread() {
+        return player_bread;
+    }
+
+    public int getPlayer_brows() {
+        return player_brows;
+    }
+
+    public String getPlayer_name() {
+        return player_name;
     }
     ////////////////GETTERS//////////////////
 }

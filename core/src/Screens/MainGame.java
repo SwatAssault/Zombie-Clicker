@@ -45,6 +45,8 @@ public class MainGame implements Screen {
     private Button goTo_shop_btn;
     private Button achievement_btn;
     private Button map_btn;
+    private Button invent_btn;
+    private Button missions_btn;
     private Button bossFight_btn;
     private Button leaveBossFight_btn;
 
@@ -52,6 +54,8 @@ public class MainGame implements Screen {
     private Skin shop_skin;
     private Skin ach_skin;
     private Skin map_skin;
+    private Skin invent_skin;
+    private Skin missions_skin;
 
     private Texture heart_texture;
     private Texture hpBarbg;
@@ -178,6 +182,10 @@ public class MainGame implements Screen {
                 location.setMaxBoss_health();
                 zombieClicker.setShopScreen();
                 Gdx.input.setInputProcessor(zombieClicker.getShop().getStage());
+                if (location.isBossFight()) {
+                    next_level(0);
+                    location.setLoseBoss(true);
+                }
             }
         });
 
@@ -192,6 +200,10 @@ public class MainGame implements Screen {
                 location.setMaxZombie_health();
                 location.setMaxBoss_health();
                 zombieClicker.setAchievementScreen();
+                if (location.isBossFight()) {
+                    next_level(0);
+                    location.setLoseBoss(true);
+                }
             }
         });
 
@@ -205,8 +217,8 @@ public class MainGame implements Screen {
                 location.setBossFight(true);
                 timeBossStart = System.currentTimeMillis();
                 location.setCount_death_zombies_betweenBoss(0);
-                stage.getActors().get(6).setVisible(false);
-                stage.getActors().get(7).setVisible(true);
+                bossFight_btn.setVisible(false);
+                leaveBossFight_btn.setVisible(true);
             }
         });
 
@@ -216,8 +228,8 @@ public class MainGame implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 next_level(0);
-                stage.getActors().get(6).setVisible(true);
-                stage.getActors().get(7).setVisible(false);
+                bossFight_btn.setVisible(true);
+                leaveBossFight_btn.setVisible(false);
             }
         });
 
@@ -238,23 +250,64 @@ public class MainGame implements Screen {
             }
         });
 
+        invent_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/invent_btn_skin.json");
+        invent_btn = new Button(invent_skin);
+        invent_btn.setPosition(5, 600);
+        invent_btn.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                dispose();
+                location.setMaxZombie_health();
+                location.setMaxBoss_health();
+
+                zombieClicker.setInventoryScreen();
+
+                if (location.isBossFight()) {
+                    next_level(0);
+                    location.setLoseBoss(true);
+                }
+            }
+        });
+
+        missions_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/missions_btn_skin.json");
+        missions_btn = new Button(missions_skin);
+        missions_btn.setPosition(5, 500);
+        missions_btn.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                dispose();
+                location.setMaxZombie_health();
+                location.setMaxBoss_health();
+
+                zombieClicker.setMissionsScreen();
+
+                if (location.isBossFight()) {
+                    next_level(0);
+                    location.setLoseBoss(true);
+                }
+            }
+        });
+
+
         stage.addActor(location.getBGimage());
         stage.addActor(goTo_shop_btn);
         stage.addActor(achievement_btn);
         stage.addActor(mainButton);
-        stage.addActor(go_back_btn);
+//        stage.addActor(go_back_btn);
         stage.addActor(map_btn);
         stage.addActor(bossFight_btn);
         stage.addActor(leaveBossFight_btn);
         stage.addActor(heart_image);
+        stage.addActor(invent_btn);
+        stage.addActor(missions_btn);
 
 
         if (location.getLoseBoss()) {
-            stage.getActors().get(6).setVisible(true);
+            bossFight_btn.setVisible(true);
         } else
-            stage.getActors().get(6).setVisible(false);
+            bossFight_btn.setVisible(false);
 
-        stage.getActors().get(7).setVisible(false);
+        leaveBossFight_btn.setVisible(false);
 
         Gdx.input.setInputProcessor(stage);
         flag = false;
@@ -316,8 +369,8 @@ public class MainGame implements Screen {
                 next_level(0);
                 System.out.println("00000");
                 location.setLoseBoss(true);
-                stage.getActors().get(6).setVisible(true);
-                stage.getActors().get(7).setVisible(false);
+                bossFight_btn.setVisible(true);
+                leaveBossFight_btn.setVisible(false);
                 flag = false;
             }
         }
@@ -387,8 +440,8 @@ public class MainGame implements Screen {
             if (!location.getLoseBoss()) {
                 location.setBossFight(true);
 
-//            if (stage.getActors().get(6).isVisible())
-//                stage.getActors().get(6).setVisible(false);
+//            if (bossFight_btn.isVisible())
+//                bossFight_btn.setVisible(false);
 
                 timeBossStart = System.currentTimeMillis();
                 location.setCount_death_zombies_betweenBoss(0);
@@ -408,19 +461,23 @@ public class MainGame implements Screen {
     }
 
     public void next_level(long lvl) {
+        // lvl == 0 => lose
+        // lvl == 1 => win. !!!!else ERROR!!!!
         //УВЕЛИЧЕНИЕ ХП ЗОМБИ
         //УВЕЛИЧЕНИЕ ХП БОССА
         //УВЕЛИЧЕНИЕ ЗОЛОТА, ПОЛУЧАЕМОГО С КАЖДОГО ЗОМБИ
         //ПОЛУЧЕНИЕ АЛМАЗОВ ЗА ПРОХОЖДЕНИЕ УРОВНЯ
         //И ВСЕ ОСТАЛЬНОЕ
-        System.out.println("new level");
 //        location.setZeroBossHealth();
         if (lvl != 0) {
+            System.out.println("new level");
+            zombieClicker.getNumerics().plus_boss_kills(1);
+            zombieClicker.getNumerics().plus_diamonds(location.getBoss_kill_reward());
             location.plus_zombie_health();
             location.plus_Boss_health();
             location.setLoseBoss(false);
-            stage.getActors().get(7).setVisible(false);
-            stage.getActors().get(6).setVisible(false);
+            leaveBossFight_btn.setVisible(false);
+            bossFight_btn.setVisible(false);
         }
         location.setMaxZombie_health();
         location.setMaxBoss_health();
@@ -428,9 +485,8 @@ public class MainGame implements Screen {
         location.upLevel(lvl);
         location.plus_count_kill_boss(lvl);
         location.plus_zombie_kills(BigInteger.valueOf(lvl));
+//        location.plus(BigInteger.valueOf(lvl));
         location.setBossFight(false);
-        if (lvl != 0)
-            zombieClicker.getNumerics().plus_diamonds(location.getBoss_kill_reward());
 
     }
 

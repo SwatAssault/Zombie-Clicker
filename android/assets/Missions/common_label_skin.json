@@ -1,0 +1,17 @@
+{
+"com.badlogic.gdx.graphics.g2d.BitmapFont": {
+	"common": {
+		"file": "common.fnt"
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+	"default": {
+		"font": "common"
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle": {
+	"default": {
+		"label": "default"
+	}
+}
+}

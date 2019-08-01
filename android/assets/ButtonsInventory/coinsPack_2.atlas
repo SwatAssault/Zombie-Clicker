@@ -1,0 +1,27 @@
+
+coinsPack_2.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+coinsPack_2
+  rotate: false
+  xy: 1, 122
+  size: 113, 119
+  orig: 113, 119
+  offset: 0, 0
+  index: -1
+coinsPack_2_disabled
+  rotate: false
+  xy: 1, 1
+  size: 113, 119
+  orig: 113, 119
+  offset: 0, 0
+  index: -1
+coinsPack_2_pressed
+  rotate: false
+  xy: 116, 122
+  size: 113, 119
+  orig: 113, 119
+  offset: 0, 0
+  index: -1

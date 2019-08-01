@@ -1,0 +1,14 @@
+{
+"com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
+	"default": {
+		"up": "invent_btn",
+		"down": "invent_btn_pressed"
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
+	"default": {
+		"imageUp": "invent_btn",
+		"imageDown": "invent_btn_pressed"
+	}
+}
+}

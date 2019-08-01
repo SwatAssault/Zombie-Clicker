@@ -1,0 +1,9 @@
+{
+"com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
+	"default": {
+		"up": "coinsPack_3",
+		"down": "coinsPack_3_pressed",
+		"disabled": "coinsPack_3_disabled"
+	}
+}
+}

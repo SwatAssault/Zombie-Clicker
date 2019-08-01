@@ -1,0 +1,13 @@
+
+label_test_skin.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+rubik14_outline
+  rotate: false
+  xy: 1, 127
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1

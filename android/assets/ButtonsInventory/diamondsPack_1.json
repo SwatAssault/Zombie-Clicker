@@ -1,0 +1,9 @@
+{
+"com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
+	"default": {
+		"up": "diamondsPack_1",
+		"down": "diamondsPack_1_pressed",
+		"disabled": "diamondsPack_1_disabled"
+	}
+}
+}

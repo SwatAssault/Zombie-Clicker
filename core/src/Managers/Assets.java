@@ -44,6 +44,8 @@ public class Assets {
         assetManager.load("Buttons/ach_btn_skin.json", Skin.class);
         assetManager.load("Buttons/shop_btn.json", Skin.class);
         assetManager.load("SkinJson/map_btn.json", Skin.class);
+        assetManager.load("Buttons/invent_btn_skin.json", Skin.class);
+        assetManager.load("Buttons/missions_btn_skin.json", Skin.class);
         assetManager.load("Sounds/punch.wav", Sound.class);
         assetManager.load("HP/hp.png", Texture.class);
         assetManager.load("HP/hp_bg.png", Texture.class);
@@ -90,6 +92,54 @@ public class Assets {
         assetManager.update();
         assetManager.finishLoading();
     }
+
+    public void load_assets_for_inventory(){
+        assetManager.load("Buttons/back_btn.json", Skin.class);
+        assetManager.load("Background/invent_bg.png", Texture.class);
+        assetManager.load("Background/location_1_bg.png", Texture.class);
+        assetManager.load("separator_inventory.png", Texture.class);
+        assetManager.load("ButtonsInventory/coinsPack_1.json", Skin.class);
+        assetManager.load("ButtonsInventory/coinsPack_2.json", Skin.class);
+        assetManager.load("ButtonsInventory/coinsPack_3.json", Skin.class);
+        assetManager.load("ButtonsInventory/diamondsPack_2.json", Skin.class);
+        assetManager.load("ButtonsInventory/diamondsPack_1.json", Skin.class);
+        assetManager.load("ButtonsInventory/craftItem_1.json", Skin.class);
+        assetManager.load("Other/alfa_btn.json", Skin.class);
+        assetManager.load("LabelSkins/description_label_skin.json", Skin.class);
+        assetManager.load("ButtonsInventory/label_test_skin.json", Skin.class);
+        assetManager.load("PlayerCreateSkins/player.atlas", TextureAtlas.class);
+
+        assetManager.update();
+        assetManager.finishLoading();
+    }
+
+    public void load_assets_for_playerCreate(){
+        assetManager.load("Buttons/back_btn.json", Skin.class);
+        assetManager.load("Other/slider.json", Skin.class);
+        assetManager.load("Other/checkBox.json", Skin.class);
+        assetManager.load("ButtonsInventory/label_skin.json", Skin.class);
+        assetManager.load("Background/invent_bg.png", Texture.class);
+        assetManager.load("Background/location_1_bg.png", Texture.class);
+        assetManager.load("PlayerCreateSkins/player.atlas", TextureAtlas.class);
+
+        assetManager.update();
+        assetManager.finishLoading();
+    }
+
+    public void load_assets_for_Missions(){
+        assetManager.load("Buttons/back_btn.json", Skin.class);
+        assetManager.load("Missions/accept_btn_skin.json", Skin.class);
+        assetManager.load("Missions/mission_item_bg.png", Texture.class);
+        assetManager.load("Missions/reward.png", Texture.class);
+        assetManager.load("ButtonsInventory/label_skin.json", Skin.class);
+        assetManager.load("Background/missions_bg.png", Texture.class);
+        assetManager.load("Background/location_1_bg.png", Texture.class);
+        assetManager.load("Missions/common_label_skin.json", Skin.class);
+
+        assetManager.update();
+        assetManager.finishLoading();
+    }
+
 
     public void load_assets_for_SquadDistScreen(){
         assetManager.load("Buttons/shop_btn.json", Skin.class);
@@ -138,6 +188,7 @@ public class Assets {
         assetManager.unload("Buttons/shop_btn.json");
         assetManager.unload("Buttons/ach_btn_skin.json");
         assetManager.unload("SkinJson/map_btn.json");
+        assetManager.unload("Buttons/invent_btn_skin.json");
         assetManager.unload("Animations/zombie1.atlas");
         assetManager.unload("Animations/zombie2.atlas");
         assetManager.unload("Animations/zombie3.atlas");
@@ -162,6 +213,14 @@ public class Assets {
 
         assetManager.unload("Squads/squad_item_bg.png");
         assetManager.unload("item1.png");
+    }
+
+    public void dispose_Inventory_assets(){
+        assetManager.unload("Buttons/back_btn.json");
+    }
+
+    public void dispose_PlayerCreate_assets(){
+        assetManager.unload("PlayerCreateSkins/player.atlas");
     }
 
     public void dispose_assets_for_settings(){

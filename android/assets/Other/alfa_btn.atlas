@@ -1,0 +1,13 @@
+
+alfa_btn.png
+size: 16,16
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+alfa_button
+  rotate: false
+  xy: 1, 1
+  size: 5, 5
+  orig: 5, 5
+  offset: 0, 0
+  index: -1

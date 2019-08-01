@@ -1,0 +1,27 @@
+
+diamondsPack_1.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+diamondsPack_1
+  rotate: false
+  xy: 1, 122
+  size: 113, 119
+  orig: 113, 119
+  offset: 0, 0
+  index: -1
+diamondsPack_1_disabled
+  rotate: false
+  xy: 1, 1
+  size: 113, 119
+  orig: 113, 119
+  offset: 0, 0
+  index: -1
+diamondsPack_1_pressed
+  rotate: false
+  xy: 116, 122
+  size: 113, 119
+  orig: 113, 119
+  offset: 0, 0
+  index: -1

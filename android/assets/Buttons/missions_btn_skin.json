@@ -1,0 +1,8 @@
+{
+"com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
+	"default": {
+		"up": "missions_btn",
+		"down": "missions_btn_pressed"
+	}
+}
+}

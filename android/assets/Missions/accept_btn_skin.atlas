@@ -1,0 +1,20 @@
+
+accept_btn_skin.png
+size: 128,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+btn_accept
+  rotate: false
+  xy: 1, 52
+  size: 87, 34
+  orig: 87, 34
+  offset: 0, 0
+  index: -1
+btn_accept_pressed
+  rotate: false
+  xy: 1, 16
+  size: 87, 34
+  orig: 87, 34
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,285 @@
+
+player.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+bg
+  rotate: false
+  xy: 2, 798
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2, 599
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 1
+body
+  rotate: false
+  xy: 184, 798
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 2
+body
+  rotate: false
+  xy: 2, 400
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 3
+body
+  rotate: false
+  xy: 184, 599
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 4
+body
+  rotate: false
+  xy: 366, 798
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 5
+body
+  rotate: false
+  xy: 2, 201
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 6
+bread
+  rotate: false
+  xy: 184, 400
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 1
+brows
+  rotate: false
+  xy: 366, 599
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 1
+brows
+  rotate: false
+  xy: 548, 798
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 2
+brows
+  rotate: false
+  xy: 2, 2
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 3
+brows
+  rotate: false
+  xy: 184, 201
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 4
+brows
+  rotate: false
+  xy: 366, 400
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 5
+ears
+  rotate: false
+  xy: 548, 599
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 1
+eyes
+  rotate: false
+  xy: 730, 798
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 1
+eyes
+  rotate: false
+  xy: 184, 2
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 2
+eyes
+  rotate: false
+  xy: 366, 201
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 3
+eyes
+  rotate: false
+  xy: 548, 400
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 4
+eyes
+  rotate: false
+  xy: 730, 599
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 5
+eyes
+  rotate: false
+  xy: 366, 2
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 6
+eyes
+  rotate: false
+  xy: 548, 201
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 7
+face
+  rotate: false
+  xy: 730, 400
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 1
+freckless
+  rotate: false
+  xy: 548, 2
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: -1
+hair
+  rotate: false
+  xy: 730, 201
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 1
+hair
+  rotate: false
+  xy: 730, 2
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 2
+
+player2.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+hair
+  rotate: false
+  xy: 2, 798
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 3
+hair
+  rotate: false
+  xy: 2, 599
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 4
+hair
+  rotate: false
+  xy: 184, 798
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 5
+mouth
+  rotate: false
+  xy: 2, 400
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 1
+mouth
+  rotate: false
+  xy: 184, 599
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 2
+mouth
+  rotate: false
+  xy: 366, 798
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 3
+mouth
+  rotate: false
+  xy: 2, 201
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 4
+mouth
+  rotate: false
+  xy: 184, 400
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 5
+mouth
+  rotate: false
+  xy: 366, 599
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 6
+nose
+  rotate: false
+  xy: 548, 798
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 1
+nose
+  rotate: false
+  xy: 2, 2
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 2
+nose
+  rotate: false
+  xy: 184, 201
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 3
+nose
+  rotate: false
+  xy: 366, 400
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 4
+nose
+  rotate: false
+  xy: 548, 599
+  size: 180, 197
+  orig: 180, 197
+  offset: 0, 0
+  index: 5
