@@ -18,7 +18,6 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import Other.SquadItem;
-import Other.SquadsActivity;
 
 public class SquadsDistScreen implements Screen {
 
@@ -57,8 +56,7 @@ public class SquadsDistScreen implements Screen {
         send_to_location1_btn.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                //new SquadsActivity(zombieClicker, squad, zombieClicker.getNumerics().get_location(1));
-                zombieClicker.getMyThread().start();
+                zombieClicker.getMyThread().getLocation1_squads().add(squad);
                 zombieClicker.setShopScreen();
                 Gdx.input.setInputProcessor(zombieClicker.getShop().getStage());
                 dispose();
