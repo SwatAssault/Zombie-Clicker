@@ -32,6 +32,7 @@ public class SquadItem {
 
     private BigInteger dps;
     private BigInteger squad_cost;
+    private BigInteger kill_reward;
 
     private String send_btn_string = "ОТПРАВИТЬ";
 
@@ -54,7 +55,8 @@ public class SquadItem {
         image = new Image(texture);
         buy_number = 0;
         squad_cost = new BigInteger("0");
-        dps = new BigInteger("20");
+        kill_reward = new BigInteger("10");
+        dps = new BigInteger("1");
         busy = false;
         bought = false;
 
@@ -76,7 +78,12 @@ public class SquadItem {
                     number_btn.setText(Integer.toString(buy_number));
                     send_to_location_btn.setVisible(true);
                     plus_cost();
-                    if(!bought) zombieClicker.getShop().setSpare_squads_counter(1);
+                    if(!bought){
+                        zombieClicker.getShop().setSpare_squads_counter(1);
+                    } else {
+                        plus_DPS();
+                        DPS.setText("DPS: +" + zombieClicker.getNumerics().bigInteger_to_string(dps));
+                    }
                     bought = true;
                 }
             }
@@ -122,7 +129,7 @@ public class SquadItem {
     }
 
     public void plus_DPS(){
-        dps = dps.add(BigInteger.valueOf(5));
+        dps = dps.add(BigInteger.valueOf(1));
     }
 
     public void disable_buy_btn(boolean x){
@@ -161,6 +168,10 @@ public class SquadItem {
 
 
     //////////////////SETTERS////////////////////////
+    public void setKill_reward(BigInteger x){
+        kill_reward = kill_reward.add(x);
+    }
+
     public void setSquad_cost(BigInteger x){
         squad_cost = x;
     }

@@ -1,15 +1,10 @@
 package com.awprecords.zombieclicker;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
 import Managers.Assets;
 import Managers.FontManager;
 import Managers.SoundManager;
-import Numbers.Location;
 import Numbers.Numerics;
 import Other.KeepTrackAch;
 import Other.MyThread;
@@ -46,8 +41,7 @@ public class ZombieClicker extends Game {
 
     public ZombieClicker() {
         instance = this;
-        myThread = new MyThread(instance);
-        //myThread.start();
+
 
 
       //  shop = new Shop(instance);
@@ -108,8 +102,12 @@ public class ZombieClicker extends Game {
         fontManager = new FontManager(instance);
         keepTrackAch = new KeepTrackAch(instance);
 
+        myThread = new MyThread(instance);
+        myThread.start();
+
         get_assets().load_assets_for_location_1();
         getNumerics().setCurrent_num_location(0);
+        getNumerics().getCurrent_location().setPlayer_on_location(true);
         getNumerics().getCurrent_location().setBGimage("Background/location_1_bg.png");
         setMainGame();
         // setMenuScreen();

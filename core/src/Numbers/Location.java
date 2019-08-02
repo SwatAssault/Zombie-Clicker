@@ -31,6 +31,8 @@ public class Location {
     private long betweenBoss;
     private boolean loseBoss;
 
+    private boolean player_on_location;           //находится игрок на локации или нет   0 - нет, 1 - да
+
     public Location(BigInteger zombie_health, int level_count, BigInteger zombie_kills, BigInteger boss_health, BigInteger zombie_kill_reward,
                     int boss_kill_reward, long betweenBoss, double durationBossFight, final ZombieClicker zc) {
 
@@ -45,6 +47,7 @@ public class Location {
         this.boss_kill_reward = boss_kill_reward;
         this.level_count = level_count;
         last_kills = new BigInteger("0");
+        player_on_location = false;
 
         this.betweenBoss = betweenBoss;
         loseBoss = false;
@@ -86,6 +89,10 @@ public class Location {
     }
 
     ////////////////////// GETTER ///////////////////////////
+    public boolean getPlayer_on_location(){
+        return player_on_location;
+    }
+
     public BigInteger getZombie_health() {
         return zombie_health;
     }
@@ -192,7 +199,6 @@ public class Location {
         count_death_zombies_betweenBoss = x;
         if (!bossFight)
             count_kill_zombies = count_kill_zombies.add(BigInteger.ONE);
-        System.out.println(count_kill_boss);
     }
 
     public void plus_count_kill_boss(long x) {
@@ -201,6 +207,10 @@ public class Location {
 
     public void setLoseBoss(boolean value) {
         loseBoss = value;
+    }
+
+    public void setPlayer_on_location(boolean x){
+        player_on_location = x;
     }
     ////////////////////// SETTER ///////////////////////////
 }

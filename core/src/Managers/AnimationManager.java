@@ -73,7 +73,7 @@ public class AnimationManager {
 
                 zombieClicker.getNumerics().plus_zombie_kills(BigInteger.valueOf(1));
                 zombieClicker.getNumerics().plus_gold(zombieClicker.getNumerics().getCurrent_location().getZombie_kill_reward());
-                System.out.println("zombie dead");
+              //  System.out.println("zombie dead");
                 zombieClicker.getNumerics().getCurrent_location().setMaxZombie_health();
                 zombie_animation = zombie_animations_arr.get(MathUtils.random(0, 2));
 

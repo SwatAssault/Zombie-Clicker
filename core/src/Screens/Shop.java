@@ -131,6 +131,7 @@ public class Shop implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 zombieClicker.get_assets().load_assets_for_anyLocation(zombieClicker);
                 zombieClicker.setMainGame();
+                zombieClicker.getNumerics().getCurrent_location().setPlayer_on_location(true);
                 //dispose();
             }
         });

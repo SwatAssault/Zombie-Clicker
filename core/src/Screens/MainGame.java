@@ -186,6 +186,7 @@ public class MainGame implements Screen {
                     next_level(0);
                     location.setLoseBoss(true);
                 }
+                zombieClicker.getNumerics().getCurrent_location().setPlayer_on_location(false);
             }
         });
 
