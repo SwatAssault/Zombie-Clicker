@@ -99,7 +99,7 @@ public class SquadItem {
                 } else {
                     activate_send_btn(true);
                     status = 0;
-                    zombieClicker.getMyThread().remove_squad_from_location(getSquadItem(), getSquadItem().status);
+                    zombieClicker.getMyThread().remove_squad_from_location(getSquadItem(), status);
                 }
 
             }

@@ -21,25 +21,18 @@ public class Numerics {
     private int player_brows;
     private String player_name;
 
-    //   private BigInteger zombie_health;          //в начале каждого уровня := max_zombie_health
     private BigInteger global_tap_count;
     private int diamonds = 0;                 //доп валюта
     private BigInteger zombie_kills;
+    private double squads_reward_percent;     //сколько процентов от золота приносит убийство отрядов
     private long boss_kills;
     private BigInteger gold;                   //основная валюта
     private BigInteger punch_power;            //сила одного удара(клика)
-    //   private BigInteger boss_health;            //в начале каждого уровня := max_boss_health
-    // private BigInteger zombie_kill_reward;     //награда за убийство зомби(золото)
-    // private int boss_kill_reward = 1;          //нагарада за убийство босса(алмазы)
-    //  private BigInteger max_boss_health;        //увеличивается с каждым уровнем
-    //  private BigInteger max_zombie_health;      //увеличивается с каждым уровнем
-    //  private BigInteger last_kills;             //последнее убийство на предыдущем уровне
     private float how_fast_passive_damage;     //насколько быстро (автоматически) отнимается хп (чем меньше значение, тем быстрее)
     private BigInteger passive_damage;
     private BigInteger oneTrillion;
     private BigInteger oneQuadrillion;
 
-    private boolean bossFight;
     private String string_to_cut;
     private String before_dot;
     private String after_dot;
@@ -86,23 +79,16 @@ public class Numerics {
 
         current_location = 0;
 
-        //   zombie_health = new BigInteger("10");
-        //   max_zombie_health = new BigInteger("10");
-        //   boss_health = new BigInteger("20");
-        //  max_boss_health = new BigInteger("20");
         global_tap_count = new BigInteger("0");
         gold = new BigInteger("0");
         zombie_kills = new BigInteger("0");
         boss_kills = 0;
         punch_power = new BigInteger("2");
-        //   zombie_kill_reward = new BigInteger("50000000");
-        //   last_kills = new BigInteger("0");
         how_fast_passive_damage = 0.1f;
         passive_damage = new BigInteger("0");
         oneTrillion = new BigInteger("1000000000000");
         oneQuadrillion = new BigInteger("1000000000000000");
-
-        bossFight = false;
+        squads_reward_percent = 10.0f;
 
         //TODO считывать из сохранения
         countCraftItem_1 = 10;
@@ -284,6 +270,11 @@ public class Numerics {
     public void setPlayer_name(String name) {
         player_name = name;
     }
+
+    public void setSquads_reward_percent(double x){
+        // в процентах % 10.0f
+        squads_reward_percent = x;
+    }
     /////////////////SETTERS//////////////////
 
 
@@ -310,10 +301,6 @@ public class Numerics {
 
     public BigInteger getPunch_power() {
         return punch_power;
-    }
-
-    public boolean get_bossFight() {
-        return bossFight;
     }
 
     public float getHow_fast_passive_damage() {
@@ -398,6 +385,10 @@ public class Numerics {
 
     public String getPlayer_name() {
         return player_name;
+    }
+
+    public double getSquads_reward_percent(){
+        return squads_reward_percent;
     }
     ////////////////GETTERS//////////////////
 }
