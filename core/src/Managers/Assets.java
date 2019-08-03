@@ -149,10 +149,10 @@ public class Assets {
     }
 
     public void load_assets_for_achievements(){
-        assetManager.load("SkinJson/kills.json", Skin.class);
-        assetManager.load("SkinJson/clicks.json", Skin.class);
+     //   assetManager.load("SkinJson/kills.json", Skin.class);
+      //  assetManager.load("SkinJson/clicks.json", Skin.class);
         assetManager.load("Buttons/back_btn.json", Skin.class);
-        assetManager.load("Background/achbg.png", Texture.class);
+    //    assetManager.load("Background/achbg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
