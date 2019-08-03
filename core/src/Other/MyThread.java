@@ -4,6 +4,7 @@ import com.awprecords.zombieclicker.ZombieClicker;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 
@@ -66,6 +67,9 @@ public class MyThread extends Thread {
                         zombieClicker.getNumerics().get_location(1).getCount_death_zombies_betweenBoss() + 1);
             }
 
+            //выдача награды
+            pay_reward(1);
+
         }
 
     }
@@ -75,7 +79,17 @@ public class MyThread extends Thread {
         switch (which_location){
             case 1:
                 location1_squads.removeValue(x, true);
+            break;
+
+            default:
+                System.out.println("хуй");
+            break;
         }
+    }
+
+    public void pay_reward(int which_location){
+        zombieClicker.getNumerics().plus_gold(BigDecimal.valueOf(zombieClicker.getNumerics().get_location(which_location).getZombie_kill_reward().floatValue() *
+                zombieClicker.getNumerics().getSquads_reward_percent() / 100).toBigInteger());
     }
 
     //////////////////////////////GETTERS///////////////////////////////
