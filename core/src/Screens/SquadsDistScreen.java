@@ -57,6 +57,7 @@ public class SquadsDistScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 zombieClicker.getMyThread().getLocation1_squads().add(squad);
+                squad.setStatus(1);
                 zombieClicker.setShopScreen();
                 Gdx.input.setInputProcessor(zombieClicker.getShop().getStage());
                 dispose();

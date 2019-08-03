@@ -35,12 +35,13 @@ public class SquadItem {
     private BigInteger kill_reward;
 
     private String send_btn_string = "ОТПРАВИТЬ";
+    private String send_btn_cancel_string = "CANCEL";
 
     private TextButton buy_btn;
     private TextButton send_to_location_btn;
     private TextButton number_btn;
 
-    private boolean busy; //находится на локации или нет
+    private int status; // 0 - свободен, 1,2... - на какой-то локации, -1 - на задании
     private boolean bought; //куплен или нет
 
     public SquadItem(final ZombieClicker zc, String name, String description, Texture texture){
@@ -57,7 +58,7 @@ public class SquadItem {
         squad_cost = new BigInteger("0");
         kill_reward = new BigInteger("10");
         dps = new BigInteger("1");
-        busy = false;
+        status = 0;
         bought = false;
 
 
@@ -92,8 +93,14 @@ public class SquadItem {
         send_to_location_btn.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                send_to_location_btn.setDisabled(true);
-                zombieClicker.setSquadsDistScreen(zombieClicker, getSquadItem());
+                if(!send_to_location_btn.isDisabled()){
+                    disable_send_btn(true);
+                    zombieClicker.setSquadsDistScreen(zombieClicker, getSquadItem());
+                } else {
+                    activate_send_btn(true);
+                    zombieClicker.getMyThread().remove_squad_from_location(getSquadItem(), getSquadItem().status);
+                }
+
             }
         });
 
@@ -138,6 +145,12 @@ public class SquadItem {
 
     public void disable_send_btn(boolean x){
             send_to_location_btn.setDisabled(x);
+            send_to_location_btn.setText(send_btn_cancel_string);
+    }
+
+    public void activate_send_btn(boolean x){
+        send_to_location_btn.setDisabled(false);
+        send_to_location_btn.setText(send_btn_string);
     }
 
     //////////////////GETTERS////////////////////////
@@ -153,8 +166,8 @@ public class SquadItem {
         return buy_btn;
     }
 
-    public boolean is_busy(){
-        return busy;
+    public int getStatus(){
+        return status;
     }
 
     public boolean isBought(){
@@ -176,8 +189,8 @@ public class SquadItem {
         squad_cost = x;
     }
 
-    public void setBusy(boolean x){
-        busy = x;
+    public void setStatus(int x){
+        status = x;
     }
 
     public void setBought(boolean x){
