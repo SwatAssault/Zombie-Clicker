@@ -11,6 +11,7 @@ import java.math.BigInteger;
 public class MyThread extends Thread {
     private final ZombieClicker zombieClicker;
     private BigInteger s1;
+    private int m; //во сколько раз увилечивается награда
 
 
 
@@ -19,6 +20,7 @@ public class MyThread extends Thread {
     public MyThread(final ZombieClicker zc){
         zombieClicker = zc;
         s1 = new BigInteger("0");
+        m = 0;
 
         location1_squads = new Array<SquadItem>();
 
@@ -88,8 +90,17 @@ public class MyThread extends Thread {
     }
 
     public void pay_reward(int which_location){
+        switch (which_location){
+            case 1:
+                m = location1_squads.size;
+            break;
+
+            default:
+                m = 0;
+            break;
+        }
         zombieClicker.getNumerics().plus_gold(BigDecimal.valueOf(zombieClicker.getNumerics().get_location(which_location).getZombie_kill_reward().floatValue() *
-                zombieClicker.getNumerics().getSquads_reward_percent() / 100).toBigInteger());
+                zombieClicker.getNumerics().getSquads_reward_percent() / 100 * m).toBigInteger());
     }
 
     //////////////////////////////GETTERS///////////////////////////////

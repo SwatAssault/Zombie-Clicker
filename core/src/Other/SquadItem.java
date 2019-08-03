@@ -98,8 +98,8 @@ public class SquadItem {
                     zombieClicker.setSquadsDistScreen(zombieClicker, getSquadItem());
                 } else {
                     activate_send_btn(true);
-                    status = 0;
                     zombieClicker.getMyThread().remove_squad_from_location(getSquadItem(), status);
+                    status = 0;
                 }
 
             }
