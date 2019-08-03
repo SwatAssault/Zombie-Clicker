@@ -36,7 +36,6 @@ public class Shop implements Screen {
     private Camera camera;
     private Viewport viewport;
     private Image ImageBG;
-    private Label header_label;
     private ScrollPane scrollPane;
     private ScrollPane squad_scrollPane;
     private ScrollPane other_scrollPane;
@@ -112,7 +111,6 @@ public class Shop implements Screen {
         goback_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json", Skin.class);
         tab_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/tab_skin.json", Skin.class);
         header_label_skin = zombieClicker.get_assets().get_asset_manager().get("LabelSkins/header_label_skin.json", Skin.class);
-        header_label = new Label(header_string, header_label_skin);
         goback_bth = new Button(goback_skin);
         shop_tab_btn = new TextButton(items_tab_string, tab_skin);
         squad_tab_btn = new TextButton(squads_tab_string, tab_skin);
@@ -120,7 +118,7 @@ public class Shop implements Screen {
 
         fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Rubik.ttf"));
         fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        fontParameter.size = 25;
+        fontParameter.size = 20;
         fontParameter.characters = FONT_CHARACTERS;
         bitmapFont = fontGenerator.generateFont(fontParameter);
         bitmapFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
@@ -194,8 +192,6 @@ public class Shop implements Screen {
         other_tab_btn.setPosition(350,770);
 
         goback_bth.setPosition(10, 10);
-
-        header_label.setPosition(540 / 2 - header_label.getGlyphLayout().width / 2, 900);
 
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
         shopItem1 = new ShopItem(zc, "ANNIHILATION GUN", "TAP DAMAGE", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
@@ -330,7 +326,6 @@ public class Shop implements Screen {
         other_scrollPane.setZIndex(0);
 
         stage.addActor(ImageBG);
-        stage.addActor(header_label);
         stage.addActor(shop_tab_btn);
         stage.addActor(squad_tab_btn);
         stage.addActor(other_tab_btn);
@@ -405,7 +400,7 @@ public class Shop implements Screen {
         stage.draw();
 
         batch.begin();
-        bitmapFont.draw(batch, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getGold()), 320, 945);
+        bitmapFont.draw(batch, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getGold()), 100, 950);
         batch.end();
 
         batch.setProjectionMatrix(camera.combined);
