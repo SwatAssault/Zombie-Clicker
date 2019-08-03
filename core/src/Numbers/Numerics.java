@@ -183,14 +183,6 @@ public class Numerics {
         punch_power = x;
     }
 
-//    public void setZombie_kill_reward(BigInteger x) {
-//        zombie_kill_reward = x;
-//    }
-
-//    public void setBoss_kill_reward(int x) {
-//        boss_kill_reward = x;
-//    }
-
     public void plus_global_tap_count(BigInteger x) {
         global_tap_count = global_tap_count.add(x);
     }
@@ -220,14 +212,6 @@ public class Numerics {
         //вызывается при покупке улучшения на урон в магазине
         punch_power = punch_power.add(x);
     }
-
-//    public void plus_Zombie_kill_reward(BigInteger x) {
-//        zombie_kills = zombie_kills.add(x);
-//    }
-
-//    public void setLast_kills(BigInteger x) {
-//        last_kills = x;
-//    }
 
     public void setHow_fast_passive_damage(float x) {
         how_fast_passive_damage = x;
@@ -304,10 +288,6 @@ public class Numerics {
 
 
     ////////////////GETTERS//////////////////
-//    public BigInteger getZombie_health() {
-//        return zombie_health;
-//    }
-
     public BigInteger getGlobal_tap_count() {
         return global_tap_count;
     }
@@ -331,30 +311,6 @@ public class Numerics {
     public BigInteger getPunch_power() {
         return punch_power;
     }
-
-//    public BigInteger getBoss_health() {
-//        return boss_health;
-//    }
-//
-//    public BigInteger getZombie_kill_reward() {
-//        return zombie_kill_reward;
-//    }
-//
-//    public int getBoss_kill_reward() {
-//        return boss_kill_reward;
-//    }
-//
-//    public BigInteger getMax_boss_health() {
-//        return max_boss_health;
-//    }
-//
-//    public BigInteger getMax_zombie_health() {
-//        return max_zombie_health;
-//    }
-//
-//    public BigInteger getLast_kills() {
-//        return last_kills;
-//    }
 
     public boolean get_bossFight() {
         return bossFight;
