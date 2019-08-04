@@ -26,6 +26,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import Other.OtherItem;
 import Other.ShopItem;
 import Other.SquadItem;
 
@@ -75,6 +76,16 @@ public class Shop implements Screen {
     private Array<ShopItem> shopItems_array;
     ///////////////SHOP ITEMS///////////////////
 
+    ///////////////OTHER ITEMS//////////////////
+    private OtherItem otherItem1;
+    private OtherItem otherItem2;
+    private OtherItem otherItem3;
+    private OtherItem otherItem4;
+    private OtherItem otherItem5;
+    private OtherItem otherItem6;
+    private Array<OtherItem> otherItems_array;
+    ///////////////OTHER ITEMS//////////////////
+
     private Skin goback_skin;
     private Skin tab_skin;
     private Skin header_label_skin;
@@ -106,7 +117,7 @@ public class Shop implements Screen {
         item_widht = 474;
         items_amount = 10;
         squads_amount = 5;
-        other_items_amount = 0;
+        other_items_amount = 6;
 
         goback_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json", Skin.class);
         tab_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/tab_skin.json", Skin.class);
@@ -293,15 +304,10 @@ public class Shop implements Screen {
         table_squads.setWidth(item_widht);
         table_squads.setVisible(false);
 
-        table_squads.add(squad1.get_table());
-        table_squads.row();
-        table_squads.add(squad2.get_table());
-        table_squads.row();
-        table_squads.add(squad3.get_table());
-        table_squads.row();
-        table_squads.add(squad4.get_table());
-        table_squads.row();
-        table_squads.add(squad5.get_table());
+        for(int i = 0; i < squads_amount; i++){
+            table_squads.add(squadItems_array.get(i).get_table());
+            table_squads.row();
+        }
 
         squad_scrollPane = new ScrollPane(table_squads);
         squad_scrollPane.setHeight(140 * 5 - 40);
@@ -310,13 +316,30 @@ public class Shop implements Screen {
         squad_scrollPane.setZIndex(0);
 
         ///////////////////OTHER ITEMS INITIALIZATION///////////////////////
+        otherItem1 = new OtherItem(zc,"A", 10);
+        otherItem2 = new OtherItem(zc,"B", 10);
+        otherItem3 = new OtherItem(zc,"C", 10);
+        otherItem4 = new OtherItem(zc,"D", 10);
+        otherItem5 = new OtherItem(zc,"E", 10);
+        otherItem6 = new OtherItem(zc,"F", 10);
 
+        otherItems_array = new Array<OtherItem>();
+        otherItems_array.add(otherItem1);
+        otherItems_array.add(otherItem2);
+        otherItems_array.add(otherItem3);
+        otherItems_array.add(otherItem4);
+        otherItems_array.add(otherItem5);
+        otherItems_array.add(otherItem6);
         ///////////////////OTHER ITEMS INITIALIZATION///////////////////////
 
         table_other = new Table();
         table_other.setWidth(item_widht);
         table_other.setVisible(false);
 
+        for(int i = 0; i < other_items_amount; i++){
+            table_other.add(otherItems_array.get(i).getStack());
+            table_other.row();
+        }
 
 
         other_scrollPane = new ScrollPane(table_other);
@@ -378,6 +401,16 @@ public class Shop implements Screen {
         }
 
         //other items
+        for(int i = 0; i < other_items_amount; i++){
+            if(otherItems_array.get(i).getCurrent_buy_counter() == otherItems_array.get(i).getMax_buy_counter()){
+                otherItems_array.get(i).getBuy_btn().setText("MAX");
+                otherItems_array.get(i).disable_buy_btn(true);
+            } else
+                if(zombieClicker.getNumerics().getDiamonds() < otherItems_array.get(i).getCost()){
+                    otherItems_array.get(i).disable_buy_btn(true);
+                } else
+                    otherItems_array.get(i).disable_buy_btn(false);
+        }
     }
 
     public void update_labels(){
@@ -408,7 +441,6 @@ public class Shop implements Screen {
         batch.end();
 
         batch.setProjectionMatrix(camera.combined);
-        System.out.println(spare_squads_counter);
     }
 
     @Override

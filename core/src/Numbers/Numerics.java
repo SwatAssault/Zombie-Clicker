@@ -22,7 +22,8 @@ public class Numerics {
     private String player_name;
 
     private BigInteger global_tap_count;
-    private int diamonds = 0;                 //доп валюта
+    private BigInteger gold_from_taps;
+    private int diamonds = 100;                 //доп валюта
     private BigInteger zombie_kills;
     private double squads_reward_percent;     //сколько процентов от золота приносит убийство отрядов
     private long boss_kills;
@@ -89,6 +90,7 @@ public class Numerics {
         oneTrillion = new BigInteger("1000000000000");
         oneQuadrillion = new BigInteger("1000000000000000");
         squads_reward_percent = 10.0f;
+        gold_from_taps = new BigInteger("0");
 
         //TODO считывать из сохранения
         countCraftItem_1 = 10;
@@ -179,6 +181,10 @@ public class Numerics {
 
     public void minus_Gold(BigInteger x) {
         gold = gold.subtract(x);
+    }
+
+    public void minus_diamonds(int x){
+        diamonds -= x;
     }
 
     public void plus_gold(BigInteger x) {
