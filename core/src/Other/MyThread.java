@@ -94,10 +94,6 @@ public class MyThread extends Thread {
     }
 
     //////////////////////////////GETTERS///////////////////////////////
-    public Array<SquadItem> getLocation1_squads(){
-        return location1_squads;
-    }
-
     public Array<Array<SquadItem>> getAllSquads(){
         return allSquads;
     }

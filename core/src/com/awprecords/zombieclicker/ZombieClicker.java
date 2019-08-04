@@ -1,6 +1,9 @@
 package com.awprecords.zombieclicker;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Screen;
+
+import java.math.BigInteger;
 
 import Managers.Assets;
 import Managers.FontManager;
@@ -15,6 +18,7 @@ import Screens.MainGame;
 import Screens.MapScreen;
 import Screens.Missions;
 import Screens.PlayerCreate;
+import Screens.RewardScreen;
 import Screens.Shop;
 import Screens.SquadsDistScreen;
 
@@ -30,6 +34,7 @@ public class ZombieClicker extends Game {
     private FontManager fontManager;
     private KeepTrackAch keepTrackAch;
     private SquadsDistScreen squadsDistScreen;
+    private RewardScreen rewardScreen;
 
     private MainGame mainGame;
     private Shop shop;
@@ -105,6 +110,8 @@ public class ZombieClicker extends Game {
         myThread = new MyThread(instance);
         myThread.start();
 
+        get_assets().load_popular();
+
         get_assets().load_assets_for_location_1();
         getNumerics().setCurrent_num_location(0);
         getNumerics().getCurrent_location().setPlayer_on_location(true);
@@ -162,10 +169,17 @@ public class ZombieClicker extends Game {
         missions = new Missions(instance);
         setScreen(missions);
     }
+
+    public void setRewardScreen(String what, BigInteger amount, String lastScreen){
+        rewardScreen = null;
+        rewardScreen = new RewardScreen(instance, what, amount, lastScreen);
+        setScreen(rewardScreen);
+    }
     ////////////SET SCREEN METHODS/////////////
 
     @Override
     public void dispose() {
+        get_assets().dispose_popular();
         fontManager.dispose();
         assets.dispose();
     }

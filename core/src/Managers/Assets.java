@@ -181,8 +181,19 @@ public class Assets {
         assetManager.finishLoading();
     }
 
-    /////////DISPOSE ASSETS/////////
+    public void load_assets_for_RewardScreen(){
+        assetManager.load("Background/rewardbg.png", Texture.class);
+        assetManager.update();
+        assetManager.finishLoading();
+    }
 
+    public void load_popular(){
+        assetManager.load("Buttons/ok_btn_skin.json", Skin.class);
+        assetManager.update();
+        assetManager.finishLoading();
+    }
+
+    /////////DISPOSE ASSETS/////////
     public void dispose_Game_assets(){
         assetManager.unload("Buttons/back_btn.json");
         assetManager.unload("Buttons/shop_btn.json");
@@ -259,6 +270,14 @@ public class Assets {
 
     public void dispose_assets_for_location_4(){
         assetManager.unload("Background/location_4_bg.png");
+    }
+
+    public void dispose_assets_for_RewardScreen(){
+        assetManager.unload("Background/rewardbg.png");
+    }
+
+    public void dispose_popular(){
+        assetManager.unload("Buttons/ok_btn_skin.json");
     }
     /////////DISPOSE ASSETS/////////
 

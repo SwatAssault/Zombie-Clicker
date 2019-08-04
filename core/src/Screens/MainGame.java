@@ -208,6 +208,11 @@ public class MainGame implements Screen {
 //                    next_level(0);
 //                    location.setLoseBoss(true);
 //                }
+
+
+                //на время
+                zombieClicker.setRewardScreen("gold", BigInteger.ONE, "maingame");
+
             }
         });
 

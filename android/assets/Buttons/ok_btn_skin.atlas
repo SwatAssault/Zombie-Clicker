@@ -1,0 +1,27 @@
+
+ok_btn_skin.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Rubik24
+  rotate: false
+  xy: 1, 156
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+ok
+  rotate: false
+  xy: 1, 79
+  size: 155, 75
+  orig: 155, 75
+  offset: 0, 0
+  index: -1
+ok_pressed
+  rotate: false
+  xy: 515, 593
+  size: 155, 75
+  orig: 155, 75
+  offset: 0, 0
+  index: -1

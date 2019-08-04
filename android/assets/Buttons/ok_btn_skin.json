@@ -1,0 +1,14 @@
+{
+"com.badlogic.gdx.graphics.g2d.BitmapFont": {
+	"Rubik24": {
+		"file": "Rubik24.fnt"
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
+	"default": {
+		"font": "Rubik24",
+		"up": "ok",
+		"down": "ok_pressed"
+	}
+}
+}
