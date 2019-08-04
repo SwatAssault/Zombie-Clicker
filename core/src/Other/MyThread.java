@@ -10,25 +10,25 @@ import java.math.BigInteger;
 public class MyThread extends Thread {
     private final ZombieClicker zombieClicker;
     private BigInteger s;
-    private int m; //во сколько раз увилечивается награда
-
 
 
     private Array<SquadItem> location1_squads;
+    private Array<SquadItem> location2_squads;
 
     private Array<Array<SquadItem>> allSquads;
 
     public MyThread(final ZombieClicker zc){
         zombieClicker = zc;
         s = new BigInteger("0");
-        m = 0;
 
         location1_squads = new Array<SquadItem>();
+        location2_squads = new Array<SquadItem>();
 
 
         allSquads = new Array<Array<SquadItem>>();
 
         allSquads.add(location1_squads);
+        allSquads.add(location2_squads);
     }
 
     public void run(){
@@ -43,6 +43,8 @@ public class MyThread extends Thread {
                 Thread.sleep(300);
                 if(!zombieClicker.getNumerics().get_location(1).getPlayer_on_location())
                     location_activity(1);
+                if(!zombieClicker.getNumerics().get_location(2).getPlayer_on_location())
+                    location_activity(2);
 
 
 
