@@ -41,7 +41,6 @@ public class MainGame implements Screen {
     private boolean is_mainButton_pressed;
 
     private Image mainButton;
-    private Button go_back_btn;
     private Button goTo_shop_btn;
     private Button achievement_btn;
     private Button map_btn;
@@ -50,7 +49,6 @@ public class MainGame implements Screen {
     private Button bossFight_btn;
     private Button leaveBossFight_btn;
 
-    private Skin goback_skin;
     private Skin shop_skin;
     private Skin ach_skin;
     private Skin map_skin;
@@ -158,15 +156,6 @@ public class MainGame implements Screen {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 is_mainButton_pressed = false;
-            }
-        });
-
-        goback_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json");
-        go_back_btn = new Button(goback_skin);
-        go_back_btn.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-
             }
         });
 
