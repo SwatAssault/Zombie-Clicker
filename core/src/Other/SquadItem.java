@@ -55,7 +55,7 @@ public class SquadItem {
         description_table = new Table();
         image = new Image(texture);
         buy_number = 0;
-        squad_cost = new BigInteger("0");
+        squad_cost = new BigInteger("10");
         kill_reward = new BigInteger("10");
         dps = new BigInteger("1");
         status = 0;
@@ -77,14 +77,14 @@ public class SquadItem {
                 if(!buy_btn.isDisabled()){
                     buy_number++;
                     number_btn.setText(Integer.toString(buy_number));
+                    zombieClicker.getNumerics().minus_Gold(squad_cost);
                     send_to_location_btn.setVisible(true);
                     plus_cost();
                     if(!bought){
                         zombieClicker.getShop().setSpare_squads_counter(1);
-                    } else {
-                        plus_DPS();
-                        DPS.setText("DPS: +" + zombieClicker.getNumerics().bigInteger_to_string(dps));
                     }
+                    plus_DPS();
+                    DPS.setText("DPS: +" + zombieClicker.getNumerics().bigInteger_to_string(dps));
                     bought = true;
                 }
             }
@@ -94,11 +94,12 @@ public class SquadItem {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!send_to_location_btn.isDisabled()){
-                    disable_send_btn(true);
+                    disable_send_btn();
                     zombieClicker.setSquadsDistScreen(zombieClicker, getSquadItem());
                 } else {
-                    activate_send_btn(true);
+                    activate_send_btn();
                     zombieClicker.getMyThread().remove_squad_from_location(getSquadItem(), status);
+                    zombieClicker.getShop().setSpare_squads_counter(1);
                     status = 0;
                 }
 
@@ -144,12 +145,12 @@ public class SquadItem {
             buy_btn.setDisabled(x);
     }
 
-    public void disable_send_btn(boolean x){
-            send_to_location_btn.setDisabled(x);
+    public void disable_send_btn(){
+            send_to_location_btn.setDisabled(true);
             send_to_location_btn.setText(send_btn_cancel_string);
     }
 
-    public void activate_send_btn(boolean x){
+    public void activate_send_btn(){
         send_to_location_btn.setDisabled(false);
         send_to_location_btn.setText(send_btn_string);
     }
@@ -177,6 +178,10 @@ public class SquadItem {
 
     public BigInteger getDps(){
         return dps;
+    }
+
+    public BigInteger getSquad_cost(){
+        return squad_cost;
     }
     //////////////////GETTERS////////////////////////
 

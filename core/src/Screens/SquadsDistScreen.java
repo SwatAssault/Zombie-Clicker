@@ -62,6 +62,7 @@ public class SquadsDistScreen implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 zombieClicker.getMyThread().getAllSquads().get(0).add(squad);    // 0 - значит локация 1
                 squad.setStatus(1);
+                zombieClicker.getShop().setSpare_squads_counter(-1);
                 zombieClicker.setShopScreen();
                 Gdx.input.setInputProcessor(zombieClicker.getShop().getStage());
                 dispose();
@@ -73,6 +74,7 @@ public class SquadsDistScreen implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 zombieClicker.getMyThread().getAllSquads().get(1).add(squad);    // 1 - значит локация 2
                 squad.setStatus(2);
+                zombieClicker.getShop().setSpare_squads_counter(-1);
                 zombieClicker.setShopScreen();
                 Gdx.input.setInputProcessor(zombieClicker.getShop().getStage());
                 dispose();

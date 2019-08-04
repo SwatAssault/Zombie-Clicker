@@ -362,7 +362,6 @@ public class Shop implements Screen {
     }
 
     public void check_money(){
-
         //shop items
         for(int i = 0; i < items_amount; i++)
             if (zombieClicker.getNumerics().getGold().compareTo(shopItems_array.get(i).getItem_cost()) < 0) {
@@ -371,23 +370,28 @@ public class Shop implements Screen {
                 shopItems_array.get(i).disable_button(false);
 
         //squad items
+        for(int i = 0; i < squads_amount; i++){
+            if(zombieClicker.getNumerics().getGold().compareTo(squadItems_array.get(i).getSquad_cost()) < 0){
+                squadItems_array.get(i).disable_buy_btn(true);
+            } else
+                squadItems_array.get(i).disable_buy_btn(false);
+        }
 
         //other items
     }
 
     public void update_labels(){
-
         //shop items
         for(int i = 0; i < items_amount; i++){
             shopItems_array.get(i).update_cost_label();
             shopItems_array.get(i).update_value_label();
         }
 
-
         //squad items
         for(int i = 0; i < squads_amount; i++){
             squadItems_array.get(i).update_buy_label();
         }
+
         //other items
 
     }
@@ -404,6 +408,7 @@ public class Shop implements Screen {
         batch.end();
 
         batch.setProjectionMatrix(camera.combined);
+        System.out.println(spare_squads_counter);
     }
 
     @Override
