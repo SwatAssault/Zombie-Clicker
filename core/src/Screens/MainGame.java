@@ -22,6 +22,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import Managers.AnimationManager;
@@ -92,7 +93,6 @@ public class MainGame implements Screen {
         zombieClicker.get_assets().load_assets_for_Game();
         time = System.currentTimeMillis();
 
-
         this.location = location;
 
         fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Rubik.ttf"));
@@ -150,6 +150,7 @@ public class MainGame implements Screen {
                     zombieClicker.getNumerics().getCurrent_location().minusHealth(zombieClicker.getNumerics().getPunch_power());
                 }
                 zombieClicker.getSoundManager().play_punch_sound();
+                zombieClicker.getNumerics().plus_gold(zombieClicker.getNumerics().getGold_from_taps());
                 return true;
             }
 

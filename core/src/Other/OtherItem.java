@@ -38,7 +38,7 @@ public class OtherItem {
         buy_btn.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                if(!buy_btn.isDisabled() && current_buy_counter <= max_buy_counter){
+                if(!buy_btn.isDisabled() && current_buy_counter != max_buy_counter){
                     current_buy_counter++;
                     zombieClicker.getNumerics().minus_diamonds(cost);
                     plusCost(1);

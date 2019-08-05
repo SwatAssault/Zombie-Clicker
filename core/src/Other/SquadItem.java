@@ -69,7 +69,7 @@ public class SquadItem {
         send_to_location_btn = new TextButton(send_btn_string, zombieClicker.get_assets().get_asset_manager().get("Squads/send_btn_skin.json", Skin.class));
         number_btn = new TextButton(Integer.toString(buy_number), zombieClicker.get_assets().get_asset_manager().get("Other/buy_counter_skin.json", Skin.class));
 
-        send_to_location_btn.setVisible(false);
+        send_to_location_btn.setVisible(bought);
 
         buy_btn.addListener(new ClickListener(){
             @Override

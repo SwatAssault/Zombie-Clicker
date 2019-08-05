@@ -69,7 +69,7 @@ public class Numerics {
         //BigInteger zombie_health, int level_count, BigInteger zombie_kills, BigInteger boss_health, BigInteger zombie_kill_reward,
         //                    int boss_kill_reward, long betweenBoss, final ZombieClicker zc
         location = new ArrayList<Location>(Arrays.asList(
-                new Location(new BigInteger("8"), 1, new BigInteger("0"), new BigInteger("12"), new BigInteger("1000"),
+                new Location(new BigInteger("10"), 1, new BigInteger("0"), new BigInteger("12"), new BigInteger("1000"),
                         1, 3, 3000, zc),
                 new Location(new BigInteger("12"), 1, new BigInteger("0"), new BigInteger("15"), new BigInteger("70000"),
                         2, 4, 33000, zc),
@@ -90,7 +90,7 @@ public class Numerics {
         oneTrillion = new BigInteger("1000000000000");
         oneQuadrillion = new BigInteger("1000000000000000");
         squads_reward_percent = 10.0f;
-        gold_from_taps = new BigInteger("0");
+        gold_from_taps = new BigInteger("2");
 
         //TODO считывать из сохранения
         countCraftItem_1 = 10;
@@ -281,6 +281,10 @@ public class Numerics {
         // в процентах % 10.0f
         squads_reward_percent = x;
     }
+
+    public void setGold_from_taps(BigInteger x){
+        gold_from_taps = x;
+    }
     /////////////////SETTERS//////////////////
 
 
@@ -395,6 +399,10 @@ public class Numerics {
 
     public double getSquads_reward_percent(){
         return squads_reward_percent;
+    }
+
+    public BigInteger getGold_from_taps(){
+        return gold_from_taps;
     }
     ////////////////GETTERS//////////////////
 }
