@@ -31,18 +31,23 @@ public class Location {
     private int count_death_zombies_betweenBoss;
     private long betweenBoss;
     private boolean loseBoss;
-
     private boolean player_on_location;           //находится игрок на локации или нет   0 - нет, 1 - да
+
     private double multiplier_zombie_HP;                    //коэффициент для ХП зомби
     private double multiplier_BOSS_HP;                    //коэффициент для ХП Боссов
+    private double multiplier_zombie_kill_reward;                    //коэффициент для золота с убийства зомби
+
+    private BigInteger base_zombie_HP;   //начальное ХП зомби (не изменно)
+    private BigInteger base_BOSS_HP;
+    private BigInteger base_zombie_reward;
 
     public Location(BigInteger zombie_health, int level_count, BigInteger zombie_kills, BigInteger boss_health, BigInteger zombie_kill_reward,
                     int boss_kill_reward, long betweenBoss, double durationBossFight, final ZombieClicker zc) {
 
         zombieClicker = zc;
-
-        this.zombie_health = zombie_health;
-        max_zombie_health = zombie_health;
+        base_zombie_HP = zombie_health;
+        max_zombie_health = base_zombie_HP;
+        this.zombie_health = max_zombie_health;
         this.boss_health = boss_health;
         max_boss_health = boss_health;
         this.zombie_kills = zombie_kills;
@@ -61,8 +66,9 @@ public class Location {
         count_kill_boss = new BigInteger("0");
         count_death_zombies_betweenBoss = 0;
 
-        multiplier_zombie_HP = 1.1f;
-        multiplier_BOSS_HP = 1.3f;
+        multiplier_zombie_HP = 1.2f;
+        multiplier_BOSS_HP = 1f;
+        multiplier_zombie_kill_reward = 1.1f;
     }
 
     public void minus_Boss_health(BigInteger x) {
@@ -83,7 +89,8 @@ public class Location {
     public void plus_zombie_health() {
         //формула увеличения хп зомби
         // HP * multiplier ^ level
-        max_zombie_health = BigDecimal.valueOf(max_zombie_health.floatValue() * Math.pow(multiplier_zombie_HP, level_count)).toBigInteger();
+     //   max_zombie_health = BigDecimal.valueOf(base_zombie_HP.floatValue() * Math.pow(multiplier_zombie_HP, level_count)).toBigInteger();
+        max_zombie_health = BigDecimal.valueOf(base_zombie_HP.floatValue() * Math.pow(multiplier_zombie_HP, level_count)).toBigInteger();
     }
 
     public void plus_Boss_health() {
@@ -167,6 +174,10 @@ public class Location {
     public double getMultiplier_BOSS_HP(){
         return multiplier_BOSS_HP;
     }
+
+    public BigInteger getBase_zombie_HP(){
+        return base_zombie_HP;
+    }
     ////////////////////// GETTER ///////////////////////////
 
     ////////////////////// SETTER ///////////////////////////
@@ -184,6 +195,10 @@ public class Location {
 
     public void setMaxBoss_health() {
         this.boss_health = max_boss_health;
+    }
+
+    public void plus_zombie_kill_reward(){
+     //   zombie_kill_reward = BigDecimal.valueOf(zombie_kill_reward.floatValue() * Math.pow(multiplier_zombie_kill_reward, 100)).toBigInteger();
     }
 
     public void setZombie_kill_reward(BigInteger zombie_kill_reward) {

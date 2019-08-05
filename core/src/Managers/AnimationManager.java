@@ -61,7 +61,7 @@ public class AnimationManager {
         if (zombieClicker.getNumerics().getCurrent_location().isBossFight()) {                                                   //ЕСЛИ ИДЕТ БОССФАЙТ
             if (zombieClicker.getNumerics().getCurrent_location().getBoss_health().compareTo(BigInteger.valueOf(0)) <= 0) {        //УБИЙСТВО БОССА
                 zombieClicker.getMainGame().next_level(1);
-                System.out.println("boss dead");
+             //   System.out.println("boss dead");
                 zombie_animation = zombie_animations_arr.get(MathUtils.random(0, 2));
             }
         } else {
@@ -80,7 +80,7 @@ public class AnimationManager {
                 if (zombieClicker.getNumerics().getCurrent_location().getCount_death_zombies_betweenBoss() == zombieClicker.getNumerics().getCurrent_location().getBetweenBoss()) {
 //                    zombieClicker.getNumerics().getCurrent_location().setBossFight(true);
                     zombie_animation = boss_animations_arr.get(0);
-                    System.out.println("boss appears");
+                  //  System.out.println("boss appears");
                 }
             }
         }
