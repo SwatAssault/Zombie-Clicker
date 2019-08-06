@@ -48,7 +48,7 @@ public class ShopItem {
     private Skin description_skin;
     private Skin buy_counter_skin;
 
-    public ShopItem(ZombieClicker zc, final String name, BigInteger cost, BigInteger value, String description, Texture texture){
+    public ShopItem(ZombieClicker zc, final String name, BigInteger cost, double cost_koeff, BigInteger value, double value_koeff, final String description, Texture texture){
         zombieClicker = zc;
 
         stack = new Stack();
@@ -59,22 +59,25 @@ public class ShopItem {
         item_number = 0;
         this.base_cost = cost;
         this.base_value = value;
-        this.item_cost = base_cost;
-        this.item_value = base_value;
+        item_cost = base_cost;
+        item_value = base_value;
+        this.cost_koeff = cost_koeff;
+        this.value_koeff = value_koeff;
 
         buy_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/buybtn.json", Skin.class);
         buy_counter_skin = zombieClicker.get_assets().get_asset_manager().get("Other/buy_counter_skin.json", Skin.class);
         label_skin = zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class);
         description_skin = zombieClicker.get_assets().get_asset_manager().get("LabelSkins/description_label_skin.json", Skin.class);
 
-        name_of_item = name;
+        this.name_of_item = name;
+        this.description_of_item = description;
         buy_counter_btn = new TextButton("0", buy_counter_skin);
         upgrade_btn = new TextButton("", buy_skin);
         upgrade_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(item_cost));
         image = new Image(texture);
 
         name_label = new Label(name_of_item, label_skin);
-        description_label = new Label(description, description_skin);
+        description_label = new Label(description_of_item, description_skin);
         value_label = new Label(zombieClicker.getNumerics().bigInteger_to_string(item_cost), description_skin);
 
 
@@ -83,16 +86,18 @@ public class ShopItem {
             public void clicked(InputEvent event, float x, float y) {
                 if (!upgrade_btn.isDisabled()) {
                     zombieClicker.getNumerics().minus_Gold(item_cost);  //вычитаем бабло за покупку
-                    plusValue();   //увеличиваем прибавку на следующую покупку
-                    plusItem_cost();     //увеличиваем цену на след покупку
                     item_number++;  //прибавляем 1 к счетчику сколько раз купили
                     buy_counter_btn.setText(Integer.toString(item_number));
 
-                    if(name_of_item.equals("TAP DAMAGE")){
+                    if(description_of_item.equals("TAP DAMAGE")){
                         zombieClicker.getNumerics().plus_punch_power(item_value);
                     } else {  //если на дпс
-                        System.out.println("DPS item");
+
                     }
+
+                    plusValue();   //увеличиваем прибавку на следующую покупку
+                    plusItem_cost();     //увеличиваем цену на след покупку
+                    value_label.setText("+" + zombieClicker.getNumerics().bigInteger_to_string(item_value));
 
                 }
             }

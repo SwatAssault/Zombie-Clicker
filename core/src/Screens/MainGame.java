@@ -318,8 +318,8 @@ public class MainGame implements Screen {
 
         //TODO test
         y = 200;
-        System.out.println(BigDecimal.valueOf(this.location.getBase_zombie_HP().floatValue() * Math.pow(this.location.getMultiplier_zombie_HP(), y - 1)).toBigInteger() + " = " +
-                zombieClicker.getNumerics().bigInteger_to_string(BigDecimal.valueOf(this.location.getBase_zombie_HP().floatValue() * Math.pow(this.location.getMultiplier_zombie_HP(), y - 1)).toBigInteger()));
+//        System.out.println(BigDecimal.valueOf(this.location.getBase_zombie_HP().floatValue() * Math.pow(this.location.getMultiplier_zombie_HP(), y - 1)).toBigInteger() + " = " +
+//                zombieClicker.getNumerics().bigInteger_to_string(BigDecimal.valueOf(this.location.getBase_zombie_HP().floatValue() * Math.pow(this.location.getMultiplier_zombie_HP(), y - 1)).toBigInteger()));
     }
 
     ////////////////GETTERS//////////////////
@@ -492,7 +492,7 @@ public class MainGame implements Screen {
         location.setBossFight(false);
 
         //TODO test
-        System.out.println(this.location.getZombie_health());
+     //   System.out.println(this.location.getZombie_health());
     }
 
     @Override
