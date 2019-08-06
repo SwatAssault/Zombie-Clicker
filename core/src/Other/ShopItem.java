@@ -97,7 +97,6 @@ public class ShopItem {
 
                     plusValue();   //увеличиваем прибавку на следующую покупку
                     plusItem_cost();     //увеличиваем цену на след покупку
-                    value_label.setText("+" + zombieClicker.getNumerics().bigInteger_to_string(item_value));
 
                 }
             }
