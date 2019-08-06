@@ -16,11 +16,13 @@ import Screens.Achievements;
 import Screens.Inventory;
 import Screens.MainGame;
 import Screens.MapScreen;
+import Screens.MiniGame;
 import Screens.Missions;
 import Screens.PlayerCreate;
 import Screens.RewardScreen;
 import Screens.Shop;
 import Screens.SquadsDistScreen;
+import Screens.WheelOfFortune;
 
 
 public class ZombieClicker extends Game {
@@ -43,6 +45,8 @@ public class ZombieClicker extends Game {
     private Inventory inventory;
     private PlayerCreate playerCreate;
     private Missions missions;
+    private MiniGame miniGame;
+    private WheelOfFortune wheelOfFortune;
 
     public ZombieClicker() {
         instance = this;
@@ -174,6 +178,18 @@ public class ZombieClicker extends Game {
         rewardScreen = null;
         rewardScreen = new RewardScreen(instance, what, amount, lastScreen);
         setScreen(rewardScreen);
+    }
+
+    public void setMiniGameScreen(){
+        miniGame = null;
+        miniGame = new MiniGame(instance);
+        setScreen(miniGame);
+    }
+
+    public void setWheelOfFortuneScreen(){
+        wheelOfFortune = null;
+        wheelOfFortune = new WheelOfFortune(instance);
+        setScreen(wheelOfFortune);
     }
     ////////////SET SCREEN METHODS/////////////
 

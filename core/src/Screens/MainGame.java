@@ -47,6 +47,7 @@ public class MainGame implements Screen {
     private Button map_btn;
     private Button invent_btn;
     private Button missions_btn;
+    private Button minigame_btn;
     private Button bossFight_btn;
     private Button leaveBossFight_btn;
 
@@ -287,6 +288,24 @@ public class MainGame implements Screen {
             }
         });
 
+        minigame_btn = new Button(missions_skin);
+        minigame_btn.setPosition(5, 300);
+        minigame_btn.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                dispose();
+                location.setMaxZombie_health();
+                location.setMaxBoss_health();
+
+                zombieClicker.setMiniGameScreen();
+
+                if (location.isBossFight()) {
+                    next_level(0);
+                    location.setLoseBoss(true);
+                }
+            }
+        });
+
 
         stage.addActor(location.getBGimage());
         stage.addActor(goTo_shop_btn);
@@ -299,6 +318,7 @@ public class MainGame implements Screen {
         stage.addActor(heart_image);
         stage.addActor(invent_btn);
         stage.addActor(missions_btn);
+        stage.addActor(minigame_btn);
 
 
         if (location.getLoseBoss()) {
