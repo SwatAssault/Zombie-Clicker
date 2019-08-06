@@ -208,7 +208,7 @@ public class Shop implements Screen {
 
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
         //                                                    base cost                                  base value
-        shopItem1 = new ShopItem(zc, "Предмет 1", new BigInteger("150"),1.15f, new BigInteger("1"),1.1f,"TAP DAMAGE",
+        shopItem1 = new ShopItem(zc, "Предмет 1", new BigInteger("50"),1.25f, new BigInteger("1"),1.07f,"TAP DAMAGE",
                 zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
 
         shopItem2 = new ShopItem(zc, "Предмет 2", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"TAP DAMAGE",

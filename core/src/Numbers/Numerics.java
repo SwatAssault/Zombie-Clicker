@@ -63,20 +63,21 @@ public class Numerics {
         player_brows = 0;
         player_name = "GUSTAV";
 
-        //ЧТОБЫ ПОМЕНЯТЬ ХП ЗОМБИ ИЛИ БОССА, МЕНЯТЬ И МАКС ХП ТОЖЕ!!!
-
         //TODO скорее всего придется это переделать когда появятся сохранения
-        //BigInteger zombie_health, int level_count, BigInteger zombie_kills, BigInteger boss_health, BigInteger zombie_kill_reward,
-        //                    int boss_kill_reward, long betweenBoss, final ZombieClicker zc
         location = new ArrayList<Location>(Arrays.asList(
-                new Location(new BigInteger("10"), 1, new BigInteger("0"), new BigInteger("12"), new BigInteger("10"),
-                        1, 10, 3000, zc),
-                new Location(new BigInteger("12"), 1, new BigInteger("0"), new BigInteger("15"), new BigInteger("70000"),
-                        2, 4, 33000, zc),
-                new Location(new BigInteger("15"), 1, new BigInteger("0"), new BigInteger("18"), new BigInteger("90000"),
-                        3, 5, 28000, zc),
-                new Location(new BigInteger("18"), 1, new BigInteger("0"), new BigInteger("21"), new BigInteger("110000"),
-                        4, 6, 25000, zc)));
+                //                 zombie_health                                            zombie_kills             boss_health                       zombie_kill_reward
+                new Location(new BigInteger("10"), 1.195f,1, new BigInteger("0"), new BigInteger("12"), 1, new BigInteger("2"), 1.09f,
+                        1, 1,10, 3000, zc),
+
+                new Location(new BigInteger("12"), 1.16f,1, new BigInteger("0"), new BigInteger("102"), 1, new BigInteger("2"), 1.09f,
+                        1, 1,10, 3000, zc),
+
+                new Location(new BigInteger("15"), 1.16f,1, new BigInteger("0"), new BigInteger("120"), 1, new BigInteger("2"), 1.09f,
+                        1, 1,10, 3000, zc),
+
+                new Location(new BigInteger("20"), 1.16f,1, new BigInteger("0"), new BigInteger("1020"), 1, new BigInteger("2"), 1.09f,
+                        1, 1,10, 3000, zc)
+        ));
 
         current_location = 0;
 
@@ -99,7 +100,7 @@ public class Numerics {
         countCraftItem_4 = 10;
     }
 
-    //   XXX.XXXM(B,T,Q) FORMAT
+    //   XXX.XXXM(B,T,q,Q) FORMAT
     public String bigInteger_to_string(BigInteger x) {
         String y;
         string_to_cut = x.toString();

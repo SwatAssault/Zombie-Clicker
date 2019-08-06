@@ -36,13 +36,15 @@ public class Location {
     private double multiplier_zombie_HP;                    //коэффициент для ХП зомби
     private double multiplier_BOSS_HP;                    //коэффициент для ХП Боссов
     private double multiplier_zombie_kill_reward;                    //коэффициент для золота с убийства зомби
+    private double multiplier_boss_kill_reward;
 
     private BigInteger base_zombie_HP;   //начальное ХП зомби (не изменно)
     private BigInteger base_BOSS_HP;
     private BigInteger base_zombie_reward;
+    private int base_boss_reward;
 
-    public Location(BigInteger zombie_health, int level_count, BigInteger zombie_kills, BigInteger boss_health, BigInteger zombie_kill_reward,
-                    int boss_kill_reward, long betweenBoss, double durationBossFight, final ZombieClicker zc) {
+    public Location(BigInteger zombie_health, double zombie_koeff, int level_count, BigInteger zombie_kills, BigInteger boss_health, double boss_koeff, BigInteger zombie_kill_reward, double zombie_reward_koeff,
+                    int boss_kill_reward, double boss_reward_koeff, long betweenBoss, double durationBossFight, final ZombieClicker zc) {
 
         zombieClicker = zc;
         base_zombie_HP = zombie_health;
@@ -67,9 +69,10 @@ public class Location {
         count_kill_boss = new BigInteger("0");
         count_death_zombies_betweenBoss = 0;
 
-        multiplier_zombie_HP = 1.2f;
-        multiplier_BOSS_HP = 1f;
-        multiplier_zombie_kill_reward = 1.1f;
+        this.multiplier_zombie_HP = zombie_koeff;
+        this.multiplier_BOSS_HP = boss_koeff;
+        this.multiplier_zombie_kill_reward = zombie_reward_koeff;
+        this.multiplier_boss_kill_reward = boss_reward_koeff;
     }
 
     public void minus_Boss_health(BigInteger x) {
