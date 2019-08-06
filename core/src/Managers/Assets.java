@@ -148,6 +148,23 @@ public class Assets {
         assetManager.finishLoading();
     }
 
+    public void load_assets_for_MiniGameScreen(){
+        assetManager.load("Buttons/back_btn.json", Skin.class);
+        assetManager.load("Background/location_1_bg.png", Texture.class);
+        assetManager.update();
+        assetManager.finishLoading();
+    }
+
+    public void load_assets_for_WheelOfFortuneScreen(){
+        assetManager.load("Buttons/back_btn.json", Skin.class);
+        assetManager.load("Background/location_1_bg.png", Texture.class);
+        assetManager.load("Background/wheel.png", Texture.class);
+        assetManager.load("Background/wheelOfFortune_bg.png", Texture.class);
+        assetManager.load("Other/arroww.png", Texture.class);
+        assetManager.update();
+        assetManager.finishLoading();
+    }
+
     public void load_assets_for_achievements(){
      //   assetManager.load("SkinJson/kills.json", Skin.class);
       //  assetManager.load("SkinJson/clicks.json", Skin.class);
