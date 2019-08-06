@@ -26,6 +26,8 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.math.BigInteger;
+
 import Other.OtherItem;
 import Other.ShopItem;
 import Other.SquadItem;
@@ -205,43 +207,44 @@ public class Shop implements Screen {
         goback_bth.setPosition(10, 10);
 
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
-        shopItem1 = new ShopItem(zc, "ANNIHILATION GUN", "TAP DAMAGE", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
-        shopItem1.setItem_cost(100);
-        shopItem1.setItem_value(5);
+        shopItem1 = new ShopItem(zc, "Предмет 1", new BigInteger("150"), new BigInteger("1"),"TAP DAMAGE", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
+        shopItem1.setCost_koeff(1.07f);
+        shopItem1.setItem_value(1);
+        shopItem1.setValue_koeff(1.1f);
 
-        shopItem2 = new ShopItem(zc, "Gun", "DPS", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
+        shopItem2 = new ShopItem(zc, "Предмет 2", new BigInteger("150"), new BigInteger("1"),"TAP DAMAGE", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem2.setItem_cost(200);
         shopItem2.setItem_value(10);
 
-        shopItem3 = new ShopItem(zc, "Gun", "kek", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
+        shopItem3 = new ShopItem(zc, "Предмет 3", new BigInteger("150"), new BigInteger("1"),"TAP DAMAGE", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem3.setItem_cost(200);
         shopItem3.setItem_value(10);
 
-        shopItem4 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
+        shopItem4 = new ShopItem(zc, "Предмет 4", new BigInteger("150"), new BigInteger("1"),"lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem4.setItem_cost(200);
         shopItem4.setItem_value(10);
 
-        shopItem5 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
+        shopItem5 = new ShopItem(zc, "Предмет 5", new BigInteger("150"), new BigInteger("1"),"lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem5.setItem_cost(200);
         shopItem5.setItem_value(10);
 
-        shopItem6 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
+        shopItem6 = new ShopItem(zc, "Предмет 6", new BigInteger("150"), new BigInteger("1"),"lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem6.setItem_cost(200);
         shopItem6.setItem_value(10);
 
-        shopItem7 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
+        shopItem7 = new ShopItem(zc, "Предмет 7", new BigInteger("150"), new BigInteger("1"),"lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem7.setItem_cost(200);
         shopItem7.setItem_value(10);
 
-        shopItem8 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
+        shopItem8 = new ShopItem(zc, "Предмет 8", new BigInteger("150"), new BigInteger("1"),"lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem8.setItem_cost(200);
         shopItem8.setItem_value(10);
 
-        shopItem9 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
+        shopItem9 = new ShopItem(zc, "Предмет 9", new BigInteger("150"), new BigInteger("1"),"lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem9.setItem_cost(200);
         shopItem9.setItem_value(10);
 
-        shopItem10 = new ShopItem(zc, "Gun", "lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
+        shopItem10 = new ShopItem(zc, "Предмет 10", new BigInteger("150"), new BigInteger("1"),"lol", zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         shopItem10.setItem_cost(200);
         shopItem10.setItem_value(10);
 

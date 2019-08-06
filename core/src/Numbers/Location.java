@@ -49,6 +49,7 @@ public class Location {
         max_zombie_health = base_zombie_HP;
         this.zombie_health = max_zombie_health;
         this.boss_health = boss_health;
+        this.base_zombie_reward = zombie_kill_reward;
         max_boss_health = boss_health;
         this.zombie_kills = zombie_kills;
         this.zombie_kill_reward = zombie_kill_reward;
@@ -198,7 +199,7 @@ public class Location {
     }
 
     public void plus_zombie_kill_reward(){
-     //   zombie_kill_reward = BigDecimal.valueOf(zombie_kill_reward.floatValue() * Math.pow(multiplier_zombie_kill_reward, 100)).toBigInteger();
+        zombie_kill_reward = BigDecimal.valueOf(base_zombie_reward.floatValue() * Math.pow(multiplier_zombie_kill_reward, level_count)).toBigInteger();
     }
 
     public void setZombie_kill_reward(BigInteger zombie_kill_reward) {
