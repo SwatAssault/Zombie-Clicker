@@ -88,6 +88,9 @@ public class MainGame implements Screen {
     //нужна для фикса хуйни со временем
     private boolean flag;
 
+    //TODO test
+    int y;
+
     public MainGame(final ZombieClicker zc, final Location location) {
         zombieClicker = zc;
         zombieClicker.get_assets().load_assets_for_Game();
@@ -310,6 +313,13 @@ public class MainGame implements Screen {
 
         Gdx.input.setInputProcessor(stage);
         flag = false;
+
+
+
+        //TODO test
+        y = 200;
+//        System.out.println(BigDecimal.valueOf(this.location.getBase_zombie_HP().floatValue() * Math.pow(this.location.getMultiplier_zombie_HP(), y - 1)).toBigInteger() + " = " +
+//                zombieClicker.getNumerics().bigInteger_to_string(BigDecimal.valueOf(this.location.getBase_zombie_HP().floatValue() * Math.pow(this.location.getMultiplier_zombie_HP(), y - 1)).toBigInteger()));
     }
 
     ////////////////GETTERS//////////////////
@@ -462,31 +472,27 @@ public class MainGame implements Screen {
     public void next_level(long lvl) {
         // lvl == 0 => lose
         // lvl == 1 => win. !!!!else ERROR!!!!
-        //УВЕЛИЧЕНИЕ ХП ЗОМБИ
-        //УВЕЛИЧЕНИЕ ХП БОССА
-        //УВЕЛИЧЕНИЕ ЗОЛОТА, ПОЛУЧАЕМОГО С КАЖДОГО ЗОМБИ
-        //ПОЛУЧЕНИЕ АЛМАЗОВ ЗА ПРОХОЖДЕНИЕ УРОВНЯ
-        //И ВСЕ ОСТАЛЬНОЕ
-//        location.setZeroBossHealth();
+
         if (lvl != 0) {
-            System.out.println("new level");
+          //  System.out.println("new level");
             zombieClicker.getNumerics().plus_boss_kills(1);
             zombieClicker.getNumerics().plus_diamonds(location.getBoss_kill_reward());
             location.plus_zombie_health();
             location.plus_Boss_health();
+            location.plus_zombie_kill_reward();
             location.setLoseBoss(false);
             leaveBossFight_btn.setVisible(false);
             bossFight_btn.setVisible(false);
         }
+        location.upLevel(lvl);
         location.setMaxZombie_health();
         location.setMaxBoss_health();
-
-        location.upLevel(lvl);
         location.plus_count_kill_boss(lvl);
         location.plus_zombie_kills(BigInteger.valueOf(lvl));
-//        location.plus(BigInteger.valueOf(lvl));
         location.setBossFight(false);
 
+        //TODO test
+     //   System.out.println(this.location.getZombie_health());
     }
 
     @Override

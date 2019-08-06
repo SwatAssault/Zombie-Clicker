@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public class ShopItem {
@@ -21,6 +22,10 @@ public class ShopItem {
 
     private BigInteger item_cost;
     private BigInteger item_value;
+    private double cost_koeff;
+    private double value_koeff;
+    private BigInteger base_cost;
+    private BigInteger base_value;
     private int item_number;
     private int item_widht = 474;
 
@@ -43,7 +48,7 @@ public class ShopItem {
     private Skin description_skin;
     private Skin buy_counter_skin;
 
-    public ShopItem(ZombieClicker zc, String name, String description, Texture texture){
+    public ShopItem(ZombieClicker zc, final String name, BigInteger cost, double cost_koeff, BigInteger value, double value_koeff, final String description, Texture texture){
         zombieClicker = zc;
 
         stack = new Stack();
@@ -52,21 +57,27 @@ public class ShopItem {
         description_table = new Table();
         table_for_nums = new Table();
         item_number = 0;
-        item_cost = new BigInteger("0");
-        item_value = new BigInteger("0");
+        this.base_cost = cost;
+        this.base_value = value;
+        item_cost = base_cost;
+        item_value = base_value;
+        this.cost_koeff = cost_koeff;
+        this.value_koeff = value_koeff;
 
         buy_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/buybtn.json", Skin.class);
         buy_counter_skin = zombieClicker.get_assets().get_asset_manager().get("Other/buy_counter_skin.json", Skin.class);
         label_skin = zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class);
         description_skin = zombieClicker.get_assets().get_asset_manager().get("LabelSkins/description_label_skin.json", Skin.class);
 
+        this.name_of_item = name;
+        this.description_of_item = description;
         buy_counter_btn = new TextButton("0", buy_counter_skin);
         upgrade_btn = new TextButton("", buy_skin);
         upgrade_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(item_cost));
         image = new Image(texture);
 
-        name_label = new Label(name, label_skin);
-        description_label = new Label(description, description_skin);
+        name_label = new Label(name_of_item, label_skin);
+        description_label = new Label(description_of_item, description_skin);
         value_label = new Label(zombieClicker.getNumerics().bigInteger_to_string(item_cost), description_skin);
 
 
@@ -75,10 +86,19 @@ public class ShopItem {
             public void clicked(InputEvent event, float x, float y) {
                 if (!upgrade_btn.isDisabled()) {
                     zombieClicker.getNumerics().minus_Gold(item_cost);  //вычитаем бабло за покупку
-                    plusValue();   //увеличиваем прибавку на следующую покупку
-                    plusItem_cost();     //увеличиваем цену на след покупку
                     item_number++;  //прибавляем 1 к счетчику сколько раз купили
                     buy_counter_btn.setText(Integer.toString(item_number));
+
+                    if(description_of_item.equals("TAP DAMAGE")){
+                        zombieClicker.getNumerics().plus_punch_power(item_value);
+                    } else {  //если на дпс
+
+                    }
+
+                    plusValue();   //увеличиваем прибавку на следующую покупку
+                    plusItem_cost();     //увеличиваем цену на след покупку
+                    value_label.setText("+" + zombieClicker.getNumerics().bigInteger_to_string(item_value));
+
                 }
             }
         });
@@ -130,11 +150,11 @@ public class ShopItem {
     }
 
     public void plusItem_cost(){
-        item_cost = item_cost.add(BigInteger.valueOf(100));
+        item_cost = BigDecimal.valueOf(base_cost.floatValue() * Math.pow(cost_koeff, item_number)).toBigInteger();
     }
 
     public void plusValue(){
-        item_value = item_value.add(BigInteger.valueOf(50));
+        item_value = BigDecimal.valueOf(base_value.floatValue() * Math.pow(value_koeff, item_number)).toBigInteger();
     }
 
     public void setName_of_item(String x){
@@ -147,6 +167,22 @@ public class ShopItem {
 
     public void disable_button(Boolean x){
             upgrade_btn.setDisabled(x);
+    }
+
+    public void setCost_koeff(double cost_koeff) {
+        this.cost_koeff = cost_koeff;
+    }
+
+    public void setValue_koeff(double value_koeff) {
+        this.value_koeff = value_koeff;
+    }
+
+    public void setBase_cost(BigInteger base_cost) {
+        this.base_cost = base_cost;
+    }
+
+    public void setBase_value(BigInteger base_value) {
+        this.base_value = base_value;
     }
     ////////////////////SETTERS////////////////////////
 
