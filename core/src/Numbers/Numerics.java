@@ -33,6 +33,10 @@ public class Numerics {
     private BigInteger passive_damage;
     private BigInteger oneTrillion;
     private BigInteger oneQuadrillion;
+    private BigInteger oneQuntillion;
+    private BigInteger oneSextillion;
+    private BigInteger oneSeptillion;
+    private BigInteger oneOctillion;
 
     private String string_to_cut;
     private String before_dot;
@@ -88,8 +92,12 @@ public class Numerics {
         punch_power = new BigInteger("1");
         how_fast_passive_damage = 0.1f;
         passive_damage = new BigInteger("0");
-        oneTrillion = new BigInteger("1000000000000");
-        oneQuadrillion = new BigInteger("1000000000000000");
+        oneTrillion = new BigInteger("1000000000000"); //12
+        oneQuadrillion = new BigInteger("1000000000000000");//15
+        oneQuntillion = new BigInteger("1000000000000000000"); //18
+        oneSextillion = new BigInteger("1000000000000000000000"); //21
+        oneSeptillion = new BigInteger("1000000000000000000000000"); //24
+        oneOctillion = new BigInteger("1000000000000000000000000000"); //27
         squads_reward_percent = 10.0f;
         gold_from_taps = new BigInteger("0");
 
@@ -104,42 +112,43 @@ public class Numerics {
     public String bigInteger_to_string(BigInteger x) {
         String y;
         string_to_cut = x.toString();
-        if (string_to_cut.length() >= 7 && string_to_cut.length() <= 9) {       //ЕСЛИ ЧИСЛО В МИЛЛИОНАХ
+
+        if(string_to_cut.length() >= 4 && string_to_cut.length() <= 6){                 //ЕСЛИ ЧИСЛО В ТЫСЯЧАХ
+            before_dot = x.divide(BigInteger.valueOf(1000)).toString();
+            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            y = before_dot + "." + after_dot + "K";
+        } else if (string_to_cut.length() >= 7 && string_to_cut.length() <= 9) {       //ЕСЛИ ЧИСЛО В МИЛЛИОНАХ
             before_dot = x.divide(BigInteger.valueOf(1000000)).toString();
-            if (before_dot.length() == 1) {
-                before_dot = "00" + before_dot;
-            } else if (before_dot.length() == 2) {
-                before_dot = "0" + before_dot;
-            }
-            after_dot = string_to_cut.substring(3, 6);
+            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
             y = before_dot + "." + after_dot + "M";
         } else if (string_to_cut.length() >= 10 && string_to_cut.length() <= 12) {       //ЕСЛИ ЧИСЛО В МИЛЛИАРДАХ
             before_dot = x.divide(BigInteger.valueOf(1000000000)).toString();
-            if (before_dot.length() == 1) {
-                before_dot = "00" + before_dot;
-            } else if (before_dot.length() == 2) {
-                before_dot = "0" + before_dot;
-            }
-            after_dot = string_to_cut.substring(3, 6);
+            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
             y = before_dot + "." + after_dot + "B";
         } else if (string_to_cut.length() >= 13 && string_to_cut.length() <= 15) {       //ЕСЛИ ЧИСЛО В ТРИЛЛИОНАХ
             before_dot = x.divide(oneTrillion).toString();
-            if (before_dot.length() == 1) {
-                before_dot = "00" + before_dot;
-            } else if (before_dot.length() == 2) {
-                before_dot = "0" + before_dot;
-            }
-            after_dot = string_to_cut.substring(3, 6);
+            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
             y = before_dot + "." + after_dot + "T";
         } else if (string_to_cut.length() >= 16 && string_to_cut.length() <= 18) {       //ЕСЛИ ЧИСЛО В КВАДРИЛЛИОНАХ
             before_dot = x.divide(oneQuadrillion).toString();
-            if (before_dot.length() == 1) {
-                before_dot = "00" + before_dot;
-            } else if (before_dot.length() == 2) {
-                before_dot = "0" + before_dot;
-            }
-            after_dot = string_to_cut.substring(3, 6);
+            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            y = before_dot + "." + after_dot + "q";
+        } else if (string_to_cut.length() >= 19 && string_to_cut.length() <= 21) {       //ЕСЛИ ЧИСЛО В КВИНТИЛЛИОНАХ
+            before_dot = x.divide(oneQuntillion).toString();
+            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
             y = before_dot + "." + after_dot + "Q";
+        } else if (string_to_cut.length() >= 22 && string_to_cut.length() <= 24) {       //ЕСЛИ ЧИСЛО В СЕКСТИЛЛИОНАХ
+            before_dot = x.divide(oneSextillion).toString();
+            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            y = before_dot + "." + after_dot + "s";
+        } else if (string_to_cut.length() >= 25 && string_to_cut.length() <= 27) {       //ЕСЛИ ЧИСЛО В СЕПТИЛЛИОНАХ
+            before_dot = x.divide(oneSeptillion).toString();
+            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            y = before_dot + "." + after_dot + "S";
+        } else if (string_to_cut.length() >= 28 && string_to_cut.length() <= 30) {       //ЕСЛИ ЧИСЛО В ОКТИЛЛИОНАХ
+            before_dot = x.divide(oneOctillion).toString();
+            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            y = before_dot + "." + after_dot + "O";
         } else
             y = x.toString();
 

@@ -340,6 +340,9 @@ public class MainGame implements Screen {
         y = 200;
 //        System.out.println(BigDecimal.valueOf(this.location.getBase_zombie_HP().floatValue() * Math.pow(this.location.getMultiplier_zombie_HP(), y - 1)).toBigInteger() + " = " +
 //                zombieClicker.getNumerics().bigInteger_to_string(BigDecimal.valueOf(this.location.getBase_zombie_HP().floatValue() * Math.pow(this.location.getMultiplier_zombie_HP(), y - 1)).toBigInteger()));
+
+
+        System.out.println(zombieClicker.getNumerics().bigInteger_to_string(new BigInteger("999999999999999999999999999999")));
     }
 
     ////////////////GETTERS//////////////////
