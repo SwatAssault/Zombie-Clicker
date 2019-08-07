@@ -195,7 +195,6 @@ public class ZombieClicker extends Game {
 
     @Override
     public void dispose() {
-        get_assets().dispose_popular();
         fontManager.dispose();
         assets.dispose();
     }

@@ -40,7 +40,6 @@ public class Assets {
     }
 
     public void load_assets_for_Game() {
-        assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("Buttons/ach_btn_skin.json", Skin.class);
         assetManager.load("Buttons/shop_btn.json", Skin.class);
         assetManager.load("SkinJson/map_btn.json", Skin.class);
@@ -62,8 +61,6 @@ public class Assets {
     }
 
     public void load_assets_for_Shop(){
-
-        assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("Buttons/tab_skin.json", Skin.class);
         assetManager.load("Buttons/buybtn.json", Skin.class);
         assetManager.load("Squads/send_btn_skin.json", Skin.class);
@@ -87,14 +84,12 @@ public class Assets {
 
     public void load_assets_for_map(){
         assetManager.load("Background/mapbg.png", Texture.class);
-        assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("SkinJson/location_btn.json", Skin.class);
         assetManager.update();
         assetManager.finishLoading();
     }
 
     public void load_assets_for_inventory(){
-        assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("Background/invent_bg.png", Texture.class);
         assetManager.load("Background/location_1_bg.png", Texture.class);
         assetManager.load("separator_inventory.png", Texture.class);
@@ -114,7 +109,6 @@ public class Assets {
     }
 
     public void load_assets_for_playerCreate(){
-        assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("Other/slider.json", Skin.class);
         assetManager.load("Other/checkBox.json", Skin.class);
         assetManager.load("ButtonsInventory/label_skin.json", Skin.class);
@@ -127,7 +121,6 @@ public class Assets {
     }
 
     public void load_assets_for_Missions(){
-        assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("Missions/accept_btn_skin.json", Skin.class);
         assetManager.load("Missions/mission_item_bg.png", Texture.class);
         assetManager.load("Missions/reward.png", Texture.class);
@@ -149,14 +142,13 @@ public class Assets {
     }
 
     public void load_assets_for_MiniGameScreen(){
-        assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("Background/location_1_bg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
 
     public void load_assets_for_WheelOfFortuneScreen(){
-        assetManager.load("Buttons/back_btn.json", Skin.class);
+        assetManager.load("Buttons/roll_btn_skin.json", Skin.class);
         assetManager.load("Background/location_1_bg.png", Texture.class);
         assetManager.load("Background/wheel.png", Texture.class);
         assetManager.load("Background/wheelOfFortune_bg.png", Texture.class);
@@ -168,7 +160,7 @@ public class Assets {
     public void load_assets_for_achievements(){
      //   assetManager.load("SkinJson/kills.json", Skin.class);
       //  assetManager.load("SkinJson/clicks.json", Skin.class);
-        assetManager.load("Buttons/back_btn.json", Skin.class);
+
     //    assetManager.load("Background/achbg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
@@ -206,13 +198,13 @@ public class Assets {
 
     public void load_popular(){
         assetManager.load("Buttons/ok_btn_skin.json", Skin.class);
+        assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.update();
         assetManager.finishLoading();
     }
 
     /////////DISPOSE ASSETS/////////
     public void dispose_Game_assets(){
-        assetManager.unload("Buttons/back_btn.json");
         assetManager.unload("Buttons/shop_btn.json");
         assetManager.unload("Buttons/ach_btn_skin.json");
         assetManager.unload("SkinJson/map_btn.json");
@@ -228,7 +220,6 @@ public class Assets {
     }
 
     public void dispose_Shop_assets(){
-        assetManager.unload("Buttons/back_btn.json");
         assetManager.unload("Buttons/tab_skin.json");
         assetManager.unload("Buttons/buybtn.json");
         assetManager.unload("Squads/send_btn_skin.json");
@@ -258,12 +249,10 @@ public class Assets {
     public void dispose_assets_for_map(){
         assetManager.unload("Background/mapbg.png");
         assetManager.unload("SkinJson/location_btn.json");
-        assetManager.unload("Buttons/back_btn.json");
     }
 
     public void dispose_assets_for_achiements(){
         assetManager.unload("SkinJson/kills.json");
-        assetManager.unload("Buttons/back_btn.json");
         assetManager.unload("SkinJson/clicks.json");
         assetManager.unload("Background/achbg.png");
     }
@@ -295,6 +284,7 @@ public class Assets {
 
     public void dispose_popular(){
         assetManager.unload("Buttons/ok_btn_skin.json");
+        assetManager.unload("Buttons/back_btn.json");
     }
     /////////DISPOSE ASSETS/////////
 

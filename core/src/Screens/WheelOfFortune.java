@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -28,7 +29,7 @@ public class WheelOfFortune implements Screen {
     private Viewport viewport;
     private Camera camera;
     private SpriteBatch batch;
-    private Button start;
+    private TextButton start;
     private Button back_btn;
     private Skin back_btn_skin;
     private Image ImageBG_MainGame;
@@ -73,8 +74,8 @@ public class WheelOfFortune implements Screen {
 
         zombieClicker.get_assets().load_assets_for_WheelOfFortuneScreen();
 
-        back_btn_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json", Skin.class);
-        back_btn = new Button(back_btn_skin);
+        back_btn_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/roll_btn_skin.json", Skin.class);
+        back_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json", Skin.class));
         back_btn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -85,7 +86,7 @@ public class WheelOfFortune implements Screen {
         });
         back_btn.setPosition(10, 10);
 
-        start = new Button(back_btn_skin);
+        start = new TextButton("КРУТИТЬ!", back_btn_skin);
         start.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -99,7 +100,7 @@ public class WheelOfFortune implements Screen {
                 }
             }
         });
-        start.setPosition(250, 100);
+        start.setPosition(150, 100);
 
 
         ImageBG_MainGame = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/location_1_bg.png", Texture.class));
