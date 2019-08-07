@@ -157,26 +157,24 @@ public class Numerics {
             before_dot = x.divide(oneOctillion).toString();
             after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
             y = before_dot + "." + after_dot + "O";
-        } else
-        if (string_to_cut.length() >= 31 && string_to_cut.length() <= 33) {       //ЕСЛИ ЧИСЛО В НОНИЛЛИОНАХ
+        } else if (string_to_cut.length() >= 31 && string_to_cut.length() <= 33) {       //ЕСЛИ ЧИСЛО В НОНИЛЛИОНАХ
             before_dot = x.divide(oneNonillion).toString();
             after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
             y = before_dot + "." + after_dot + "N";
-        } else
-        if (string_to_cut.length() >= 34 && string_to_cut.length() <= 36) {       //ЕСЛИ ЧИСЛО В ДЕКАЛЛИОНАХ
+        } else if (string_to_cut.length() >= 34 && string_to_cut.length() <= 36) {       //ЕСЛИ ЧИСЛО В ДЕКАЛЛИОНАХ
             before_dot = x.divide(oneDecallion).toString();
             after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
             y = before_dot + "." + after_dot + "d";
-        } else
-        if (string_to_cut.length() >= 37 && string_to_cut.length() <= 39) {       //ЕСЛИ ЧИСЛО В ЭНДЕКАЛЛИОНАХ
+        } else if (string_to_cut.length() >= 37 && string_to_cut.length() <= 39) {       //ЕСЛИ ЧИСЛО В ЭНДЕКАЛЛИОНАХ
             before_dot = x.divide(oneAndecallion).toString();
             after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
             y = before_dot + "." + after_dot + "Ad";
-        } else
-        if (string_to_cut.length() >= 40 && string_to_cut.length() <= 42) {       //ЕСЛИ ЧИСЛО В ДОДЕКАЛЛИОНАХ
+        } else if (string_to_cut.length() >= 40 && string_to_cut.length() <= 42) {       //ЕСЛИ ЧИСЛО В ДОДЕКАЛЛИОНАХ
             before_dot = x.divide(oneDodecallion).toString();
             after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
             y = before_dot + "." + after_dot + "D";
+        } else if (string_to_cut.length() >= 43){
+            y = string_to_cut.substring(0,1) + "." + string_to_cut.substring(1,3) + "e" + (string_to_cut.length() - 1);
         } else
             y = x.toString();
 
