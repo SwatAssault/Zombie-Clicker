@@ -17,6 +17,8 @@ public class OtherItem {
     private Stack stack;
     private Table intable;
     private Image otherbg;
+    private Image icon;
+    private Image diamond_icon;
     private TextButton buy_btn;
     private int cost;               //цена в алмазах
     private int max_buy_counter;        //максимальное количество раз, сколько можно купить предмет
