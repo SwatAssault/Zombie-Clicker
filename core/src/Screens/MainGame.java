@@ -236,7 +236,7 @@ public class MainGame implements Screen {
             }
         });
 
-        map_skin = zombieClicker.get_assets().get_asset_manager().get("SkinJson/map_btn.json");
+        map_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/map_btn.json");
         map_btn = new Button(map_skin);
         map_btn.setPosition(430, 700);
         map_btn.addListener(new ClickListener() {

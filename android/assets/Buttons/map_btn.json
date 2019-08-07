@@ -6,8 +6,8 @@
 },
 "com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
 	"default": {
-		"up": "shop_btn",
-		"down": "shop_btn_pressed"
+		"up": "map_btn",
+		"down": "map_btn_pressed"
 	}
 },
 "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {

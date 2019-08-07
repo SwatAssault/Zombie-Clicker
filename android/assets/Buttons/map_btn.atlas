@@ -1,5 +1,5 @@
 
-shop_btn.png
+map_btn.png
 size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
@@ -11,14 +11,14 @@ Rubik24
   orig: 512, 512
   offset: 0, 0
   index: -1
-shop_btn
+map_btn
   rotate: false
   xy: 1, 1
   size: 93, 94
   orig: 93, 94
   offset: 0, 0
   index: -1
-shop_btn_pressed
+map_btn_pressed
   rotate: false
   xy: 515, 515
   size: 93, 94
