@@ -235,7 +235,7 @@ public class Assets {
     }
 
     public void dispose_Inventory_assets(){
-        assetManager.unload("Buttons/back_btn.json");
+
     }
 
     public void dispose_PlayerCreate_assets(){

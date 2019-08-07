@@ -25,6 +25,7 @@ public class SquadItem {
     private Table abilities_table;
     private Table description_table;
     private Image image;
+    private Image icon;
     private Label name_of_squad;
     private Label description_label;
     private Label DPS;

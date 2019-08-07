@@ -211,31 +211,31 @@ public class Shop implements Screen {
         shopItem1 = new ShopItem(zc, "Предмет 1", new BigInteger("50"),1.25f, new BigInteger("1"),1.07f,"TAP DAMAGE",
                 zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
 
-        shopItem2 = new ShopItem(zc, "Предмет 2", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"TAP DAMAGE",
+        shopItem2 = new ShopItem(zc, "Предмет 2", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
                 zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
 
-        shopItem3 = new ShopItem(zc, "Предмет 3", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"TAP DAMAGE",
+        shopItem3 = new ShopItem(zc, "Предмет 3", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
                 zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
 
-        shopItem4 = new ShopItem(zc, "Предмет 4", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"TAP DAMAGE",
+        shopItem4 = new ShopItem(zc, "Предмет 4", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
                 zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
 
-        shopItem5 = new ShopItem(zc, "Предмет 5", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"TAP DAMAGE",
+        shopItem5 = new ShopItem(zc, "Предмет 5", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
                 zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
 
-        shopItem6 = new ShopItem(zc, "Предмет 6", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"TAP DAMAGE",
+        shopItem6 = new ShopItem(zc, "Предмет 6", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
                 zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
 
-        shopItem7 = new ShopItem(zc, "Предмет 7", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"TAP DAMAGE",
+        shopItem7 = new ShopItem(zc, "Предмет 7", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
                 zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
 
-        shopItem8 = new ShopItem(zc, "Предмет 8", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"TAP DAMAGE",
+        shopItem8 = new ShopItem(zc, "Предмет 8", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
                 zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
 
-        shopItem9 = new ShopItem(zc, "Предмет 9", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"TAP DAMAGE",
+        shopItem9 = new ShopItem(zc, "Предмет 9", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
                 zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
 
-        shopItem10 = new ShopItem(zc, "Предмет 10", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"TAP DAMAGE",
+        shopItem10 = new ShopItem(zc, "Предмет 10", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
                 zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
 
 
