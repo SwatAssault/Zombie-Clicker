@@ -108,7 +108,7 @@ public class Numerics {
         countCraftItem_4 = 10;
     }
 
-    //   XXX.XXXM(B,T,q,Q) FORMAT
+    //   XXX.XXXM(K,M,B,T,q,Q,s,S,O) FORMAT
     public String bigInteger_to_string(BigInteger x) {
         String y;
         string_to_cut = x.toString();
