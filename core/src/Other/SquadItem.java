@@ -32,7 +32,6 @@ public class SquadItem {
 
     private BigInteger dps;
     private BigInteger squad_cost;
-    private BigInteger kill_reward;
 
     private String send_btn_string = "ОТПРАВИТЬ";
     private String send_btn_cancel_string = "CANCEL";
@@ -44,8 +43,18 @@ public class SquadItem {
     private int status; // 0 - свободен, 1,2... - на какой-то локации, -1 - на задании
     private boolean bought; //куплен или нет
 
-    public SquadItem(final ZombieClicker zc, String name, String description, Texture texture){
+    private BigInteger base_cost;
+    private double cost_koeff;
+    private BigInteger base_dps;
+    private double dps_koeff;
+
+    public SquadItem(final ZombieClicker zc, String name, String description, BigInteger base_cost, double cost_koeff, BigInteger base_dps, double dps_koeff, Texture texture){
         zombieClicker = zc;
+
+        this.base_cost = base_cost;
+        this.cost_koeff = cost_koeff;
+        this.base_dps = base_dps;
+        this.dps_koeff = dps_koeff;
 
         stack = new Stack();
         table = new Table();
@@ -55,12 +64,10 @@ public class SquadItem {
         description_table = new Table();
         image = new Image(texture);
         buy_number = 0;
-        squad_cost = new BigInteger("10");
-        kill_reward = new BigInteger("10");
-        dps = new BigInteger("1");
+        squad_cost = base_cost;
+        dps = base_dps;
         status = 0;
         bought = false;
-
 
         buy_btn = new TextButton("0", zombieClicker.get_assets().get_asset_manager().get("Buttons/buybtn.json", Skin.class));
         name_of_squad = new Label(name, zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class));
@@ -183,14 +190,18 @@ public class SquadItem {
     public BigInteger getSquad_cost(){
         return squad_cost;
     }
+
+    public double getCost_koeff() {
+        return cost_koeff;
+    }
+
+    public double getDps_koeff() {
+        return dps_koeff;
+    }
     //////////////////GETTERS////////////////////////
 
 
     //////////////////SETTERS////////////////////////
-    public void setKill_reward(BigInteger x){
-        kill_reward = kill_reward.add(x);
-    }
-
     public void setSquad_cost(BigInteger x){
         squad_cost = x;
     }
@@ -201,6 +212,14 @@ public class SquadItem {
 
     public void setBought(boolean x){
         bought = x;
+    }
+
+    public void setCost_koeff(double cost_koeff) {
+        this.cost_koeff = cost_koeff;
+    }
+
+    public void setDps_koeff(double dps_koeff) {
+        this.dps_koeff = dps_koeff;
     }
     //////////////////SETTERS////////////////////////
 

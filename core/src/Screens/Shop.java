@@ -279,11 +279,18 @@ public class Shop implements Screen {
         scrollPane.setZIndex(1);
 
         /////////////////////SQUAD ITEMS INITIALIZATION//////////////////////
-        squad1 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
-        squad2 = new SquadItem(zc, "ФИЗРУКИ", "description", zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
-        squad3 = new SquadItem(zc, "S.W.A.T.", "kek", zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
-        squad4 = new SquadItem(zc, "lil", "kek", zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
-        squad5 = new SquadItem(zc, "lil", "kek", zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
+        //                                                                                                       cost                                    dps
+        squad1 = new SquadItem(zc, "ТОПОРИСТЫ", "АТАКУЮТ ТОПОРАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f,
+                zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
+        squad2 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f,
+                zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
+        squad3 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f,
+                zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
+        squad4 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f,
+                zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
+        squad5 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f,
+                zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
+
 
 
         //Заполняю объекты в массив, чтобы было легче работать
