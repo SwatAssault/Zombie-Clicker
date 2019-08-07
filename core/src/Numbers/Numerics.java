@@ -33,10 +33,14 @@ public class Numerics {
     private BigInteger passive_damage;
     private BigInteger oneTrillion;
     private BigInteger oneQuadrillion;
-    private BigInteger oneQuntillion;
+    private BigInteger oneQuintillion;
     private BigInteger oneSextillion;
     private BigInteger oneSeptillion;
     private BigInteger oneOctillion;
+    private BigInteger oneNonillion;
+    private BigInteger oneDecallion;
+    private BigInteger oneAndecallion;
+    private BigInteger oneDodecallion;
 
     private String string_to_cut;
     private String before_dot;
@@ -94,10 +98,14 @@ public class Numerics {
         passive_damage = new BigInteger("0");
         oneTrillion = new BigInteger("1000000000000"); //12
         oneQuadrillion = new BigInteger("1000000000000000");//15
-        oneQuntillion = new BigInteger("1000000000000000000"); //18
+        oneQuintillion = new BigInteger("1000000000000000000"); //18
         oneSextillion = new BigInteger("1000000000000000000000"); //21
         oneSeptillion = new BigInteger("1000000000000000000000000"); //24
         oneOctillion = new BigInteger("1000000000000000000000000000"); //27
+        oneNonillion = new BigInteger("1000000000000000000000000000000"); //30
+        oneDecallion = new BigInteger("1000000000000000000000000000000000"); //33
+        oneAndecallion = new BigInteger("1000000000000000000000000000000000000"); //36
+        oneDodecallion = new BigInteger("1000000000000000000000000000000000000000"); //39
         squads_reward_percent = 10.0f;
         gold_from_taps = new BigInteger("0");
 
@@ -134,7 +142,7 @@ public class Numerics {
             after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
             y = before_dot + "." + after_dot + "q";
         } else if (string_to_cut.length() >= 19 && string_to_cut.length() <= 21) {       //ЕСЛИ ЧИСЛО В КВИНТИЛЛИОНАХ
-            before_dot = x.divide(oneQuntillion).toString();
+            before_dot = x.divide(oneQuintillion).toString();
             after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
             y = before_dot + "." + after_dot + "Q";
         } else if (string_to_cut.length() >= 22 && string_to_cut.length() <= 24) {       //ЕСЛИ ЧИСЛО В СЕКСТИЛЛИОНАХ
@@ -149,6 +157,26 @@ public class Numerics {
             before_dot = x.divide(oneOctillion).toString();
             after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
             y = before_dot + "." + after_dot + "O";
+        } else
+        if (string_to_cut.length() >= 31 && string_to_cut.length() <= 33) {       //ЕСЛИ ЧИСЛО В НОНИЛЛИОНАХ
+            before_dot = x.divide(oneNonillion).toString();
+            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            y = before_dot + "." + after_dot + "N";
+        } else
+        if (string_to_cut.length() >= 34 && string_to_cut.length() <= 36) {       //ЕСЛИ ЧИСЛО В ДЕКАЛЛИОНАХ
+            before_dot = x.divide(oneDecallion).toString();
+            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            y = before_dot + "." + after_dot + "d";
+        } else
+        if (string_to_cut.length() >= 37 && string_to_cut.length() <= 39) {       //ЕСЛИ ЧИСЛО В ЭНДЕКАЛЛИОНАХ
+            before_dot = x.divide(oneAndecallion).toString();
+            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            y = before_dot + "." + after_dot + "Ad";
+        } else
+        if (string_to_cut.length() >= 40 && string_to_cut.length() <= 42) {       //ЕСЛИ ЧИСЛО В ДОДЕКАЛЛИОНАХ
+            before_dot = x.divide(oneDodecallion).toString();
+            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            y = before_dot + "." + after_dot + "D";
         } else
             y = x.toString();
 
