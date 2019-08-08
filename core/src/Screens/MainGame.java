@@ -205,7 +205,8 @@ public class MainGame implements Screen {
 
 
                 //на время
-                zombieClicker.setRewardScreen("gold", BigInteger.ONE, "maingame");
+                zombieClicker.setRewardScreen("gold", BigInteger.ONE, "m");
+           //     zombieClicker.setTipScreen("ПОДСКАЗКА", "gr", "maingame");
 
             }
         });
@@ -494,7 +495,6 @@ public class MainGame implements Screen {
     public void next_level(long lvl) {
         // lvl == 0 => lose
         // lvl == 1 => win. !!!!else ERROR!!!!
-
         if (lvl != 0) {
           //  System.out.println("new level");
             zombieClicker.getNumerics().plus_boss_kills(1);
@@ -512,6 +512,10 @@ public class MainGame implements Screen {
         location.plus_count_kill_boss(lvl);
         location.plus_zombie_kills(BigInteger.valueOf(lvl));
         location.setBossFight(false);
+    }
+
+    public Stage getStage(){
+        return stage;
     }
 
     @Override

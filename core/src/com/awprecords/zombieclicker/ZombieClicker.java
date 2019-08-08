@@ -22,6 +22,7 @@ import Screens.PlayerCreate;
 import Screens.RewardScreen;
 import Screens.Shop;
 import Screens.SquadsDistScreen;
+import Screens.TipScreen;
 import Screens.WheelOfFortune;
 
 
@@ -37,7 +38,6 @@ public class ZombieClicker extends Game {
     private KeepTrackAch keepTrackAch;
     private SquadsDistScreen squadsDistScreen;
     private RewardScreen rewardScreen;
-
     private MainGame mainGame;
     private Shop shop;
     private Achievements achievements;
@@ -47,6 +47,7 @@ public class ZombieClicker extends Game {
     private Missions missions;
     private MiniGame miniGame;
     private WheelOfFortune wheelOfFortune;
+    private TipScreen tipScreen;
 
     public ZombieClicker() {
         instance = this;
@@ -117,8 +118,6 @@ public class ZombieClicker extends Game {
         getNumerics().getCurrent_location().setPlayer_on_location(true);
         getNumerics().getCurrent_location().setBGimage("Background/location_1_bg.png");
         setMainGame();
-        // setMenuScreen();
-
     }
 
     ////////////SET SCREEN METHODS/////////////
@@ -186,6 +185,12 @@ public class ZombieClicker extends Game {
         wheelOfFortune = null;
         wheelOfFortune = new WheelOfFortune(instance);
         setScreen(wheelOfFortune);
+    }
+
+    public void setTipScreen(String header, String mainText, String lastScreen){
+        tipScreen = null;
+        tipScreen = new TipScreen(instance, header, mainText, lastScreen);
+        setScreen(tipScreen);
     }
     ////////////SET SCREEN METHODS/////////////
 

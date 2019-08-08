@@ -200,6 +200,14 @@ public class Assets {
     public void load_popular(){
         assetManager.load("Buttons/ok_btn_skin.json", Skin.class);
         assetManager.load("Buttons/back_btn.json", Skin.class);
+        assetManager.load("Buttons/double_btn.json", Skin.class);
+        assetManager.update();
+        assetManager.finishLoading();
+    }
+
+    public void load_assets_for_TipScreen(){
+        assetManager.load("Background/tipbg.png", Texture.class);
+        assetManager.load("Buttons/x_btn.json", Skin.class);
         assetManager.update();
         assetManager.finishLoading();
     }
@@ -287,6 +295,12 @@ public class Assets {
     public void dispose_popular(){
         assetManager.unload("Buttons/ok_btn_skin.json");
         assetManager.unload("Buttons/back_btn.json");
+        assetManager.unload("Buttons/double_btn.json");
+    }
+
+    public void dispose_assets_for_TipScreen(){
+        assetManager.unload("Background/tipbg.png");
+        assetManager.unload("Buttons/x_btn.json");
     }
     /////////DISPOSE ASSETS/////////
 
