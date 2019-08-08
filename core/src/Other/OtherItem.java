@@ -45,6 +45,7 @@ public class OtherItem {
         this.max_buy_counter = max_buy_count;
         current_buy_counter = 0;
         this.name = name_of_item;
+        this.description = description;
 
         buy_btn.addListener(new ClickListener(){
             @Override
