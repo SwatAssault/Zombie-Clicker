@@ -13,7 +13,6 @@ public class AchievementItem {
 
     public AchievementItem(ZombieClicker zc, String name, String description){
         zombieClicker = zc;
-
         this.name = name;
         this.description = description;
 

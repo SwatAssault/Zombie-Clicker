@@ -1,0 +1,20 @@
+
+x_btn.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+X_btn
+  rotate: false
+  xy: 1, 70
+  size: 75, 67
+  orig: 75, 67
+  offset: 0, 0
+  index: -1
+X_btn_pressed
+  rotate: false
+  xy: 1, 1
+  size: 75, 67
+  orig: 75, 67
+  offset: 0, 0
+  index: -1
