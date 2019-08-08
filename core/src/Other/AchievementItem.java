@@ -1,6 +1,7 @@
 package Other;
 
 import com.awprecords.zombieclicker.ZombieClicker;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class AchievementItem {
@@ -8,7 +9,7 @@ public class AchievementItem {
     private final ZombieClicker zombieClicker;
     private String name;
     private String description;
-    private Image icon;
+    private Button ach_btn;
 
     public AchievementItem(ZombieClicker zc, String name, String description){
         zombieClicker = zc;
@@ -18,8 +19,8 @@ public class AchievementItem {
 
     }
 
-    public Image getAchievementItem(){
-        return icon;
+    public Button getAchievementItem(){
+        return ach_btn;
     }
 
     public void setName(String name) {
