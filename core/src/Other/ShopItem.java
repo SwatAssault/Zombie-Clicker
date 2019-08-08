@@ -48,7 +48,7 @@ public class ShopItem {
     private Skin description_skin;
     private Skin buy_counter_skin;
 
-    public ShopItem(ZombieClicker zc, final String name, BigInteger cost, double cost_koeff, BigInteger value, double value_koeff, final String description, Texture texture){
+    public ShopItem(ZombieClicker zc, final String name, BigInteger cost, double cost_koeff, BigInteger value, double value_koeff, final String description){
         zombieClicker = zc;
 
         stack = new Stack();
@@ -74,7 +74,7 @@ public class ShopItem {
         buy_counter_btn = new TextButton("0", buy_counter_skin);
         upgrade_btn = new TextButton("", buy_skin);
         upgrade_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(item_cost));
-        image = new Image(texture);
+        image = new Image(zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
 
         name_label = new Label(name_of_item, label_skin);
         description_label = new Label(description_of_item, description_skin);

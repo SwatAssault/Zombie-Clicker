@@ -41,6 +41,7 @@ public class Assets {
 
     public void load_assets_for_Game() {
         assetManager.load("Buttons/ach_btn_skin.json", Skin.class);
+        assetManager.load("Buttons/minigame_btn.json", Skin.class);
         assetManager.load("Buttons/shop_btn.json", Skin.class);
         assetManager.load("Buttons/map_btn.json", Skin.class);
         assetManager.load("Buttons/invent_btn_skin.json", Skin.class);
@@ -206,6 +207,7 @@ public class Assets {
     /////////DISPOSE ASSETS/////////
     public void dispose_Game_assets(){
         assetManager.unload("Buttons/shop_btn.json");
+        assetManager.unload("Buttons/minigame_btn.json");
         assetManager.unload("Buttons/ach_btn_skin.json");
         assetManager.unload("Buttons/map_btn.json");
         assetManager.unload("Buttons/invent_btn_skin.json");

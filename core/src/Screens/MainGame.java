@@ -291,7 +291,7 @@ public class MainGame implements Screen {
             }
         });
 
-        minigame_btn = new Button(missions_skin);
+        minigame_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/minigame_btn.json", Skin.class));
         minigame_btn.setPosition(5, 300);
         minigame_btn.addListener(new ClickListener() {
             @Override
@@ -314,7 +314,6 @@ public class MainGame implements Screen {
         stage.addActor(goTo_shop_btn);
         stage.addActor(achievement_btn);
         stage.addActor(mainButton);
-//        stage.addActor(go_back_btn);
         stage.addActor(map_btn);
         stage.addActor(bossFight_btn);
         stage.addActor(leaveBossFight_btn);
@@ -454,7 +453,7 @@ public class MainGame implements Screen {
 
         batch.begin();
         animationManager.render_zombie(batch);
-        //zombieClicker.getFontManager().draw_text_forGame(batch);
+
         draw_text();
         draw_HP();
         if (location.isBossFight()) {
@@ -513,9 +512,6 @@ public class MainGame implements Screen {
         location.plus_count_kill_boss(lvl);
         location.plus_zombie_kills(BigInteger.valueOf(lvl));
         location.setBossFight(false);
-
-        //TODO test
-     //   System.out.println(this.location.getZombie_health());
     }
 
     @Override

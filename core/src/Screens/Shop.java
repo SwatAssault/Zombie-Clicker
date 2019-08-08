@@ -143,7 +143,6 @@ public class Shop implements Screen {
                 zombieClicker.get_assets().load_assets_for_anyLocation(zombieClicker);
                 zombieClicker.setMainGame();
                 zombieClicker.getNumerics().getCurrent_location().setPlayer_on_location(true);
-                //dispose();
             }
         });
 
@@ -207,38 +206,17 @@ public class Shop implements Screen {
         goback_bth.setPosition(10, 10);
 
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
-        //                                                    base cost                                  base value
-        shopItem1 = new ShopItem(zc, "Предмет 1", new BigInteger("50"),1.25f, new BigInteger("1"),1.07f,"TAP DAMAGE",
-                zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
-
-        shopItem2 = new ShopItem(zc, "Предмет 2", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
-                zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
-
-        shopItem3 = new ShopItem(zc, "Предмет 3", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
-                zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
-
-        shopItem4 = new ShopItem(zc, "Предмет 4", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
-                zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
-
-        shopItem5 = new ShopItem(zc, "Предмет 5", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
-                zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
-
-        shopItem6 = new ShopItem(zc, "Предмет 6", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
-                zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
-
-        shopItem7 = new ShopItem(zc, "Предмет 7", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
-                zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
-
-        shopItem8 = new ShopItem(zc, "Предмет 8", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
-                zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
-
-        shopItem9 = new ShopItem(zc, "Предмет 9", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
-                zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
-
-        shopItem10 = new ShopItem(zc, "Предмет 10", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS",
-                zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
-
-
+        //                                                     base cost                                 base value
+        shopItem1 = new ShopItem(zc, "Предмет 1", new BigInteger("50"),1.25f, new BigInteger("1"),1.07f,"TAP DAMAGE");
+        shopItem2 = new ShopItem(zc, "Предмет 2", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
+        shopItem3 = new ShopItem(zc, "Предмет 3", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
+        shopItem4 = new ShopItem(zc, "Предмет 4", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
+        shopItem5 = new ShopItem(zc, "Предмет 5", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
+        shopItem6 = new ShopItem(zc, "Предмет 6", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
+        shopItem7 = new ShopItem(zc, "Предмет 7", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
+        shopItem8 = new ShopItem(zc, "Предмет 8", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
+        shopItem9 = new ShopItem(zc, "Предмет 9", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
+        shopItem10 = new ShopItem(zc, "Предмет 10", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
 
         //Заполняю объекты в массив, чтобы было легче работать
         shopItems_array = new Array<ShopItem>();
@@ -279,19 +257,12 @@ public class Shop implements Screen {
         scrollPane.setZIndex(1);
 
         /////////////////////SQUAD ITEMS INITIALIZATION//////////////////////
-        //                                                                                                       cost                                    dps
-        squad1 = new SquadItem(zc, "ТОПОРИСТЫ", "АТАКУЮТ ТОПОРАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f,
-                zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
-        squad2 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f,
-                zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
-        squad3 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f,
-                zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
-        squad4 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f,
-                zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
-        squad5 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f,
-                zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
-
-
+        //                                                                                    cost                                    dps
+        squad1 = new SquadItem(zc, "ТОПОРИСТЫ", "АТАКУЮТ ТОПОРАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f);
+        squad2 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f);
+        squad3 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f);
+        squad4 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f);
+        squad5 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f);
 
         //Заполняю объекты в массив, чтобы было легче работать
         squadItems_array = new Array<SquadItem>();
@@ -356,8 +327,6 @@ public class Shop implements Screen {
         stage.addActor(other_tab_btn);
         stage.addActor(stack_table);
         stage.addActor(goback_bth);
-
-     //   stage.setDebugAll(true);
 
         Gdx.input.setInputProcessor(stage);
     }

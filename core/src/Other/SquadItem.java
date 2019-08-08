@@ -49,7 +49,7 @@ public class SquadItem {
     private BigInteger base_dps;
     private double dps_koeff;
 
-    public SquadItem(final ZombieClicker zc, String name, String description, BigInteger base_cost, double cost_koeff, BigInteger base_dps, double dps_koeff, Texture texture){
+    public SquadItem(final ZombieClicker zc, String name, String description, BigInteger base_cost, double cost_koeff, BigInteger base_dps, double dps_koeff){
         zombieClicker = zc;
 
         this.base_cost = base_cost;
@@ -63,7 +63,7 @@ public class SquadItem {
         name_table = new Table();
         abilities_table = new Table();
         description_table = new Table();
-        image = new Image(texture);
+        image = new Image(zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
         buy_number = 0;
         squad_cost = base_cost;
         dps = base_dps;

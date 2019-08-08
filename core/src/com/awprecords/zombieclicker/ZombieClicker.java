@@ -50,10 +50,6 @@ public class ZombieClicker extends Game {
 
     public ZombieClicker() {
         instance = this;
-
-
-
-      //  shop = new Shop(instance);
     }
 
     //////////GETTERS FOR SCREENS//////////
