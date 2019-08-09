@@ -241,6 +241,11 @@ public class Numerics {
         punch_power = punch_power.add(x);
     }
 
+    public void plus_passive_power(BigInteger x) {
+        //вызывается при покупке улучшения на урон в магазине
+        passive_damage = passive_damage.add(x);
+    }
+
     public void setHow_fast_passive_damage(float x) {
         how_fast_passive_damage = x;
     }
