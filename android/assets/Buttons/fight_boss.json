@@ -1,0 +1,8 @@
+{
+"com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
+	"default": {
+		"up": "fight_boss_btn",
+		"down": "fight_boss_btn_pressed"
+	}
+}
+}

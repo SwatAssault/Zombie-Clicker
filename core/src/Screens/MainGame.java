@@ -212,7 +212,7 @@ public class MainGame implements Screen {
         });
 
 
-        bossFight_btn = new Button(shop_skin);
+        bossFight_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/fight_boss.json", Skin.class));
         bossFight_btn.setPosition(430, 500);
         bossFight_btn.addListener(new ClickListener() {
 
