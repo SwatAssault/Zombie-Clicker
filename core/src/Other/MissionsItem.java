@@ -3,8 +3,6 @@ package Other;
 import com.awprecords.zombieclicker.ZombieClicker;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -54,7 +52,7 @@ public class MissionsItem {
         table_for_item.align(Align.top).padTop(10);
 
         zombieClicker.getFontManager().setBitmapFont_invent_Scale(.25f);
-        labelStyle = new Label.LabelStyle(zombieClicker.getFontManager().getBitmapFont_invent(), Color.WHITE);
+        labelStyle = new Label.LabelStyle(zombieClicker.getFontManager().getFont_border(), Color.WHITE);
 
         this.rareness = new Label(rareness,labelStyle);
         this.mission = new Label(mission, labelStyle);

@@ -100,7 +100,7 @@ public class ShopItem {
                     if(description_of_item.equals("TAP DAMAGE")){
                         zombieClicker.getNumerics().plus_punch_power(item_value);
                     } else {  //если на дпс
-
+                        zombieClicker.getNumerics().plus_passive_power(item_value);
                     }
 
                     plusValue();   //увеличиваем прибавку на следующую покупку

@@ -3,6 +3,7 @@ package Numbers;
 import com.awprecords.zombieclicker.ZombieClicker;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.TimeUtils;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -42,6 +43,7 @@ public class Location {
     private BigInteger base_BOSS_HP;
     private BigInteger base_zombie_reward;
     private int base_boss_reward;
+    private long passivePunch_time;
 
     public Location(BigInteger zombie_health, double zombie_koeff, int level_count, BigInteger zombie_kills, BigInteger boss_health, double boss_koeff, BigInteger zombie_kill_reward, double zombie_reward_koeff,
                     int boss_kill_reward, double boss_reward_koeff, long betweenBoss, double durationBossFight, final ZombieClicker zc) {
@@ -69,6 +71,8 @@ public class Location {
         count_kill_boss = new BigInteger("0");
         count_death_zombies_betweenBoss = 0;
 
+        passivePunch_time = 0;
+
         this.multiplier_zombie_HP = zombie_koeff;
         this.multiplier_BOSS_HP = boss_koeff;
         this.multiplier_zombie_kill_reward = zombie_reward_koeff;
@@ -84,10 +88,13 @@ public class Location {
     }
 
     public void passive_punch() {
-        if (bossFight) {
-            boss_health = boss_health.subtract(zombieClicker.getNumerics().getPassive_damage());
-        } else
-            zombie_health = zombie_health.subtract(zombieClicker.getNumerics().getPassive_damage());
+        if(TimeUtils.timeSinceMillis(passivePunch_time) > 500) {
+            if (bossFight) {
+                boss_health = boss_health.subtract(zombieClicker.getNumerics().getPassive_damage());
+            } else
+                zombie_health = zombie_health.subtract(zombieClicker.getNumerics().getPassive_damage());
+            passivePunch_time = TimeUtils.millis();
+        }
     }
 
     public void plus_zombie_health() {
