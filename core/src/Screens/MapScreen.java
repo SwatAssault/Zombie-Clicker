@@ -11,7 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -29,6 +31,8 @@ public class MapScreen implements Screen {
     private Viewport viewport;
     private Camera camera;
     private SpriteBatch batch;
+    private Table table;
+    private ScrollPane scrollPane;
     private Image imageBG;
     private Skin back_skin;
     private Skin location_skin;
@@ -47,6 +51,13 @@ public class MapScreen implements Screen {
         batch = new SpriteBatch();
         zombieClicker.get_assets().load_assets_for_map();
         imageBG = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/mapbg.png", Texture.class));
+
+        table = new Table();
+        table.setWidth(540);
+        table.add(imageBG);
+        scrollPane = new ScrollPane(table);
+        scrollPane.setWidth(540);
+        scrollPane.setHeight(960);
 
         back_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json", Skin.class);
         back_btn = new Button(back_skin);
@@ -133,7 +144,7 @@ public class MapScreen implements Screen {
         location_btn3.setDisabled(false);
         location_btn4.setDisabled(true);
 
-        stage.addActor(imageBG);
+        stage.addActor(scrollPane);
         stage.addActor(back_btn);
         stage.addActor(location_btn1);
         stage.addActor(location_btn2);

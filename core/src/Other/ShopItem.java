@@ -32,8 +32,10 @@ public class ShopItem {
     private Stack stack;
     private Table table;
     private Table intable;
+    private Table icon_table;
     private Table description_table;
     private Image image;
+    private Image icon;
     private Table table_for_nums;
     private TextButton upgrade_btn;
     private TextButton buy_counter_btn;
@@ -48,12 +50,15 @@ public class ShopItem {
     private Skin description_skin;
     private Skin buy_counter_skin;
 
+    private Texture icon_texture;
+
     public ShopItem(ZombieClicker zc, final String name, BigInteger cost, double cost_koeff, BigInteger value, double value_koeff, final String description){
         zombieClicker = zc;
 
         stack = new Stack();
         table = new Table();
         intable = new Table();
+        icon_table = new Table();
         description_table = new Table();
         table_for_nums = new Table();
         item_number = 0;
@@ -75,6 +80,9 @@ public class ShopItem {
         upgrade_btn = new TextButton("", buy_skin);
         upgrade_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(item_cost));
         image = new Image(zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
+        icon_texture = zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class);
+        icon_texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        icon = new Image(icon_texture);
 
         name_label = new Label(name_of_item, label_skin);
         description_label = new Label(description_of_item, description_skin);
@@ -114,6 +122,8 @@ public class ShopItem {
         description_table.add(description_label).expandY().padTop(45);
         description_table.row();
         description_table.add(value_label).expandY().padBottom(15);
+        stack.add(icon_table);
+        icon_table.add(icon).expand().left();
 
     }
 

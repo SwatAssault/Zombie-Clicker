@@ -207,7 +207,7 @@ public class Shop implements Screen {
 
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
         //                                                     base cost                                 base value
-        shopItem1 = new ShopItem(zc, "Предмет 1", new BigInteger("50"),1.25f, new BigInteger("1"),1.07f,"TAP DAMAGE");
+        shopItem1 = new ShopItem(zc, "ДУБИНКА", new BigInteger("50"),1.25f, new BigInteger("1"),1.07f,"TAP DAMAGE");
         shopItem2 = new ShopItem(zc, "Предмет 2", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
         shopItem3 = new ShopItem(zc, "Предмет 3", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
         shopItem4 = new ShopItem(zc, "Предмет 4", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");

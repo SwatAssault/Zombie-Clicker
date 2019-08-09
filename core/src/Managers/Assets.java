@@ -72,9 +72,10 @@ public class Assets {
         assetManager.load("LabelSkins/description_label_skin.json", Skin.class);
         assetManager.load("Background/shopbg.png", Texture.class);
         assetManager.load("item1.png", Texture.class);
-
         assetManager.load("item1.png", Texture.class);
         assetManager.load("Squads/squad_item_bg.png", Texture.class);
+
+        assetManager.load("Texture Atlases/icon_pistol.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
