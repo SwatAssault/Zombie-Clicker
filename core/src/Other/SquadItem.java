@@ -30,6 +30,8 @@ public class SquadItem {
     private Label name_of_squad;
     private Label description_label;
     private Label DPS;
+    private Label crit;
+    private Label drop;
     private int buy_number;
 
     private BigInteger dps;
@@ -45,18 +47,22 @@ public class SquadItem {
     private int status; // 0 - свободен, 1,2... - на какой-то локации, -1 - на задании
     private boolean bought; //куплен или нет
 
+    private int crit_chance;
+    private int drop_chance;
     private BigInteger base_cost;
     private double cost_koeff;
     private BigInteger base_dps;
     private double dps_koeff;
 
-    public SquadItem(final ZombieClicker zc, String name, String description, BigInteger base_cost, double cost_koeff, BigInteger base_dps, double dps_koeff){
+    public SquadItem(final ZombieClicker zc, String name, String description, BigInteger base_cost, double cost_koeff, BigInteger base_dps, double dps_koeff, int crit_chance, int drop_chance){
         zombieClicker = zc;
 
         this.base_cost = base_cost;
         this.cost_koeff = cost_koeff;
         this.base_dps = base_dps;
         this.dps_koeff = dps_koeff;
+        this.crit_chance = crit_chance;
+        this.drop_chance = drop_chance;
 
         stack = new Stack();
         table = new Table();
@@ -75,6 +81,8 @@ public class SquadItem {
         name_of_squad = new Label(name, zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class));
         description_label = new Label(description, zombieClicker.get_assets().get_asset_manager().get("Squads/desc_label_skin.json", Skin.class));
         DPS = new Label("DPS: +" + zombieClicker.getNumerics().bigInteger_to_string(dps), zombieClicker.get_assets().get_asset_manager().get("LabelSkins/description_label_skin.json", Skin.class));
+        crit = new Label("Crit. chance: " + Integer.toString(crit_chance) + "%", zombieClicker.get_assets().get_asset_manager().get("LabelSkins/description_label_skin.json", Skin.class));
+        drop = new Label("Drop chance: " + Integer.toString(drop_chance) + "%", zombieClicker.get_assets().get_asset_manager().get("LabelSkins/description_label_skin.json", Skin.class));
         send_to_location_btn = new TextButton(send_btn_string, zombieClicker.get_assets().get_asset_manager().get("Squads/send_btn_skin.json", Skin.class));
         number_btn = new TextButton(Integer.toString(buy_number), zombieClicker.get_assets().get_asset_manager().get("Other/buy_counter_skin.json", Skin.class));
 
@@ -127,7 +135,11 @@ public class SquadItem {
         stack.add(name_table);
         name_table.add(name_of_squad).expandY().top().padTop(10);
         stack.add(abilities_table);
-        abilities_table.add(DPS).expandY();
+        abilities_table.add(DPS).expandY().padTop(50);
+        abilities_table.row();
+        abilities_table.add(crit).expandY().padBottom(1);
+        abilities_table.row();
+        abilities_table.add(drop).expandY().padBottom(40);
         stack.add(description_table);
         description_table.add(description_label).expand().left().bottom();
 
@@ -200,6 +212,14 @@ public class SquadItem {
     public double getDps_koeff() {
         return dps_koeff;
     }
+
+    public int getCrit_chance(){
+        return  crit_chance;
+    }
+
+    public int getDrop_chance(){
+        return drop_chance;
+    }
     //////////////////GETTERS////////////////////////
 
 
@@ -222,6 +242,14 @@ public class SquadItem {
 
     public void setDps_koeff(double dps_koeff) {
         this.dps_koeff = dps_koeff;
+    }
+
+    public void setCrit_chance(int x){
+        crit_chance = x;
+    }
+
+    public void setDrop_chance(int x){
+        drop_chance = x;
     }
     //////////////////SETTERS////////////////////////
 

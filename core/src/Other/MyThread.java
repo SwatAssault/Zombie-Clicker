@@ -1,6 +1,7 @@
 package Other;
 
 import com.awprecords.zombieclicker.ZombieClicker;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 
 import java.math.BigDecimal;
@@ -63,8 +64,18 @@ public class MyThread extends Thread {
         return s;
     }
 
+    public void crit_dmg(int which_location){
+        for (SquadItem x : allSquads.get(which_location - 1)) {
+            if((int) (Math.random() * 100 + 1) <= x.getCrit_chance()){
+                System.out.println("Crit proc");
+                zombieClicker.getNumerics().get_location(which_location).minusHealth(x.getDps());
+            }
+        }
+    }
+
     public void location_activity(int which_location){
         zombieClicker.getNumerics().get_location(which_location).minusHealth(sum_location_DMG(which_location));
+        crit_dmg(which_location);
         if (zombieClicker.getNumerics().get_location(which_location).getZombie_health().compareTo(BigInteger.valueOf(0)) <= 0) {          //УБИЙСТВО ЗОМБИ
 
             zombieClicker.getNumerics().plus_zombie_kills(BigInteger.valueOf(1));

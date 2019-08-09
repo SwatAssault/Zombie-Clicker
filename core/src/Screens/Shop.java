@@ -257,12 +257,12 @@ public class Shop implements Screen {
         scrollPane.setZIndex(1);
 
         /////////////////////SQUAD ITEMS INITIALIZATION//////////////////////
-        //                                                                                    cost                                    dps
-        squad1 = new SquadItem(zc, "ТОПОРИСТЫ", "АТАКУЮТ ТОПОРАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f);
-        squad2 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f);
-        squad3 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f);
-        squad4 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f);
-        squad5 = new SquadItem(zc, "ПОВАРЫ", "SILICON SJENFOSEFN АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f);
+        //                                                                                    cost                                    dps                                       0-100%
+        squad1 = new SquadItem(zc, "ТОПОРИСТЫ", "АТАКУЮТ ТОПОРАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 3, 0);
+        squad2 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
+        squad3 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
+        squad4 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
+        squad5 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
 
         //Заполняю объекты в массив, чтобы было легче работать
         squadItems_array = new Array<SquadItem>();
