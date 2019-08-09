@@ -47,6 +47,8 @@ public class OtherItem {
         this.name = name_of_item;
         this.description = description;
 
+        name_label = new Label(name, zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class));
+
         buy_btn.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {

@@ -54,15 +54,15 @@ public class SquadItem {
     private BigInteger base_dps;
     private double dps_koeff;
 
-    public SquadItem(final ZombieClicker zc, String name, String description, BigInteger base_cost, double cost_koeff, BigInteger base_dps, double dps_koeff, int crit_chance, int drop_chance){
+    public SquadItem(final ZombieClicker zc, String name, String description, BigInteger base_cost, double cost_koeff, BigInteger base_dps, double dps_koeff, int critchance, int dropchance){
         zombieClicker = zc;
 
         this.base_cost = base_cost;
         this.cost_koeff = cost_koeff;
         this.base_dps = base_dps;
         this.dps_koeff = dps_koeff;
-        this.crit_chance = crit_chance;
-        this.drop_chance = drop_chance;
+        this.crit_chance = critchance;
+        this.drop_chance = dropchance;
 
         stack = new Stack();
         table = new Table();
@@ -101,6 +101,8 @@ public class SquadItem {
                         zombieClicker.getShop().setSpare_squads_counter(1);
                     }
                     plus_DPS();
+                    crit_chance++;
+                    crit.setText("Crit. chance: " + Integer.toString(crit_chance) + "%");
                     DPS.setText("DPS: +" + zombieClicker.getNumerics().bigInteger_to_string(dps));
                     bought = true;
                 }
@@ -142,8 +144,6 @@ public class SquadItem {
         abilities_table.add(drop).expandY().padBottom(40);
         stack.add(description_table);
         description_table.add(description_label).expand().left().bottom();
-
-
     }
 
     public SquadItem getSquadItem(){
