@@ -208,15 +208,15 @@ public class Shop implements Screen {
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
         //                                                     base cost                                 base value
         shopItem1 = new ShopItem(zc, "ДУБИНКА", new BigInteger("50"),1.25f, new BigInteger("1"),1.07f,"TAP DAMAGE");
-        shopItem2 = new ShopItem(zc, "Предмет 2", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
-        shopItem3 = new ShopItem(zc, "Предмет 3", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
-        shopItem4 = new ShopItem(zc, "Предмет 4", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
-        shopItem5 = new ShopItem(zc, "Предмет 5", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
-        shopItem6 = new ShopItem(zc, "Предмет 6", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
-        shopItem7 = new ShopItem(zc, "Предмет 7", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
-        shopItem8 = new ShopItem(zc, "Предмет 8", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
-        shopItem9 = new ShopItem(zc, "Предмет 9", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
-        shopItem10 = new ShopItem(zc, "Предмет 10", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
+        shopItem2 = new ShopItem(zc, "Предмет 2", new BigInteger("200"),1.07f, new BigInteger("1"),1.1f,"DPS");
+        shopItem3 = new ShopItem(zc, "Предмет 3", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"x");
+        shopItem4 = new ShopItem(zc, "Предмет 4", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"x");
+        shopItem5 = new ShopItem(zc, "Предмет 5", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"x");
+        shopItem6 = new ShopItem(zc, "Предмет 6", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"x");
+        shopItem7 = new ShopItem(zc, "Предмет 7", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"x");
+        shopItem8 = new ShopItem(zc, "Предмет 8", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"x");
+        shopItem9 = new ShopItem(zc, "Предмет 9", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"x");
+        shopItem10 = new ShopItem(zc, "Предмет 10", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"x");
 
         //Заполняю объекты в массив, чтобы было легче работать
         shopItems_array = new Array<ShopItem>();

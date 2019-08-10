@@ -123,66 +123,74 @@ public class Numerics {
 
         if(string_to_cut.length() >= 4 && string_to_cut.length() <= 6){                 //ЕСЛИ ЧИСЛО В ТЫСЯЧАХ
             before_dot = x.divide(BigInteger.valueOf(1000)).toString();
-            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
-            y = before_dot + "." + after_dot + "K";
+            after_dot = "." + string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            if(after_dot.equals(".000")) after_dot = "";
+            y = before_dot + after_dot + "K";
         } else if (string_to_cut.length() >= 7 && string_to_cut.length() <= 9) {       //ЕСЛИ ЧИСЛО В МИЛЛИОНАХ
             before_dot = x.divide(BigInteger.valueOf(1000000)).toString();
-            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
-            y = before_dot + "." + after_dot + "M";
+            after_dot = "." + string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            y = before_dot + after_dot + "M";
         } else if (string_to_cut.length() >= 10 && string_to_cut.length() <= 12) {       //ЕСЛИ ЧИСЛО В МИЛЛИАРДАХ
             before_dot = x.divide(BigInteger.valueOf(1000000000)).toString();
-            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
-            y = before_dot + "." + after_dot + "B";
+            after_dot = "." + string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            if(after_dot.equals(".000")) after_dot = "";
+            y = before_dot + after_dot + "B";
         } else if (string_to_cut.length() >= 13 && string_to_cut.length() <= 15) {       //ЕСЛИ ЧИСЛО В ТРИЛЛИОНАХ
             before_dot = x.divide(oneTrillion).toString();
-            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
-            y = before_dot + "." + after_dot + "T";
+            after_dot = "." + string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            if(after_dot.equals(".000")) after_dot = "";
+            y = before_dot + after_dot + "T";
         } else if (string_to_cut.length() >= 16 && string_to_cut.length() <= 18) {       //ЕСЛИ ЧИСЛО В КВАДРИЛЛИОНАХ
             before_dot = x.divide(oneQuadrillion).toString();
-            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
-            y = before_dot + "." + after_dot + "q";
+            after_dot = "." + string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            if(after_dot.equals(".000")) after_dot = "";
+            y = before_dot + after_dot + "q";
         } else if (string_to_cut.length() >= 19 && string_to_cut.length() <= 21) {       //ЕСЛИ ЧИСЛО В КВИНТИЛЛИОНАХ
             before_dot = x.divide(oneQuintillion).toString();
             after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
-            y = before_dot + "." + after_dot + "Q";
+            if(after_dot.equals(".000")) after_dot = "";
+            y = before_dot + after_dot + "Q";
         } else if (string_to_cut.length() >= 22 && string_to_cut.length() <= 24) {       //ЕСЛИ ЧИСЛО В СЕКСТИЛЛИОНАХ
             before_dot = x.divide(oneSextillion).toString();
-            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
-            y = before_dot + "." + after_dot + "s";
+            after_dot = "." + string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            if(after_dot.equals(".000")) after_dot = "";
+            y = before_dot + after_dot + "s";
         } else if (string_to_cut.length() >= 25 && string_to_cut.length() <= 27) {       //ЕСЛИ ЧИСЛО В СЕПТИЛЛИОНАХ
             before_dot = x.divide(oneSeptillion).toString();
-            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
-            y = before_dot + "." + after_dot + "S";
+            after_dot = "." + string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            if(after_dot.equals(".000")) after_dot = "";
+            y = before_dot + after_dot + "S";
         } else if (string_to_cut.length() >= 28 && string_to_cut.length() <= 30) {       //ЕСЛИ ЧИСЛО В ОКТИЛЛИОНАХ
             before_dot = x.divide(oneOctillion).toString();
-            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
-            y = before_dot + "." + after_dot + "O";
+            after_dot = "." + string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            if(after_dot.equals(".000")) after_dot = "";
+            y = before_dot + after_dot + "O";
         } else if (string_to_cut.length() >= 31 && string_to_cut.length() <= 33) {       //ЕСЛИ ЧИСЛО В НОНИЛЛИОНАХ
             before_dot = x.divide(oneNonillion).toString();
-            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
-            y = before_dot + "." + after_dot + "N";
+            after_dot = "." + string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            if(after_dot.equals(".000")) after_dot = "";
+            y = before_dot + after_dot + "N";
         } else if (string_to_cut.length() >= 34 && string_to_cut.length() <= 36) {       //ЕСЛИ ЧИСЛО В ДЕКАЛЛИОНАХ
             before_dot = x.divide(oneDecallion).toString();
             after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
-            y = before_dot + "." + after_dot + "d";
+            if(after_dot.equals(".000")) after_dot = "";
+            y = before_dot + after_dot + "d";
         } else if (string_to_cut.length() >= 37 && string_to_cut.length() <= 39) {       //ЕСЛИ ЧИСЛО В ЭНДЕКАЛЛИОНАХ
             before_dot = x.divide(oneAndecallion).toString();
-            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
-            y = before_dot + "." + after_dot + "Ad";
+            after_dot = "." + string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            if(after_dot.equals(".000")) after_dot = "";
+            y = before_dot + after_dot + "Ad";
         } else if (string_to_cut.length() >= 40 && string_to_cut.length() <= 42) {       //ЕСЛИ ЧИСЛО В ДОДЕКАЛЛИОНАХ
             before_dot = x.divide(oneDodecallion).toString();
-            after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
-            y = before_dot + "." + after_dot + "D";
+            after_dot = "." + string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
+            if(after_dot.equals(".000")) after_dot = "";
+            y = before_dot + after_dot + "D";
         } else if (string_to_cut.length() >= 43){
             y = string_to_cut.substring(0,1) + "." + string_to_cut.substring(1,3) + "e" + (string_to_cut.length() - 1);
         } else
             y = x.toString();
 
         return y;
-    }
-
-    public void passive_punch() {
-
     }
 
     //БОЛЬШИНСТВО СЕТТЕРОВ НУЖНЫ ДЛЯ ОПРЕДЕЛЕНИЯ ЗНАЧЕНИЙ ПРИ ЗАГРУЗКЕ СОХРАНЕНИЯ
@@ -242,7 +250,7 @@ public class Numerics {
     }
 
     public void plus_passive_power(BigInteger x) {
-        //вызывается при покупке улучшения на урон в магазине
+        //вызывается при покупке улучшения на урон в магазине DPS
         passive_damage = passive_damage.add(x);
     }
 
