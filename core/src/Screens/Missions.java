@@ -43,11 +43,21 @@ public class Missions implements Screen {
 
     private ScrollPane scrollPane;
 
-    private ArrayList<MissionsItem> missionsItem;
+    private int[][] pos;
+    private float x;
+    private float y;
 
     public Missions(final ZombieClicker zc) {
         zombieClicker = zc;
         zombieClicker.get_assets().load_assets_for_Missions();
+
+        pos = new int[][]{
+                {50, 640},
+                {123, 434},
+                {300, 564},
+                {334, 304},
+                {120, 50},
+                {170, 274}};
 
         camera = new OrthographicCamera();
         viewport = new StretchViewport(540, 960, camera);
@@ -69,32 +79,31 @@ public class Missions implements Screen {
         ImageBG = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/missions_bg.png", Texture.class));
         ImageBG_MainGame = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/location_1_bg.png", Texture.class));
 
-        missionsItem = new ArrayList<MissionsItem>();
-        missionsItem.add(new MissionsItem(zc, "rare", "123000000000000000000000000000000000000000", 1));
-        missionsItem.add(new MissionsItem(zc,"rare", "123", 1));
-        missionsItem.add(new MissionsItem(zc,"rare", "123", 1));
-        missionsItem.add(new MissionsItem(zc,"rare", "123", 1));
-        missionsItem.add(new MissionsItem(zc,"rare", "123", 1));
-        missionsItem.add(new MissionsItem(zc,"rare", "123", 1));
-        missionsItem.add(new MissionsItem(zc,"rare", "123", 1));
-        missionsItem.add(new MissionsItem(zc,"rare", "123", 1));
-        missionsItem.add(new MissionsItem(zc,"rare", "123", 1));
 
-        table = new Table();
-        for (MissionsItem k : missionsItem) {
-            table.add(k.getStack()).padBottom(20);
-            table.row();
-        }
 
-        scrollPane = new ScrollPane(table);
-        scrollPane.setWidth(420);
-        scrollPane.setHeight(683);
-        scrollPane.setPosition(62, 105);
+        zombieClicker.getNumerics().addMission(zombieClicker);
+
+
+//        table = new Table();
+//        for (MissionsItem k : missionsItem) {
+//            table.add(k.getStack()).padBottom(20);
+//            table.row();
+//        }
+
+//        scrollPane = new ScrollPane(table);
+//        scrollPane.setWidth(420);
+//        scrollPane.setHeight(683);
+//        scrollPane.setPosition(62, 105);
 
         stage.addActor(ImageBG_MainGame);
         stage.addActor(ImageBG);
         stage.addActor(goback_bth);
-        stage.addActor(scrollPane);
+//        stage.addActor(scrollPane);
+
+        for (MissionsItem q : zombieClicker.getNumerics().getMissionsItem()) {
+            stage.addActor(q.getStack());
+
+        }
 
         Gdx.input.setInputProcessor(stage);
     }

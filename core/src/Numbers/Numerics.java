@@ -1,10 +1,13 @@
 package Numbers;
 
 import com.awprecords.zombieclicker.ZombieClicker;
+import com.badlogic.gdx.math.MathUtils;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import Other.MissionsItem;
 
 public class Numerics {
 
@@ -54,6 +57,10 @@ public class Numerics {
     private int countCraftItem_3;
     private int countCraftItem_4;
 
+    private ArrayList<MissionsItem> missionsItem;
+    private ArrayList<String> missionText;
+    private ArrayList<String> missionRank;
+
     public Numerics(ZombieClicker zc) {
 
 
@@ -71,20 +78,27 @@ public class Numerics {
         player_brows = 0;
         player_name = "GUSTAV";
 
+        missionsItem = new ArrayList<MissionsItem>();
+        missionText = new ArrayList<String>(
+                Arrays.asList("mission number 1", "mission number 2", "mission number 3", "mission number 4", "mission number 5", "mission number 6", "mission number 7",
+                        "mission number 8", "mission number 9", "mission number 10", "mission number 11", "mission number 12", "mission number 13", "mission number 14",
+                        "mission number 15", "mission number 16", "mission number 17", "mission number 18", "mission number 19", "mission number 20"));
+        missionRank = new ArrayList<String>(
+                Arrays.asList("common", "shirpotreb", "rare", "legendary"));
         //TODO скорее всего придется это переделать когда появятся сохранения
         location = new ArrayList<Location>(Arrays.asList(
                 //                 zombie_health                                            zombie_kills             boss_health                       zombie_kill_reward
-                new Location(new BigInteger("10"), 1.195f,1, new BigInteger("0"), new BigInteger("12"), 1, new BigInteger("200"), 1.09f,
-                        1, 1,10, 3000, zc),
+                new Location(new BigInteger("10"), 1.195f, 1, new BigInteger("0"), new BigInteger("12"), 1, new BigInteger("200"), 1.09f,
+                        1, 1, 10, 3000, zc),
 
-                new Location(new BigInteger("12"), 1.16f,1, new BigInteger("0"), new BigInteger("102"), 1, new BigInteger("2"), 1.09f,
-                        1, 1,10, 3000, zc),
+                new Location(new BigInteger("12"), 1.16f, 1, new BigInteger("0"), new BigInteger("102"), 1, new BigInteger("2"), 1.09f,
+                        1, 1, 10, 3000, zc),
 
-                new Location(new BigInteger("15"), 1.16f,1, new BigInteger("0"), new BigInteger("120"), 1, new BigInteger("2"), 1.09f,
-                        1, 1,10, 3000, zc),
+                new Location(new BigInteger("15"), 1.16f, 1, new BigInteger("0"), new BigInteger("120"), 1, new BigInteger("2"), 1.09f,
+                        1, 1, 10, 3000, zc),
 
-                new Location(new BigInteger("20"), 1.16f,1, new BigInteger("0"), new BigInteger("1020"), 1, new BigInteger("2"), 1.09f,
-                        1, 1,10, 3000, zc)
+                new Location(new BigInteger("20"), 1.16f, 1, new BigInteger("0"), new BigInteger("1020"), 1, new BigInteger("2"), 1.09f,
+                        1, 1, 10, 3000, zc)
         ));
 
         current_location = 0;
@@ -121,7 +135,7 @@ public class Numerics {
         String y;
         string_to_cut = x.toString();
 
-        if(string_to_cut.length() >= 4 && string_to_cut.length() <= 6){                 //ЕСЛИ ЧИСЛО В ТЫСЯЧАХ
+        if (string_to_cut.length() >= 4 && string_to_cut.length() <= 6) {                 //ЕСЛИ ЧИСЛО В ТЫСЯЧАХ
             before_dot = x.divide(BigInteger.valueOf(1000)).toString();
             after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
             y = before_dot + "." + after_dot + "K";
@@ -173,8 +187,8 @@ public class Numerics {
             before_dot = x.divide(oneDodecallion).toString();
             after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 3);
             y = before_dot + "." + after_dot + "D";
-        } else if (string_to_cut.length() >= 43){
-            y = string_to_cut.substring(0,1) + "." + string_to_cut.substring(1,3) + "e" + (string_to_cut.length() - 1);
+        } else if (string_to_cut.length() >= 43) {
+            y = string_to_cut.substring(0, 1) + "." + string_to_cut.substring(1, 3) + "e" + (string_to_cut.length() - 1);
         } else
             y = x.toString();
 
@@ -219,7 +233,7 @@ public class Numerics {
         gold = gold.subtract(x);
     }
 
-    public void minus_diamonds(int x){
+    public void minus_diamonds(int x) {
         diamonds -= x;
     }
 
@@ -318,13 +332,56 @@ public class Numerics {
         player_name = name;
     }
 
-    public void setSquads_reward_percent(double x){
+    public void setSquads_reward_percent(double x) {
         // в процентах % 10.0f
         squads_reward_percent = x;
     }
 
-    public void setGold_from_taps(BigInteger x){
+    public void setGold_from_taps(BigInteger x) {
         gold_from_taps = x;
+    }
+
+    public void plusMissionItem(MissionsItem mi) {
+        missionsItem.add(mi);
+    }
+
+    //Вызывать из класса миссий!!!
+    public void addMission(ZombieClicker zombieClicker) {
+        if (missionsItem.size() >= 6) {
+            System.out.println("NET MESTA");
+            return;
+        }
+
+        if (missionsItem.size() == 5)
+            missionsItem.add(new MissionsItem(zombieClicker, missionRank.get(MathUtils.random(0, missionRank.size() - 1)),
+                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(1800, 10800), MathUtils.random(1, 6),
+                    MathUtils.random(290, 350), MathUtils.random(110, 200)));
+        if (missionsItem.size() == 4)
+            missionsItem.add(new MissionsItem(zombieClicker, missionRank.get(MathUtils.random(0, missionRank.size() - 1)),
+                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(1800, 10800), MathUtils.random(1, 6),
+                    MathUtils.random(50, 120), MathUtils.random(110, 200)));
+        if (missionsItem.size() == 3)
+            missionsItem.add(new MissionsItem(zombieClicker, missionRank.get(MathUtils.random(0, missionRank.size() - 1)),
+                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(1800, 10800), MathUtils.random(1, 6),
+                    MathUtils.random(290, 350), MathUtils.random(365, 435)));
+        if (missionsItem.size() == 2)
+            missionsItem.add(new MissionsItem(zombieClicker, missionRank.get(MathUtils.random(0, missionRank.size() - 1)),
+                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(1800, 10800), MathUtils.random(1, 6),
+                    MathUtils.random(50, 120), MathUtils.random(365, 435)));
+        if (missionsItem.size() == 1)
+            missionsItem.add(new MissionsItem(zombieClicker, missionRank.get(MathUtils.random(0, missionRank.size() - 1)),
+                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(1800, 10800), MathUtils.random(1, 6),
+                    MathUtils.random(290, 350), MathUtils.random(590, 650)));
+        if (missionsItem.size() == 0)
+            missionsItem.add(new MissionsItem(zombieClicker, missionRank.get(MathUtils.random(0, missionRank.size() - 1)),
+                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(1800, 10800), MathUtils.random(1, 6),
+                    MathUtils.random(50, 120), MathUtils.random(590, 650)));
+        //50 - 120; 590 - 650 (1 ya4eika)
+        //290 - 350; 590 - 650 (2)
+        //50 - 120; 365 - 435 (3)
+        //290 - 350; 365 - 435 (4)
+        //50 - 120; 365 - 200 (5)
+        //290 - 350; 365 - 200 (6)
     }
     /////////////////SETTERS//////////////////
 
@@ -438,12 +495,16 @@ public class Numerics {
         return player_name;
     }
 
-    public double getSquads_reward_percent(){
+    public double getSquads_reward_percent() {
         return squads_reward_percent;
     }
 
-    public BigInteger getGold_from_taps(){
+    public BigInteger getGold_from_taps() {
         return gold_from_taps;
+    }
+
+    public ArrayList<MissionsItem> getMissionsItem() {
+        return missionsItem;
     }
     ////////////////GETTERS//////////////////
 }
