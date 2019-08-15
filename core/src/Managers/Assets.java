@@ -17,23 +17,23 @@ public class Assets {
         return assetManager;
     }
 
-    public void load_assets_for_anyLocation(ZombieClicker zombieClicker){
-        if(zombieClicker.getNumerics().getCurrent_num_location() == 0) {
+    public void load_assets_for_anyLocation(ZombieClicker zombieClicker) {
+        if (zombieClicker.getNumerics().getCurrent_num_location() == 0) {
             load_assets_for_location_1();
             zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_1_bg.png");
         }
 
-        if(zombieClicker.getNumerics().getCurrent_num_location() == 1) {
+        if (zombieClicker.getNumerics().getCurrent_num_location() == 1) {
             load_assets_for_location_2();
             zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_2_bg.png");
         }
 
-        if(zombieClicker.getNumerics().getCurrent_num_location() == 2) {
+        if (zombieClicker.getNumerics().getCurrent_num_location() == 2) {
             load_assets_for_location_3();
             zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_3_bg.png");
         }
 
-        if(zombieClicker.getNumerics().getCurrent_num_location() == 3) {
+        if (zombieClicker.getNumerics().getCurrent_num_location() == 3) {
             load_assets_for_location_4();
             zombieClicker.getNumerics().getCurrent_location().setBGimage("Background/location_4_bg.png");
         }
@@ -62,7 +62,7 @@ public class Assets {
         assetManager.finishLoading();
     }
 
-    public void load_assets_for_Shop(){
+    public void load_assets_for_Shop() {
         assetManager.load("Buttons/tab_skin.json", Skin.class);
         assetManager.load("Buttons/buybtn.json", Skin.class);
         assetManager.load("Squads/send_btn_skin.json", Skin.class);
@@ -81,18 +81,18 @@ public class Assets {
         assetManager.finishLoading();
     }
 
-    public void load_assets_for_settings(){
+    public void load_assets_for_settings() {
 
     }
 
-    public void load_assets_for_map(){
+    public void load_assets_for_map() {
         assetManager.load("Background/mapbg.png", Texture.class);
         assetManager.load("SkinJson/location_btn.json", Skin.class);
         assetManager.update();
         assetManager.finishLoading();
     }
 
-    public void load_assets_for_inventory(){
+    public void load_assets_for_inventory() {
         assetManager.load("Background/invent_bg.png", Texture.class);
         assetManager.load("Background/location_1_bg.png", Texture.class);
         assetManager.load("separator_inventory.png", Texture.class);
@@ -111,7 +111,7 @@ public class Assets {
         assetManager.finishLoading();
     }
 
-    public void load_assets_for_playerCreate(){
+    public void load_assets_for_playerCreate() {
         assetManager.load("Other/slider.json", Skin.class);
         assetManager.load("Other/checkBox.json", Skin.class);
         assetManager.load("ButtonsInventory/label_skin.json", Skin.class);
@@ -123,34 +123,37 @@ public class Assets {
         assetManager.finishLoading();
     }
 
-    public void load_assets_for_Missions(){
+    public void load_assets_for_Missions() {
         assetManager.load("Missions/accept_btn_skin.json", Skin.class);
-        assetManager.load("Missions/mission_item_bg.png", Texture.class);
+        assetManager.load("Other/paper.png", Texture.class);
+        assetManager.load("Missions/dp_2.png", Texture.class);
+        assetManager.load("Missions/cp_2.png", Texture.class);
         assetManager.load("Missions/reward.png", Texture.class);
-        assetManager.load("ButtonsInventory/label_skin.json", Skin.class);
+//        assetManager.load("ButtonsInventory/label_skin.json", Skin.class);
         assetManager.load("Background/missions_bg.png", Texture.class);
         assetManager.load("Background/location_1_bg.png", Texture.class);
-        assetManager.load("Missions/common_label_skin.json", Skin.class);
+//        assetManager.load("Missions/common_label_skin.json", Skin.class);
+        assetManager.load("Other/alfa_btn.json", Skin.class);
 
         assetManager.update();
         assetManager.finishLoading();
     }
 
 
-    public void load_assets_for_SquadDistScreen(){
+    public void load_assets_for_SquadDistScreen() {
         assetManager.load("Buttons/shop_btn.json", Skin.class);
         assetManager.load("Background/achbg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
 
-    public void load_assets_for_MiniGameScreen(){
+    public void load_assets_for_MiniGameScreen() {
         assetManager.load("Background/location_1_bg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
 
-    public void load_assets_for_WheelOfFortuneScreen(){
+    public void load_assets_for_WheelOfFortuneScreen() {
         assetManager.load("Buttons/roll_btn_skin.json", Skin.class);
         assetManager.load("Background/location_1_bg.png", Texture.class);
         assetManager.load("Background/wheel.png", Texture.class);
@@ -160,46 +163,46 @@ public class Assets {
         assetManager.finishLoading();
     }
 
-    public void load_assets_for_achievements(){
-     //   assetManager.load("SkinJson/kills.json", Skin.class);
-      //  assetManager.load("SkinJson/clicks.json", Skin.class);
+    public void load_assets_for_achievements() {
+        //   assetManager.load("SkinJson/kills.json", Skin.class);
+        //  assetManager.load("SkinJson/clicks.json", Skin.class);
 
-    //    assetManager.load("Background/achbg.png", Texture.class);
+        //    assetManager.load("Background/achbg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
 
-    public void load_assets_for_location_1(){
+    public void load_assets_for_location_1() {
         assetManager.load("Background/location_1_bg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
 
-    public void load_assets_for_location_2(){
+    public void load_assets_for_location_2() {
         assetManager.load("Background/location_2_bg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
 
-    public void load_assets_for_location_3(){
+    public void load_assets_for_location_3() {
         assetManager.load("Background/location_3_bg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
 
-    public void load_assets_for_location_4(){
+    public void load_assets_for_location_4() {
         assetManager.load("Background/location_4_bg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
 
-    public void load_assets_for_RewardScreen(){
+    public void load_assets_for_RewardScreen() {
         assetManager.load("Background/rewardbg.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
 
-    public void load_popular(){
+    public void load_popular() {
         assetManager.load("Buttons/ok_btn_skin.json", Skin.class);
         assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("Buttons/double_btn.json", Skin.class);
@@ -207,7 +210,7 @@ public class Assets {
         assetManager.finishLoading();
     }
 
-    public void load_assets_for_TipScreen(){
+    public void load_assets_for_TipScreen() {
         assetManager.load("Background/tipbg.png", Texture.class);
         assetManager.load("Buttons/x_btn.json", Skin.class);
         assetManager.update();
@@ -215,7 +218,7 @@ public class Assets {
     }
 
     /////////DISPOSE ASSETS/////////
-    public void dispose_Game_assets(){
+    public void dispose_Game_assets() {
         assetManager.unload("Buttons/shop_btn.json");
         assetManager.unload("Buttons/minigame_btn.json");
         assetManager.unload("Buttons/fight_boss.json");
@@ -232,7 +235,7 @@ public class Assets {
         assetManager.unload("BossTime/time.png");
     }
 
-    public void dispose_Shop_assets(){
+    public void dispose_Shop_assets() {
         assetManager.unload("Buttons/tab_skin.json");
         assetManager.unload("Buttons/buybtn.json");
         assetManager.unload("Squads/send_btn_skin.json");
@@ -247,61 +250,61 @@ public class Assets {
         assetManager.unload("item1.png");
     }
 
-    public void dispose_Inventory_assets(){
+    public void dispose_Inventory_assets() {
 
     }
 
-    public void dispose_PlayerCreate_assets(){
+    public void dispose_PlayerCreate_assets() {
         assetManager.unload("PlayerCreateSkins/player.atlas");
     }
 
-    public void dispose_assets_for_settings(){
+    public void dispose_assets_for_settings() {
 
     }
 
-    public void dispose_assets_for_map(){
+    public void dispose_assets_for_map() {
         assetManager.unload("Background/mapbg.png");
         assetManager.unload("SkinJson/location_btn.json");
     }
 
-    public void dispose_assets_for_achiements(){
+    public void dispose_assets_for_achiements() {
         assetManager.unload("SkinJson/kills.json");
         assetManager.unload("SkinJson/clicks.json");
         assetManager.unload("Background/achbg.png");
     }
 
-    public void dispose_assets_for_SquadDistScreen(){
+    public void dispose_assets_for_SquadDistScreen() {
         assetManager.unload("Buttons/shop_btn.json");
         assetManager.unload("Background/achbg.png");
     }
 
-    public void dispose_assets_for_location_1(){
+    public void dispose_assets_for_location_1() {
         assetManager.unload("Background/location_1_bg.png");
     }
 
-    public void dispose_assets_for_location_2(){
+    public void dispose_assets_for_location_2() {
         assetManager.unload("Background/location_2_bg.png");
     }
 
-    public void dispose_assets_for_location_3(){
+    public void dispose_assets_for_location_3() {
         assetManager.unload("Background/location_3_bg.png");
     }
 
-    public void dispose_assets_for_location_4(){
+    public void dispose_assets_for_location_4() {
         assetManager.unload("Background/location_4_bg.png");
     }
 
-    public void dispose_assets_for_RewardScreen(){
+    public void dispose_assets_for_RewardScreen() {
         assetManager.unload("Background/rewardbg.png");
     }
 
-    public void dispose_popular(){
+    public void dispose_popular() {
         assetManager.unload("Buttons/ok_btn_skin.json");
         assetManager.unload("Buttons/back_btn.json");
         assetManager.unload("Buttons/double_btn.json");
     }
 
-    public void dispose_assets_for_TipScreen(){
+    public void dispose_assets_for_TipScreen() {
         assetManager.unload("Background/tipbg.png");
         assetManager.unload("Buttons/x_btn.json");
     }
