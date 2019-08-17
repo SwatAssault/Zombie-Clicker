@@ -61,6 +61,11 @@ public class Shop implements Screen {
     private SquadItem squad3;
     private SquadItem squad4;
     private SquadItem squad5;
+    private SquadItem squad6;
+    private SquadItem squad7;
+    private SquadItem squad8;
+    private SquadItem squad9;
+    private SquadItem squad10;
     private Array<SquadItem> squadItems_array;
     ////////////////SQUADS//////////////////
 
@@ -118,7 +123,7 @@ public class Shop implements Screen {
 
         item_widht = 474;
         items_amount = 10;
-        squads_amount = 5;
+        squads_amount = 10;
         other_items_amount = 6;
 
         goback_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json", Skin.class);
@@ -263,6 +268,11 @@ public class Shop implements Screen {
         squad3 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
         squad4 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
         squad5 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
+        squad6 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
+        squad7 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
+        squad8 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
+        squad9 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
+        squad10 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
 
         //Заполняю объекты в массив, чтобы было легче работать
         squadItems_array = new Array<SquadItem>();
@@ -271,6 +281,11 @@ public class Shop implements Screen {
         squadItems_array.add(squad3);
         squadItems_array.add(squad4);
         squadItems_array.add(squad5);
+        squadItems_array.add(squad6);
+        squadItems_array.add(squad7);
+        squadItems_array.add(squad8);
+        squadItems_array.add(squad9);
+        squadItems_array.add(squad10);
         /////////////////////SQUAD ITEMS INITIALIZATION/////////////////////
 
         table_squads = new Table();
@@ -334,6 +349,14 @@ public class Shop implements Screen {
     ///////////////GETTERS//////////////////////
     public Stage getStage(){
         return stage;
+    }
+
+    public Array<SquadItem> getSquadItems_array(){
+        return squadItems_array;
+    }
+
+    public int getSquads_amount(){
+        return squads_amount;
     }
     ///////////////GETTERS//////////////////////
 

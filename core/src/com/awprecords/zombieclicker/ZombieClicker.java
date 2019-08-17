@@ -21,6 +21,7 @@ import Screens.Missions;
 import Screens.PlayerCreate;
 import Screens.RewardScreen;
 import Screens.Shop;
+import Screens.SquadSelectionScreen;
 import Screens.SquadsDistScreen;
 import Screens.TipScreen;
 import Screens.WheelOfFortune;
@@ -48,6 +49,7 @@ public class ZombieClicker extends Game {
     private MiniGame miniGame;
     private WheelOfFortune wheelOfFortune;
     private TipScreen tipScreen;
+    private SquadSelectionScreen squadSelectionScreen;
 
     public ZombieClicker() {
         instance = this;
@@ -191,6 +193,14 @@ public class ZombieClicker extends Game {
         tipScreen = null;
         tipScreen = new TipScreen(instance, header, mainText, lastScreen);
         setScreen(tipScreen);
+    }
+
+    public void setSquadSelectionScreen(){
+        squadSelectionScreen = null;
+        if(shop == null)
+            shop = new Shop(instance);
+        squadSelectionScreen = new SquadSelectionScreen(instance);
+        setScreen(squadSelectionScreen);
     }
     ////////////SET SCREEN METHODS/////////////
 
