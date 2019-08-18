@@ -6,10 +6,12 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -23,6 +25,7 @@ public class SquadSelectionScreen implements Screen {
     private Viewport viewport;
     private Camera camera;
     private Image backimg;
+    private Button x_btn;
 
     private MiniSquadItem miniSquadItem1;
     private MiniSquadItem miniSquadItem2;
@@ -46,6 +49,16 @@ public class SquadSelectionScreen implements Screen {
         stage = new Stage(viewport);
         zombieClicker.get_assets().load_assets_for_SquadSelectionScreen();
         backimg = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/squad_selection_bg.png", Texture.class));
+        x_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/x_btn.json", Skin.class));
+        x_btn.setPosition(460, 850);
+
+        x_btn.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                dispose();
+                //Gdx.input.setInputProcessor();
+            }
+        });
 
         miniSquadItem1 = new MiniSquadItem(zombieClicker, zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class), 1);
         miniSquadItem2 = new MiniSquadItem(zombieClicker, zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class), 2);
@@ -83,7 +96,7 @@ public class SquadSelectionScreen implements Screen {
         }
 
 
-        stage.setDebugAll(true);
+        stage.addActor(x_btn);
 
         Gdx.input.setInputProcessor(stage);
     }
@@ -109,7 +122,7 @@ public class SquadSelectionScreen implements Screen {
     @Override
     public void render(float delta) {
 
-
+      //  zombieClicker.getMainGame().render(1);
 
         update();
 

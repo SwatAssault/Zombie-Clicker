@@ -216,7 +216,7 @@ public class Assets {
 
     public void load_assets_for_SquadSelectionScreen(){
         assetManager.load("Background/squad_selection_bg.png", Texture.class);
-       // assetManager.load("Buttons/x_btn.json", Skin.class);
+        assetManager.load("Buttons/x_btn.json", Skin.class);
         assetManager.load("SquadIcons/front.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
@@ -316,7 +316,7 @@ public class Assets {
 
     public void dispose_assets_for_SquadSelectionScreen(){
         assetManager.unload("Background/squad_selection_bg.png");
-        assetManager.unload("SquadIcons/icon.png");
+        assetManager.unload("Buttons/x_btn.json");
     }
 
     /////////DISPOSE ASSETS/////////
