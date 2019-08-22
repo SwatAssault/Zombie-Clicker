@@ -54,7 +54,7 @@ public class SquadItem {
     private BigInteger base_dps;
     private double dps_koeff;
 
-    public SquadItem(final ZombieClicker zc, String name, String description, BigInteger base_cost, double cost_koeff, BigInteger base_dps, double dps_koeff, int critchance, int dropchance, Texture _icon){
+    public SquadItem(final ZombieClicker zc, String name, String description, BigInteger base_cost, double cost_koeff, BigInteger base_dps, double dps_koeff, final int critchance, int dropchance, Texture _icon){
         zombieClicker = zc;
 
         this.base_cost = base_cost;
@@ -103,7 +103,9 @@ public class SquadItem {
                         zombieClicker.getShop().setSpare_squads_counter(1);
                     }
                     plus_DPS();
-                    crit_chance++;
+                    if(crit_chance < 100 && buy_number % 2 == 0){
+                        crit_chance++;
+                    }
                     crit.setText("Crit. chance: " + Integer.toString(crit_chance) + "%");
                     DPS.setText("DPS: +" + zombieClicker.getNumerics().bigInteger_to_string(dps));
                     bought = true;

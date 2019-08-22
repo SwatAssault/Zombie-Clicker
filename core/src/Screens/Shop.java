@@ -263,7 +263,7 @@ public class Shop implements Screen {
 
         /////////////////////SQUAD ITEMS INITIALIZATION//////////////////////
         //                                                                                    cost                                    dps                                       0-100%
-        squad1 = new SquadItem(zc, "ТОПОРИСТЫ", "АТАКУЮТ ТОПОРАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 3, 0,
+        squad1 = new SquadItem(zc, "ПИРАТЫ", "АТАКУЮТ ТОПОРАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 3, 0,
                 zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/pirates.png", Texture.class));
         squad2 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
                 zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
