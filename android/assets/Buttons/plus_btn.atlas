@@ -1,0 +1,20 @@
+
+plus_btn.png
+size: 128,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+plus_btn
+  rotate: false
+  xy: 1, 43
+  size: 42, 40
+  orig: 42, 40
+  offset: 0, 0
+  index: -1
+plus_btn_pressed
+  rotate: false
+  xy: 1, 1
+  size: 42, 40
+  orig: 42, 40
+  offset: 0, 0
+  index: -1
