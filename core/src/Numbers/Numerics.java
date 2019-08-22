@@ -135,7 +135,7 @@ public class Numerics {
         String y;
         string_to_cut = x.toString();
 
-        if (string_to_cut.length() >= 4 && string_to_cut.length() <= 6) {                 //ЕСЛИ ЧИСЛО В ТЫСЯЧАХ
+        if (string_to_cut.length() >= 5 && string_to_cut.length() <= 6) {                 //ЕСЛИ ЧИСЛО В ТЫСЯЧАХ
             before_dot = x.divide(BigInteger.valueOf(1000)).toString();
             after_dot = string_to_cut.substring(before_dot.length(), before_dot.length() + 2);
             y = before_dot + "." + after_dot + "K";
