@@ -56,7 +56,7 @@ public class SquadSelectionScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
-                //Gdx.input.setInputProcessor();
+                Gdx.input.setInputProcessor(zombieClicker.getMainGame().getStage());
             }
         });
 
@@ -122,7 +122,7 @@ public class SquadSelectionScreen implements Screen {
     @Override
     public void render(float delta) {
 
-      //  zombieClicker.getMainGame().render(1);
+        zombieClicker.getMainGame().render(1);
 
         update();
 

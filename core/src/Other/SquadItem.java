@@ -24,6 +24,7 @@ public class SquadItem {
     private Table name_table;
     private Table abilities_table;
     private Table description_table;
+    private Table icon_table;
     private Image image;
     private Image icon;
     private Label name_of_squad;
@@ -53,7 +54,7 @@ public class SquadItem {
     private BigInteger base_dps;
     private double dps_koeff;
 
-    public SquadItem(final ZombieClicker zc, String name, String description, BigInteger base_cost, double cost_koeff, BigInteger base_dps, double dps_koeff, int critchance, int dropchance){
+    public SquadItem(final ZombieClicker zc, String name, String description, BigInteger base_cost, double cost_koeff, BigInteger base_dps, double dps_koeff, int critchance, int dropchance, Texture _icon){
         zombieClicker = zc;
 
         this.base_cost = base_cost;
@@ -65,11 +66,13 @@ public class SquadItem {
 
         stack = new Stack();
         table = new Table();
+        icon_table = new Table();
         intable = new Table();
         name_table = new Table();
         abilities_table = new Table();
         description_table = new Table();
         image = new Image(zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
+        icon = new Image(_icon);
         buy_number = 0;
         squad_cost = base_cost;
         dps = base_dps;
@@ -111,16 +114,16 @@ public class SquadItem {
         send_to_location_btn.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                if(!send_to_location_btn.isDisabled()){
-                    disable_send_btn();
-                    zombieClicker.setSquadsDistScreen(zombieClicker, getSquadItem());
-                } else {
-                    activate_send_btn();
-                    zombieClicker.getMyThread().remove_squad_from_location(getSquadItem(), status);
-                    zombieClicker.getShop().setSpare_squads_counter(1);
-                    status = 0;
-                }
-
+                if(status == 0)
+                    if(!send_to_location_btn.isDisabled()){
+                        disable_send_btn();
+                        zombieClicker.setSquadsDistScreen(zombieClicker, getSquadItem());
+                    } else {
+                        activate_send_btn();
+                        zombieClicker.getMyThread().remove_squad_from_location(getSquadItem(), status);
+                        zombieClicker.getShop().setSpare_squads_counter(1);
+                        status = 0;
+                    }
             }
         });
 
@@ -143,6 +146,8 @@ public class SquadItem {
         abilities_table.add(drop).expandY().padBottom(40);
         stack.add(description_table);
         description_table.add(description_label).expand().left().bottom();
+        stack.add(icon_table);
+        icon_table.add(icon).expand().left();
     }
 
     public SquadItem getSquadItem(){

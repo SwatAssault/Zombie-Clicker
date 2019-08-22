@@ -77,6 +77,7 @@ public class Assets {
         assetManager.load("Squads/squad_item_bg.png", Texture.class);
 
         assetManager.load("Texture Atlases/icon_pistol.png", Texture.class);
+        assetManager.load("Texture Atlases/pirates.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
