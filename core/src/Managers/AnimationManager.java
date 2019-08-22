@@ -20,7 +20,7 @@ public class AnimationManager {
 
     private TextureRegion textureRegion;
 
-    private float scale = 0.9f;                  //насколько зомби продавливается при клике
+    private float scale = 0.9f;
     private float timePassed = 0;
 
     private ArrayList<Animation> zombie_animations_arr;

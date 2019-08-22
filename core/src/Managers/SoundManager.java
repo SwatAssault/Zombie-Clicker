@@ -12,7 +12,7 @@ public class SoundManager {
     }
 
     public void play_punch_sound() {
-        zombieClicker.get_assets().get_asset_manager().get("Sounds/punch.wav", Sound.class).play();
+        //zombieClicker.get_assets().get_asset_manager().get("Sounds/punch.wav", Sound.class).play();
     }
 
 

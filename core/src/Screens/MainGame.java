@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.MathUtils;
@@ -50,6 +51,8 @@ public class MainGame implements Screen {
     private Button minigame_btn;
     private Button bossFight_btn;
     private Button leaveBossFight_btn;
+    private Button plus_gold_btn;
+    private Button plus_diamonds_btn;
 
     private Skin shop_skin;
     private Skin ach_skin;
@@ -57,7 +60,11 @@ public class MainGame implements Screen {
     private Skin invent_skin;
     private Skin missions_skin;
 
-    private Texture heart_texture;
+    private TextureAtlas hud_icons_atlas;
+    private Image gold_icon;
+    private Image diamod_icon;
+    private Image stopwatch_icon;
+    private Texture gold_icon_texture;
     private Texture hpBarbg;
     private Texture hpBar;
     private TextureRegion hpBarStart;
@@ -70,8 +77,8 @@ public class MainGame implements Screen {
     private TextureRegion timeBossBarStart;
     private TextureRegion timeBossBarBody;
     private TextureRegion timeBossBarEnd;
-    private int timeBoss_positionX;
-    private int timeBoss_positionY;
+    private int timeBoss_positionX = 160;
+    private int timeBoss_positionY = 200;
     private double timeBossStart;
     private String timeStr;
 
@@ -80,13 +87,15 @@ public class MainGame implements Screen {
 
     private BitmapFont bitmapFont;
     private BitmapFont HP_font;
-    private BitmapFont diamond_font;
     private FreeTypeFontGenerator fontGenerator;
     private FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
 
     private Location location;
 
     private boolean flag;
+    private int gold_x = 155;
+    private int gold_y = 940;
+    private int diamond_x = 480;
 
     //TODO test
     int y;
@@ -100,16 +109,13 @@ public class MainGame implements Screen {
 
         fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Rubik.ttf"));
         fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        fontParameter.size = 40;
+        fontParameter.size = 22;
         fontParameter.color = Color.WHITE;
         bitmapFont = fontGenerator.generateFont(fontParameter);
         bitmapFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         fontParameter.size = 30;
         HP_font = fontGenerator.generateFont(fontParameter);
         HP_font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        fontParameter.size = 18;
-        diamond_font = fontGenerator.generateFont(fontParameter);
-        diamond_font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
         camera = new OrthographicCamera();
         viewport = new StretchViewport(540, 960, camera);
@@ -126,17 +132,21 @@ public class MainGame implements Screen {
         HP_positionX = 210;
         HP_positionY = 240;
 
-        heart_texture = zombieClicker.get_assets().get_asset_manager().get("Other/heart.png", Texture.class);
-        heart_texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        heart_image = new Image(heart_texture);
-        heart_image.setPosition(150, 230);
+        hud_icons_atlas = zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/hud_atlas.atlas");
+
+        heart_image = new Image(hud_icons_atlas.createSprite("heart"));
+        heart_image.setPosition(165, 236);
+        gold_icon = new Image(hud_icons_atlas.createSprite("gold"));
+        gold_icon.setPosition(gold_x - 145, 920);
+        diamod_icon = new Image(hud_icons_atlas.createSprite("diamond"));
+        diamod_icon.setPosition(diamond_x - 145,920);
+        stopwatch_icon = new Image(hud_icons_atlas.createSprite("stopwatch"));
+        stopwatch_icon.setPosition(timeBoss_positionX - 20, timeBoss_positionY - 20);
 
         timeBossBar = zombieClicker.get_assets().get_asset_manager().get("BossTime/time.png");
         timeBossBarStart = new TextureRegion(timeBossBar, 0, 0, 1, timeBossBar.getHeight());
         timeBossBarBody = new TextureRegion(timeBossBar, 1, 0, 243, timeBossBar.getHeight());
         timeBossBarEnd = new TextureRegion(timeBossBar, 1 + 243, 0, 1, timeBossBar.getHeight());
-        timeBoss_positionX = 160;
-        timeBoss_positionY = 200;
 
         mainButton = new Image();
         mainButton.setPosition(160, 300);
@@ -163,9 +173,27 @@ public class MainGame implements Screen {
             }
         });
 
+        plus_gold_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/plus_btn.json", Skin.class));
+        plus_gold_btn.setPosition(gold_x + 10, gold_y - 28);
+        plus_gold_btn.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+
+            }
+        });
+
+        plus_diamonds_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/plus_btn.json", Skin.class));
+        plus_diamonds_btn.setPosition(diamond_x + 10, gold_y - 28);
+        plus_diamonds_btn.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+
+            }
+        });
+
         shop_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/shop_btn.json");
         goTo_shop_btn = new Button(shop_skin);
-        goTo_shop_btn.setPosition(5, 700);
+        goTo_shop_btn.setPosition(5, 800);
         goTo_shop_btn.addListener(new ClickListener() {
 
             @Override
@@ -186,7 +214,7 @@ public class MainGame implements Screen {
 
         ach_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/ach_btn_skin.json");
         achievement_btn = new Button(ach_skin);
-        achievement_btn.setPosition(435, 853);
+        achievement_btn.setPosition(435, 800);
         achievement_btn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -205,16 +233,16 @@ public class MainGame implements Screen {
 
                 //на время
            //     zombieClicker.setRewardScreen("gold", BigInteger.ONE, "m");
-               // zombieClicker.setTipScreen("ПОДСКАЗКА", "gr", "maingame");
+                zombieClicker.setTipScreen("ПОДСКАЗКА", "gr", "maingame");
 
-              zombieClicker.setSquadSelectionScreen();
+              //zombieClicker.setSquadSelectionScreen();
 
             }
         });
 
 
         bossFight_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/fight_boss.json", Skin.class));
-        bossFight_btn.setPosition(430, 500);
+        bossFight_btn.setPosition(435, 500);
         bossFight_btn.addListener(new ClickListener() {
 
             @Override
@@ -240,7 +268,7 @@ public class MainGame implements Screen {
 
         map_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/map_btn.json");
         map_btn = new Button(map_skin);
-        map_btn.setPosition(430, 700);
+        map_btn.setPosition(435, 700);
         map_btn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -257,16 +285,14 @@ public class MainGame implements Screen {
 
         invent_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/invent_btn_skin.json");
         invent_btn = new Button(invent_skin);
-        invent_btn.setPosition(5, 600);
+        invent_btn.setPosition(5, 700);
         invent_btn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
                 location.setMaxZombie_health();
                 location.setMaxBoss_health();
-
                 zombieClicker.setInventoryScreen();
-
                 if (location.isBossFight()) {
                     next_level(0);
                     location.setLoseBoss(true);
@@ -276,16 +302,14 @@ public class MainGame implements Screen {
 
         missions_skin = zombieClicker.get_assets().get_asset_manager().get("Buttons/missions_btn_skin.json");
         missions_btn = new Button(missions_skin);
-        missions_btn.setPosition(5, 500);
+        missions_btn.setPosition(5, 600);
         missions_btn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
                 location.setMaxZombie_health();
                 location.setMaxBoss_health();
-
                 zombieClicker.setMissionsScreen();
-
                 if (location.isBossFight()) {
                     next_level(0);
                     location.setLoseBoss(true);
@@ -301,9 +325,7 @@ public class MainGame implements Screen {
                 dispose();
                 location.setMaxZombie_health();
                 location.setMaxBoss_health();
-
                 zombieClicker.setMiniGameScreen();
-
                 if (location.isBossFight()) {
                     next_level(0);
                     location.setLoseBoss(true);
@@ -323,6 +345,11 @@ public class MainGame implements Screen {
         stage.addActor(invent_btn);
         stage.addActor(missions_btn);
         stage.addActor(minigame_btn);
+        stage.addActor(diamod_icon);
+        stage.addActor(gold_icon);
+        stage.addActor(stopwatch_icon);
+        stage.addActor(plus_diamonds_btn);
+        stage.addActor(plus_gold_btn);
 
 
         if (location.getLoseBoss()) {
@@ -343,7 +370,7 @@ public class MainGame implements Screen {
 //                zombieClicker.getNumerics().bigInteger_to_string(BigDecimal.valueOf(this.location.getBase_zombie_HP().floatValue() * Math.pow(this.location.getMultiplier_zombie_HP(), y - 1)).toBigInteger()));
 
 
-        System.out.println(zombieClicker.getNumerics().bigInteger_to_string(new BigInteger("1099")));
+        System.out.println(zombieClicker.getNumerics().bigInteger_to_string(new BigInteger("109789")));
     }
 
     ////////////////GETTERS//////////////////
@@ -383,7 +410,6 @@ public class MainGame implements Screen {
         }
     }
 
-    // Время на убийство босса
     public void drawTimeBoss() {
         if ((location.getDurationBossFight() - (System.currentTimeMillis() - timeBossStart)) / 1000 > 0) {
             if (!flag)
@@ -441,9 +467,9 @@ public class MainGame implements Screen {
         }
 
         zombieClicker.getFontManager().getLayout().setText(bitmapFont, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getGold()));
-        bitmapFont.draw(batch, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getGold()), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 918);
-        zombieClicker.getFontManager().getLayout().setText(diamond_font, "" + zombieClicker.getNumerics().getDiamonds());
-        diamond_font.draw(batch, "" + zombieClicker.getNumerics().getDiamonds(), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 860);
+        bitmapFont.draw(batch, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getGold()), gold_x - zombieClicker.getFontManager().getLayout().width, gold_y);
+        zombieClicker.getFontManager().getLayout().setText(bitmapFont, "" + zombieClicker.getNumerics().getDiamonds());
+        bitmapFont.draw(batch, "" + zombieClicker.getNumerics().getDiamonds(), diamond_x - zombieClicker.getFontManager().getLayout().width, gold_y);
     }
 
     @Override
@@ -468,14 +494,11 @@ public class MainGame implements Screen {
 
     private void update() {
 
+        stopwatch_icon.setVisible(location.isBossFight());
+
         if (location.getCount_death_zombies_betweenBoss() == location.getBetweenBoss()) {
-//            System.out.println(location.getLoseBoss());
             if (!location.getLoseBoss()) {
                 location.setBossFight(true);
-
-//            if (bossFight_btn.isVisible())
-//                bossFight_btn.setVisible(false);
-
                 timeBossStart = System.currentTimeMillis();
                 location.setCount_death_zombies_betweenBoss(0);
             }
@@ -497,7 +520,6 @@ public class MainGame implements Screen {
         // lvl == 0 => lose
         // lvl == 1 => win. !!!!else ERROR!!!!
         if (lvl != 0) {
-          //  System.out.println("new level");
             zombieClicker.getNumerics().plus_boss_kills(1);
             zombieClicker.getNumerics().plus_diamonds(location.getBoss_kill_reward());
             location.plus_zombie_health();
@@ -542,8 +564,8 @@ public class MainGame implements Screen {
     @Override
     public void dispose() {
 
-        if (diamond_font != null) diamond_font.dispose();
         if (bitmapFont != null) bitmapFont.dispose();
+        if (HP_font != null) HP_font.dispose();
         if (fontGenerator != null) fontGenerator.dispose();
         zombieClicker.get_assets().dispose_Game_assets();
         if (stage != null) stage.dispose();

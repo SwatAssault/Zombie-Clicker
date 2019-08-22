@@ -52,6 +52,7 @@ public class Assets {
         assetManager.load("HP/hp_bg.png", Texture.class);
         assetManager.load("BossTime/time.png", Texture.class);
         assetManager.load("Other/heart.png", Texture.class);
+        assetManager.load("Texture Atlases/hud_atlas.atlas", TextureAtlas.class);
 
         assetManager.load("Animations/zombie1.atlas", TextureAtlas.class);
         assetManager.load("Animations/zombie2.atlas", TextureAtlas.class);
@@ -204,6 +205,7 @@ public class Assets {
         assetManager.load("Buttons/ok_btn_skin.json", Skin.class);
         assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("Buttons/double_btn.json", Skin.class);
+        assetManager.load("Buttons/plus_btn.json", Skin.class);
         assetManager.update();
         assetManager.finishLoading();
     }
@@ -239,6 +241,7 @@ public class Assets {
         assetManager.unload("HP/hp_bg.png");
         assetManager.unload("Other/heart.png");
         assetManager.unload("BossTime/time.png");
+        assetManager.unload("Texture Atlases/hud_atlas.atlas");
     }
 
     public void dispose_Shop_assets() {
@@ -308,6 +311,7 @@ public class Assets {
         assetManager.unload("Buttons/ok_btn_skin.json");
         assetManager.unload("Buttons/back_btn.json");
         assetManager.unload("Buttons/double_btn.json");
+        assetManager.unload("Buttons/plus_btn.json");
     }
 
     public void dispose_assets_for_TipScreen() {
