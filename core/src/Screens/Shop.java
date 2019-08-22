@@ -263,16 +263,26 @@ public class Shop implements Screen {
 
         /////////////////////SQUAD ITEMS INITIALIZATION//////////////////////
         //                                                                                    cost                                    dps                                       0-100%
-        squad1 = new SquadItem(zc, "ТОПОРИСТЫ", "АТАКУЮТ ТОПОРАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 3, 0);
-        squad2 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
-        squad3 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
-        squad4 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
-        squad5 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
-        squad6 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
-        squad7 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
-        squad8 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
-        squad9 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
-        squad10 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0);
+        squad1 = new SquadItem(zc, "ТОПОРИСТЫ", "АТАКУЮТ ТОПОРАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 3, 0,
+                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/pirates.png", Texture.class));
+        squad2 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
+        squad3 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
+        squad4 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
+        squad5 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
+        squad6 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
+        squad7 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
+        squad8 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
+        squad9 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
+        squad10 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
 
         //Заполняю объекты в массив, чтобы было легче работать
         squadItems_array = new Array<SquadItem>();
