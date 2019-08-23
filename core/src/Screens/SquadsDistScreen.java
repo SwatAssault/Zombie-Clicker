@@ -84,6 +84,7 @@ public class SquadsDistScreen implements Screen {
         back_btn.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                squad.activate_send_btn();
                 zombieClicker.setShopScreen();
                 Gdx.input.setInputProcessor(zombieClicker.getShop().getStage());
                 dispose();
