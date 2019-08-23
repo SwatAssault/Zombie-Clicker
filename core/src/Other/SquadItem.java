@@ -116,7 +116,7 @@ public class SquadItem {
         send_to_location_btn.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                if(status == 0)
+                if(status != -1)
                     if(!send_to_location_btn.isDisabled()){
                         disable_send_btn();
                         zombieClicker.setSquadsDistScreen(zombieClicker, getSquadItem());
