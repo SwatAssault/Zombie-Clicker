@@ -295,12 +295,13 @@ public class Shop implements Screen {
         squad_scrollPane.setZIndex(0);
 
         ///////////////////OTHER ITEMS INITIALIZATION///////////////////////
-        otherItem1 = new OtherItem(zc,"A","tre",-1);     //если предмет можно покупать бесконечно, ставить -1
-        otherItem2 = new OtherItem(zc,"B","",10);
-        otherItem3 = new OtherItem(zc,"C","",10);
-        otherItem4 = new OtherItem(zc,"D","",10);
-        otherItem5 = new OtherItem(zc,"E","",10);
-        otherItem6 = new OtherItem(zc,"F","",10);
+        otherItem1 = new OtherItem(zc,"A","tre",-1, 0, 0.0f, 0);     //если предмет можно покупать бесконечно, ставить -1
+        otherItem2 = new OtherItem(zc,"A","tre",-1, 0, 0.0f, 0);
+        otherItem3 = new OtherItem(zc,"A","tre",-1, 0, 0.0f, 0);
+        otherItem4 = new OtherItem(zc,"A","tre",-1, 0, 0.0f, 0);
+        otherItem5 = new OtherItem(zc,"A","tre",-1, 0, 0.0f, 0);
+        otherItem6 = new OtherItem(zc,"A","tre",-1, 0, 0.0f, 0);
+
 
         otherItems_array = new Array<OtherItem>();
         otherItems_array.add(otherItem1);
@@ -320,7 +321,6 @@ public class Shop implements Screen {
             table_other.row();
         }
 
-
         other_scrollPane = new ScrollPane(table_other);
         other_scrollPane.setHeight(140 * 5 - 40);
         other_scrollPane.setWidth(item_widht);
@@ -333,10 +333,6 @@ public class Shop implements Screen {
         stage.addActor(other_tab_btn);
         stage.addActor(stack_table);
         stage.addActor(goback_bth);
-        stage.addActor(zombieClicker.getHud().getGold_icon());
-        stage.addActor(zombieClicker.getHud().getDiamond_icon());
-        stage.addActor(zombieClicker.getHud().getPlus_gold_btn());
-        stage.addActor(zombieClicker.getHud().getPlus_diamonds_btn());
 
         Gdx.input.setInputProcessor(stage);
     }
@@ -352,6 +348,10 @@ public class Shop implements Screen {
 
     public int getSquads_amount(){
         return squads_amount;
+    }
+
+    public int getSpare_squads_counter(){
+        return spare_squads_counter;
     }
     ///////////////GETTERS//////////////////////
 

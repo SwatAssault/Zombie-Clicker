@@ -184,9 +184,9 @@ public class MainGame implements Screen {
 
                 //на время
            //     zombieClicker.setRewardScreen("gold", BigInteger.ONE, "m");
-                zombieClicker.setTipScreen("ПОДСКАЗКА", "gr", "maingame");
+             //   zombieClicker.setTipScreen("ПОДСКАЗКА", "gr", "maingame");
 
-              //zombieClicker.setSquadSelectionScreen();
+              zombieClicker.setSquadSelectionScreen();
 
             }
         });
