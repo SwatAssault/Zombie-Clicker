@@ -9,6 +9,7 @@ import Managers.Assets;
 import Managers.FontManager;
 import Managers.SoundManager;
 import Numbers.Numerics;
+import Other.HUD;
 import Other.KeepTrackAch;
 import Other.MyThread;
 import Other.SquadItem;
@@ -50,6 +51,7 @@ public class ZombieClicker extends Game {
     private WheelOfFortune wheelOfFortune;
     private TipScreen tipScreen;
     private SquadSelectionScreen squadSelectionScreen;
+    private HUD hud;
 
     public ZombieClicker() {
         instance = this;
@@ -95,6 +97,10 @@ public class ZombieClicker extends Game {
         return achievements;
     }
 
+    public HUD getHud(){
+        return hud;
+    }
+
     /////////////OTHER GETTERS/////////////
 
     public ZombieClicker get_ZombieClicker() {
@@ -104,16 +110,21 @@ public class ZombieClicker extends Game {
     @Override
     public void create() {
 
+
         assets = new Assets();
         numerics = new Numerics(instance);
         soundManager = new SoundManager(instance);
         fontManager = new FontManager(instance);
         keepTrackAch = new KeepTrackAch(instance);
 
+
         myThread = new MyThread(instance);
         myThread.start();
 
+
         get_assets().load_popular();
+        hud = new HUD(instance);
+
 
         get_assets().load_assets_for_location_1();
         getNumerics().setCurrent_num_location(0);
