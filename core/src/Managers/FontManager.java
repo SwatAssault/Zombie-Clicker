@@ -2,19 +2,21 @@ package Managers;
 
 import com.awprecords.zombieclicker.ZombieClicker;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.utils.Align;
 
 public class FontManager {
 
     private final ZombieClicker zombieClicker;
 
-//    private BitmapFont bitmapFont;
-//    private FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Ubuntu-Regular.ttf"));
-//    private FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
+    private BitmapFont hud_font;
+    private FreeTypeFontGenerator fontGenerator;
+    private FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
 
     private BitmapFont font_border;
 
@@ -23,12 +25,13 @@ public class FontManager {
     public FontManager(final ZombieClicker zc) {
         zombieClicker = zc;
         layout = new GlyphLayout();
-        //ПОЧЕМУ НУЛЛ??
-//     //   fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Ubuntu-Regular.ttf"));
-//        fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-//        fontParameter.size = 24;
-//        fontParameter.color = Color.WHITE;
-//        bitmapFont = fontGenerator.generateFont(fontParameter);
+
+        fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Rubik.ttf"));
+        fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        fontParameter.size = 22;
+        fontParameter.color = Color.WHITE;
+        hud_font = fontGenerator.generateFont(fontParameter);
+        hud_font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
 //        fontGenerator_invent;
 //        fontParameter_invent;
@@ -80,6 +83,10 @@ public class FontManager {
 
     public BitmapFont getFont_border(){
         return font_border;
+    }
+
+    public BitmapFont getHud_font(){
+        return hud_font;
     }
 
     public void setBitmapFont_invent_Scale(float x){

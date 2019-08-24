@@ -4,18 +4,13 @@ import com.awprecords.zombieclicker.ZombieClicker;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
@@ -106,12 +101,6 @@ public class Shop implements Screen {
     private TextButton squad_tab_btn;
     private TextButton other_tab_btn;
 
-    //ВРЕМЕННО
-    private BitmapFont bitmapFont;
-    private FreeTypeFontGenerator fontGenerator;
-    private FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
-    private final String FONT_CHARACTERS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;,{}\"´`'<>";
-
     public Shop(final ZombieClicker zc) {
         zombieClicker = zc;
         camera = new OrthographicCamera();
@@ -133,14 +122,6 @@ public class Shop implements Screen {
         shop_tab_btn = new TextButton(items_tab_string, tab_skin);
         squad_tab_btn = new TextButton(squads_tab_string, tab_skin);
         other_tab_btn = new TextButton(other_tab_string, tab_skin);
-
-        fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("Fonts/Rubik.ttf"));
-        fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        fontParameter.size = 20;
-        fontParameter.characters = FONT_CHARACTERS;
-        bitmapFont = fontGenerator.generateFont(fontParameter);
-        bitmapFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-
 
         goback_bth.addListener(new ClickListener() {
             @Override
@@ -352,6 +333,10 @@ public class Shop implements Screen {
         stage.addActor(other_tab_btn);
         stage.addActor(stack_table);
         stage.addActor(goback_bth);
+        stage.addActor(zombieClicker.getHud().getGold_icon());
+        stage.addActor(zombieClicker.getHud().getDiamond_icon());
+        stage.addActor(zombieClicker.getHud().getPlus_gold_btn());
+        stage.addActor(zombieClicker.getHud().getPlus_diamonds_btn());
 
         Gdx.input.setInputProcessor(stage);
     }
@@ -441,7 +426,7 @@ public class Shop implements Screen {
         stage.draw();
 
         batch.begin();
-        bitmapFont.draw(batch, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getGold()), 100, 950);
+        zombieClicker.getHud().render(batch);
         batch.end();
 
         batch.setProjectionMatrix(camera.combined);
@@ -469,8 +454,6 @@ public class Shop implements Screen {
 
     @Override
     public void dispose() {
-        if (fontGenerator != null) fontGenerator.dispose();
-        if (bitmapFont != null) bitmapFont.dispose();
         zombieClicker.get_assets().dispose_Shop_assets();
         if (stage != null) stage.dispose();
     }
