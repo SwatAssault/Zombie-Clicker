@@ -24,7 +24,6 @@ public class SquadsDistScreen implements Screen {
     private final ZombieClicker zombieClicker;
 
     private Camera camera;
-    private Table table;
     private Stage stage;
     private Viewport viewport;
     private SpriteBatch batch;
@@ -44,7 +43,6 @@ public class SquadsDistScreen implements Screen {
         viewport = new StretchViewport(540, 960, camera);
         stage = new Stage(viewport);
         batch = new SpriteBatch();
-        table = new Table();
 
         zombieClicker.get_assets().load_assets_for_SquadDistScreen();
 
@@ -117,12 +115,13 @@ public class SquadsDistScreen implements Screen {
     @Override
     public void render(float delta) {
 
+        stage.draw();
+        stage.act();
+
         batch.begin();
 
         batch.end();
 
-        stage.draw();
-        stage.act();
     }
 
     @Override

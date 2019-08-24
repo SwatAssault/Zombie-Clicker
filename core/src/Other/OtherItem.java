@@ -10,6 +10,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.TimeUtils;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 
 public class OtherItem {
 
@@ -33,7 +41,14 @@ public class OtherItem {
     private Label name_label;
     private Label description_label;
 
-    public OtherItem(ZombieClicker zc, String name_of_item, String description, int max_buy_count){
+    private SimpleDateFormat start_date;
+    private int current_time;
+    private int active_time;          //сколько длится эффект
+
+    LocalDateTime localDateTime;
+    private long time_millis;
+
+    public OtherItem(ZombieClicker zc, final String name_of_item, String description, int max_buy_count, int baseCost, double costKoeff, int activeTime){
         zombieClicker = zc;
 
         stack = new Stack();
@@ -46,6 +61,10 @@ public class OtherItem {
         current_buy_counter = 0;
         this.name = name_of_item;
         this.description = description;
+        this.base_cost = baseCost;
+        this.cost_koeff = costKoeff;
+        this.active_time = activeTime;
+        start_date = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
         name_label = new Label(name, zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class));
 
@@ -57,7 +76,13 @@ public class OtherItem {
                     zombieClicker.getNumerics().minus_diamonds(cost);
                     plusCost(1);
                     buy_btn.setText(Integer.toString(cost));
+                    buy_btn.setDisabled(true);
+                    if(name.equals("1 hour")){
 
+                    }
+                    time_millis = TimeUtils.millis();
+
+                    System.out.println(start_date.format(new Date()));
                 }
             }
         });
@@ -69,6 +94,10 @@ public class OtherItem {
         label_table.add(name_label).expandX();
         label_table.row();
         label_table.add(description_label).expandX();
+    }
+
+    public void update_status(){
+
     }
 
     public void disable_buy_btn(boolean x){
@@ -109,7 +138,6 @@ public class OtherItem {
     public int getCurrent_buy_counter() {
         return current_buy_counter;
     }
-
     //////////////GETTERS////////////////
 
 

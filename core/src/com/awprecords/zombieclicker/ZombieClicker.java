@@ -1,10 +1,8 @@
 package com.awprecords.zombieclicker;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Screen;
-
 import java.math.BigInteger;
-
+import java.util.Date;
 import Managers.Assets;
 import Managers.FontManager;
 import Managers.SoundManager;
@@ -53,8 +51,13 @@ public class ZombieClicker extends Game {
     private SquadSelectionScreen squadSelectionScreen;
     private HUD hud;
 
+    private Date game_launch_date;
+
+
     public ZombieClicker() {
         instance = this;
+        game_launch_date = new Date();
+
     }
 
     //////////GETTERS FOR SCREENS//////////
@@ -66,7 +69,6 @@ public class ZombieClicker extends Game {
         return shop;
     }
     //////////GETTERS FOR SCREENS//////////
-
 
     /////////////OTHER GETTERS/////////////
     public MyThread getMyThread(){
@@ -101,6 +103,9 @@ public class ZombieClicker extends Game {
         return hud;
     }
 
+    public Date getGame_launch_date(){
+        return game_launch_date;
+    }
     /////////////OTHER GETTERS/////////////
 
     public ZombieClicker get_ZombieClicker() {
@@ -109,8 +114,6 @@ public class ZombieClicker extends Game {
 
     @Override
     public void create() {
-
-
         assets = new Assets();
         numerics = new Numerics(instance);
         soundManager = new SoundManager(instance);
@@ -135,7 +138,6 @@ public class ZombieClicker extends Game {
 
     ////////////SET SCREEN METHODS/////////////
     public void setMainGame(){
-        //System.gc();
         mainGame = new MainGame(instance, numerics.getCurrent_location());
         setScreen(mainGame);
     }
@@ -149,6 +151,10 @@ public class ZombieClicker extends Game {
         if(shop == null){
             shop = new Shop(instance);
         }
+        shop.getStage().addActor(hud.getGold_icon());
+        shop.getStage().addActor(hud.getDiamond_icon());
+        shop.getStage().addActor(hud.getPlus_gold_btn());
+        shop.getStage().addActor(hud.getPlus_diamonds_btn());
         setScreen(shop);
     }
 

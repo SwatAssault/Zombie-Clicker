@@ -101,7 +101,7 @@ public class Location {
         //формула увеличения хп зомби
         // HP * multiplier ^ level
      //   max_zombie_health = BigDecimal.valueOf(base_zombie_HP.floatValue() * Math.pow(multiplier_zombie_HP, level_count)).toBigInteger();
-        max_zombie_health = BigDecimal.valueOf(base_zombie_HP.floatValue() * Math.pow(multiplier_zombie_HP, level_count)).toBigInteger();
+        max_zombie_health = BigDecimal.valueOf(base_zombie_HP.floatValue() * (level_count + Math.pow(multiplier_zombie_HP, level_count ))).toBigInteger();
     }
 
     public void plus_Boss_health() {

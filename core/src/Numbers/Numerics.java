@@ -88,7 +88,7 @@ public class Numerics {
         //TODO скорее всего придется это переделать когда появятся сохранения
         location = new ArrayList<Location>(Arrays.asList(
                 //                 zombie_health                                            zombie_kills             boss_health                       zombie_kill_reward
-                new Location(new BigInteger("10"), 1.195f, 1, new BigInteger("0"), new BigInteger("12"), 1, new BigInteger("200"), 1.09f,
+                new Location(new BigInteger("10"), 1.55f, 1, new BigInteger("0"), new BigInteger("12"), 1, new BigInteger("200"), 1.09f,
                         1, 1, 10, 3000, zc),
 
                 new Location(new BigInteger("12"), 1.16f, 1, new BigInteger("0"), new BigInteger("102"), 1, new BigInteger("2"), 1.09f,
