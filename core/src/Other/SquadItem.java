@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Array;
 
 import java.math.BigInteger;
 
@@ -46,6 +47,8 @@ public class SquadItem {
 
     private int status; // 0 - свободен, 1,2... - на какой-то локации, -1 - на задании
     private boolean bought; //куплен или нет
+
+    private Array<Image> mini_icons;
 
     private int crit_chance;
     private int drop_chance;
@@ -89,6 +92,8 @@ public class SquadItem {
         number_btn = new TextButton(Integer.toString(buy_number), zombieClicker.get_assets().get_asset_manager().get("Other/buy_counter_skin.json", Skin.class));
 
         send_to_location_btn.setVisible(bought);
+
+        mini_icons = new Array<Image>();
 
         buy_btn.addListener(new ClickListener(){
             @Override

@@ -12,12 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.TimeUtils;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class OtherItem {
 
@@ -26,6 +23,7 @@ public class OtherItem {
     private Stack stack;
     private Table intable;
     private Table label_table;
+    private Table diamond_table;
     private Image otherbg;
     private Image icon;
     private Image diamond_icon;
@@ -41,18 +39,22 @@ public class OtherItem {
     private Label name_label;
     private Label description_label;
 
-    private SimpleDateFormat start_date;
-    private int current_time;
-    private int active_time;          //сколько длится эффект
+    private boolean time_action;  // 0 - не связано со временем, 1 - связано
 
-    LocalDateTime localDateTime;
-    private long time_millis;
+    private boolean time_running = false; //идет ли отсчет
 
-    public OtherItem(ZombieClicker zc, final String name_of_item, String description, int max_buy_count, int baseCost, double costKoeff, int activeTime){
+    private long duration;
+    private SimpleDateFormat date_format;
+    private SimpleDateFormat date_format1;
+    private Date start_date;
+    private long start_time_millis;
+
+    public OtherItem(ZombieClicker zc, final String name_of_item, String description, int max_buy_count, int baseCost, double costKoeff, boolean _time_action, long _duration){
         zombieClicker = zc;
 
         stack = new Stack();
         intable = new Table();
+        diamond_table = new Table();
         label_table = new Table();
         otherbg = new Image(zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         cost = 1;
@@ -63,8 +65,13 @@ public class OtherItem {
         this.description = description;
         this.base_cost = baseCost;
         this.cost_koeff = costKoeff;
-        this.active_time = activeTime;
-        start_date = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        this.time_action = _time_action;
+        this.duration = _duration;
+        diamond_icon = new Image(zombieClicker.getHud().getHud_icons_atlas().createSprite("diamond"));
+        diamond_icon.setScale(0.8f);
+        date_format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        date_format1 = new SimpleDateFormat("HH:mm:ss");
+        start_date = new Date();
 
         name_label = new Label(name, zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class));
 
@@ -76,13 +83,19 @@ public class OtherItem {
                     zombieClicker.getNumerics().minus_diamonds(cost);
                     plusCost(1);
                     buy_btn.setText(Integer.toString(cost));
-                    buy_btn.setDisabled(true);
-                    if(name.equals("1 hour")){
+
+                    if(name.equals("1 hour") || name.equals("4 hours")){
+                        buy_btn.setDisabled(true);
+                        time_running = true;
+                        start_time_millis = TimeUtils.millis();
+                        zombieClicker.getCalendar().setTimeInMillis(start_time_millis);
+                        start_date = zombieClicker.getCalendar().getTime();
+
+
+
 
                     }
-                    time_millis = TimeUtils.millis();
 
-                    System.out.println(start_date.format(new Date()));
                 }
             }
         });
@@ -94,10 +107,29 @@ public class OtherItem {
         label_table.add(name_label).expandX();
         label_table.row();
         label_table.add(description_label).expandX();
+        stack.add(diamond_table);
+        diamond_table.add(diamond_icon).expand().right().padRight(130);
     }
 
     public void update_status(){
 
+    }
+
+    public void update_btn_text(){
+        if(time_running){
+            buy_btn.setDisabled(true);
+            buy_btn.setText(String.format("%02d:%02d:%02d",
+                TimeUnit.MILLISECONDS.toHours(duration - (System.currentTimeMillis() - start_time_millis)),
+                         TimeUnit.MILLISECONDS.toMinutes(duration - (System.currentTimeMillis() - start_time_millis)) -
+                         TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(duration - (System.currentTimeMillis() - start_time_millis))),
+                         TimeUnit.MILLISECONDS.toSeconds(duration - (System.currentTimeMillis() - start_time_millis)) -
+                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration - (System.currentTimeMillis() - start_time_millis)))
+            ));
+            if(duration - (System.currentTimeMillis() - start_time_millis) < 0){
+                time_running = false;
+                buy_btn.setText(Integer.toString(cost));
+            }
+        }
     }
 
     public void disable_buy_btn(boolean x){
@@ -137,6 +169,14 @@ public class OtherItem {
 
     public int getCurrent_buy_counter() {
         return current_buy_counter;
+    }
+
+    public boolean isTime_action() {
+        return time_action;
+    }
+
+    public boolean isTime_running() {
+        return time_running;
     }
     //////////////GETTERS////////////////
 

@@ -78,6 +78,10 @@ public class HUD {
         return diamond_icon;
     }
 
+    public TextureAtlas getHud_icons_atlas(){
+        return hud_icons_atlas;
+    }
+
     public void dispose(){
 
     }

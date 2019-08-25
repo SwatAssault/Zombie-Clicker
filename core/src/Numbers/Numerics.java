@@ -89,16 +89,16 @@ public class Numerics {
         location = new ArrayList<Location>(Arrays.asList(
                 //                 zombie_health                                            zombie_kills             boss_health                       zombie_kill_reward
                 new Location(new BigInteger("10"), 1.55f, 1, new BigInteger("0"), new BigInteger("12"), 1, new BigInteger("200"), 1.09f,
-                        1, 1, 10, 3000, zc),
+                        1, 1, 10, 3000, "The Forest", zc),
 
                 new Location(new BigInteger("12"), 1.16f, 1, new BigInteger("0"), new BigInteger("102"), 1, new BigInteger("2"), 1.09f,
-                        1, 1, 10, 3000, zc),
+                        1, 1, 10, 3000, "Location 2", zc),
 
                 new Location(new BigInteger("15"), 1.16f, 1, new BigInteger("0"), new BigInteger("120"), 1, new BigInteger("2"), 1.09f,
-                        1, 1, 10, 3000, zc),
+                        1, 1, 10, 3000, "Location 3", zc),
 
                 new Location(new BigInteger("20"), 1.16f, 1, new BigInteger("0"), new BigInteger("1020"), 1, new BigInteger("2"), 1.09f,
-                        1, 1, 10, 3000, zc)
+                        1, 1, 10, 3000, "Location 4", zc)
         ));
 
         current_location = 0;

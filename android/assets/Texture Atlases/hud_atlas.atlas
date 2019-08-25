@@ -10,23 +10,30 @@ stopwatch
   orig: 35, 43
   offset: 0, 0
   index: -1
+star
+  rotate: false
+  xy: 38, 8
+  size: 34, 36
+  orig: 34, 36
+  offset: 0, 0
+  index: -1
 heart
   rotate: false
-  xy: 38, 11
+  xy: 74, 11
   size: 36, 33
   orig: 36, 33
   offset: 0, 0
   index: -1
 diamond
   rotate: false
-  xy: 76, 12
+  xy: 112, 12
   size: 34, 32
   orig: 34, 32
   offset: 0, 0
   index: -1
 gold
   rotate: false
-  xy: 112, 12
+  xy: 148, 12
   size: 34, 32
   orig: 34, 32
   offset: 0, 0

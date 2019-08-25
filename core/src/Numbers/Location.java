@@ -44,9 +44,10 @@ public class Location {
     private BigInteger base_zombie_reward;
     private int base_boss_reward;
     private long passivePunch_time;
+    private String name;
 
     public Location(BigInteger zombie_health, double zombie_koeff, int level_count, BigInteger zombie_kills, BigInteger boss_health, double boss_koeff, BigInteger zombie_kill_reward, double zombie_reward_koeff,
-                    int boss_kill_reward, double boss_reward_koeff, long betweenBoss, double durationBossFight, final ZombieClicker zc) {
+                    int boss_kill_reward, double boss_reward_koeff, long betweenBoss, double durationBossFight, String _name, final ZombieClicker zc) {
 
         zombieClicker = zc;
         base_zombie_HP = zombie_health;
@@ -59,6 +60,7 @@ public class Location {
         this.zombie_kill_reward = zombie_kill_reward;
         this.boss_kill_reward = boss_kill_reward;
         this.level_count = level_count;
+        this.name = _name;
         last_kills = new BigInteger("0");
         player_on_location = false;
 
@@ -188,6 +190,10 @@ public class Location {
 
     public BigInteger getBase_zombie_HP(){
         return base_zombie_HP;
+    }
+
+    public String getName(){
+        return name;
     }
     ////////////////////// GETTER ///////////////////////////
 
