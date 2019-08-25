@@ -32,7 +32,7 @@ public class Numerics {
     private long boss_kills;
     private BigInteger gold;                   //основная валюта
     private BigInteger punch_power;            //сила одного удара(клика)
-    private float how_fast_passive_damage;     //насколько быстро (автоматически) отнимается хп (чем меньше значение, тем быстрее)
+//    private float how_fast_passive_damage;     //насколько быстро (автоматически) отнимается хп (чем меньше значение, тем быстрее)
     private BigInteger passive_damage;
     private BigInteger oneTrillion;
     private BigInteger oneQuadrillion;
@@ -60,6 +60,7 @@ public class Numerics {
     private ArrayList<MissionsItem> missionsItem;
     private ArrayList<String> missionText;
     private ArrayList<String> missionRank;
+    private int idMission;
 
     public Numerics(ZombieClicker zc) {
 
@@ -78,6 +79,7 @@ public class Numerics {
         player_brows = 0;
         player_name = "GUSTAV";
 
+        idMission = -1;
         missionsItem = new ArrayList<MissionsItem>();
         missionText = new ArrayList<String>(
                 Arrays.asList("mission number 1", "mission number 2", "mission number 3", "mission number 4", "mission number 5", "mission number 6", "mission number 7",
@@ -108,7 +110,6 @@ public class Numerics {
         zombie_kills = new BigInteger("0");
         boss_kills = 0;
         punch_power = new BigInteger("1");
-        how_fast_passive_damage = 0.1f;
         passive_damage = new BigInteger("0");
         oneTrillion = new BigInteger("1000000000000"); //12
         oneQuadrillion = new BigInteger("1000000000000000");//15
@@ -260,9 +261,9 @@ public class Numerics {
         passive_damage = passive_damage.add(x);
     }
 
-    public void setHow_fast_passive_damage(float x) {
-        how_fast_passive_damage = x;
-    }
+//    public void setHow_fast_passive_damage(float x) {
+//        how_fast_passive_damage = x;
+//    }
 
     public void setCurrent_num_location(int x) {
         current_location = x;
@@ -383,6 +384,10 @@ public class Numerics {
         //50 - 120; 365 - 200 (5)
         //290 - 350; 365 - 200 (6)
     }
+
+    public void setIdMission(int x){
+        idMission = x;
+    }
     /////////////////SETTERS//////////////////
 
 
@@ -411,9 +416,9 @@ public class Numerics {
         return punch_power;
     }
 
-    public float getHow_fast_passive_damage() {
-        return how_fast_passive_damage;
-    }
+//    public float getHow_fast_passive_damage() {
+//        return how_fast_passive_damage;
+//    }
 
     public BigInteger getPassive_damage() {
         return passive_damage;
@@ -505,6 +510,10 @@ public class Numerics {
 
     public ArrayList<MissionsItem> getMissionsItem() {
         return missionsItem;
+    }
+
+    public int getIdMission(){
+        return idMission;
     }
     ////////////////GETTERS//////////////////
 }

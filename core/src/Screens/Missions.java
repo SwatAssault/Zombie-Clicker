@@ -108,6 +108,10 @@ public class Missions implements Screen {
         Gdx.input.setInputProcessor(stage);
     }
 
+    public Stage getStage(){
+        return stage;
+    }
+
     @Override
     public void show() {
 

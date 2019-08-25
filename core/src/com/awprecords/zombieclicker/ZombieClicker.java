@@ -1,9 +1,11 @@
 package com.awprecords.zombieclicker;
 
 import com.badlogic.gdx.Game;
+
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Date;
+
 import Managers.Assets;
 import Managers.FontManager;
 import Managers.SoundManager;
@@ -67,13 +69,13 @@ public class ZombieClicker extends Game {
         return mainGame;
     }
 
-    public Shop getShop(){
+    public Shop getShop() {
         return shop;
     }
     //////////GETTERS FOR SCREENS//////////
 
     /////////////OTHER GETTERS/////////////
-    public MyThread getMyThread(){
+    public MyThread getMyThread() {
         return myThread;
     }
 
@@ -89,28 +91,32 @@ public class ZombieClicker extends Game {
         return soundManager;
     }
 
-    public FontManager getFontManager(){
+    public FontManager getFontManager() {
         return fontManager;
     }
 
-    public KeepTrackAch getKeepTrackAch(){
+    public KeepTrackAch getKeepTrackAch() {
         return keepTrackAch;
     }
 
-    public Achievements getAchievements(){
+    public Achievements getAchievements() {
         return achievements;
     }
 
-    public HUD getHud(){
+    public HUD getHud() {
         return hud;
     }
 
-    public Date getGame_launch_date(){
+    public Date getGame_launch_date() {
         return game_launch_date;
     }
 
-    public Calendar getCalendar(){
+    public Calendar getCalendar() {
         return calendar;
+    }
+
+    public Missions getMissions() {
+        return missions;
     }
     /////////////OTHER GETTERS/////////////
 
@@ -143,18 +149,18 @@ public class ZombieClicker extends Game {
     }
 
     ////////////SET SCREEN METHODS/////////////
-    public void setMainGame(){
+    public void setMainGame() {
         mainGame = new MainGame(instance, numerics.getCurrent_location());
         setScreen(mainGame);
     }
 
-    public void setSquadsDistScreen(ZombieClicker zc, SquadItem squadItem){
+    public void setSquadsDistScreen(ZombieClicker zc, SquadItem squadItem) {
         squadsDistScreen = new SquadsDistScreen(zc, squadItem);
         setScreen(squadsDistScreen);
     }
 
-    public void setShopScreen(){
-        if(shop == null){
+    public void setShopScreen() {
+        if (shop == null) {
             shop = new Shop(instance);
         }
         shop.getStage().addActor(hud.getGold_icon());
@@ -164,63 +170,63 @@ public class ZombieClicker extends Game {
         setScreen(shop);
     }
 
-    public void setAchievementScreen(){
+    public void setAchievementScreen() {
         achievements = null;
         achievements = new Achievements(instance);
         setScreen(achievements);
     }
 
-    public void setMapScreen(){
+    public void setMapScreen() {
         mapScreen = null;
         mapScreen = new MapScreen(instance);
         setScreen(mapScreen);
     }
 
-    public void setInventoryScreen(){
+    public void setInventoryScreen() {
         inventory = null;
         inventory = new Inventory(instance);
         setScreen(inventory);
     }
 
-    public void setPlayerCreateScreen(){
+    public void setPlayerCreateScreen() {
         playerCreate = null;
         playerCreate = new PlayerCreate(instance);
         setScreen(playerCreate);
     }
 
-    public void setMissionsScreen(){
+    public void setMissionsScreen() {
         missions = null;
         missions = new Missions(instance);
         setScreen(missions);
     }
 
-    public void setRewardScreen(String what, BigInteger amount, String lastScreen){
+    public void setRewardScreen(String what, BigInteger amount, String lastScreen) {
         rewardScreen = null;
         rewardScreen = new RewardScreen(instance, what, amount, lastScreen);
         setScreen(rewardScreen);
     }
 
-    public void setMiniGameScreen(){
+    public void setMiniGameScreen() {
         miniGame = null;
         miniGame = new MiniGame(instance);
         setScreen(miniGame);
     }
 
-    public void setWheelOfFortuneScreen(){
+    public void setWheelOfFortuneScreen() {
         wheelOfFortune = null;
         wheelOfFortune = new WheelOfFortune(instance);
         setScreen(wheelOfFortune);
     }
 
-    public void setTipScreen(String header, String mainText, String lastScreen){
+    public void setTipScreen(String header, String mainText, String lastScreen) {
         tipScreen = null;
         tipScreen = new TipScreen(instance, header, mainText, lastScreen);
         setScreen(tipScreen);
     }
 
-    public void setSquadSelectionScreen(){
+    public void setSquadSelectionScreen() {
         squadSelectionScreen = null;
-        if(shop == null)
+        if (shop == null)
             shop = new Shop(instance);
         squadSelectionScreen = new SquadSelectionScreen(instance);
         setScreen(squadSelectionScreen);

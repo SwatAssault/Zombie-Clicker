@@ -31,7 +31,7 @@ public class TipScreen implements Screen {
     private String mainText;
     private String lastScreen;
 
-    public TipScreen(ZombieClicker zc, String header, String mainText, final String lastScreen){
+    public TipScreen(final ZombieClicker zc, String header, String mainText, final String lastScreen) {
         zombieClicker = zc;
         this.header = header;
         this.mainText = mainText;
@@ -43,26 +43,35 @@ public class TipScreen implements Screen {
         zombieClicker.get_assets().load_assets_for_TipScreen();
         bgimage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/tipbg.png", Texture.class));
         ok_btn = new TextButton("OK", zombieClicker.get_assets().get_asset_manager().get("Buttons/ok_btn_skin.json", Skin.class));
-        ok_btn.setPosition(200,280);
+        ok_btn.setPosition(200, 280);
         x_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/x_btn.json", Skin.class));
         x_btn.setPosition(455, 655);
 
-        ok_btn.addListener(new ClickListener(){
+        ok_btn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
-                if(lastScreen.equals("maingame")){
+                if (lastScreen.equals("maingame")) {
                     Gdx.input.setInputProcessor(zombieClicker.getMainGame().getStage());
+                }
+                if (lastScreen.equals("Missions")) {
+//                    zombieClicker.setMissionsScreen();
+//                    Gdx.input.setInputProcessor(zombieClicker.getMissions().getStage());
+                    zombieClicker.setSquadSelectionScreen();
                 }
             }
         });
 
-        x_btn.addListener(new ClickListener(){
+        x_btn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
-                if(lastScreen.equals("maingame")){
+                if (lastScreen.equals("maingame")) {
                     Gdx.input.setInputProcessor(zombieClicker.getMainGame().getStage());
+                }
+                if (lastScreen.equals("Missions")) {
+                    zombieClicker.setMissionsScreen();
+                    Gdx.input.setInputProcessor(zombieClicker.getMissions().getStage());
                 }
             }
         });
@@ -82,16 +91,32 @@ public class TipScreen implements Screen {
     @Override
     public void render(float delta) {
 
-        if(lastScreen.equals("maingame")){
+        if (lastScreen.equals("maingame")) {
             zombieClicker.getMainGame().render(1);
         }
-
-        batch.begin();
-
-        batch.end();
+        if (lastScreen.equals("Missions")) {
+            zombieClicker.getMissions().render(1);
+        }
 
         stage.draw();
         stage.act();
+
+        batch.begin();
+
+        if (lastScreen.equals("Missions")) {
+            render_for_mission();
+        }
+
+        batch.end();
+
+    }
+
+    private void render_for_mission() {
+        if (zombieClicker.getNumerics().getIdMission() != -1)
+            zombieClicker.getFontManager().draw_text_forMissionInfo(batch,
+                    zombieClicker.getNumerics().getMissionsItem().get(zombieClicker.getNumerics().getIdMission()).getMission(),
+                    zombieClicker.getNumerics().getMissionsItem().get(zombieClicker.getNumerics().getIdMission()).getRareness(),
+                    zombieClicker.getNumerics().getMissionsItem().get(zombieClicker.getNumerics().getIdMission()).getTime());
     }
 
     @Override
@@ -117,7 +142,7 @@ public class TipScreen implements Screen {
     @Override
     public void dispose() {
         zombieClicker.get_assets().dispose_assets_for_TipScreen();
-        if(stage != null) stage.dispose();
-        if(batch != null) batch.dispose();
+        if (stage != null) stage.dispose();
+        if (batch != null) batch.dispose();
     }
 }

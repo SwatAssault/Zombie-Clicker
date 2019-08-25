@@ -68,7 +68,7 @@ public class FontManager {
                 370, 813, 1, Align.topRight, false);
 
         font_border.draw(batch, "    " + zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getPunch_power()) + "\n" +
-                         "    " + zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getPassive_damage()) + "\n" +
+                        "    " + zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getPassive_damage()) + "\n" +
                         "\n    " + zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getZombie_kills()) + "\n" +
                         "\n    " + zombieClicker.getNumerics().getBoss_kills() + "\n" +
                         "\n    " + zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getGlobal_tap_count()) + "\n" +
@@ -77,19 +77,29 @@ public class FontManager {
                 370, 813, 1, Align.topLeft, false);
     }
 
+    public void draw_text_forMissionInfo(SpriteBatch batch, String mission, String rank, String time) {
+
+        font_border.getData().setScale(.35f);
+        font_border.draw(batch, rank, 80, 530);
+        font_border.getData().setScale(.45f);
+        font_border.draw(batch, mission, 80, 500,
+                400, Align.left, true);
+        font_border.draw(batch, "Time: " + time + " m.", 80, 330);
+    }
+
     public GlyphLayout getLayout() {
         return layout;
     }
 
-    public BitmapFont getFont_border(){
+    public BitmapFont getFont_border() {
         return font_border;
     }
 
-    public BitmapFont getHud_font(){
+    public BitmapFont getHud_font() {
         return hud_font;
     }
 
-    public void setBitmapFont_invent_Scale(float x){
+    public void setBitmapFont_invent_Scale(float x) {
         font_border.getData().setScale(x);
     }
 

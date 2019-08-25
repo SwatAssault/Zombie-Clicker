@@ -17,6 +17,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import Other.MiniSquadItem;
+import Other.SquadItem;
 
 public class SquadSelectionScreen implements Screen {
 
@@ -39,10 +40,10 @@ public class SquadSelectionScreen implements Screen {
     private MiniSquadItem miniSquadItem10;
 
     private Array<MiniSquadItem> miniSquadItemArray;
-
+    private boolean isSelected;
     private int x = 70, y = 700;
 
-    public SquadSelectionScreen(ZombieClicker zc){
+    public SquadSelectionScreen(ZombieClicker zc) {
         zombieClicker = zc;
         camera = new OrthographicCamera();
         viewport = new StretchViewport(540, 960, camera);
@@ -52,11 +53,17 @@ public class SquadSelectionScreen implements Screen {
         x_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/x_btn.json", Skin.class));
         x_btn.setPosition(460, 850);
 
-        x_btn.addListener(new ClickListener(){
+        isSelected = false;
+
+        x_btn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
-                Gdx.input.setInputProcessor(zombieClicker.getMainGame().getStage());
+                if (isSelected)
+                    zombieClicker.getNumerics().getMissionsItem().get(zombieClicker.getNumerics().getIdMission()).setActive(true);
+
+//                Gdx.input.setInputProcessor(zombieClicker.getMainGame().getStage());
+                Gdx.input.setInputProcessor(zombieClicker.getMissions().getStage());
             }
         });
 
@@ -85,10 +92,10 @@ public class SquadSelectionScreen implements Screen {
 
         stage.addActor(backimg);
 
-        for(int i = 0; i < zombieClicker.getShop().getSquads_amount(); i++, x += 10){
+        for (int i = 0; i < zombieClicker.getShop().getSquads_amount(); i++, x += 10) {
             miniSquadItemArray.get(i).getStack().setPosition(x, y);
             stage.addActor(miniSquadItemArray.get(i).getStack());
-            if(i == 2 || i == 5 || i == 8){
+            if (i == 2 || i == 5 || i == 8) {
                 x = 60;
                 y -= 140;
             } else
@@ -102,15 +109,16 @@ public class SquadSelectionScreen implements Screen {
     }
 
 
-    public void update_status(){
-        for(int i = 0; i < zombieClicker.getShop().getSquads_amount(); i++){
-            if(zombieClicker.getShop().getSquadItems_array().get(i).getStatus() != 0){
+    public void update_status() {
+        for (int i = 0; i < zombieClicker.getShop().getSquads_amount(); i++) {
+            if (zombieClicker.getShop().getSquadItems_array().get(i).getStatus() != 0) {
                 miniSquadItemArray.get(i).show_front_image(true);
+                isSelected = true;
             }
         }
     }
 
-    public void update(){
+    public void update() {
         update_status();
     }
 
@@ -122,7 +130,7 @@ public class SquadSelectionScreen implements Screen {
     @Override
     public void render(float delta) {
 
-        zombieClicker.getMainGame().render(1);
+        zombieClicker.getMissions().render(1);
 
         update();
 
@@ -152,7 +160,7 @@ public class SquadSelectionScreen implements Screen {
 
     @Override
     public void dispose() {
-        if(stage != null) stage.dispose();
+        if (stage != null) stage.dispose();
         zombieClicker.get_assets().dispose_assets_for_SquadSelectionScreen();
     }
 }
