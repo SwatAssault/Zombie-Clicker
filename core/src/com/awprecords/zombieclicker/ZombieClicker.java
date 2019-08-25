@@ -2,6 +2,7 @@ package com.awprecords.zombieclicker;
 
 import com.badlogic.gdx.Game;
 import java.math.BigInteger;
+import java.util.Calendar;
 import java.util.Date;
 import Managers.Assets;
 import Managers.FontManager;
@@ -52,11 +53,12 @@ public class ZombieClicker extends Game {
     private HUD hud;
 
     private Date game_launch_date;
-
+    private Calendar calendar;
 
     public ZombieClicker() {
         instance = this;
         game_launch_date = new Date();
+        calendar = Calendar.getInstance();
 
     }
 
@@ -105,6 +107,10 @@ public class ZombieClicker extends Game {
 
     public Date getGame_launch_date(){
         return game_launch_date;
+    }
+
+    public Calendar getCalendar(){
+        return calendar;
     }
     /////////////OTHER GETTERS/////////////
 

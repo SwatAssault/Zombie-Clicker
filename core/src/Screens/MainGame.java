@@ -385,8 +385,8 @@ public class MainGame implements Screen {
     }
 
     public void draw_text() {
-        zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getHud_font(), "" + zombieClicker.getNumerics().getCurrent_location().getLevel_count());
-        zombieClicker.getFontManager().getHud_font().draw(batch, "" + zombieClicker.getNumerics().getCurrent_location().getLevel_count(), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 900);
+        zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getHud_font(), "Level : " + zombieClicker.getNumerics().getCurrent_location().getLevel_count());
+        zombieClicker.getFontManager().getHud_font().draw(batch, "Level : " + zombieClicker.getNumerics().getCurrent_location().getLevel_count(), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 850);
         if (zombieClicker.getNumerics().getCurrent_location().isBossFight()) {
             zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getHud_font(), zombieClicker.getNumerics().bigInteger_to_string(location.getBoss_health()));
             zombieClicker.getFontManager().getHud_font().draw(batch, zombieClicker.getNumerics().bigInteger_to_string(location.getBoss_health()), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 293);
@@ -414,6 +414,9 @@ public class MainGame implements Screen {
             }
 
         }
+
+        zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getHud_font(), location.getName());
+        zombieClicker.getFontManager().getHud_font().draw(batch, location.getName(), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 900);
 
     }
 
