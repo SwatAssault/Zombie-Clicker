@@ -347,12 +347,14 @@ public class MainGame implements Screen {
         batch.draw(hpBarStart, HP_positionX, HP_positionY);
         if (!zombieClicker.getNumerics().getCurrent_location().isBossFight()) {
             batch.draw(hpBarBody, HP_positionX + hpBarStart.getRegionWidth(), HP_positionY,
-                    hpBarBody.getRegionWidth() * ((location.getZombie_health()).floatValue() / ((location.getMax_zombie_health())).floatValue()), hpBarBody.getRegionHeight());
+                    hpBarBody.getRegionWidth() * ((location.getZombie_health()).floatValue() / ((location.getMax_zombie_health())).floatValue()),
+                    hpBarBody.getRegionHeight());
             batch.draw(hpBarEnd, HP_positionX + hpBarStart.getRegionWidth() + hpBarBody.getRegionWidth() *
                     ((location.getZombie_health()).floatValue() / ((location.getMax_zombie_health())).floatValue()), HP_positionY);
         } else {
             batch.draw(hpBarBody, HP_positionX + hpBarStart.getRegionWidth(), HP_positionY,
-                    hpBarBody.getRegionWidth() * (location.getBoss_health()).floatValue() / ((location.getMax_boss_health()).floatValue()), hpBarBody.getRegionHeight());
+                    hpBarBody.getRegionWidth() * (location.getBoss_health()).floatValue() / ((location.getMax_boss_health()).floatValue()),
+                    hpBarBody.getRegionHeight());
 
             batch.draw(hpBarEnd, HP_positionX + hpBarStart.getRegionWidth() + hpBarBody.getRegionWidth() *
                     (location.getBoss_health()).floatValue() / ((location.getMax_boss_health()).floatValue()), HP_positionY);
@@ -388,8 +390,8 @@ public class MainGame implements Screen {
         zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getHud_font(), "Level : " + zombieClicker.getNumerics().getCurrent_location().getLevel_count());
         zombieClicker.getFontManager().getHud_font().draw(batch, "Level : " + zombieClicker.getNumerics().getCurrent_location().getLevel_count(), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 850);
         if (zombieClicker.getNumerics().getCurrent_location().isBossFight()) {
-            zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getHud_font(), zombieClicker.getNumerics().bigInteger_to_string(location.getBoss_health()));
-            zombieClicker.getFontManager().getHud_font().draw(batch, zombieClicker.getNumerics().bigInteger_to_string(location.getBoss_health()), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 293);
+            zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getHud_font(), zombieClicker.getNumerics().bigInteger_to_string(location.getBoss_health().toBigInteger()));
+            zombieClicker.getFontManager().getHud_font().draw(batch, zombieClicker.getNumerics().bigInteger_to_string(location.getBoss_health().toBigInteger()), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 293);
 
             //boss name
             zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getHud_font(), "BOSS");
@@ -404,8 +406,8 @@ public class MainGame implements Screen {
             }
         } else {
             //HP zombie
-            zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getHud_font(), zombieClicker.getNumerics().bigInteger_to_string(location.getZombie_health()));
-            zombieClicker.getFontManager().getHud_font().draw(batch, zombieClicker.getNumerics().bigInteger_to_string(location.getZombie_health()), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 293);
+            zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getHud_font(), zombieClicker.getNumerics().bigInteger_to_string(location.getZombie_health().toBigInteger()));
+            zombieClicker.getFontManager().getHud_font().draw(batch, zombieClicker.getNumerics().bigInteger_to_string(location.getZombie_health().toBigInteger()), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 293);
 
             //m/n zombie
             if (!location.getLoseBoss()) {
@@ -422,7 +424,6 @@ public class MainGame implements Screen {
 
     @Override
     public void render(float delta) {
-
         update();
 
         stage.draw();
@@ -456,10 +457,10 @@ public class MainGame implements Screen {
 
         regen_time = (System.currentTimeMillis() - time) / 1000;
 
-        if (regen_time >= zombieClicker.getNumerics().getHow_fast_passive_damage()) {
+//        if (regen_time >= zombieClicker.getNumerics().getHow_fast_passive_damage()) {
             location.passive_punch();
             time = System.currentTimeMillis();
-        }
+//        }
 
 
         zombieClicker.getKeepTrackAch().keep_track_of_achievements();

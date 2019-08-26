@@ -76,7 +76,7 @@ public class MyThread extends Thread {
     public void location_activity(int which_location){
         zombieClicker.getNumerics().get_location(which_location).minusHealth(sum_location_DMG(which_location));
         crit_dmg(which_location);
-        if (zombieClicker.getNumerics().get_location(which_location).getZombie_health().compareTo(BigInteger.valueOf(0)) <= 0) {          //УБИЙСТВО ЗОМБИ
+        if (zombieClicker.getNumerics().get_location(which_location).getZombie_health().compareTo(BigDecimal.valueOf(0)) <= 0) {          //УБИЙСТВО ЗОМБИ
 
             zombieClicker.getNumerics().plus_zombie_kills(BigInteger.valueOf(1));
             System.out.println("zombie dead");

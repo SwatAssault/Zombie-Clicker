@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.rmi.server.Skeleton;
 import java.util.ArrayList;
@@ -60,13 +61,13 @@ public class AnimationManager {
 
 
         if (zombieClicker.getNumerics().getCurrent_location().isBossFight()) {                                                   //ЕСЛИ ИДЕТ БОССФАЙТ
-            if (zombieClicker.getNumerics().getCurrent_location().getBoss_health().compareTo(BigInteger.valueOf(0)) <= 0) {        //УБИЙСТВО БОССА
+            if (zombieClicker.getNumerics().getCurrent_location().getBoss_health().compareTo(BigDecimal.valueOf(0)) <= 0) {        //УБИЙСТВО БОССА
                 zombieClicker.getMainGame().next_level(1);
              //   System.out.println("boss dead");
                 zombie_animation = zombie_animations_arr.get(MathUtils.random(0, 2));
             }
         } else {
-            if (zombieClicker.getNumerics().getCurrent_location().getZombie_health().compareTo(BigInteger.valueOf(0)) <= 0) {          //УБИЙСТВО ЗОМБИ
+            if (zombieClicker.getNumerics().getCurrent_location().getZombie_health().compareTo(BigDecimal.valueOf(0)) <= 0) {          //УБИЙСТВО ЗОМБИ
 
                 zombieClicker.getNumerics().getCurrent_location().setCount_death_zombies_betweenBoss(
                         zombieClicker.getNumerics().getCurrent_location().getCount_death_zombies_betweenBoss() + 1

@@ -7,15 +7,17 @@ import com.badlogic.gdx.utils.TimeUtils;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.MathContext;
+import java.math.RoundingMode;
 
 public class Location {
 
     private final ZombieClicker zombieClicker;
 
-    private BigInteger zombie_health;          //в начале каждого уровня := max_zombie_health
+    private BigDecimal zombie_health;          //в начале каждого уровня := max_zombie_health
     private int level_count;              //левел на текущей локации!!!
     private BigInteger zombie_kills;
-    private BigInteger boss_health;            //в начале каждого уровня := max_boss_health
+    private BigDecimal boss_health;            //в начале каждого уровня := max_boss_health
     private BigInteger zombie_kill_reward;     //награда за убийство зомби(золото)
     private int boss_kill_reward;          //нагарада за убийство босса(алмазы)
     private BigInteger max_boss_health;        //увеличивается с каждым уровнем
@@ -52,8 +54,8 @@ public class Location {
         zombieClicker = zc;
         base_zombie_HP = zombie_health;
         max_zombie_health = base_zombie_HP;
-        this.zombie_health = max_zombie_health;
-        this.boss_health = boss_health;
+        this.zombie_health = new BigDecimal(max_zombie_health);
+        this.boss_health = new BigDecimal(boss_health);
         this.base_zombie_reward = zombie_kill_reward;
         max_boss_health = boss_health;
         this.zombie_kills = zombie_kills;
@@ -82,28 +84,35 @@ public class Location {
     }
 
     public void minus_Boss_health(BigInteger x) {
-        boss_health = boss_health.subtract(x);
+        boss_health = boss_health.subtract(new BigDecimal(x));
     }
 
     public void minusHealth(BigInteger x) {
-        zombie_health = zombie_health.subtract(x);
+        zombie_health = zombie_health.subtract(new BigDecimal(x));
     }
 
     public void passive_punch() {
-        if(TimeUtils.timeSinceMillis(passivePunch_time) > 500) {
-            if (bossFight) {
-                boss_health = boss_health.subtract(zombieClicker.getNumerics().getPassive_damage());
-            } else
-                zombie_health = zombie_health.subtract(zombieClicker.getNumerics().getPassive_damage());
-            passivePunch_time = TimeUtils.millis();
-        }
+//        if(TimeUtils.timeSinceMillis(passivePunch_time) > 500) {
+//            if (bossFight) {
+//                boss_health = boss_health.subtract(zombieClicker.getNumerics().getPassive_damage());
+//            } else
+//                zombie_health = zombie_health.subtract(zombieClicker.getNumerics().getPassive_damage());
+//            passivePunch_time = TimeUtils.millis();
+//        }
+
+        if (bossFight) {
+            boss_health = boss_health.subtract(
+                    new BigDecimal(zombieClicker.getNumerics().getPassive_damage()).divide(BigDecimal.valueOf(60), MathContext.DECIMAL128));
+        } else
+            zombie_health = zombie_health.subtract(
+                    new BigDecimal(zombieClicker.getNumerics().getPassive_damage()).divide(BigDecimal.valueOf(60), MathContext.DECIMAL128));
     }
 
     public void plus_zombie_health() {
         //формула увеличения хп зомби
         // HP * multiplier ^ level
-     //   max_zombie_health = BigDecimal.valueOf(base_zombie_HP.floatValue() * Math.pow(multiplier_zombie_HP, level_count)).toBigInteger();
-        max_zombie_health = BigDecimal.valueOf(base_zombie_HP.floatValue() * (level_count + Math.pow(multiplier_zombie_HP, level_count ))).toBigInteger();
+        //   max_zombie_health = BigDecimal.valueOf(base_zombie_HP.floatValue() * Math.pow(multiplier_zombie_HP, level_count)).toBigInteger();
+        max_zombie_health = BigDecimal.valueOf(base_zombie_HP.floatValue() * (level_count + Math.pow(multiplier_zombie_HP, level_count))).toBigInteger();
     }
 
     public void plus_Boss_health() {
@@ -116,11 +125,11 @@ public class Location {
     }
 
     ////////////////////// GETTER ///////////////////////////
-    public boolean getPlayer_on_location(){
+    public boolean getPlayer_on_location() {
         return player_on_location;
     }
 
-    public BigInteger getZombie_health() {
+    public BigDecimal getZombie_health() {
         return zombie_health;
     }
 
@@ -132,7 +141,7 @@ public class Location {
         return zombie_kills;
     }
 
-    public BigInteger getBoss_health() {
+    public BigDecimal getBoss_health() {
         return boss_health;
     }
 
@@ -176,30 +185,30 @@ public class Location {
         return durationBossFight;
     }
 
-    public boolean getLoseBoss(){
+    public boolean getLoseBoss() {
         return loseBoss;
     }
 
-    public double getMultiplier_zombie_HP(){
+    public double getMultiplier_zombie_HP() {
         return multiplier_zombie_HP;
     }
 
-    public double getMultiplier_BOSS_HP(){
+    public double getMultiplier_BOSS_HP() {
         return multiplier_BOSS_HP;
     }
 
-    public BigInteger getBase_zombie_HP(){
+    public BigInteger getBase_zombie_HP() {
         return base_zombie_HP;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
     ////////////////////// GETTER ///////////////////////////
 
     ////////////////////// SETTER ///////////////////////////
     public void setMaxZombie_health() {
-        this.zombie_health = max_zombie_health;
+        this.zombie_health = new BigDecimal(max_zombie_health);
     }
 
     public void upLevel(long level_count) {
@@ -211,10 +220,10 @@ public class Location {
     }
 
     public void setMaxBoss_health() {
-        this.boss_health = max_boss_health;
+        this.boss_health = new BigDecimal(max_boss_health);
     }
 
-    public void plus_zombie_kill_reward(){
+    public void plus_zombie_kill_reward() {
         zombie_kill_reward = BigDecimal.valueOf(base_zombie_reward.floatValue() * Math.pow(multiplier_zombie_kill_reward, level_count)).toBigInteger();
     }
 
@@ -256,15 +265,15 @@ public class Location {
         loseBoss = value;
     }
 
-    public void setPlayer_on_location(boolean x){
+    public void setPlayer_on_location(boolean x) {
         player_on_location = x;
     }
 
-    public void setMultiplier_zombie_HP(double x){
+    public void setMultiplier_zombie_HP(double x) {
         multiplier_zombie_HP = x;
     }
 
-    public void setMultiplier_BOSS_HP(double x){
+    public void setMultiplier_BOSS_HP(double x) {
         multiplier_BOSS_HP = x;
     }
     ////////////////////// SETTER ///////////////////////////
