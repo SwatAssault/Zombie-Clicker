@@ -295,7 +295,7 @@ public class Shop implements Screen {
         squad_scrollPane.setZIndex(0);
 
         ///////////////////OTHER ITEMS INITIALIZATION///////////////////////
-        otherItem1 = new OtherItem(zc,"1 hour","tre",-1, 0, 0.0f, true, 3600000);    //max_buy : если предмет можно покупать бесконечно, ставить -1
+        otherItem1 = new OtherItem(zc,"1 hour","tre",-1, 0, 0.0f, true, 36000);    //max_buy : если предмет можно покупать бесконечно, ставить -1
         otherItem2 = new OtherItem(zc,"4 hours","tre",-1, 0, 0.0f, true, 14400000);
         otherItem3 = new OtherItem(zc,"A","tre", 2, 0, 0.0f, false, 0);
         otherItem4 = new OtherItem(zc,"A","tre",-1, 0, 0.0f, false, 0);
