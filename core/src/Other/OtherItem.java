@@ -90,7 +90,7 @@ public class OtherItem {
                         start_time_millis = TimeUtils.millis();
                         zombieClicker.getCalendar().setTimeInMillis(start_time_millis);
                         start_date = zombieClicker.getCalendar().getTime();
-
+                        zombieClicker.getNumerics().setGold_multiplier(2.0f);
 
 
 
@@ -127,6 +127,7 @@ public class OtherItem {
             ));
             if(duration - (System.currentTimeMillis() - start_time_millis) < 0){
                 time_running = false;
+                zombieClicker.getNumerics().setGold_multiplier(1.0f);
                 buy_btn.setText(Integer.toString(cost));
             }
         }

@@ -29,6 +29,7 @@ public class Numerics {
     private int diamonds = 100;                 //доп валюта
     private BigInteger zombie_kills;
     private double squads_reward_percent;     //сколько процентов от золота приносит убийство отрядов
+    private double gold_multiplier;          //бонус на золото
     private long boss_kills;
     private BigInteger gold;                   //основная валюта
     private BigInteger punch_power;            //сила одного удара(клика)
@@ -105,8 +106,9 @@ public class Numerics {
 
         current_location = 0;
 
+        gold_multiplier = 1.0f;
         global_tap_count = new BigInteger("0");
-        gold = new BigInteger("789789");
+        gold = new BigInteger("0");
         zombie_kills = new BigInteger("0");
         boss_kills = 0;
         punch_power = new BigInteger("1");
@@ -239,7 +241,7 @@ public class Numerics {
     }
 
     public void plus_gold(BigInteger x) {
-        //формула увеличения выпадения золота с каждым уровнем
+        x = x.multiply(BigInteger.valueOf((long)gold_multiplier));
         gold = gold.add(x);
     }
 
@@ -344,6 +346,10 @@ public class Numerics {
 
     public void plusMissionItem(MissionsItem mi) {
         missionsItem.add(mi);
+    }
+
+    public void setGold_multiplier(double x){
+        gold_multiplier = x;
     }
 
     //Вызывать из класса миссий!!!
@@ -514,6 +520,10 @@ public class Numerics {
 
     public int getIdMission(){
         return idMission;
+    }
+
+    public double getGold_multiplier() {
+        return gold_multiplier;
     }
     ////////////////GETTERS//////////////////
 }
