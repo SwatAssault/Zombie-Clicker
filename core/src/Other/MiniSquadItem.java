@@ -35,6 +35,8 @@ public class MiniSquadItem {
                 if(zombieClicker.getShop().getSquadItems_array().get(which_squad).getStatus() == 0 && zombieClicker.getShop().getSquadItems_array().get(which_squad).isBought()){  // если отряд свободен
                     zombieClicker.getShop().getSquadItems_array().get(which_squad).setStatus(-1);   // значит на задании
                     //тут нужно засечь время и по его истечении вернуть отряду статус 0
+
+
                 }
             }
         });

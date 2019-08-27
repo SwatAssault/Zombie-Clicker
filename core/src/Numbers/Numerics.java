@@ -33,7 +33,6 @@ public class Numerics {
     private long boss_kills;
     private BigInteger gold;                   //основная валюта
     private BigInteger punch_power;            //сила одного удара(клика)
-//    private float how_fast_passive_damage;     //насколько быстро (автоматически) отнимается хп (чем меньше значение, тем быстрее)
     private BigInteger passive_damage;
     private BigInteger oneTrillion;
     private BigInteger oneQuadrillion;
@@ -263,10 +262,6 @@ public class Numerics {
         passive_damage = passive_damage.add(x);
     }
 
-//    public void setHow_fast_passive_damage(float x) {
-//        how_fast_passive_damage = x;
-//    }
-
     public void setCurrent_num_location(int x) {
         current_location = x;
     }
@@ -338,6 +333,10 @@ public class Numerics {
     public void setSquads_reward_percent(double x) {
         // в процентах % 10.0f
         squads_reward_percent = x;
+    }
+
+    public void plusSquad_reward_percent(double x){
+        squads_reward_percent += x;
     }
 
     public void setGold_from_taps(BigInteger x) {
@@ -421,10 +420,6 @@ public class Numerics {
     public BigInteger getPunch_power() {
         return punch_power;
     }
-
-//    public float getHow_fast_passive_damage() {
-//        return how_fast_passive_damage;
-//    }
 
     public BigInteger getPassive_damage() {
         return passive_damage;

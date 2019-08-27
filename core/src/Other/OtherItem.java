@@ -91,10 +91,10 @@ public class OtherItem {
                         zombieClicker.getCalendar().setTimeInMillis(start_time_millis);
                         start_date = zombieClicker.getCalendar().getTime();
                         zombieClicker.getNumerics().setGold_multiplier(2.0f);
-
-
-
-                    }
+                    } else
+                        if(name.equals("squad percent")){
+                            zombieClicker.getNumerics().plusSquad_reward_percent(10);
+                        }
 
                 }
             }
@@ -125,9 +125,11 @@ public class OtherItem {
                          TimeUnit.MILLISECONDS.toSeconds(duration - (System.currentTimeMillis() - start_time_millis)) -
                          TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration - (System.currentTimeMillis() - start_time_millis)))
             ));
-            if(duration - (System.currentTimeMillis() - start_time_millis) < 0){
+            if(duration - (System.currentTimeMillis() - start_time_millis) <= 0){
                 time_running = false;
-                zombieClicker.getNumerics().setGold_multiplier(1.0f);
+                if(!zombieClicker.getShop().getOtherItems_array().get(1).isTime_running() && !zombieClicker.getShop().getOtherItems_array().get(0).isTime_running()){
+                    zombieClicker.getNumerics().setGold_multiplier(1.0f);
+                }
                 buy_btn.setText(Integer.toString(cost));
             }
         }

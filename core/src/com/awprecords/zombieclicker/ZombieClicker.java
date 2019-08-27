@@ -118,6 +118,10 @@ public class ZombieClicker extends Game {
     public Missions getMissions() {
         return missions;
     }
+
+    public SquadSelectionScreen getSquadSelectionScreen(){
+        return squadSelectionScreen;
+    }
     /////////////OTHER GETTERS/////////////
 
     public ZombieClicker get_ZombieClicker() {

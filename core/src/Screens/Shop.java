@@ -296,8 +296,8 @@ public class Shop implements Screen {
 
         ///////////////////OTHER ITEMS INITIALIZATION///////////////////////
         otherItem1 = new OtherItem(zc,"1 hour","tre",-1, 0, 0.0f, true, 36000);    //max_buy : если предмет можно покупать бесконечно, ставить -1
-        otherItem2 = new OtherItem(zc,"4 hours","tre",-1, 0, 0.0f, true, 14400000);
-        otherItem3 = new OtherItem(zc,"A","tre", 2, 0, 0.0f, false, 0);
+        otherItem2 = new OtherItem(zc,"4 hours","tre",-1, 0, 0.0f, true, 14400);
+        otherItem3 = new OtherItem(zc,"squad percent","tre", 9, 0, 0.0f, false, 0);
         otherItem4 = new OtherItem(zc,"A","tre",-1, 0, 0.0f, false, 0);
         otherItem5 = new OtherItem(zc,"A","tre",-1, 0, 0.0f, false, 0);
         otherItem6 = new OtherItem(zc,"A","tre",-1, 0, 0.0f, false, 0);
@@ -352,6 +352,10 @@ public class Shop implements Screen {
 
     public int getSpare_squads_counter(){
         return spare_squads_counter;
+    }
+
+    public Array<OtherItem> getOtherItems_array(){
+        return otherItems_array;
     }
     ///////////////GETTERS//////////////////////
 
