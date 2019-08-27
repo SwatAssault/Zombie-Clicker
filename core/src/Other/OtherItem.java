@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.TimeUtils;
 
+import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -49,7 +50,7 @@ public class OtherItem {
     private Date start_date;
     private long start_time_millis;
 
-    public OtherItem(ZombieClicker zc, final String name_of_item, String description, int max_buy_count, int baseCost, double costKoeff, boolean _time_action, long _duration){
+    public OtherItem(ZombieClicker zc, final String name_of_item, String description, int max_buy_count, int baseCost, double costKoeff, long _duration){
         zombieClicker = zc;
 
         stack = new Stack();
@@ -65,8 +66,8 @@ public class OtherItem {
         this.description = description;
         this.base_cost = baseCost;
         this.cost_koeff = costKoeff;
-        this.time_action = _time_action;
         this.duration = _duration;
+        if(this.duration != 0){ this.time_action = true; } else this.time_action = false;
         diamond_icon = new Image(zombieClicker.getHud().getHud_icons_atlas().createSprite("diamond"));
         diamond_icon.setScale(0.8f);
         date_format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -74,6 +75,7 @@ public class OtherItem {
         start_date = new Date();
 
         name_label = new Label(name, zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class));
+        description_label = new Label(description ,zombieClicker.getFontManager().getDescription_labelStyle());
 
         buy_btn.addListener(new ClickListener(){
             @Override
@@ -94,7 +96,10 @@ public class OtherItem {
                     } else
                         if(name.equals("squad percent")){
                             zombieClicker.getNumerics().plusSquad_reward_percent(10);
-                        }
+                        } else
+                            if(name.equals("tap gold")){
+                                zombieClicker.getNumerics().plusGold_from_taps(BigInteger.valueOf(10));
+                            }
 
                 }
             }
@@ -104,9 +109,9 @@ public class OtherItem {
         stack.add(intable);
         intable.add(buy_btn).expandX().right();
         stack.add(label_table);
-        label_table.add(name_label).expandX();
+        label_table.add(name_label).expand();
         label_table.row();
-        label_table.add(description_label).expandX();
+        label_table.add(description_label).expand();
         stack.add(diamond_table);
         diamond_table.add(diamond_icon).expand().right().padRight(130);
     }
