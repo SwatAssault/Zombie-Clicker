@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Align;
 
 public class FontManager {
@@ -19,6 +20,7 @@ public class FontManager {
     private FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
 
     private BitmapFont font_border;
+    private Label.LabelStyle description_labelStyle;
 
     private GlyphLayout layout;
 
@@ -33,21 +35,13 @@ public class FontManager {
         hud_font = fontGenerator.generateFont(fontParameter);
         hud_font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
-//        fontGenerator_invent;
-//        fontParameter_invent;
-
         font_border = new BitmapFont(
                 Gdx.files.internal("Fonts/rubik_main.fnt"),
                 Gdx.files.internal("Fonts/rubik_main.png"), false);
         font_border.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-    }
 
-    public void draw_text_forGame(SpriteBatch batch) {
-
-    }
-
-    public void draw_text_forShop() {
-
+        font_border.getData().setScale(.28f);
+        description_labelStyle = new Label.LabelStyle(font_border, Color.WHITE);
     }
 
     public void draw_text_forInvent(SpriteBatch batch) {
@@ -103,8 +97,12 @@ public class FontManager {
         font_border.getData().setScale(x);
     }
 
+    public Label.LabelStyle getDescription_labelStyle(){
+        return description_labelStyle;
+    }
+
     public void dispose() {
-//        bitmapFont.dispose();
+
     }
 
 }

@@ -87,8 +87,8 @@ public class MissionsItem {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if (!isActive) {
-                    zc.getNumerics().setIdMission(id);
-                    zc.setTipScreen("", "", "Missions");
+                    zombieClicker.getNumerics().setIdMission(id);
+                    zombieClicker.setTipScreen("", "", "Missions");
                 }
 
             }

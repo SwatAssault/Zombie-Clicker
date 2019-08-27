@@ -51,9 +51,6 @@ public class TipScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
-                if (lastScreen.equals("maingame")) {
-                    Gdx.input.setInputProcessor(zombieClicker.getMainGame().getStage());
-                }
                 if (lastScreen.equals("Missions")) {
 //                    zombieClicker.setMissionsScreen();
 //                    Gdx.input.setInputProcessor(zombieClicker.getMissions().getStage());
@@ -66,9 +63,6 @@ public class TipScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
-                if (lastScreen.equals("maingame")) {
-                    Gdx.input.setInputProcessor(zombieClicker.getMainGame().getStage());
-                }
                 if (lastScreen.equals("Missions")) {
                     zombieClicker.setMissionsScreen();
                     Gdx.input.setInputProcessor(zombieClicker.getMissions().getStage());
@@ -90,10 +84,6 @@ public class TipScreen implements Screen {
 
     @Override
     public void render(float delta) {
-
-        if (lastScreen.equals("maingame")) {
-            zombieClicker.getMainGame().render(1);
-        }
         if (lastScreen.equals("Missions")) {
             zombieClicker.getMissions().render(1);
         }
@@ -108,7 +98,7 @@ public class TipScreen implements Screen {
         }
 
         batch.end();
-
+        batch.setProjectionMatrix(camera.combined);
     }
 
     private void render_for_mission() {

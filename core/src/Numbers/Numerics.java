@@ -197,10 +197,6 @@ public class Numerics {
         return y;
     }
 
-    public void passive_punch() {
-
-    }
-
     //БОЛЬШИНСТВО СЕТТЕРОВ НУЖНЫ ДЛЯ ОПРЕДЕЛЕНИЯ ЗНАЧЕНИЙ ПРИ ЗАГРУЗКЕ СОХРАНЕНИЯ
     /////////////////SETTERS//////////////////
     public void setGlobal_tap_count(BigInteger x) {
@@ -253,12 +249,10 @@ public class Numerics {
     }
 
     public void plus_punch_power(BigInteger x) {
-        //вызывается при покупке улучшения на урон в магазине
         punch_power = punch_power.add(x);
     }
 
     public void plus_passive_power(BigInteger x) {
-        //вызывается при покупке улучшения на урон в магазине
         passive_damage = passive_damage.add(x);
     }
 
@@ -341,6 +335,10 @@ public class Numerics {
 
     public void setGold_from_taps(BigInteger x) {
         gold_from_taps = x;
+    }
+
+    public void plusGold_from_taps(BigInteger x){
+        gold_from_taps = gold_from_taps.add(x);
     }
 
     public void plusMissionItem(MissionsItem mi) {
