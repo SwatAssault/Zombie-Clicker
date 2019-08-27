@@ -45,8 +45,6 @@ public class OtherItem {
     private boolean time_running = false; //идет ли отсчет
 
     private long duration;
-    private SimpleDateFormat date_format;
-    private SimpleDateFormat date_format1;
     private Date start_date;
     private long start_time_millis;
 
@@ -70,8 +68,6 @@ public class OtherItem {
         if(this.duration != 0){ this.time_action = true; } else this.time_action = false;
         diamond_icon = new Image(zombieClicker.getHud().getHud_icons_atlas().createSprite("diamond"));
         diamond_icon.setScale(0.8f);
-        date_format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        date_format1 = new SimpleDateFormat("HH:mm:ss");
         start_date = new Date();
 
         name_label = new Label(name, zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class));
