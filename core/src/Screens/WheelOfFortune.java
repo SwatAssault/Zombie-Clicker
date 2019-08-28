@@ -103,6 +103,7 @@ public class WheelOfFortune implements Screen {
                     duration = MathUtils.random(800, 1000);
                     degree = 0;
                     start.setDisabled(true);
+                    zombieClicker.getNumerics().plusSpin_counter(-1);
                 }
             }
         });
@@ -165,6 +166,11 @@ public class WheelOfFortune implements Screen {
                 start.setDisabled(false);
             }
         }
+
+        if(zombieClicker.getNumerics().getSpin_counter() == 0){
+            start.setDisabled(true);
+        }
+
     }
 
     public void reward() {
@@ -204,6 +210,10 @@ public class WheelOfFortune implements Screen {
                 false,
                 false);
 //        System.out.println(step);
+
+        zombieClicker.getFontManager().getFont_border().getData().setScale(.35f);
+        zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getFont_border(), "Осталось попыток : " + Integer.toString(zombieClicker.getNumerics().getSpin_counter()));
+        zombieClicker.getFontManager().getFont_border().draw(batch, "Осталось попыток : " + Integer.toString(zombieClicker.getNumerics().getSpin_counter()), 540 / 2 - zombieClicker.getFontManager().getLayout().width / 2, 230);
         batch.end();
 
     }

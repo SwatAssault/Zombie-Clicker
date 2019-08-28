@@ -62,6 +62,8 @@ public class Numerics {
     private ArrayList<String> missionRank;
     private int idMission;
 
+    private int spin_counter;  //сколько можно крутануть колесо мавроди
+
     public Numerics(ZombieClicker zc) {
 
 
@@ -104,6 +106,7 @@ public class Numerics {
         ));
 
         current_location = 0;
+        spin_counter = 3;
 
         gold_multiplier = 1.0f;
         global_tap_count = new BigInteger("0");
@@ -391,6 +394,14 @@ public class Numerics {
     public void setIdMission(int x){
         idMission = x;
     }
+
+    public void setSpin_counter(int x){
+        spin_counter = x;
+    }
+
+    public void plusSpin_counter(int x){
+        spin_counter += x;
+    }
     /////////////////SETTERS//////////////////
 
 
@@ -517,6 +528,10 @@ public class Numerics {
 
     public double getGold_multiplier() {
         return gold_multiplier;
+    }
+
+    public int getSpin_counter(){
+        return spin_counter;
     }
     ////////////////GETTERS//////////////////
 }
