@@ -159,7 +159,7 @@ public class Assets {
         assetManager.load("Background/location_1_bg.png", Texture.class);
         assetManager.load("Background/wheel.png", Texture.class);
         assetManager.load("Background/wheelOfFortune_bg.png", Texture.class);
-        assetManager.load("Other/arroww.png", Texture.class);
+        assetManager.load("Other/arrow.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }

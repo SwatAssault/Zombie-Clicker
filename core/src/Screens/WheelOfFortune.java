@@ -34,20 +34,24 @@ public class WheelOfFortune implements Screen {
     private Skin back_btn_skin;
     private Image ImageBG_MainGame;
     private Image ImageBG;
-    private Image arrow;
+    //    private Image arrow;
     private Texture wheel;
+    private Texture arrow;
 
     private boolean isStart;
     private int maxSpeed;
     private int minSpeed;
     private int duration;
     private float degree;
+    private float arrow_deg;
     private float step;
     private long time;
     private long time_start;
     private int dt;
     private ArrayList<String> rew; // награды
     private int n; //кол-во секций
+    private boolean flag;
+    private int tmp_rew;
 
     public WheelOfFortune(ZombieClicker zc) {
         this.zombieClicker = zc;
@@ -71,6 +75,7 @@ public class WheelOfFortune implements Screen {
         step = 0;
         dt = 1;
         n = 8;
+        flag = false;
 
         zombieClicker.get_assets().load_assets_for_WheelOfFortuneScreen();
 
@@ -93,6 +98,7 @@ public class WheelOfFortune implements Screen {
                 if (!start.isDisabled()) {
                     isStart = true;
                     step = MathUtils.random(minSpeed, maxSpeed);
+//                    step = 0.1f;
                     time_start = TimeUtils.millis();
                     duration = MathUtils.random(800, 1000);
                     degree = 0;
@@ -101,18 +107,22 @@ public class WheelOfFortune implements Screen {
             }
         });
         start.setPosition(150, 100);
-
+        arrow_deg = 0;
 
         ImageBG_MainGame = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/location_1_bg.png", Texture.class));
         ImageBG = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/wheelOfFortune_bg.png", Texture.class));
-        arrow = new Image(zombieClicker.get_assets().get_asset_manager().get("Other/arroww.png", Texture.class));
-        arrow.setPosition(252, 750);
+//        arrow = new Image(zombieClicker.get_assets().get_asset_manager().get("Other/arrow.png", Texture.class));
+//        arrow.setPosition(250, 700);
+
+        arrow = zombieClicker.get_assets().get_asset_manager().get("Other/arrow.png", Texture.class);
+        arrow.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
         wheel = zombieClicker.get_assets().get_asset_manager().get("Background/wheel.png", Texture.class);
+        wheel.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
         stage.addActor(ImageBG_MainGame);
         stage.addActor(ImageBG);
-        stage.addActor(arrow);
+//        stage.addActor(arrow);
         stage.addActor(back_btn);
         stage.addActor(start);
 
@@ -128,11 +138,27 @@ public class WheelOfFortune implements Screen {
             if (step > 0 && duration > 100) {
                 degree += step;
                 if (degree > 360) degree = 0;
-                if (TimeUtils.timeSinceMillis(time_start) >= duration * dt / dt + 1) {
-                    duration = duration * dt / dt + 1;
+                if (TimeUtils.timeSinceMillis(time_start) >= duration) {
+//                    duration = duration * dt / dt + 1;
                     step -= 0.7;
                     time_start = TimeUtils.millis();
                 }
+
+                if (flag && (step > 0) && arrow_deg > -45) {
+                    arrow_deg -= step *5;
+                }
+
+                if (((int) (degree) % 45) < 20) {
+                    flag = true;
+                }
+                if (arrow_deg != 0 && (step > 0) && (degree % 45 > 12)) {
+                    arrow_deg /= 2;
+                }
+
+                if (degree % 45 > 12)
+                    flag = false;
+
+
             } else {
                 reward();
                 isStart = false;
@@ -147,7 +173,8 @@ public class WheelOfFortune implements Screen {
 //        }else zombieClicker.getNumerics().plus_gold(new BigInteger("100"));
 
 //        System.out.println(degree + "\n" + degree / (360 / n) % 2);
-        System.out.println(rew.get((int) (degree / (360 / n))) + "\n" + degree);
+        tmp_rew = (int) (degree / (360 / n));
+        System.out.println(rew.get( (arrow_deg < 5 && arrow_deg > -5) ? tmp_rew : tmp_rew - 1 < 0 ? 7 : tmp_rew - 1) + "\n" + degree);
     }
 
     @Override
@@ -159,12 +186,21 @@ public class WheelOfFortune implements Screen {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
 
-        batch.draw(wheel, 145, 500, 125, 125,
-                250, 250,
+        batch.draw(wheel, 75, 280, 200, 200,
+                400, 400,
                 1, 1,
                 degree,
                 0, 0,
-                249, 249,
+                400, 400,
+                false,
+                false);
+
+        batch.draw(arrow, 250, 640, 25, 50,
+                50, 71,
+                1, 1,
+                arrow_deg,
+                0, 0,
+                50, 71,
                 false,
                 false);
 //        System.out.println(step);
