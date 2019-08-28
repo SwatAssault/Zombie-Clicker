@@ -64,7 +64,7 @@ public class TipScreen implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
                 if (lastScreen.equals("Missions")) {
-                    zombieClicker.setMissionsScreen();
+                  //  zombieClicker.setMissionsScreen();
                     Gdx.input.setInputProcessor(zombieClicker.getMissions().getStage());
                 }
             }

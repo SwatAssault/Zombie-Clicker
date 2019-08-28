@@ -1,6 +1,7 @@
 package Other;
 
 import com.awprecords.zombieclicker.ZombieClicker;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -36,7 +37,8 @@ public class MiniSquadItem {
 
                     //тут нужно засечь время и по его истечении вернуть отряду статус 0
 
-
+                    zombieClicker.getSquadSelectionScreen().dispose();
+                    Gdx.input.setInputProcessor(zombieClicker.getMissions().getStage());
                 }
             }
         });
@@ -58,10 +60,8 @@ public class MiniSquadItem {
         stack.setHeight(130);
         stack.setWidth(130);
 
-
         stack.add(back_image);
         stack.add(front_image);
-
     }
 
     public Stack getStack(){
