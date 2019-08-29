@@ -31,7 +31,7 @@ public class TipScreen implements Screen {
     private String mainText;
     private String lastScreen;
 
-    public TipScreen(final ZombieClicker zc, String header, String mainText, final String lastScreen) {
+    public TipScreen(final ZombieClicker zc, String header, String mainText, final String lastScreen, final int which_mission) {
         zombieClicker = zc;
         this.header = header;
         this.mainText = mainText;
@@ -52,14 +52,15 @@ public class TipScreen implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
                 if (lastScreen.equals("Missions")) {
-                    zombieClicker.setSquadSelectionScreen();
+                    zombieClicker.setSquadSelectionScreen(which_mission);
                 }
 
                 if(lastScreen.equals("maingame")){
-                    Gdx.input.setInputProcessor(zombieClicker.getMainGame().getStage());
+                    zombieClicker.setMainGame();
                 }
 
                 if(lastScreen.equals("shop")){
+                    zombieClicker.setShopScreen();
                     Gdx.input.setInputProcessor(zombieClicker.getShop().getStage());
                 }
             }
@@ -73,7 +74,12 @@ public class TipScreen implements Screen {
                     Gdx.input.setInputProcessor(zombieClicker.getMissions().getStage());
                 }
 
+                if(lastScreen.equals("maingame")){
+                    zombieClicker.setMainGame();
+                }
+
                 if(lastScreen.equals("shop")){
+                    zombieClicker.setShopScreen();
                     Gdx.input.setInputProcessor(zombieClicker.getShop().getStage());
                 }
             }
@@ -101,6 +107,10 @@ public class TipScreen implements Screen {
             zombieClicker.getMainGame().render(1);
         }
 
+        if(lastScreen.equals("shop")){
+            zombieClicker.getShop().render(1);
+        }
+
         stage.draw();
         stage.act();
 
@@ -108,10 +118,6 @@ public class TipScreen implements Screen {
 
         if (lastScreen.equals("Missions")) {
             render_for_mission();
-        }
-
-        if(lastScreen.equals("shop")){
-            zombieClicker.getShop().render(1);
         }
 
         batch.end();

@@ -9,6 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.TimeUtils;
+
+import java.util.Date;
 
 public class MissionsItem {
 
@@ -33,22 +36,20 @@ public class MissionsItem {
     // 5 - diamonds (mid)
     // 6 - diamonds (max)
 
+    private Date missionStart_date;
+
     public MissionsItem(final ZombieClicker zc, String rareness, String mission, int time, int rew, float x, float y) {
-        // time в секундах
+        // time в МИЛЛИсекундах
         zombieClicker = zc;
         stack = new Stack();
-
         this.x = x;
         this.y = y;
-
         isActive = false;
-
         id = zombieClicker.getNumerics().getMissionsItem().size();
-
         Texture paper = zombieClicker.get_assets().get_asset_manager().get("Other/paper.png", Texture.class);
         paper.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-
         bg = new Image(paper);
+        missionStart_date = new Date();
 
         Texture rew_tex = null;
         if (rew == 1)
@@ -79,7 +80,6 @@ public class MissionsItem {
         reward.setRotation(rndDgre);
         stack.setRotation(rndDgre);
 
-
         stack.add(bg);
         stack.add(reward);
 
@@ -88,15 +88,15 @@ public class MissionsItem {
             public void clicked(InputEvent event, float x, float y) {
                 if (!isActive) {
                     zombieClicker.getNumerics().setIdMission(id);
-                    zombieClicker.setTipScreen("", "", "Missions");
+
+
+                    zombieClicker.setTipScreen("", "", "Missions", id);
                 }
 
             }
         });
 
         stack.setPosition(x, y);
-
-
     }
 
     public Stack getStack() {
@@ -123,4 +123,12 @@ public class MissionsItem {
         isActive = x;
     }
 
+    public void setMissionStart_date(){
+        zombieClicker.getCalendar().setTimeInMillis(TimeUtils.millis());
+        missionStart_date = zombieClicker.getCalendar().getTime();
+    }
+
+    public Date getMissionStart_date(){
+        return missionStart_date;
+    }
 }

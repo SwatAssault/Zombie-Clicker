@@ -48,7 +48,7 @@ public class HUD {
                     currentScreen = "maingame";
                 } else
                     currentScreen = "shop";
-                zombieClicker.setTipScreen("", "WOULD YOU LIKE TO GET GOLD BY WATCHING A SHORT VIDEO?", currentScreen);
+                zombieClicker.setTipScreen("", "WOULD YOU LIKE TO GET GOLD BY WATCHING A SHORT VIDEO?", currentScreen, -3);
             }
         });
 
@@ -57,7 +57,11 @@ public class HUD {
         plus_diamonds_btn.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-
+                if(zombieClicker.getScreen() == zombieClicker.getMainGame()){
+                    currentScreen = "maingame";
+                } else
+                    currentScreen = "shop";
+                zombieClicker.setTipScreen("", "WOULD YOU LIKE TO GET DIAMONDS BY WATCHING A SHORT VIDEO?", currentScreen, -3);
             }
         });
 

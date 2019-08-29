@@ -221,17 +221,17 @@ public class ZombieClicker extends Game {
         setScreen(wheelOfFortune);
     }
 
-    public void setTipScreen(String header, String mainText, String lastScreen) {
+    public void setTipScreen(String header, String mainText, String lastScreen, int whichMission) {
         tipScreen = null;
-        tipScreen = new TipScreen(instance, header, mainText, lastScreen);
+        tipScreen = new TipScreen(instance, header, mainText, lastScreen, whichMission);
         setScreen(tipScreen);
     }
 
-    public void setSquadSelectionScreen() {
+    public void setSquadSelectionScreen(int whichMission) {
         squadSelectionScreen = null;
         if (shop == null)
             shop = new Shop(instance);
-        squadSelectionScreen = new SquadSelectionScreen(instance);
+        squadSelectionScreen = new SquadSelectionScreen(instance, whichMission);
         setScreen(squadSelectionScreen);
     }
     ////////////SET SCREEN METHODS/////////////
