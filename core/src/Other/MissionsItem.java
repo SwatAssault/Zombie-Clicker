@@ -37,6 +37,7 @@ public class MissionsItem {
     // 6 - diamonds (max)
 
     private Date missionStart_date;
+    private long start_time_millis;
 
     public MissionsItem(final ZombieClicker zc, String rareness, String mission, int time, int rew, float x, float y) {
         // time в МИЛЛИсекундах
@@ -99,6 +100,10 @@ public class MissionsItem {
         stack.setPosition(x, y);
     }
 
+    public void update_status(){
+
+    }
+
     public Stack getStack() {
         return stack;
     }
@@ -124,7 +129,8 @@ public class MissionsItem {
     }
 
     public void setMissionStart_date(){
-        zombieClicker.getCalendar().setTimeInMillis(TimeUtils.millis());
+        start_time_millis = TimeUtils.millis();
+        zombieClicker.getCalendar().setTimeInMillis(start_time_millis);
         missionStart_date = zombieClicker.getCalendar().getTime();
     }
 

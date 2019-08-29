@@ -35,9 +35,8 @@ public class MiniSquadItem {
             public void clicked(InputEvent event, float x, float y) {
                 if(zombieClicker.getShop().getSquadItems_array().get(which_squad).getStatus() == 0 && zombieClicker.getShop().getSquadItems_array().get(which_squad).isBought()){  // если отряд свободен
                     zombieClicker.getShop().getSquadItems_array().get(which_squad).setStatus(-1);   // значит на задании
-                 //   System.out.println(zombieClicker.getSquadSelectionScreen().getSelected_mission());  // узнали, какая это миссия
                     zombieClicker.getNumerics().getMissionsItem().get(zombieClicker.getSquadSelectionScreen().getSelected_mission()).setMissionStart_date();
-                    System.out.println(zombieClicker.getNumerics().getMissionsItem().get(zombieClicker.getSquadSelectionScreen().getSelected_mission()).getMissionStart_date());
+
 
                     //тут нужно засечь время и по его истечении вернуть отряду статус 0
 

@@ -71,6 +71,7 @@ public class OtherItem {
         start_date = new Date();
 
         name_label = new Label(name, zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class));
+        zombieClicker.getFontManager().getDescription_labelStyle().font.getData().setScale(.28f);
         description_label = new Label(description ,zombieClicker.getFontManager().getDescription_labelStyle());
 
         buy_btn.addListener(new ClickListener(){
