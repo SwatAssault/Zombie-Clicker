@@ -55,7 +55,6 @@ public class Achievements implements Screen {
         batch = new SpriteBatch();
 
         zombieClicker.get_assets().load_assets_for_achievements();
-        bgImage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/achbg.png", Texture.class));
 
         back_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json", Skin.class));
         back_btn.addListener(new ClickListener() {

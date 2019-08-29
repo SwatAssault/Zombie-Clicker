@@ -169,25 +169,14 @@ public class MainGame implements Screen {
         achievement_btn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-
-                //ТУТ НЕТ НИЧЕГО НЕНУЖНОГО. НА ВРЕМЯ
-
-//                dispose();
-//                location.setMaxZombie_health();
-//                location.setMaxBoss_health();
-//                zombieClicker.setAchievementScreen();
-//                if (location.isBossFight()) {
-//                    next_level(0);
-//                    location.setLoseBoss(true);
-//                }
-
-
-                //на время
-           //     zombieClicker.setRewardScreen("gold", BigInteger.ONE, "m");
-             //   zombieClicker.setTipScreen("ПОДСКАЗКА", "gr", "maingame");
-
-              zombieClicker.setSquadSelectionScreen();
-
+                dispose();
+                location.setMaxZombie_health();
+                location.setMaxBoss_health();
+               // zombieClicker.setAchievementScreen();
+                if (location.isBossFight()) {
+                    next_level(0);
+                    location.setLoseBoss(true);
+                }
             }
         });
 
@@ -388,7 +377,7 @@ public class MainGame implements Screen {
 
     public void draw_text() {
         zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getHud_font(), "Level : " + zombieClicker.getNumerics().getCurrent_location().getLevel_count());
-        zombieClicker.getFontManager().getHud_font().draw(batch, "Level : " + zombieClicker.getNumerics().getCurrent_location().getLevel_count(), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 850);
+        zombieClicker.getFontManager().getHud_font().draw(batch, "Level : " + zombieClicker.getNumerics().getCurrent_location().getLevel_count(), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 845);
         if (zombieClicker.getNumerics().getCurrent_location().isBossFight()) {
             zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getHud_font(), zombieClicker.getNumerics().bigInteger_to_string(location.getBoss_health().toBigInteger()));
             zombieClicker.getFontManager().getHud_font().draw(batch, zombieClicker.getNumerics().bigInteger_to_string(location.getBoss_health().toBigInteger()), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 293);
@@ -418,8 +407,7 @@ public class MainGame implements Screen {
         }
 
         zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getHud_font(), location.getName());
-        zombieClicker.getFontManager().getHud_font().draw(batch, location.getName(), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 900);
-
+        zombieClicker.getFontManager().getHud_font().draw(batch, location.getName(), 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 885);
     }
 
     @Override
