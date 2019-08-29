@@ -40,7 +40,7 @@ public class SquadSelectionScreen implements Screen {
     private MiniSquadItem miniSquadItem10;
 
     private Array<MiniSquadItem> miniSquadItemArray;
-    private boolean isSelected;
+  //  private boolean isSelected;
     private int x = 70, y = 700;
 
     private int selected_mission;
@@ -56,14 +56,14 @@ public class SquadSelectionScreen implements Screen {
         x_btn.setPosition(460, 850);
 
         selected_mission = which_mission;
-        isSelected = false;
+      //  isSelected = false;
 
         x_btn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
-                if (isSelected)
-                    zombieClicker.getNumerics().getMissionsItem().get(zombieClicker.getNumerics().getIdMission()).setActive(true);
+//                if (isSelected)
+//                    zombieClicker.getNumerics().getMissionsItem().get(zombieClicker.getNumerics().getIdMission()).setActive(true);
 
                 Gdx.input.setInputProcessor(zombieClicker.getMissions().getStage());
             }
@@ -118,7 +118,7 @@ public class SquadSelectionScreen implements Screen {
         for (int i = 0; i < zombieClicker.getShop().getSquads_amount(); i++) {
             if (zombieClicker.getShop().getSquadItems_array().get(i).getStatus() != 0) {
                 miniSquadItemArray.get(i).show_front_image(true);
-                isSelected = true;
+                //isSelected = true;
             }
         }
     }

@@ -361,27 +361,27 @@ public class Numerics {
 
         if (missionsItem.size() == 5)
             missionsItem.add(new MissionsItem(zombieClicker, missionRank.get(MathUtils.random(0, missionRank.size() - 1)),
-                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(1800, 10800), MathUtils.random(1, 6),
+                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(18000, 108000), MathUtils.random(1, 6),
                     MathUtils.random(290, 350), MathUtils.random(110, 200)));
         if (missionsItem.size() == 4)
             missionsItem.add(new MissionsItem(zombieClicker, missionRank.get(MathUtils.random(0, missionRank.size() - 1)),
-                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(1800, 10800), MathUtils.random(1, 6),
+                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(18000, 108000), MathUtils.random(1, 6),
                     MathUtils.random(50, 120), MathUtils.random(110, 200)));
         if (missionsItem.size() == 3)
             missionsItem.add(new MissionsItem(zombieClicker, missionRank.get(MathUtils.random(0, missionRank.size() - 1)),
-                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(1800, 10800), MathUtils.random(1, 6),
+                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(18000, 108000), MathUtils.random(1, 6),
                     MathUtils.random(290, 350), MathUtils.random(365, 435)));
         if (missionsItem.size() == 2)
             missionsItem.add(new MissionsItem(zombieClicker, missionRank.get(MathUtils.random(0, missionRank.size() - 1)),
-                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(1800, 10800), MathUtils.random(1, 6),
+                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(18000, 108000), MathUtils.random(1, 6),
                     MathUtils.random(50, 120), MathUtils.random(365, 435)));
         if (missionsItem.size() == 1)
             missionsItem.add(new MissionsItem(zombieClicker, missionRank.get(MathUtils.random(0, missionRank.size() - 1)),
-                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(1800, 10800), MathUtils.random(1, 6),
+                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(18000, 108000), MathUtils.random(1, 6),
                     MathUtils.random(290, 350), MathUtils.random(590, 650)));
         if (missionsItem.size() == 0)
             missionsItem.add(new MissionsItem(zombieClicker, missionRank.get(MathUtils.random(0, missionRank.size() - 1)),
-                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(1800, 10800), MathUtils.random(1, 6),
+                    missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(18000, 108000), MathUtils.random(1, 6),
                     MathUtils.random(50, 120), MathUtils.random(590, 650)));
         //50 - 120; 590 - 650 (1 ya4eika)
         //290 - 350; 590 - 650 (2)

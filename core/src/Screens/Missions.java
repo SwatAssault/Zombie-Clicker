@@ -95,8 +95,17 @@ public class Missions implements Screen {
 
     }
 
+    public void update(){
+        for(MissionsItem x : zombieClicker.getNumerics().getMissionsItem()){
+            x.update_status();
+        }
+    }
+
     @Override
     public void render(float delta) {
+
+        update();
+
         stage.act();
         stage.draw();
     }

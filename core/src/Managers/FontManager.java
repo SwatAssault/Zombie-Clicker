@@ -72,13 +72,12 @@ public class FontManager {
     }
 
     public void draw_text_forMissionInfo(SpriteBatch batch, String mission, String rank, String time) {
-
         font_border.getData().setScale(.35f);
         font_border.draw(batch, rank, 80, 530);
         font_border.getData().setScale(.45f);
         font_border.draw(batch, mission, 80, 500,
                 400, Align.left, true);
-        font_border.draw(batch, "Time: " + time + " m.", 80, 330);
+        font_border.draw(batch, "Time: " + time, 80, 330);
     }
 
     public GlyphLayout getLayout() {

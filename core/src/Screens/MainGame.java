@@ -169,14 +169,14 @@ public class MainGame implements Screen {
         achievement_btn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                dispose();
-                location.setMaxZombie_health();
-                location.setMaxBoss_health();
-               // zombieClicker.setAchievementScreen();
-                if (location.isBossFight()) {
-                    next_level(0);
-                    location.setLoseBoss(true);
-                }
+//                dispose();
+//                location.setMaxZombie_health();
+//                location.setMaxBoss_health();
+//               // zombieClicker.setAchievementScreen();
+//                if (location.isBossFight()) {
+//                    next_level(0);
+//                    location.setLoseBoss(true);
+//                }
             }
         });
 
