@@ -52,9 +52,15 @@ public class TipScreen implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
                 if (lastScreen.equals("Missions")) {
-//                    zombieClicker.setMissionsScreen();
-//                    Gdx.input.setInputProcessor(zombieClicker.getMissions().getStage());
                     zombieClicker.setSquadSelectionScreen();
+                }
+
+                if(lastScreen.equals("maingame")){
+                    Gdx.input.setInputProcessor(zombieClicker.getMainGame().getStage());
+                }
+
+                if(lastScreen.equals("shop")){
+                    Gdx.input.setInputProcessor(zombieClicker.getShop().getStage());
                 }
             }
         });
@@ -64,8 +70,11 @@ public class TipScreen implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 dispose();
                 if (lastScreen.equals("Missions")) {
-                  //  zombieClicker.setMissionsScreen();
                     Gdx.input.setInputProcessor(zombieClicker.getMissions().getStage());
+                }
+
+                if(lastScreen.equals("shop")){
+                    Gdx.input.setInputProcessor(zombieClicker.getShop().getStage());
                 }
             }
         });
@@ -88,6 +97,10 @@ public class TipScreen implements Screen {
             zombieClicker.getMissions().render(1);
         }
 
+        if(lastScreen.equals("maingame")){
+            zombieClicker.getMainGame().render(1);
+        }
+
         stage.draw();
         stage.act();
 
@@ -95,6 +108,10 @@ public class TipScreen implements Screen {
 
         if (lastScreen.equals("Missions")) {
             render_for_mission();
+        }
+
+        if(lastScreen.equals("shop")){
+            zombieClicker.getShop().render(1);
         }
 
         batch.end();

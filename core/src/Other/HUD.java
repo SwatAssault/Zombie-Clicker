@@ -9,6 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
+import javax.xml.soap.SAAJResult;
+
 public class HUD {
 
     private final ZombieClicker zombieClicker;
@@ -25,6 +27,8 @@ public class HUD {
     private int gold_y = 945;
     private int diamond_x = 480;
 
+    private String currentScreen;
+
     public HUD(ZombieClicker zc){
         zombieClicker = zc;
 
@@ -40,7 +44,11 @@ public class HUD {
         plus_gold_btn.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-
+                if(zombieClicker.getScreen() == zombieClicker.getMainGame()){
+                    currentScreen = "maingame";
+                } else
+                    currentScreen = "shop";
+                zombieClicker.setTipScreen("", "WOULD YOU LIKE TO GET GOLD BY WATCHING A SHORT VIDEO?", currentScreen);
             }
         });
 

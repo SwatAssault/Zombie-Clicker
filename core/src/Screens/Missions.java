@@ -32,16 +32,10 @@ public class Missions implements Screen {
     private Camera camera;
     private Viewport viewport;
     private SpriteBatch batch;
-
-    private Table table;
-
     private Skin goback_skin;
     private Button goback_bth;
     private Image ImageBG;
     private Image ImageBG_MainGame;
-
-
-    private ScrollPane scrollPane;
 
     private int[][] pos;
     private float x;
@@ -79,30 +73,14 @@ public class Missions implements Screen {
         ImageBG = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/missions_bg.png", Texture.class));
         ImageBG_MainGame = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/location_1_bg.png", Texture.class));
 
-
-
         zombieClicker.getNumerics().addMission(zombieClicker);
-
-
-//        table = new Table();
-//        for (MissionsItem k : missionsItem) {
-//            table.add(k.getStack()).padBottom(20);
-//            table.row();
-//        }
-
-//        scrollPane = new ScrollPane(table);
-//        scrollPane.setWidth(420);
-//        scrollPane.setHeight(683);
-//        scrollPane.setPosition(62, 105);
 
         stage.addActor(ImageBG_MainGame);
         stage.addActor(ImageBG);
         stage.addActor(goback_bth);
-//        stage.addActor(scrollPane);
 
         for (MissionsItem q : zombieClicker.getNumerics().getMissionsItem()) {
             stage.addActor(q.getStack());
-
         }
 
         Gdx.input.setInputProcessor(stage);

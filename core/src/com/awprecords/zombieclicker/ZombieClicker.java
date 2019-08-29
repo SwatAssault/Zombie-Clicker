@@ -1,6 +1,7 @@
 package com.awprecords.zombieclicker;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 
 import java.math.BigInteger;
 import java.util.Calendar;
@@ -136,14 +137,12 @@ public class ZombieClicker extends Game {
         fontManager = new FontManager(instance);
         keepTrackAch = new KeepTrackAch(instance);
 
-
         myThread = new MyThread(instance);
         myThread.start();
 
-
         get_assets().load_popular();
         hud = new HUD(instance);
-
+        shop = new Shop(instance);
 
         get_assets().load_assets_for_location_1();
         getNumerics().setCurrent_num_location(0);
