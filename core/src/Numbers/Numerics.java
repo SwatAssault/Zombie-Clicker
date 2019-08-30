@@ -87,7 +87,7 @@ public class Numerics {
                         "mission number 8", "mission number 9", "mission number 10", "mission number 11", "mission number 12", "mission number 13", "mission number 14",
                         "mission number 15", "mission number 16", "mission number 17", "mission number 18", "mission number 19", "mission number 20"));
         missionRank = new ArrayList<String>(
-                Arrays.asList("common", "shirpotreb", "rare", "legendary"));
+                Arrays.asList("common", "rare", "legendary"));
         //TODO скорее всего придется это переделать когда появятся сохранения
         location = new ArrayList<Location>(Arrays.asList(
                 //                 zombie_health                                            zombie_kills             boss_health                       zombie_kill_reward
@@ -369,19 +369,19 @@ public class Numerics {
         if (missionsItem.size() == 3)
             missionsItem.add(new MissionsItem(zombieClicker, missionRank.get(MathUtils.random(0, missionRank.size() - 1)),
                     missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(18000, 108000),
-                    MathUtils.random(290, 350), MathUtils.random(365, 435), BigInteger.valueOf(100), 1));
+                    MathUtils.random(290, 350), MathUtils.random(365, 435), BigInteger.valueOf(0), 0));
         if (missionsItem.size() == 2)
             missionsItem.add(new MissionsItem(zombieClicker, missionRank.get(MathUtils.random(0, missionRank.size() - 1)),
                     missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(18000, 108000),
-                    MathUtils.random(50, 120), MathUtils.random(365, 435), BigInteger.valueOf(0), 0));
+                    MathUtils.random(50, 120), MathUtils.random(365, 435), BigInteger.valueOf(0), 1));
         if (missionsItem.size() == 1)
             missionsItem.add(new MissionsItem(zombieClicker, missionRank.get(MathUtils.random(0, missionRank.size() - 1)),
                     missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(18000, 108000),
-                    MathUtils.random(290, 350), MathUtils.random(590, 650), BigInteger.valueOf(0), 1));
+                    MathUtils.random(290, 350), MathUtils.random(590, 650), BigInteger.valueOf(100), 0));
         if (missionsItem.size() == 0)
             missionsItem.add(new MissionsItem(zombieClicker, missionRank.get(MathUtils.random(0, missionRank.size() - 1)),
                     missionText.get(MathUtils.random(0, missionText.size() - 1)), MathUtils.random(18000, 108000),
-                    MathUtils.random(50, 120), MathUtils.random(590, 650), BigInteger.valueOf(100), 0));
+                    MathUtils.random(50, 120), MathUtils.random(590, 650), BigInteger.valueOf(100), 1));
         //50 - 120; 590 - 650 (1 ya4eika)
         //290 - 350; 590 - 650 (2)
         //50 - 120; 365 - 435 (3)

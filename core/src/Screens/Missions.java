@@ -83,6 +83,7 @@ public class Missions implements Screen {
             stage.addActor(q.getStack());
         }
 
+       // stage.setDebugAll(true);
         Gdx.input.setInputProcessor(stage);
     }
 

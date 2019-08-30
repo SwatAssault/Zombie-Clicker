@@ -3,13 +3,16 @@ package Other;
 import com.awprecords.zombieclicker.ZombieClicker;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.TimeUtils;
 
 import java.math.BigInteger;
@@ -30,6 +33,15 @@ public class MissionsItem {
     private int id;
     private boolean isActive;
     private boolean isCompleted;
+    private TextureAtlas iconsAtlas;
+    private Image gold_image;
+    private Image diamond_image;
+    private Table rewardTable;
+    private Table rewardTableWrapper;
+    private Label reward_label;
+    private Table rewardLabelTable;
+    private Table starsTable;
+    private Image stars_img;
 
     private int squadOnDuty;
     private Table timeTable;
@@ -44,6 +56,10 @@ public class MissionsItem {
     public MissionsItem(final ZombieClicker zc, String rareness, String mission, long _duration, float x, float y, BigInteger _goldReward, int _diamondReward) {
         zombieClicker = zc;
         stack = new Stack();
+        rewardTable = new Table();
+        rewardTableWrapper = new Table();
+        rewardLabelTable = new Table();
+        starsTable = new Table();
         this.x = x;
         this.y = y;
         this.duration = _duration;
@@ -53,7 +69,14 @@ public class MissionsItem {
         Texture paper = zombieClicker.get_assets().get_asset_manager().get("Other/paper.png", Texture.class);
         paper.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         bg = new Image(paper);
+        iconsAtlas = zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/hud_atlas.atlas");
+        gold_image = new Image(iconsAtlas.createSprite("gold"));
+        diamond_image = new Image(iconsAtlas.createSprite("diamond"));
+        gold_image.setScale(0.6f);
+        diamond_image.setScale(0.6f);
+        stars_img = new Image(new Texture("stars.png"));
         missionStart_date = new Date();
+        reward_label = new Label("Награда", zombieClicker.getFontManager().getDescription_labelStyle());
         timeLabel = new Label("", zombieClicker.getFontManager().getDescription_labelStyle());
         timeTable = new Table();
         time = String.format("%02d:%02d:%02d",
@@ -65,13 +88,7 @@ public class MissionsItem {
         );
 
         zombieClicker.getFontManager().getDescription_labelStyle().font.getData().setScale(.28f);
-        timeLabel.setText(String.format("%02d:%02d:%02d",
-                TimeUnit.MILLISECONDS.toHours(duration),
-                TimeUnit.MILLISECONDS.toMinutes(duration) -
-                        TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(duration)),
-                TimeUnit.MILLISECONDS.toSeconds(duration) -
-                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration))
-        ));
+        timeLabel.setText(time);
 
         this.rareness = rareness;
         this.mission = mission;
@@ -83,15 +100,41 @@ public class MissionsItem {
         stack.setRotation(rndDgre);
         timeTable.setTransform(true);
         timeTable.setRotation(rndDgre);
+        rewardTableWrapper.setTransform(true);
+        rewardTableWrapper.setRotation(rndDgre);
+        rewardLabelTable.setTransform(true);
+        rewardLabelTable.setRotation(rndDgre);
+        starsTable.setTransform(true);
+        starsTable.setRotation(rndDgre);
 
         stack.add(bg);
         stack.add(timeTable);
         timeTable.add(timeLabel).expand().bottom().padBottom(10);
+        stack.add(rewardTableWrapper);
+        rewardTableWrapper.add(rewardTable).expand().bottom().padBottom(40);
+        stack.add(rewardLabelTable);
+        rewardLabelTable.add(reward_label).expand();
+        stack.add(starsTable);
+        starsTable.add(stars_img).expand().top().padTop(20);
+
+        if(goldReward.compareTo(BigInteger.valueOf(0)) != 0 && diamondReward != 0){
+            rewardTable.add(gold_image).expandX().padLeft(18);
+            rewardTable.add(diamond_image).expandX();
+        } else
+        if(goldReward.compareTo(BigInteger.valueOf(0)) != 0 && diamondReward == 0){
+            rewardTable.add(gold_image).expandX().padLeft(18);
+        } else
+        if(goldReward.compareTo(BigInteger.valueOf(0)) == 0 && diamondReward != 0){
+            rewardTable.add(diamond_image).expandX().padLeft(12);
+        } else {
+
+        }
+
 
         stack.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                if (!isActive && !isCompleted) {
+                if(!isActive && !isCompleted) {
                     zombieClicker.getNumerics().setIdMission(id);
                     zombieClicker.setTipScreen("", "", "Missions", id);
                 }
@@ -102,6 +145,25 @@ public class MissionsItem {
                 }
             }
         });
+
+
+        stack.addListener(new InputListener(){
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                if(!isActive || isCompleted){
+                    bg.setOrigin(Align.center);
+                    bg.setScale(0.9f);
+                }
+                return true;
+            }
+
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                    bg.setScale(1f);
+            }
+        });
+
+
 
         stack.setPosition(this.x, this.y);
     }
