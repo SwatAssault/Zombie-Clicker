@@ -72,12 +72,14 @@ public class FontManager {
     }
 
     public void draw_text_forMissionInfo(SpriteBatch batch, String mission, String rank, String time) {
+        font_border.getData().setScale(.40f);
+        zombieClicker.getFontManager().getLayout().setText(font_border, rank);
+        font_border.draw(batch, rank, 540 / 2 - zombieClicker.getFontManager().getLayout().width / 2, 650);
         font_border.getData().setScale(.35f);
-        font_border.draw(batch, rank, 80, 530);
-        font_border.getData().setScale(.45f);
         font_border.draw(batch, mission, 80, 500,
                 400, Align.left, true);
-        font_border.draw(batch, "Time: " + time, 80, 330);
+        zombieClicker.getFontManager().getLayout().setText(font_border, "Time: " + time);
+        font_border.draw(batch, "Time: " + time, 540 / 2 - zombieClicker.getFontManager().getLayout().width / 2, 390);
     }
 
     public GlyphLayout getLayout() {

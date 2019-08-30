@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -16,6 +17,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+
+import java.math.BigInteger;
 
 public class TipScreen implements Screen {
 
@@ -30,17 +33,27 @@ public class TipScreen implements Screen {
     private String header;
     private String mainText;
     private String lastScreen;
+    private TextureAtlas goldAndDiamond_icons;
+    private Image gold_image;
+    private Image diamond_image;
+    private int whichMission;
 
     public TipScreen(final ZombieClicker zc, String header, String mainText, final String lastScreen, final int which_mission) {
         zombieClicker = zc;
         this.header = header;
         this.mainText = mainText;
         this.lastScreen = lastScreen;
+        this.whichMission = which_mission;
         camera = new OrthographicCamera();
         viewport = new StretchViewport(540, 960, camera);
         stage = new Stage(viewport);
         batch = new SpriteBatch();
         zombieClicker.get_assets().load_assets_for_TipScreen();
+        goldAndDiamond_icons = zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/hud_atlas.atlas");
+        gold_image = new Image(goldAndDiamond_icons.createSprite("gold"));
+        diamond_image = new Image(goldAndDiamond_icons.createSprite("diamond"));
+        gold_image.setVisible(false);
+        diamond_image.setVisible(false);
         bgimage = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/tipbg.png", Texture.class));
         ok_btn = new TextButton("OK", zombieClicker.get_assets().get_asset_manager().get("Buttons/ok_btn_skin.json", Skin.class));
         ok_btn.setPosition(200, 280);
@@ -85,9 +98,33 @@ public class TipScreen implements Screen {
             }
         });
 
+        if(which_mission >= 0)
+            if(zombieClicker.getNumerics().getMissionsItem().get(whichMission).getGoldReward().compareTo(BigInteger.valueOf(0)) != 0 &&
+                    zombieClicker.getNumerics().getMissionsItem().get(whichMission).getDiamondReward() != 0){
+                gold_image.setVisible(true);
+                diamond_image.setVisible(true);
+                gold_image.setPosition(80, 400);
+                diamond_image.setPosition(300,400);
+            }else
+            if(zombieClicker.getNumerics().getMissionsItem().get(whichMission).getGoldReward().compareTo(BigInteger.valueOf(0)) != 0 &&     //если только gold
+                    zombieClicker.getNumerics().getMissionsItem().get(whichMission).getDiamondReward() == 0){
+                gold_image.setVisible(true);
+                gold_image.setPosition(100, 400);
+            } else
+            if(zombieClicker.getNumerics().getMissionsItem().get(whichMission).getGoldReward().compareTo(BigInteger.valueOf(0)) == 0 &&     //если только diamonds
+                    zombieClicker.getNumerics().getMissionsItem().get(whichMission).getDiamondReward() != 0){
+                diamond_image.setVisible(true);
+                diamond_image.setPosition(100, 400);
+            } else{  //если предметы для крафта
+
+            }
+
+
         stage.addActor(bgimage);
         stage.addActor(ok_btn);
         stage.addActor(x_btn);
+        stage.addActor(diamond_image);
+        stage.addActor(gold_image);
 
         Gdx.input.setInputProcessor(stage);
     }
@@ -115,13 +152,33 @@ public class TipScreen implements Screen {
         stage.act();
 
         batch.begin();
-
         if (lastScreen.equals("Missions")) {
             render_for_mission();
         }
 
+        renderRewardDepending(batch);
+
         batch.end();
         batch.setProjectionMatrix(camera.combined);
+    }
+
+    public void renderRewardDepending(SpriteBatch batch){
+        if(whichMission >= 0)
+            if(zombieClicker.getNumerics().getMissionsItem().get(whichMission).getGoldReward().compareTo(BigInteger.valueOf(0)) != 0 &&     //если и gold и diamonds
+                    zombieClicker.getNumerics().getMissionsItem().get(whichMission).getDiamondReward() != 0){
+                zombieClicker.getFontManager().getHud_font().draw(batch, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getMissionsItem().get(whichMission).getGoldReward()), 100, 440);
+                zombieClicker.getFontManager().getHud_font().draw(batch, Integer.toString(zombieClicker.getNumerics().getMissionsItem().get(whichMission).getDiamondReward()), 300, 460);
+            } else
+            if(zombieClicker.getNumerics().getMissionsItem().get(whichMission).getGoldReward().compareTo(BigInteger.valueOf(0)) != 0 &&     //если только gold
+                    zombieClicker.getNumerics().getMissionsItem().get(whichMission).getDiamondReward() == 0){
+                zombieClicker.getFontManager().getHud_font().draw(batch, zombieClicker.getNumerics().bigInteger_to_string(zombieClicker.getNumerics().getMissionsItem().get(whichMission).getGoldReward()), 100, 440);
+            } else
+            if(zombieClicker.getNumerics().getMissionsItem().get(whichMission).getGoldReward().compareTo(BigInteger.valueOf(0)) == 0 &&     //если только diamonds
+                    zombieClicker.getNumerics().getMissionsItem().get(whichMission).getDiamondReward() != 0){
+                zombieClicker.getFontManager().getHud_font().draw(batch, Integer.toString(zombieClicker.getNumerics().getMissionsItem().get(whichMission).getDiamondReward()), 300, 460);
+            } else{  //если предметы для крафта
+
+            }
     }
 
     private void render_for_mission() {
