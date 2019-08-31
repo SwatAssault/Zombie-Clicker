@@ -11,6 +11,7 @@ import java.util.GregorianCalendar;
 
 import Managers.Assets;
 import Managers.FontManager;
+import Managers.PreferencesManager;
 import Managers.SoundManager;
 import Numbers.Numerics;
 import Other.HUD;
@@ -18,6 +19,7 @@ import Other.KeepTrackAch;
 import Other.MyThread;
 import Other.SquadItem;
 import Screens.Achievements;
+import Screens.EveryDayRewardScreen;
 import Screens.Inventory;
 import Screens.MainGame;
 import Screens.MapScreen;
@@ -56,15 +58,15 @@ public class ZombieClicker extends Game {
     private TipScreen tipScreen;
     private SquadSelectionScreen squadSelectionScreen;
     private HUD hud;
+    private PreferencesManager preferencesManager;
+    private EveryDayRewardScreen everyDayRewardScreen;
 
     private int lastLaunch_Month;
     private int lastLaunch_Day;
     private SimpleDateFormat simpleDateFormat;
-    private String last_launch_date_Srt;
     private Date game_launch_date;
     private Date last_launch_date;
     private Calendar calendar;
-    private Calendar Gcalendar;
 
     private boolean firstLaunchToday;
     private int days_in_aRow;
@@ -72,36 +74,7 @@ public class ZombieClicker extends Game {
     public ZombieClicker() {
         instance = this;
         calendar = Calendar.getInstance();
-        days_in_aRow = 1;          //из сохранений
-        lastLaunch_Month = 8;       //из сохранений
-        lastLaunch_Day = 30;        //из сохранений
-        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try{
-            game_launch_date = new SimpleDateFormat("yyyy-MM-dd").parse(simpleDateFormat.format(new Date()));
-            last_launch_date = new SimpleDateFormat("yyyy-MM-dd").parse("2019-08-31");              //из сохранений
-        } catch (ParseException e){
-            System.out.println("wrong date format");
-        }
-        if(last_launch_date.compareTo(game_launch_date) < 0){
-            firstLaunchToday = true;
-        } else
-            firstLaunchToday = false;
 
-        last_launch_date = game_launch_date;
-        //записать last в сохранения
-
-        if((calendar.get(Calendar.MONTH) + 1 == lastLaunch_Month && calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == 1) || (calendar.get(Calendar.DAY_OF_MONTH) == 1 && (lastLaunch_Day == 30 || lastLaunch_Day == 31))){
-            days_in_aRow++;
-        } else
-            days_in_aRow = 1;
-
-        if(firstLaunchToday){
-            switch(days_in_aRow){
-
-            }
-        }
-
-        System.out.println(days_in_aRow);
     }
 
     //////////GETTERS FOR SCREENS//////////
@@ -162,10 +135,65 @@ public class ZombieClicker extends Game {
     public SquadSelectionScreen getSquadSelectionScreen(){
         return squadSelectionScreen;
     }
+
+    public PreferencesManager getPreferencesManager(){
+        return preferencesManager;
+    }
     /////////////OTHER GETTERS/////////////
 
     public ZombieClicker get_ZombieClicker() {
         return instance;
+    }
+
+    public void dates(){
+        days_in_aRow = preferencesManager.getSettings().getInteger("days_in_aRow", 1);
+        lastLaunch_Month = preferencesManager.getSettings().getInteger("lastLaunch_Month", calendar.get(Calendar.MONTH) + 1);
+        lastLaunch_Day = preferencesManager.getSettings().getInteger("lastLaunch_Day", calendar.get(Calendar.DAY_OF_MONTH));
+        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try{
+            game_launch_date = new SimpleDateFormat("yyyy-MM-dd").parse(simpleDateFormat.format(new Date()));
+            last_launch_date = new SimpleDateFormat("yyyy-MM-dd").parse(preferencesManager.getSettings().getString("last_launch_date", simpleDateFormat.format(new Date())));
+        } catch (ParseException e){
+            System.out.println("wrong date format");
+        }
+        if(last_launch_date.compareTo(game_launch_date) <= 0){
+            firstLaunchToday = true;
+        } else
+            firstLaunchToday = false;
+
+        last_launch_date = game_launch_date;
+        preferencesManager.getSettings().putString("last_launch_date", simpleDateFormat.format(last_launch_date));
+        lastLaunch_Month = calendar.get(Calendar.MONTH) + 1;
+        lastLaunch_Day = calendar.get(Calendar.DAY_OF_MONTH);
+        preferencesManager.getSettings().putInteger("lastLaunch_Month", lastLaunch_Month);
+        preferencesManager.getSettings().putInteger("lastLaunch_Day", lastLaunch_Day);
+        preferencesManager.getSettings().flush();
+
+        if((calendar.get(Calendar.MONTH) + 1 == lastLaunch_Month && calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == 1) || (calendar.get(Calendar.DAY_OF_MONTH) == 1 && (lastLaunch_Day == 30 || lastLaunch_Day == 31))){
+            days_in_aRow++;
+        } else
+            days_in_aRow = 1;
+
+        preferencesManager.getSettings().putInteger("days_in_aRow", days_in_aRow);
+        preferencesManager.getSettings().flush();
+
+        if(firstLaunchToday){
+            setEveryDayRewardScreen(days_in_aRow);
+            switch(days_in_aRow){
+
+            }
+        } else {
+            _begin();
+        }
+
+    }
+
+    public void _begin(){
+        get_assets().load_assets_for_location_1();
+        getNumerics().setCurrent_num_location(0);
+        getNumerics().getCurrent_location().setPlayer_on_location(true);
+        getNumerics().getCurrent_location().setBGimage("Background/location_1_bg.png");
+        setMainGame();
     }
 
     @Override
@@ -183,11 +211,9 @@ public class ZombieClicker extends Game {
         hud = new HUD(instance);
         shop = new Shop(instance);
 
-        get_assets().load_assets_for_location_1();
-        getNumerics().setCurrent_num_location(0);
-        getNumerics().getCurrent_location().setPlayer_on_location(true);
-        getNumerics().getCurrent_location().setBGimage("Background/location_1_bg.png");
-        setMainGame();
+        preferencesManager = new PreferencesManager(instance);
+        dates();
+
     }
 
     ////////////SET SCREEN METHODS/////////////
@@ -272,6 +298,12 @@ public class ZombieClicker extends Game {
             shop = new Shop(instance);
         squadSelectionScreen = new SquadSelectionScreen(instance, whichMission);
         setScreen(squadSelectionScreen);
+    }
+
+    public void setEveryDayRewardScreen(int _days_in_aRow){
+        everyDayRewardScreen = null;
+        everyDayRewardScreen = new EveryDayRewardScreen(instance, _days_in_aRow);
+        setScreen(everyDayRewardScreen);
     }
     ////////////SET SCREEN METHODS/////////////
 

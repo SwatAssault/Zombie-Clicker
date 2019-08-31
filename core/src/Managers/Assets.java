@@ -226,6 +226,12 @@ public class Assets {
         assetManager.finishLoading();
     }
 
+    public void load_assets_for_EveryDayRewardScreen(){
+        assetManager.load("Background/rewardbg.png", Texture.class);
+        assetManager.update();
+        assetManager.finishLoading();
+    }
+
     /////////DISPOSE ASSETS/////////
     public void dispose_Game_assets() {
         assetManager.unload("Buttons/shop_btn.json");
@@ -326,6 +332,9 @@ public class Assets {
         assetManager.unload("Buttons/x_btn.json");
     }
 
+    public void dispose_assets_for_everyDayRewardScreen(){
+        assetManager.load("Background/rewardbg.png", Texture.class);
+    }
     /////////DISPOSE ASSETS/////////
 
 
