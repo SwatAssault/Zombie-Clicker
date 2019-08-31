@@ -68,6 +68,7 @@ public class ZombieClicker extends Game {
     private Date last_launch_date;
     private Calendar calendar;
 
+    private boolean veryFirstLaunch;
     private boolean firstLaunchToday;
     private int days_in_aRow;
 
@@ -149,6 +150,7 @@ public class ZombieClicker extends Game {
         days_in_aRow = preferencesManager.getSettings().getInteger("days_in_aRow", 1);
         lastLaunch_Month = preferencesManager.getSettings().getInteger("lastLaunch_Month", calendar.get(Calendar.MONTH) + 1);
         lastLaunch_Day = preferencesManager.getSettings().getInteger("lastLaunch_Day", calendar.get(Calendar.DAY_OF_MONTH));
+        ////////////////////////////
         simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try{
             game_launch_date = new SimpleDateFormat("yyyy-MM-dd").parse(simpleDateFormat.format(new Date()));
@@ -156,13 +158,14 @@ public class ZombieClicker extends Game {
         } catch (ParseException e){
             System.out.println("wrong date format");
         }
-        if(last_launch_date.compareTo(game_launch_date) <= 0){
+        if(lastLaunch_Day < calendar.get(Calendar.DAY_OF_MONTH) || lastLaunch_Month != calendar.get(Calendar.MONTH) + 1 || veryFirstLaunch){
             firstLaunchToday = true;
         } else
             firstLaunchToday = false;
 
         last_launch_date = game_launch_date;
         preferencesManager.getSettings().putString("last_launch_date", simpleDateFormat.format(last_launch_date));
+        ///////////////////////
         lastLaunch_Month = calendar.get(Calendar.MONTH) + 1;
         lastLaunch_Day = calendar.get(Calendar.DAY_OF_MONTH);
         preferencesManager.getSettings().putInteger("lastLaunch_Month", lastLaunch_Month);
@@ -178,6 +181,9 @@ public class ZombieClicker extends Game {
         preferencesManager.getSettings().flush();
 
         if(firstLaunchToday){
+            veryFirstLaunch = false;
+            preferencesManager.getSettings().putBoolean("veryFirstLaunch", veryFirstLaunch);
+            preferencesManager.getSettings().flush();
             setEveryDayRewardScreen(days_in_aRow);
             switch(days_in_aRow){
 
@@ -212,6 +218,7 @@ public class ZombieClicker extends Game {
         shop = new Shop(instance);
 
         preferencesManager = new PreferencesManager(instance);
+        veryFirstLaunch = preferencesManager.getSettings().getBoolean("veryFirstLaunch", true);
         dates();
 
     }
