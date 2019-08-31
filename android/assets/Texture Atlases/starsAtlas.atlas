@@ -1,0 +1,26 @@
+
+starsAtlas.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+star1
+  rotate: false
+  xy: 1, 1
+  size: 150, 38
+  orig: 150, 38
+  offset: 0, 0
+  index: -1
+star2
+  rotate: false
+  xy: 153, 1
+  size: 150, 38
+  orig: 150, 38
+  offset: 0, 0
+  index: -1
+star3
+  rotate: false
+  xy: 305, 1
+  size: 150, 38
+  orig: 150, 38
+  offset: 0, 0
+  index: -1

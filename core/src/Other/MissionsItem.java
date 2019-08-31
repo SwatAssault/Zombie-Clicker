@@ -23,6 +23,8 @@ public class MissionsItem {
 
     private final ZombieClicker zombieClicker;
 
+    private Image rewardImage;
+    private TextureAtlas stars_atlas;
     private Stack stack;
     private Image bg;
     private String rareness;
@@ -41,7 +43,6 @@ public class MissionsItem {
     private Label reward_label;
     private Table rewardLabelTable;
     private Table starsTable;
-    private Image stars_img;
 
     private int squadOnDuty;
     private Table timeTable;
@@ -74,7 +75,10 @@ public class MissionsItem {
         diamond_image = new Image(iconsAtlas.createSprite("diamond"));
         gold_image.setScale(0.6f);
         diamond_image.setScale(0.6f);
-        stars_img = new Image(new Texture("stars.png"));
+        stars_atlas = zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/starsAtlas.atlas");
+
+        rewardImage = new Image(stars_atlas.createSprite("star1"));
+        if(rareness.equals("rare")) {rewardImage = new Image(stars_atlas.createSprite("star2"));} else {rewardImage = new Image(stars_atlas.createSprite("star3"));}
         missionStart_date = new Date();
         reward_label = new Label("Награда", zombieClicker.getFontManager().getDescription_labelStyle());
         timeLabel = new Label("", zombieClicker.getFontManager().getDescription_labelStyle());
@@ -115,7 +119,7 @@ public class MissionsItem {
         stack.add(rewardLabelTable);
         rewardLabelTable.add(reward_label).expand();
         stack.add(starsTable);
-        starsTable.add(stars_img).expand().top().padTop(20);
+        starsTable.add(rewardImage).expand().top().padTop(20);
 
         if(goldReward.compareTo(BigInteger.valueOf(0)) != 0 && diamondReward != 0){
             rewardTable.add(gold_image).expandX().padLeft(18);
@@ -151,8 +155,7 @@ public class MissionsItem {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 if(!isActive || isCompleted){
-                    bg.setOrigin(Align.center);
-                    bg.setScale(0.9f);
+                    bg.setScale(0.95f);
                 }
                 return true;
             }

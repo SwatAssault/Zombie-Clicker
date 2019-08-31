@@ -1,11 +1,13 @@
 package com.awprecords.zombieclicker;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
 
 import java.math.BigInteger;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import Managers.Assets;
 import Managers.FontManager;
@@ -55,14 +57,51 @@ public class ZombieClicker extends Game {
     private SquadSelectionScreen squadSelectionScreen;
     private HUD hud;
 
+    private int lastLaunch_Month;
+    private int lastLaunch_Day;
+    private SimpleDateFormat simpleDateFormat;
+    private String last_launch_date_Srt;
     private Date game_launch_date;
+    private Date last_launch_date;
     private Calendar calendar;
+    private Calendar Gcalendar;
+
+    private boolean firstLaunchToday;
+    private int days_in_aRow;
 
     public ZombieClicker() {
         instance = this;
-        game_launch_date = new Date();
         calendar = Calendar.getInstance();
+        days_in_aRow = 1;          //из сохранений
+        lastLaunch_Month = 8;       //из сохранений
+        lastLaunch_Day = 30;        //из сохранений
+        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try{
+            game_launch_date = new SimpleDateFormat("yyyy-MM-dd").parse(simpleDateFormat.format(new Date()));
+            last_launch_date = new SimpleDateFormat("yyyy-MM-dd").parse("2019-08-31");              //из сохранений
+        } catch (ParseException e){
+            System.out.println("wrong date format");
+        }
+        if(last_launch_date.compareTo(game_launch_date) < 0){
+            firstLaunchToday = true;
+        } else
+            firstLaunchToday = false;
 
+        last_launch_date = game_launch_date;
+        //записать last в сохранения
+
+        if((calendar.get(Calendar.MONTH) + 1 == lastLaunch_Month && calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == 1) || (calendar.get(Calendar.DAY_OF_MONTH) == 1 && (lastLaunch_Day == 30 || lastLaunch_Day == 31))){
+            days_in_aRow++;
+        } else
+            days_in_aRow = 1;
+
+        if(firstLaunchToday){
+            switch(days_in_aRow){
+
+            }
+        }
+
+        System.out.println(days_in_aRow);
     }
 
     //////////GETTERS FOR SCREENS//////////

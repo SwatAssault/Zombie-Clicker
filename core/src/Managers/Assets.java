@@ -202,6 +202,7 @@ public class Assets {
 
     public void load_popular() {
         assetManager.load("Texture Atlases/hud_atlas.atlas", TextureAtlas.class);
+        assetManager.load("Texture Atlases/starsAtlas.atlas", TextureAtlas.class);
         assetManager.load("Buttons/ok_btn_skin.json", Skin.class);
         assetManager.load("Buttons/back_btn.json", Skin.class);
         assetManager.load("Buttons/double_btn.json", Skin.class);
@@ -307,6 +308,8 @@ public class Assets {
     }
 
     public void dispose_popular() {
+        assetManager.unload("Texture Atlases/starsAtlas.atlas");
+        assetManager.unload("Texture Atlases/hud_atlas.atlas");
         assetManager.unload("Buttons/ok_btn_skin.json");
         assetManager.unload("Buttons/back_btn.json");
         assetManager.unload("Buttons/double_btn.json");
