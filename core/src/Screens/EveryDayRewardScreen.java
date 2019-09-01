@@ -65,7 +65,7 @@ public class EveryDayRewardScreen implements Screen {
         stage.act();
 
         batch.begin();
-        zombieClicker.getFontManager().getFont_border().draw(batch, "days in a row: " + Integer.toString(days_inARow), 200 ,340);
+        zombieClicker.getFontManager().getFont_border().draw(batch, "days in a row: " + Integer.toString(days_inARow + 1), 200 ,340);
         batch.end();
 
         batch.setProjectionMatrix(camera.combined);

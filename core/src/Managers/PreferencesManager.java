@@ -11,7 +11,7 @@ public class PreferencesManager {
 
     public PreferencesManager(ZombieClicker zc){
         zombieClicker = zc;
-        settings = Gdx.app.getPreferences("settings");
+        settings = Gdx.app.getPreferences("settingsZombieClicker");
 
 
     }

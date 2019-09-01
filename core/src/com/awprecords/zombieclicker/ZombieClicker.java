@@ -147,37 +147,29 @@ public class ZombieClicker extends Game {
     }
 
     public void dates(){
-        days_in_aRow = preferencesManager.getSettings().getInteger("days_in_aRow", 1);
+        days_in_aRow = preferencesManager.getSettings().getInteger("days_in_aRow", 0);
         lastLaunch_Month = preferencesManager.getSettings().getInteger("lastLaunch_Month", calendar.get(Calendar.MONTH) + 1);
+        //lastLaunch_Month = 8;
         lastLaunch_Day = preferencesManager.getSettings().getInteger("lastLaunch_Day", calendar.get(Calendar.DAY_OF_MONTH));
-        ////////////////////////////
-        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try{
-            game_launch_date = new SimpleDateFormat("yyyy-MM-dd").parse(simpleDateFormat.format(new Date()));
-            last_launch_date = new SimpleDateFormat("yyyy-MM-dd").parse(preferencesManager.getSettings().getString("last_launch_date", simpleDateFormat.format(new Date())));
-        } catch (ParseException e){
-            System.out.println("wrong date format");
-        }
+       // lastLaunch_Day = 31;
+
         if(lastLaunch_Day < calendar.get(Calendar.DAY_OF_MONTH) || lastLaunch_Month != calendar.get(Calendar.MONTH) + 1 || veryFirstLaunch){
             firstLaunchToday = true;
         } else
             firstLaunchToday = false;
 
-        last_launch_date = game_launch_date;
-        preferencesManager.getSettings().putString("last_launch_date", simpleDateFormat.format(last_launch_date));
-        ///////////////////////
+        if((calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == 1) || (calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == -29 || calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == -30)){
+            days_in_aRow++;
+        } else
+            days_in_aRow = 0;
+
+        preferencesManager.getSettings().putInteger("days_in_aRow", days_in_aRow);
+        preferencesManager.getSettings().flush();
+
         lastLaunch_Month = calendar.get(Calendar.MONTH) + 1;
         lastLaunch_Day = calendar.get(Calendar.DAY_OF_MONTH);
         preferencesManager.getSettings().putInteger("lastLaunch_Month", lastLaunch_Month);
         preferencesManager.getSettings().putInteger("lastLaunch_Day", lastLaunch_Day);
-        preferencesManager.getSettings().flush();
-
-        if((calendar.get(Calendar.MONTH) + 1 == lastLaunch_Month && calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == 1) || (calendar.get(Calendar.DAY_OF_MONTH) == 1 && (lastLaunch_Day == 30 || lastLaunch_Day == 31))){
-            days_in_aRow++;
-        } else
-            days_in_aRow = 1;
-
-        preferencesManager.getSettings().putInteger("days_in_aRow", days_in_aRow);
         preferencesManager.getSettings().flush();
 
         if(firstLaunchToday){
@@ -191,7 +183,6 @@ public class ZombieClicker extends Game {
         } else {
             _begin();
         }
-
     }
 
     public void _begin(){
