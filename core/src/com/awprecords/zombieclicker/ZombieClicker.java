@@ -158,7 +158,7 @@ public class ZombieClicker extends Game {
         } else
             firstLaunchToday = false;
 
-        if((calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == 1) || (calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == -29 || calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == -30)){
+        if(firstLaunchToday && (calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == 1) || (calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == -29 || calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == -30)){
             days_in_aRow++;
         } else
             days_in_aRow = 0;
