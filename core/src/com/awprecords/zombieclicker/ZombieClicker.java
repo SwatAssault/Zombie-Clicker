@@ -1,13 +1,10 @@
 package com.awprecords.zombieclicker;
 
 import com.badlogic.gdx.Game;
-
 import java.math.BigInteger;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import Managers.Assets;
 import Managers.FontManager;
@@ -186,6 +183,9 @@ public class ZombieClicker extends Game {
         } else {
             _begin();
         }
+
+        //TODO
+        setEveryDayRewardScreen(days_in_aRow);
     }
 
     public void _begin(){

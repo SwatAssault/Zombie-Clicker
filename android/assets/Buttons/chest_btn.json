@@ -1,0 +1,9 @@
+{
+"com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
+	"default": {
+		"up": "chest_btn_closed",
+		"down": "chest_btn_pressed",
+		"disabled": "chest_btn_open"
+	}
+}
+}

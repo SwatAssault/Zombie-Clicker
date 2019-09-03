@@ -1,0 +1,27 @@
+
+chest_btn.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+chest_btn_closed
+  rotate: false
+  xy: 1, 416
+  size: 328, 241
+  orig: 328, 241
+  offset: 0, 0
+  index: -1
+chest_btn_open
+  rotate: false
+  xy: 1, 173
+  size: 328, 241
+  orig: 328, 241
+  offset: 0, 0
+  index: -1
+chest_btn_pressed
+  rotate: false
+  xy: 331, 416
+  size: 328, 241
+  orig: 328, 241
+  offset: 0, 0
+  index: -1

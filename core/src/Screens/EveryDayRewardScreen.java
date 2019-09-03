@@ -27,6 +27,7 @@ public class EveryDayRewardScreen implements Screen {
     private int days_inARow;
     private SpriteBatch batch;
     private TextButton ok_btn;
+    private Button chest_btn;
 
     public EveryDayRewardScreen(ZombieClicker zc, int daysInARow){
         zombieClicker = zc;
@@ -35,7 +36,7 @@ public class EveryDayRewardScreen implements Screen {
         stage = new Stage(viewport);
         batch = new SpriteBatch();
         zombieClicker.get_assets().load_assets_for_EveryDayRewardScreen();
-        bg_image = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/rewardbg.png", Texture.class));
+        bg_image = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/everyday_bg.png", Texture.class));
         this.days_inARow = daysInARow;
         ok_btn = new TextButton("OK", zombieClicker.get_assets().get_asset_manager().get("Buttons/ok_btn_skin.json", Skin.class));
         ok_btn.setPosition(200,200);
@@ -47,8 +48,18 @@ public class EveryDayRewardScreen implements Screen {
             }
         });
 
+        chest_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/chest_btn.json", Skin.class));
+        chest_btn.setPosition(100,460);
+        chest_btn.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                chest_btn.setDisabled(true);
+            }
+        });
+
         stage.addActor(bg_image);
         stage.addActor(ok_btn);
+        stage.addActor(chest_btn);
 
         Gdx.input.setInputProcessor(stage);
     }
@@ -65,7 +76,8 @@ public class EveryDayRewardScreen implements Screen {
         stage.act();
 
         batch.begin();
-        zombieClicker.getFontManager().getFont_border().draw(batch, "days in a row: " + Integer.toString(days_inARow + 1), 200 ,340);
+        zombieClicker.getFontManager().getFont_border().getData().setScale(0.9f);
+        zombieClicker.getFontManager().getFont_border().draw(batch, "DAY " + Integer.toString(days_inARow + 1), 185 ,873);
         batch.end();
 
         batch.setProjectionMatrix(camera.combined);
@@ -93,6 +105,7 @@ public class EveryDayRewardScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        if(stage != null) stage.dispose();
+       // zombieClicker.get_assets().dispose_assets_for_everyDayRewardScreen();
     }
 }
