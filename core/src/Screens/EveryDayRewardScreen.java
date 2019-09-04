@@ -28,6 +28,7 @@ public class EveryDayRewardScreen implements Screen {
     private SpriteBatch batch;
     private TextButton ok_btn;
     private Button chest_btn;
+    private boolean showReward;
 
     public EveryDayRewardScreen(ZombieClicker zc, int daysInARow){
         zombieClicker = zc;
@@ -35,11 +36,12 @@ public class EveryDayRewardScreen implements Screen {
         viewport = new StretchViewport(540, 960, camera);
         stage = new Stage(viewport);
         batch = new SpriteBatch();
+        showReward = false;
         zombieClicker.get_assets().load_assets_for_EveryDayRewardScreen();
         bg_image = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/everyday_bg.png", Texture.class));
         this.days_inARow = daysInARow;
         ok_btn = new TextButton("OK", zombieClicker.get_assets().get_asset_manager().get("Buttons/ok_btn_skin.json", Skin.class));
-        ok_btn.setPosition(200,200);
+        ok_btn.setPosition(200,340);
 
         ok_btn.addListener(new ClickListener(){
             @Override
@@ -49,11 +51,12 @@ public class EveryDayRewardScreen implements Screen {
         });
 
         chest_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/chest_btn.json", Skin.class));
-        chest_btn.setPosition(100,460);
+        chest_btn.setPosition(100,520);
         chest_btn.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 chest_btn.setDisabled(true);
+                showReward = true;
             }
         });
 
@@ -78,6 +81,12 @@ public class EveryDayRewardScreen implements Screen {
         batch.begin();
         zombieClicker.getFontManager().getFont_border().getData().setScale(0.9f);
         zombieClicker.getFontManager().getFont_border().draw(batch, "DAY " + Integer.toString(days_inARow + 1), 185 ,873);
+        if(showReward){
+            zombieClicker.getFontManager().getFont_border().getData().setScale(0.3f);
+            zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getFont_border(),"Reward:");
+            zombieClicker.getFontManager().getFont_border().draw(batch, "Reward:", 540 / 2 - zombieClicker.getFontManager().getLayout().width / 2, 500);
+
+        }
         batch.end();
 
         batch.setProjectionMatrix(camera.combined);
