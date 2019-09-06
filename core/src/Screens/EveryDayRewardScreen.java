@@ -80,7 +80,7 @@ public class EveryDayRewardScreen implements Screen {
 
         batch.begin();
         zombieClicker.getFontManager().getFont_border().getData().setScale(0.9f);
-        zombieClicker.getFontManager().getFont_border().draw(batch, "DAY " + Integer.toString(days_inARow + 1), 185 ,873);
+        zombieClicker.getFontManager().getFont_border().draw(batch, "DAY " + Integer.toString(days_inARow), 185 ,873);
         if(showReward){
             zombieClicker.getFontManager().getFont_border().getData().setScale(0.3f);
             zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getFont_border(),"Reward:");

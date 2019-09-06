@@ -159,9 +159,9 @@ public class ZombieClicker extends Game {
             days_in_aRow++;
         }
 
-        if(firstLaunchToday && ((calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day > 1) || (calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day != -29 || calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day != -30))){
-            days_in_aRow = 0;
-        }
+//        if(firstLaunchToday && ((calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day > 1) || (calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day != -29 || calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day != -30))){
+//            days_in_aRow = 0;
+//        }
 
         preferencesManager.getSettings().putInteger("days_in_aRow", days_in_aRow);
         preferencesManager.getSettings().flush();
@@ -185,7 +185,7 @@ public class ZombieClicker extends Game {
         }
 
         //TODO
-        setEveryDayRewardScreen(days_in_aRow);
+     //   setEveryDayRewardScreen(days_in_aRow);
     }
 
     public void _begin(){
