@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -23,6 +24,7 @@ import java.math.BigInteger;
 
 import Managers.AnimationManager;
 import Numbers.Location;
+import testSpine.TestSpine;
 
 public class MainGame implements Screen {
 
@@ -82,11 +84,13 @@ public class MainGame implements Screen {
 
     //TODO test
     int y;
+    private TestSpine testSpine;
 
     public MainGame(final ZombieClicker zc, final Location location) {
         zombieClicker = zc;
         zombieClicker.get_assets().load_assets_for_Game();
         time = System.currentTimeMillis();
+
 
         this.location = location;
 
@@ -94,6 +98,8 @@ public class MainGame implements Screen {
         viewport = new StretchViewport(540, 960, camera);
         stage = new Stage(viewport);
         batch = new SpriteBatch();
+
+        testSpine = new TestSpine(zc);
 
         animationManager = new AnimationManager(zc);
 
@@ -192,6 +198,7 @@ public class MainGame implements Screen {
                 location.setCount_death_zombies_betweenBoss(0);
                 bossFight_btn.setVisible(false);
                 leaveBossFight_btn.setVisible(true);
+                animationManager.setFlag(true);
             }
         });
 
@@ -203,6 +210,7 @@ public class MainGame implements Screen {
                 next_level(0);
                 bossFight_btn.setVisible(true);
                 leaveBossFight_btn.setVisible(false);
+                animationManager.setFlag(false);
             }
         });
 
@@ -299,7 +307,6 @@ public class MainGame implements Screen {
 
         Gdx.input.setInputProcessor(stage);
         flag = false;
-
 
 
         //TODO test
@@ -429,6 +436,8 @@ public class MainGame implements Screen {
 
         batch.end();
         batch.setProjectionMatrix(camera.combined);
+
+        testSpine.render(1);
     }
 
     private void update() {
@@ -446,8 +455,8 @@ public class MainGame implements Screen {
         regen_time = (System.currentTimeMillis() - time) / 1000;
 
 //        if (regen_time >= zombieClicker.getNumerics().getHow_fast_passive_damage()) {
-            location.passive_punch();
-            time = System.currentTimeMillis();
+        location.passive_punch();
+        time = System.currentTimeMillis();
 //        }
 
 
@@ -467,6 +476,8 @@ public class MainGame implements Screen {
             location.setLoseBoss(false);
             leaveBossFight_btn.setVisible(false);
             bossFight_btn.setVisible(false);
+        } else {
+            testSpine.setNewSkin(MathUtils.random(0, 2));
         }
         location.upLevel(lvl);
         location.setMaxZombie_health();
@@ -476,8 +487,12 @@ public class MainGame implements Screen {
         location.setBossFight(false);
     }
 
-    public Stage getStage(){
+    public Stage getStage() {
         return stage;
+    }
+
+    public TestSpine getTestSpine() {
+        return testSpine;
     }
 
     @Override

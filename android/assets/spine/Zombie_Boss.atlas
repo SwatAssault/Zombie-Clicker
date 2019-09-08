@@ -1,0 +1,369 @@
+
+Zombie_Boss.png
+size: 4092,4092
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01_arm_right_b
+  rotate: true
+  xy: 3062, 522
+  size: 558, 958
+  orig: 560, 960
+  offset: 1, 1
+  index: -1
+01_body_b
+  rotate: false
+  xy: 8, 1921
+  size: 818, 1046
+  orig: 820, 1048
+  offset: 1, 1
+  index: -1
+01_head_b
+  rotate: false
+  xy: 3062, 9
+  size: 529, 505
+  orig: 531, 507
+  offset: 1, 1
+  index: -1
+02_arm_left_b
+  rotate: true
+  xy: 3163, 2090
+  size: 331, 901
+  orig: 333, 903
+  offset: 1, 1
+  index: -1
+02_arm_right_b
+  rotate: false
+  xy: 3501, 2489
+  size: 568, 958
+  orig: 570, 960
+  offset: 1, 1
+  index: -1
+02_body_b
+  rotate: false
+  xy: 1697, 8
+  size: 809, 1001
+  orig: 811, 1003
+  offset: 1, 1
+  index: -1
+03_body_b
+  rotate: false
+  xy: 826, 895
+  size: 812, 1018
+  orig: 814, 1020
+  offset: 1, 1
+  index: -1
+04_body_b
+  rotate: false
+  xy: 8, 886
+  size: 810, 1027
+  orig: 812, 1029
+  offset: 1, 1
+  index: -1
+04_leg_left_b
+  rotate: false
+  xy: 2829, 3406
+  size: 447, 678
+  orig: 449, 680
+  offset: 1, 1
+  index: -1
+04_leg_right_b
+  rotate: true
+  xy: 3290, 1646
+  size: 436, 687
+  orig: 438, 689
+  offset: 1, 1
+  index: -1
+05_arm_right_b
+  rotate: false
+  xy: 2619, 2130
+  size: 536, 962
+  orig: 538, 964
+  offset: 1, 1
+  index: -1
+05_body_b
+  rotate: false
+  xy: 586, 3052
+  size: 810, 1032
+  orig: 812, 1034
+  offset: 1, 1
+  index: -1
+05_head_b
+  rotate: false
+  xy: 970, 45
+  size: 719, 842
+  orig: 721, 844
+  offset: 1, 1
+  index: -1
+06_body_b
+  rotate: false
+  xy: 1404, 3077
+  size: 830, 1007
+  orig: 832, 1009
+  offset: 1, 1
+  index: -1
+06_leg_right_b
+  rotate: false
+  xy: 3163, 2429
+  size: 329, 667
+  orig: 331, 669
+  offset: 1, 1
+  index: -1
+07_arm_right_b
+  rotate: false
+  xy: 2242, 3100
+  size: 579, 984
+  orig: 581, 986
+  offset: 1, 1
+  index: -1
+07_body_b
+  rotate: false
+  xy: 834, 2031
+  size: 821, 1013
+  orig: 823, 1015
+  offset: 1, 1
+  index: -1
+07_head_b
+  rotate: true
+  xy: 3290, 3455
+  size: 629, 775
+  orig: 631, 777
+  offset: 1, 1
+  index: -1
+07_leg_right_b
+  rotate: true
+  xy: 3290, 1345
+  size: 293, 685
+  orig: 295, 687
+  offset: 1, 1
+  index: -1
+08_arm_right_b
+  rotate: false
+  xy: 2514, 119
+  size: 540, 961
+  orig: 540, 961
+  offset: 0, 0
+  index: -1
+08_body_b
+  rotate: false
+  xy: 2464, 1088
+  size: 818, 983
+  orig: 820, 985
+  offset: 1, 1
+  index: -1
+08_head_b
+  rotate: false
+  xy: 1990, 2079
+  size: 621, 990
+  orig: 623, 992
+  offset: 1, 1
+  index: -1
+08_leg_right_b
+  rotate: true
+  xy: 2829, 3104
+  size: 294, 664
+  orig: 296, 666
+  offset: 1, 1
+  index: -1
+09_body_b
+  rotate: false
+  xy: 1646, 1017
+  size: 810, 1006
+  orig: 812, 1008
+  offset: 1, 1
+  index: -1
+10_arm_left_b
+  rotate: false
+  xy: 1663, 2069
+  size: 319, 1000
+  orig: 321, 1002
+  offset: 1, 1
+  index: -1
+10_arm_right_b
+  rotate: false
+  xy: 8, 2975
+  size: 570, 1109
+  orig: 572, 1111
+  offset: 1, 1
+  index: -1
+10_body_b
+  rotate: true
+  xy: 8, 28
+  size: 850, 954
+  orig: 852, 956
+  offset: 1, 1
+  index: -1
+10_head_b
+  rotate: false
+  xy: 3599, 14
+  size: 368, 500
+  orig: 370, 502
+  offset: 1, 1
+  index: -1
+
+Zombie_Boss2.png
+size: 2778,2778
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01_arm_left_b
+  rotate: false
+  xy: 1122, 923
+  size: 343, 902
+  orig: 345, 904
+  offset: 1, 1
+  index: -1
+01_leg_right_b
+  rotate: true
+  xy: 2097, 2453
+  size: 317, 673
+  orig: 319, 675
+  offset: 1, 1
+  index: -1
+02_head_b
+  rotate: true
+  xy: 2276, 731
+  size: 343, 427
+  orig: 345, 429
+  offset: 1, 1
+  index: -1
+02_leg_right_b
+  rotate: false
+  xy: 981, 171
+  size: 307, 676
+  orig: 309, 678
+  offset: 1, 1
+  index: -1
+03_arm_left_b
+  rotate: false
+  xy: 1627, 69
+  size: 322, 890
+  orig: 322, 890
+  offset: 0, 0
+  index: -1
+03_arm_right_b
+  rotate: false
+  xy: 556, 855
+  size: 558, 951
+  orig: 558, 951
+  offset: 0, 0
+  index: -1
+03_head_b
+  rotate: false
+  xy: 2276, 1082
+  size: 437, 512
+  orig: 439, 514
+  offset: 1, 1
+  index: -1
+03_leg_right_b
+  rotate: true
+  xy: 2097, 2143
+  size: 302, 669
+  orig: 304, 671
+  offset: 1, 1
+  index: -1
+04_arm_left_b
+  rotate: false
+  xy: 1442, 1872
+  size: 318, 898
+  orig: 320, 900
+  offset: 1, 1
+  index: -1
+04_arm_right_b
+  rotate: false
+  xy: 8, 852
+  size: 540, 954
+  orig: 542, 956
+  offset: 1, 1
+  index: -1
+04_head_b
+  rotate: false
+  xy: 2097, 1602
+  size: 650, 533
+  orig: 652, 535
+  offset: 1, 1
+  index: -1
+05_arm_left_b
+  rotate: false
+  xy: 1473, 967
+  size: 311, 897
+  orig: 313, 899
+  offset: 1, 1
+  index: -1
+05_leg_right_b
+  rotate: false
+  xy: 654, 171
+  size: 319, 676
+  orig: 321, 678
+  offset: 1, 1
+  index: -1
+06_arm_left_b
+  rotate: false
+  xy: 1957, 92
+  size: 311, 888
+  orig: 313, 890
+  offset: 1, 1
+  index: -1
+06_arm_right_b
+  rotate: false
+  xy: 8, 1814
+  size: 543, 956
+  orig: 545, 958
+  offset: 1, 1
+  index: -1
+06_head_b
+  rotate: false
+  xy: 1792, 988
+  size: 357, 606
+  orig: 359, 608
+  offset: 1, 1
+  index: -1
+07_arm_left_b
+  rotate: false
+  xy: 1099, 1833
+  size: 335, 937
+  orig: 337, 939
+  offset: 1, 1
+  index: -1
+08_arm_left_b
+  rotate: false
+  xy: 1296, 14
+  size: 323, 901
+  orig: 325, 903
+  offset: 1, 1
+  index: -1
+09_arm_left_b
+  rotate: false
+  xy: 1768, 1876
+  size: 321, 894
+  orig: 323, 896
+  offset: 1, 1
+  index: -1
+09_arm_right_b
+  rotate: false
+  xy: 559, 1824
+  size: 532, 946
+  orig: 534, 948
+  offset: 1, 1
+  index: -1
+09_head_b
+  rotate: true
+  xy: 2276, 374
+  size: 349, 425
+  orig: 351, 427
+  offset: 1, 1
+  index: -1
+09_leg_right_b
+  rotate: false
+  xy: 338, 167
+  size: 308, 677
+  orig: 310, 679
+  offset: 1, 1
+  index: -1
+10_leg_right_b
+  rotate: false
+  xy: 8, 166
+  size: 322, 678
+  orig: 324, 680
+  offset: 1, 1
+  index: -1
