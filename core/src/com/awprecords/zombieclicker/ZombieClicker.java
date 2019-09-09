@@ -144,24 +144,25 @@ public class ZombieClicker extends Game {
     }
 
     public void dates(){
-        days_in_aRow = preferencesManager.getSettings().getInteger("days_in_aRow", 0);
-        lastLaunch_Month = preferencesManager.getSettings().getInteger("lastLaunch_Month", calendar.get(Calendar.MONTH) + 1);
-        //lastLaunch_Month = 8;
-        lastLaunch_Day = preferencesManager.getSettings().getInteger("lastLaunch_Day", calendar.get(Calendar.DAY_OF_MONTH));
-       // lastLaunch_Day = 31;
+        days_in_aRow = preferencesManager.getSettings().getInteger("days_in_aRow", 1);
+      //  lastLaunch_Month = preferencesManager.getSettings().getInteger("lastLaunch_Month", calendar.get(Calendar.MONTH) + 1);
+        lastLaunch_Month = 9;
+       // lastLaunch_Day = preferencesManager.getSettings().getInteger("lastLaunch_Day", calendar.get(Calendar.DAY_OF_MONTH));
+        lastLaunch_Day = 9;
 
         if(lastLaunch_Day < calendar.get(Calendar.DAY_OF_MONTH) || lastLaunch_Month != calendar.get(Calendar.MONTH) + 1 || veryFirstLaunch){
             firstLaunchToday = true;
         } else
             firstLaunchToday = false;
 
-        if(firstLaunchToday && ((calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == 1) || (calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == -29 || calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == -30))){
-            days_in_aRow++;
+        if(firstLaunchToday){
+            if((calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == 1) || (calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == -29 || calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day == -30)){
+                days_in_aRow++;
+            } else
+                days_in_aRow = 1;
         }
 
-//        if(firstLaunchToday && ((calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day > 1) || (calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day != -29 || calendar.get(Calendar.DAY_OF_MONTH) - lastLaunch_Day != -30))){
-//            days_in_aRow = 0;
-//        }
+
 
         preferencesManager.getSettings().putInteger("days_in_aRow", days_in_aRow);
         preferencesManager.getSettings().flush();
