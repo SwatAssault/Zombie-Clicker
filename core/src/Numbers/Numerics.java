@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import Other.MissionsItem;
+import testSpine.TestSpine;
 
 public class Numerics {
 
@@ -63,8 +64,11 @@ public class Numerics {
     private int idMission;
 
     private int spin_counter;  //сколько можно крутануть колесо мавроди
+    private TestSpine testSpine;
 
     public Numerics(ZombieClicker zc) {
+
+        testSpine = new TestSpine(zc);
 
         //TODO загрузить из сохранения
         player_bg = 0;
@@ -238,7 +242,7 @@ public class Numerics {
     }
 
     public void plus_gold(BigInteger x) {
-        x = x.multiply(BigInteger.valueOf((long)gold_multiplier));
+        x = x.multiply(BigInteger.valueOf((long) gold_multiplier));
         gold = gold.add(x);
     }
 
@@ -331,7 +335,7 @@ public class Numerics {
         squads_reward_percent = x;
     }
 
-    public void plusSquad_reward_percent(double x){
+    public void plusSquad_reward_percent(double x) {
         squads_reward_percent += x;
     }
 
@@ -339,7 +343,7 @@ public class Numerics {
         gold_from_taps = x;
     }
 
-    public void plusGold_from_taps(BigInteger x){
+    public void plusGold_from_taps(BigInteger x) {
         gold_from_taps = gold_from_taps.add(x);
     }
 
@@ -347,7 +351,7 @@ public class Numerics {
         missionsItem.add(mi);
     }
 
-    public void setGold_multiplier(double x){
+    public void setGold_multiplier(double x) {
         gold_multiplier = x;
     }
 
@@ -390,15 +394,15 @@ public class Numerics {
         //290 - 350; 365 - 200 (6)
     }
 
-    public void setIdMission(int x){
+    public void setIdMission(int x) {
         idMission = x;
     }
 
-    public void setSpin_counter(int x){
+    public void setSpin_counter(int x) {
         spin_counter = x;
     }
 
-    public void plusSpin_counter(int x){
+    public void plusSpin_counter(int x) {
         spin_counter += x;
     }
     /////////////////SETTERS//////////////////
@@ -521,7 +525,7 @@ public class Numerics {
         return missionsItem;
     }
 
-    public int getIdMission(){
+    public int getIdMission() {
         return idMission;
     }
 
@@ -529,8 +533,12 @@ public class Numerics {
         return gold_multiplier;
     }
 
-    public int getSpin_counter(){
+    public int getSpin_counter() {
         return spin_counter;
+    }
+
+    public TestSpine getTestSpine() {
+        return testSpine;
     }
     ////////////////GETTERS//////////////////
 }

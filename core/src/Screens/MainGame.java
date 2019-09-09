@@ -20,6 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import Managers.AnimationManager;
@@ -84,7 +85,6 @@ public class MainGame implements Screen {
 
     //TODO test
     int y;
-    private TestSpine testSpine;
 
     public MainGame(final ZombieClicker zc, final Location location) {
         zombieClicker = zc;
@@ -99,7 +99,6 @@ public class MainGame implements Screen {
         stage = new Stage(viewport);
         batch = new SpriteBatch();
 
-        testSpine = new TestSpine(zc);
 
         animationManager = new AnimationManager(zc);
 
@@ -130,15 +129,19 @@ public class MainGame implements Screen {
         mainButton.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                is_mainButton_pressed = true;
-                zombieClicker.getNumerics().plus_global_tap_count(BigInteger.valueOf(1));
-                if (zombieClicker.getNumerics().getCurrent_location().isBossFight()) {
-                    zombieClicker.getNumerics().getCurrent_location().minus_Boss_health(zombieClicker.getNumerics().getPunch_power());
-                } else {
-                    zombieClicker.getNumerics().getCurrent_location().minusHealth(zombieClicker.getNumerics().getPunch_power());
+                if (!zombieClicker.getNumerics().getTestSpine().getAnimation().getAnimation().getName().equals("death_01")) {
+                    is_mainButton_pressed = true;
+                    zombieClicker.getNumerics().plus_global_tap_count(BigInteger.valueOf(1));
+                    if (zombieClicker.getNumerics().getCurrent_location().isBossFight()) {
+                        zombieClicker.getNumerics().getCurrent_location().minus_Boss_health(zombieClicker.getNumerics().getPunch_power());
+                    } else {
+                        zombieClicker.getNumerics().getCurrent_location().minusHealth(zombieClicker.getNumerics().getPunch_power());
+                    }
+                    zombieClicker.getSoundManager().play_punch_sound();
+                    zombieClicker.getNumerics().plus_gold(zombieClicker.getNumerics().getGold_from_taps());
+
+                    zombieClicker.getNumerics().getTestSpine().setAnimation("hurt");
                 }
-                zombieClicker.getSoundManager().play_punch_sound();
-                zombieClicker.getNumerics().plus_gold(zombieClicker.getNumerics().getGold_from_taps());
                 return true;
             }
 
@@ -339,47 +342,53 @@ public class MainGame implements Screen {
     }
 
     public void draw_HP() {
+        //TODO floatValue исправить иначе говно будет
         batch.draw(hpBarbg, HP_positionX, HP_positionY);
         batch.draw(hpBarStart, HP_positionX, HP_positionY);
         if (!zombieClicker.getNumerics().getCurrent_location().isBossFight()) {
-            batch.draw(hpBarBody, HP_positionX + hpBarStart.getRegionWidth(), HP_positionY,
-                    hpBarBody.getRegionWidth() * ((location.getZombie_health()).floatValue() / ((location.getMax_zombie_health())).floatValue()),
-                    hpBarBody.getRegionHeight());
-            batch.draw(hpBarEnd, HP_positionX + hpBarStart.getRegionWidth() + hpBarBody.getRegionWidth() *
-                    ((location.getZombie_health()).floatValue() / ((location.getMax_zombie_health())).floatValue()), HP_positionY);
+            if(location.getZombie_health().compareTo(BigDecimal.ZERO) > 0) {
+                batch.draw(hpBarBody, HP_positionX + hpBarStart.getRegionWidth(), HP_positionY,
+                        hpBarBody.getRegionWidth() * ((location.getZombie_health()).floatValue() / ((location.getMax_zombie_health())).floatValue()),
+                        hpBarBody.getRegionHeight());
+                batch.draw(hpBarEnd, HP_positionX + hpBarStart.getRegionWidth() + hpBarBody.getRegionWidth() *
+                        ((location.getZombie_health()).floatValue() / ((location.getMax_zombie_health())).floatValue()), HP_positionY);
+            }
         } else {
-            batch.draw(hpBarBody, HP_positionX + hpBarStart.getRegionWidth(), HP_positionY,
-                    hpBarBody.getRegionWidth() * (location.getBoss_health()).floatValue() / ((location.getMax_boss_health()).floatValue()),
-                    hpBarBody.getRegionHeight());
+            if(location.getBoss_health().compareTo(BigDecimal.ZERO) > 0) {
+                batch.draw(hpBarBody, HP_positionX + hpBarStart.getRegionWidth(), HP_positionY,
+                        hpBarBody.getRegionWidth() * (location.getBoss_health()).floatValue() / ((location.getMax_boss_health()).floatValue()),
+                        hpBarBody.getRegionHeight());
 
-            batch.draw(hpBarEnd, HP_positionX + hpBarStart.getRegionWidth() + hpBarBody.getRegionWidth() *
-                    (location.getBoss_health()).floatValue() / ((location.getMax_boss_health()).floatValue()), HP_positionY);
+                batch.draw(hpBarEnd, HP_positionX + hpBarStart.getRegionWidth() + hpBarBody.getRegionWidth() *
+                        (location.getBoss_health()).floatValue() / ((location.getMax_boss_health()).floatValue()), HP_positionY);
+            }
         }
     }
 
     public void drawTimeBoss() {
-        if ((location.getDurationBossFight() - (System.currentTimeMillis() - timeBossStart)) / 1000 > 0) {
-            if (!flag)
-                flag = true;
+        if (!zombieClicker.getNumerics().getTestSpine().getAnimation().getAnimation().getName().equals("death_01"))
+            if ((location.getDurationBossFight() - (System.currentTimeMillis() - timeBossStart)) / 1000 > 0) {
+                if (!flag)
+                    flag = true;
 
-            batch.draw(timeBossBarStart, timeBoss_positionX, timeBoss_positionY);
-            if (zombieClicker.getNumerics().getCurrent_location().isBossFight()) {
-                batch.draw(timeBossBarBody, timeBoss_positionX + timeBossBarStart.getRegionWidth(), timeBoss_positionY,
-                        timeBossBarBody.getRegionWidth() * (float) ((location.getDurationBossFight() - (System.currentTimeMillis() - timeBossStart)) / location.getDurationBossFight()),
-                        timeBossBarBody.getRegionHeight());
-                batch.draw(timeBossBarEnd, timeBoss_positionX + timeBossBarStart.getRegionWidth() + timeBossBarBody.getRegionWidth() *
-                        (float) ((location.getDurationBossFight() - (System.currentTimeMillis() - timeBossStart)) / location.getDurationBossFight()), timeBoss_positionY);
+                batch.draw(timeBossBarStart, timeBoss_positionX, timeBoss_positionY);
+                if (zombieClicker.getNumerics().getCurrent_location().isBossFight()) {
+                    batch.draw(timeBossBarBody, timeBoss_positionX + timeBossBarStart.getRegionWidth(), timeBoss_positionY,
+                            timeBossBarBody.getRegionWidth() * (float) ((location.getDurationBossFight() - (System.currentTimeMillis() - timeBossStart)) / location.getDurationBossFight()),
+                            timeBossBarBody.getRegionHeight());
+                    batch.draw(timeBossBarEnd, timeBoss_positionX + timeBossBarStart.getRegionWidth() + timeBossBarBody.getRegionWidth() *
+                            (float) ((location.getDurationBossFight() - (System.currentTimeMillis() - timeBossStart)) / location.getDurationBossFight()), timeBoss_positionY);
+                }
+            } else {
+                if (flag) {
+                    next_level(0);
+                    System.out.println("00000");
+                    location.setLoseBoss(true);
+                    bossFight_btn.setVisible(true);
+                    leaveBossFight_btn.setVisible(false);
+                    flag = false;
+                }
             }
-        } else {
-            if (flag) {
-                next_level(0);
-                System.out.println("00000");
-                location.setLoseBoss(true);
-                bossFight_btn.setVisible(true);
-                leaveBossFight_btn.setVisible(false);
-                flag = false;
-            }
-        }
     }
 
     public void draw_text() {
@@ -394,12 +403,13 @@ public class MainGame implements Screen {
             zombieClicker.getFontManager().getHud_font().draw(batch, "BOSS", 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 670);
 
             //time
-            if ((location.getDurationBossFight() - (System.currentTimeMillis() - timeBossStart)) / 1000 > 0) {
-                timeStr = String.valueOf((location.getDurationBossFight() - (System.currentTimeMillis() - timeBossStart)) / 1000);
-                timeStr = timeStr.indexOf(".") == 1 ? timeStr.substring(0, 3) : timeStr.substring(0, 4);
-                zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getHud_font(), timeStr);
-                zombieClicker.getFontManager().getHud_font().draw(batch, timeStr, 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 180);
-            }
+            if (!zombieClicker.getNumerics().getTestSpine().getAnimation().getAnimation().getName().equals("death_01"))
+                if ((location.getDurationBossFight() - (System.currentTimeMillis() - timeBossStart)) / 1000 > 0) {
+                    timeStr = String.valueOf((location.getDurationBossFight() - (System.currentTimeMillis() - timeBossStart)) / 1000);
+                    timeStr = timeStr.indexOf(".") == 1 ? timeStr.substring(0, 3) : timeStr.substring(0, 4);
+                    zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getHud_font(), timeStr);
+                    zombieClicker.getFontManager().getHud_font().draw(batch, timeStr, 540 / 2f - zombieClicker.getFontManager().getLayout().width / 2, 180);
+                }
         } else {
             //HP zombie
             zombieClicker.getFontManager().getLayout().setText(zombieClicker.getFontManager().getHud_font(), zombieClicker.getNumerics().bigInteger_to_string(location.getZombie_health().toBigInteger()));
@@ -430,19 +440,23 @@ public class MainGame implements Screen {
         draw_HP();
         if (location.isBossFight()) {
             drawTimeBoss();
-        }
+
+            if (!zombieClicker.getNumerics().getTestSpine().getAnimation().getAnimation().getName().equals("death_01")) {
+                stopwatch_icon.setVisible(true);
+            } else stopwatch_icon.setVisible(false);
+
+        } else stopwatch_icon.setVisible(false);
 
         zombieClicker.getHud().render(batch);
 
         batch.end();
         batch.setProjectionMatrix(camera.combined);
 
-        testSpine.render(1);
+        zombieClicker.getNumerics().getTestSpine().render();
     }
 
     private void update() {
 
-        stopwatch_icon.setVisible(location.isBossFight());
 
         if (location.getCount_death_zombies_betweenBoss() == location.getBetweenBoss()) {
             if (!location.getLoseBoss()) {
@@ -458,7 +472,6 @@ public class MainGame implements Screen {
         location.passive_punch();
         time = System.currentTimeMillis();
 //        }
-
 
         zombieClicker.getKeepTrackAch().keep_track_of_achievements();
 
@@ -476,8 +489,6 @@ public class MainGame implements Screen {
             location.setLoseBoss(false);
             leaveBossFight_btn.setVisible(false);
             bossFight_btn.setVisible(false);
-        } else {
-            testSpine.setNewSkin(MathUtils.random(0, 2));
         }
         location.upLevel(lvl);
         location.setMaxZombie_health();
@@ -491,9 +502,6 @@ public class MainGame implements Screen {
         return stage;
     }
 
-    public TestSpine getTestSpine() {
-        return testSpine;
-    }
 
     @Override
     public void resize(int width, int height) {
