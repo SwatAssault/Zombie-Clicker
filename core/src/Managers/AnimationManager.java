@@ -25,6 +25,8 @@ public class AnimationManager {
     private float scale = 0.9f;
     private float timePassed = 0;
     private boolean flag;
+    private boolean for_death;
+    private boolean for_deathBoss;
 
 //    private ArrayList<Animation> zombie_animations_arr;
 //    private ArrayList<Animation> boss_animations_arr;
@@ -34,6 +36,8 @@ public class AnimationManager {
         zombieClicker = zc;
 
         flag = true;
+        for_death = true;
+        for_deathBoss = true;
 
 //        zombie_animations_arr = new ArrayList<Animation>(Arrays.asList(
 //                new Animation(1 / 3f, zombieClicker.get_assets().get_asset_manager().get("Animations/zombie1.atlas", TextureAtlas.class).getRegions()),
@@ -71,38 +75,59 @@ public class AnimationManager {
 //        }
 
         if (zombieClicker.getNumerics().getCurrent_location().isBossFight() && flag) {
-            zombieClicker.getMainGame().getTestSpine().setNewSkin(3);
+            zombieClicker.getNumerics().getTestSpine().setNewSkin(3);
             flag = false;
         }
 
         if (zombieClicker.getNumerics().getCurrent_location().isBossFight()) {                                                   //ЕСЛИ ИДЕТ БОССФАЙТ
             if (zombieClicker.getNumerics().getCurrent_location().getBoss_health().compareTo(BigDecimal.valueOf(0)) <= 0) {        //УБИЙСТВО БОССА
-                zombieClicker.getMainGame().next_level(1);
-                //   System.out.println("boss dead");
+                if ((zombieClicker.getNumerics().getTestSpine().getAnimation().getAnimation().getName().equals("zombie_walk") ||
+                        zombieClicker.getNumerics().getTestSpine().getAnimation().getAnimation().getName().equals("hurt")) && for_deathBoss) {
+                    zombieClicker.getNumerics().getTestSpine().setAnimation("death_01");
+                    System.out.println(1);
+                    for_deathBoss = false;
+                } else {
+                    if(!zombieClicker.getNumerics().getTestSpine().getAnimation().getAnimation().getName().equals("death_01")) {
+                        zombieClicker.getMainGame().next_level(1);
+                        //   System.out.println("boss dead");
 //                zombie_animation = zombie_animations_arr.get(MathUtils.random(0, 2));
 //                zombieClicker.getMainGame().getTestSpine().setNewSkin(3);
-                flag = true;
-                zombieClicker.getMainGame().getTestSpine().setNewSkin(MathUtils.random(0, 2));
+                        flag = true;
+                        zombieClicker.getNumerics().getTestSpine().setNewSkin(MathUtils.random(0, 2));
+                        for_deathBoss = true;
+                    }
+                }
             }
         } else {
+
             if (zombieClicker.getNumerics().getCurrent_location().getZombie_health().compareTo(BigDecimal.valueOf(0)) <= 0) {          //УБИЙСТВО ЗОМБИ
 
-                zombieClicker.getNumerics().getCurrent_location().setCount_death_zombies_betweenBoss(
-                        zombieClicker.getNumerics().getCurrent_location().getCount_death_zombies_betweenBoss() + 1
-                );
+                if ((zombieClicker.getNumerics().getTestSpine().getAnimation().getAnimation().getName().equals("zombie_walk") ||
+                        zombieClicker.getNumerics().getTestSpine().getAnimation().getAnimation().getName().equals("hurt")) && for_death) {
+                    zombieClicker.getNumerics().getTestSpine().setAnimation("death_01");
+                    for_death = false;
+                } else {
 
-                zombieClicker.getNumerics().plus_zombie_kills(BigInteger.valueOf(1));
-                zombieClicker.getNumerics().plus_gold(zombieClicker.getNumerics().getCurrent_location().getZombie_kill_reward());
-                //  System.out.println("zombie dead");
-                zombieClicker.getNumerics().getCurrent_location().setMaxZombie_health();
-//                zombie_animation = zombie_animations_arr.get(MathUtils.random(0, 2));
+                    if(!zombieClicker.getNumerics().getTestSpine().getAnimation().getAnimation().getName().equals("death_01")) {
+                        zombieClicker.getNumerics().getCurrent_location().setCount_death_zombies_betweenBoss(
+                                zombieClicker.getNumerics().getCurrent_location().getCount_death_zombies_betweenBoss() + 1
+                        );
 
-                zombieClicker.getMainGame().getTestSpine().setNewSkin(MathUtils.random(0, 2));
+                        zombieClicker.getNumerics().plus_zombie_kills(BigInteger.valueOf(1));
+                        zombieClicker.getNumerics().plus_gold(zombieClicker.getNumerics().getCurrent_location().getZombie_kill_reward());
+                        //  System.out.println("zombie dead");
+                        zombieClicker.getNumerics().getCurrent_location().setMaxZombie_health();
 
-                if (zombieClicker.getNumerics().getCurrent_location().getCount_death_zombies_betweenBoss() == zombieClicker.getNumerics().getCurrent_location().getBetweenBoss()) {
+                        zombieClicker.getNumerics().getTestSpine().setNewSkin(MathUtils.random(0, 2));
+
+                        if (zombieClicker.getNumerics().getCurrent_location().getCount_death_zombies_betweenBoss() == zombieClicker.getNumerics().getCurrent_location().getBetweenBoss()) {
 //                    zombieClicker.getNumerics().getCurrent_location().setBossFight(true);
 //                    zombie_animation = boss_animations_arr.get(0);
-                    //  System.out.println("boss appears");
+                            //  System.out.println("boss appears");
+                        }
+
+                        for_death = true;
+                    }
                 }
             }
         }

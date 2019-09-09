@@ -2,28 +2,35 @@ package testSpine;
 
 import com.awprecords.zombieclicker.ZombieClicker;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.esotericsoftware.spine.Animation;
 import com.esotericsoftware.spine.AnimationState;
 import com.esotericsoftware.spine.AnimationStateData;
+import com.esotericsoftware.spine.Event;
 import com.esotericsoftware.spine.Skeleton;
+import com.esotericsoftware.spine.SkeletonBounds;
 import com.esotericsoftware.spine.SkeletonData;
 import com.esotericsoftware.spine.SkeletonJson;
 import com.esotericsoftware.spine.SkeletonRenderer;
 import com.esotericsoftware.spine.SkeletonRendererDebug;
+import com.esotericsoftware.spine.attachments.BoundingBoxAttachment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class TestSpine implements Screen {
+public class TestSpine {
 
     private final ZombieClicker zombieClicker;
     private Stage stage;
@@ -56,6 +63,8 @@ public class TestSpine implements Screen {
     // 1 normal
     // 2 heavy
     // 3 boss
+
+    private SkeletonBounds bounds;
 
     public TestSpine(final ZombieClicker zc) {
         zombieClicker = zc;
@@ -126,37 +135,33 @@ public class TestSpine implements Screen {
         SkeletonData skeletonDataSmall = jsonSmall.readSkeletonData(Gdx.files.internal("spine/Zombie_Small.json"));
 
         skeletonSmall = new Skeleton(skeletonDataSmall);
-        skeletonSmall.setPosition(170, 330);
+        skeletonSmall.setPosition(200, 330);
 
         AnimationStateData stateDataSmall = new AnimationStateData(skeletonDataSmall);
-        stateDataSmall.setMix("run", "walk", 0.2f);
-        stateDataSmall.setMix("walk", "run", 0.2f);
 
         stateSmall = new AnimationState(stateDataSmall);
-        stateSmall.setTimeScale(0.5f);
+        stateSmall.setTimeScale(1.5f);
 
-        stateSmall.setAnimation(0, "run", true);
+        stateSmall.setAnimation(0, "zombie_walk", true);
         // ---------------------------------------------------
 
         // normal
         atlasNormal = new TextureAtlas(Gdx.files.internal("spine/Zombie_Normal.atlas"));
 
         SkeletonJson jsonNormal = new SkeletonJson(atlasNormal);
-        jsonNormal.setScale(0.15f);
+        jsonNormal.setScale(0.12f);
 
         SkeletonData skeletonDataNormal = jsonNormal.readSkeletonData(Gdx.files.internal("spine/Zombie_Normal.json"));
 
         skeletonNormal = new Skeleton(skeletonDataNormal);
-        skeletonNormal.setPosition(170, 330);
+        skeletonNormal.setPosition(220, 330);
 
         AnimationStateData stateDataNormal = new AnimationStateData(skeletonDataNormal);
-        stateDataNormal.setMix("run", "walk", 0.2f);
-        stateDataNormal.setMix("walk", "run", 0.2f);
 
         stateNormal = new AnimationState(stateDataNormal);
-        stateNormal.setTimeScale(0.5f);
+        stateNormal.setTimeScale(1.5f);
 
-        stateNormal.setAnimation(0, "run", true);
+        stateNormal.setAnimation(0, "zombie_walk", true);
         // ---------------------------------------------------
 
         // heavy
@@ -168,53 +173,40 @@ public class TestSpine implements Screen {
         SkeletonData skeletonDataHeavy = jsonHeavy.readSkeletonData(Gdx.files.internal("spine/Zombie_Heavy.json"));
 
         skeletonHeavy = new Skeleton(skeletonDataHeavy);
-        skeletonHeavy.setPosition(170, 330);
+        skeletonHeavy.setPosition(190, 330);
 
         AnimationStateData stateDataHeavy = new AnimationStateData(skeletonDataHeavy);
-        stateDataHeavy.setMix("run", "walk", 0.2f);
-        stateDataHeavy.setMix("walk", "run", 0.2f);
 
         stateHeavy = new AnimationState(stateDataHeavy);
-        stateHeavy.setTimeScale(0.5f);
+        stateHeavy.setTimeScale(1.5f);
 
-        stateHeavy.setAnimation(0, "run", true);
+        stateHeavy.setAnimation(0, "zombie_walk", true);
         // ---------------------------------------------------
 
         // Boss
         atlasBoss = new TextureAtlas(Gdx.files.internal("spine/Zombie_Boss.atlas"));
 
         SkeletonJson json = new SkeletonJson(atlasBoss);
-        json.setScale(0.15f);
+        json.setScale(0.20f);
 
         SkeletonData skeletonDataBoss = json.readSkeletonData(Gdx.files.internal("spine/Zombie_Boss.json"));
 
         skeletonBoss = new Skeleton(skeletonDataBoss);
-        skeletonBoss.setPosition(170, 330);
+        skeletonBoss.setPosition(140, 330);
 
         AnimationStateData stateDataBoss = new AnimationStateData(skeletonDataBoss);
-        stateDataBoss.setMix("run", "walk", 0.2f);
-        stateDataBoss.setMix("walk", "run", 0.2f);
 
         stateBoss = new AnimationState(stateDataBoss);
-        stateBoss.setTimeScale(0.5f);
+        stateBoss.setTimeScale(1.5f);
 
-        stateBoss.setAnimation(0, "run", true);
+        stateBoss.setAnimation(0, "zombie_walk", true);
         // ---------------------------------------------------
 
-
-//        state.addAnimation(0, "run_attack", false, 2); // Jump after 2 seconds.
-//        state.setAnimation(0, "walk", true);
-//        state.addAnimation(0, "run", true, 0); // Run after the jump.
         setNewSkin(MathUtils.random(0, 2));
     }
 
-    @Override
-    public void show() {
 
-    }
-
-    @Override
-    public void render(float delta) {
+    public void render() {
         if (cur_zombie == 0)
             draw(stateSmall, skeletonSmall);
         if (cur_zombie == 1)
@@ -254,31 +246,46 @@ public class TestSpine implements Screen {
             skeletonHeavy.setSkin(heavy_skin.get(MathUtils.random(0, 9)));
         if (cur_zombie == 3)
             skeletonBoss.setSkin(boss_skin.get(MathUtils.random(0, 9)));
-
-//        skeleton.setSlotsToSetupPose();
     }
 
-    @Override
-    public void resize(int width, int height) {
-        stage.getViewport().update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+    public void setAnimation(String animation) {
+        if (cur_zombie == 0) {
+            stateSmall.clearTracks();
+            stateSmall.addAnimation(0, animation, false, 0);
+            stateSmall.addAnimation(0, "zombie_walk", true, 0f);
+        }
+        if (cur_zombie == 1) {
+            stateNormal.clearTracks();
+            stateNormal.addAnimation(0, animation, false, 0);
+            stateNormal.addAnimation(0, "zombie_walk", true, 0f);
+        }
+        if (cur_zombie == 2) {
+            stateHeavy.clearTracks();
+            stateHeavy.addAnimation(0, animation, false, 0);
+            stateHeavy.addAnimation(0, "zombie_walk", true, 0f);
+        }
+        if (cur_zombie == 3) {
+            stateBoss.clearTracks();
+            stateBoss.addAnimation(0, animation, false, 0);
+            stateBoss.addAnimation(0, "zombie_walk", true, 0f);
+        }
     }
 
-    @Override
-    public void pause() {
+    public AnimationState.TrackEntry getAnimation() {
+        if (cur_zombie == 0)
+            return stateSmall.getCurrent(0);
+        if (cur_zombie == 1)
+            return stateNormal.getCurrent(0);
+        if (cur_zombie == 2)
+            return stateHeavy.getCurrent(0);
+        if (cur_zombie == 3)
+            return stateBoss.getCurrent(0);
 
+
+
+        return null;
     }
 
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
     public void dispose() {
 
     }

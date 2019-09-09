@@ -84,11 +84,21 @@ public class Location {
     }
 
     public void minus_Boss_health(BigInteger x) {
-        boss_health = boss_health.subtract(new BigDecimal(x));
+        if (boss_health.compareTo(BigDecimal.ZERO) > 0)
+            if (zombie_health.toBigInteger().compareTo(x) > 0) {
+                boss_health = boss_health.subtract(new BigDecimal(x));
+            } else {
+                boss_health = BigDecimal.ZERO;
+            }
     }
 
     public void minusHealth(BigInteger x) {
-        zombie_health = zombie_health.subtract(new BigDecimal(x));
+        if (zombie_health.compareTo(BigDecimal.ZERO) > 0)
+            if (zombie_health.toBigInteger().compareTo(x) > 0) {
+                zombie_health = zombie_health.subtract(new BigDecimal(x));
+            } else {
+                zombie_health = BigDecimal.ZERO;
+            }
     }
 
     public void passive_punch() {
@@ -101,11 +111,16 @@ public class Location {
 //        }
 
         if (bossFight) {
-            boss_health = boss_health.subtract(
-                    new BigDecimal(zombieClicker.getNumerics().getPassive_damage()).divide(BigDecimal.valueOf(60), MathContext.DECIMAL128));
-        } else
+            if (boss_health.compareTo(BigDecimal.ZERO) > 0) {
+                boss_health = boss_health.subtract(
+                        new BigDecimal(zombieClicker.getNumerics().getPassive_damage()).divide(BigDecimal.valueOf(60), MathContext.DECIMAL128));
+                if(boss_health.compareTo(BigDecimal.ZERO) < 0) boss_health = BigDecimal.ZERO;
+            }
+        } else if (zombie_health.compareTo(BigDecimal.ZERO) > 0) {
             zombie_health = zombie_health.subtract(
                     new BigDecimal(zombieClicker.getNumerics().getPassive_damage()).divide(BigDecimal.valueOf(60), MathContext.DECIMAL128));
+            if(zombie_health.compareTo(BigDecimal.ZERO) < 0) zombie_health = BigDecimal.ZERO;
+        }
     }
 
     public void plus_zombie_health() {
