@@ -46,7 +46,7 @@ public class SquadsDistScreen implements Screen {
 
         zombieClicker.get_assets().load_assets_for_SquadDistScreen();
 
-        back_image = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/achbg.png", Texture.class));
+//        back_image = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/achbg.png", Texture.class));
         send_to_location1_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/shop_btn.json", Skin.class));
         send_to_location2_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/shop_btn.json", Skin.class));
         back_btn = new Button(zombieClicker.get_assets().get_asset_manager().get("Buttons/back_btn.json", Skin.class));
@@ -89,7 +89,7 @@ public class SquadsDistScreen implements Screen {
             }
         });
 
-        stage.addActor(back_image);
+//        stage.addActor(back_image);
         stage.addActor(back_btn);
         stage.addActor(send_to_location1_btn);
         stage.addActor(send_to_location2_btn);

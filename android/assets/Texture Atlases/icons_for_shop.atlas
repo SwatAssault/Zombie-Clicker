@@ -1,0 +1,174 @@
+
+icons_for_shop.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+icon_avtomat
+  rotate: false
+  xy: 2, 794
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+icon_bomb
+  rotate: false
+  xy: 2, 662
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+icon_bulava
+  rotate: false
+  xy: 134, 794
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+icon_dinamit
+  rotate: false
+  xy: 2, 530
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+icon_drobovik
+  rotate: false
+  xy: 134, 662
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+icon_dubinka
+  rotate: false
+  xy: 266, 794
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+icon_katana
+  rotate: false
+  xy: 2, 398
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+icon_knife
+  rotate: false
+  xy: 134, 530
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+icon_luk
+  rotate: false
+  xy: 266, 662
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+icon_minigun
+  rotate: false
+  xy: 398, 794
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+icon_pistol
+  rotate: false
+  xy: 2, 266
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+icon_pistol
+  rotate: false
+  xy: 134, 398
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: 2
+icon_pistol
+  rotate: false
+  xy: 266, 530
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: 3
+icon_pp
+  rotate: false
+  xy: 398, 662
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+icon_rpg
+  rotate: false
+  xy: 530, 794
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+icon_sniper
+  rotate: false
+  xy: 2, 134
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+icon_sword
+  rotate: false
+  xy: 134, 266
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+icon_sword
+  rotate: false
+  xy: 266, 398
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: 2
+icon_sword
+  rotate: false
+  xy: 398, 530
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: 3
+icon_sword
+  rotate: false
+  xy: 530, 662
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: 4
+icon_sword
+  rotate: false
+  xy: 662, 794
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: 5
+icon_topor
+  rotate: false
+  xy: 2, 2
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
+icon_topor
+  rotate: false
+  xy: 134, 134
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: 2
+icon_uzi
+  rotate: false
+  xy: 266, 266
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1

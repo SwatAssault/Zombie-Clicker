@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -22,6 +23,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 
 import Other.OtherItem;
 import Other.ShopItem;
@@ -101,6 +103,9 @@ public class Shop implements Screen {
     private TextButton squad_tab_btn;
     private TextButton other_tab_btn;
 
+    private TextureAtlas textureAtlas;
+    private ArrayList<TextureAtlas.AtlasRegion> icons;
+
     public Shop(final ZombieClicker zc) {
         zombieClicker = zc;
         camera = new OrthographicCamera();
@@ -109,6 +114,34 @@ public class Shop implements Screen {
         zombieClicker.get_assets().load_assets_for_Shop();
         ImageBG = new Image(zombieClicker.get_assets().get_asset_manager().get("Background/shopbg.png", Texture.class));
         batch = new SpriteBatch();
+
+        textureAtlas = zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icons_for_shop.atlas", TextureAtlas.class);
+        icons = new ArrayList<TextureAtlas.AtlasRegion>();
+        icons.add(textureAtlas.findRegion("icon_avtomat"));
+
+        icons.add(textureAtlas.findRegion("icon_bomb"));
+        icons.add(textureAtlas.findRegion("icon_bulava"));
+        icons.add(textureAtlas.findRegion("icon_dinamit"));
+        icons.add(textureAtlas.findRegion("icon_drobovik"));
+        icons.add(textureAtlas.findRegion("icon_dubinka"));
+        icons.add(textureAtlas.findRegion("icon_katana"));
+        icons.add(textureAtlas.findRegion("icon_knife"));
+        icons.add(textureAtlas.findRegion("icon_luk"));
+        icons.add(textureAtlas.findRegion("icon_minigun"));
+        icons.add(textureAtlas.findRegion("icon_pistol"));
+        icons.add(textureAtlas.findRegion("icon_pistol_2"));
+        icons.add(textureAtlas.findRegion("icon_pistol_3"));
+        icons.add(textureAtlas.findRegion("icon_pp"));
+        icons.add(textureAtlas.findRegion("icon_rpg"));
+        icons.add(textureAtlas.findRegion("icon_sniper"));
+        icons.add(textureAtlas.findRegion("icon_sword"));
+        icons.add(textureAtlas.findRegion("icon_sword_2"));
+        icons.add(textureAtlas.findRegion("icon_sword_3"));
+        icons.add(textureAtlas.findRegion("icon_sword_4"));
+        icons.add(textureAtlas.findRegion("icon_sword_5"));
+        icons.add(textureAtlas.findRegion("icon_topor"));
+        icons.add(textureAtlas.findRegion("icon_topor_2"));
+        icons.add(textureAtlas.findRegion("icon_uzi"));
 
         item_widht = 474;
         items_amount = 10;
@@ -193,16 +226,16 @@ public class Shop implements Screen {
 
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
         //                                                     base cost                                 base value
-        shopItem1 = new ShopItem(zc, "ДУБИНКА", new BigInteger("50"),1.25f, new BigInteger("1"),1.07f,"TAP DAMAGE");
-        shopItem2 = new ShopItem(zc, "Предмет 2", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
-        shopItem3 = new ShopItem(zc, "Предмет 3", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
-        shopItem4 = new ShopItem(zc, "Предмет 4", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
-        shopItem5 = new ShopItem(zc, "Предмет 5", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
-        shopItem6 = new ShopItem(zc, "Предмет 6", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
-        shopItem7 = new ShopItem(zc, "Предмет 7", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
-        shopItem8 = new ShopItem(zc, "Предмет 8", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
-        shopItem9 = new ShopItem(zc, "Предмет 9", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
-        shopItem10 = new ShopItem(zc, "Предмет 10", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS");
+        shopItem1 = new ShopItem(zc, "ДУБИНКА", new BigInteger("50"),1.25f, new BigInteger("1"),1.07f,"TAP DAMAGE", icons.get(0));
+        shopItem2 = new ShopItem(zc, "Предмет 2", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(1));
+        shopItem3 = new ShopItem(zc, "Предмет 3", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(2));
+        shopItem4 = new ShopItem(zc, "Предмет 4", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(3));
+        shopItem5 = new ShopItem(zc, "Предмет 5", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(4));
+        shopItem6 = new ShopItem(zc, "Предмет 6", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(5));
+        shopItem7 = new ShopItem(zc, "Предмет 7", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(6));
+        shopItem8 = new ShopItem(zc, "Предмет 8", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(7));
+        shopItem9 = new ShopItem(zc, "Предмет 9", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(8));
+        shopItem10 = new ShopItem(zc, "Предмет 10", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(9));
 
         //Заполняю объекты в массив, чтобы было легче работать
         shopItems_array = new Array<ShopItem>();
@@ -230,8 +263,8 @@ public class Shop implements Screen {
 
         stack_table = new Table();
         stack_table.setWidth(item_widht);
-        stack_table.setHeight(140 * 5 - 40);
-        stack_table.setPosition((540 - item_widht) / 2, 110);
+        stack_table.setHeight(140 * 5 - 51);
+        stack_table.setPosition((540 - item_widht) / 2, 118);
 
         scroll_stack = new Stack();
         stack_table.add(scroll_stack);
