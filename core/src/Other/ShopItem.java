@@ -4,6 +4,7 @@ import com.awprecords.zombieclicker.ZombieClicker;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -50,9 +51,9 @@ public class ShopItem {
     private Skin description_skin;
     private Skin buy_counter_skin;
 
-    private Texture icon_texture;
+    private TextureAtlas.AtlasRegion icon_texture;
 
-    public ShopItem(ZombieClicker zc, final String name, BigInteger cost, double cost_koeff, BigInteger value, double value_koeff, final String description){
+    public ShopItem(ZombieClicker zc, final String name, BigInteger cost, double cost_koeff, BigInteger value, double value_koeff, final String description, TextureAtlas.AtlasRegion icon_texture){
         zombieClicker = zc;
 
         stack = new Stack();
@@ -80,8 +81,8 @@ public class ShopItem {
         upgrade_btn = new TextButton("", buy_skin);
         upgrade_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(item_cost));
         image = new Image(zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
-        icon_texture = zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class);
-        icon_texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        this.icon_texture = icon_texture;
+//        this.icon_texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         icon = new Image(icon_texture);
 
         name_label = new Label(name_of_item, label_skin);
@@ -123,7 +124,7 @@ public class ShopItem {
         description_table.row();
         description_table.add(value_label).expandY().padBottom(15);
         stack.add(icon_table);
-        icon_table.add(icon).expand().left();
+        icon_table.add(icon).expand().left().padTop(7);
 
     }
 
