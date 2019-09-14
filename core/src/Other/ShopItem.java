@@ -160,6 +160,14 @@ public class ShopItem {
     public BigInteger getItem_value(){
         return item_value;
     }
+
+    public BigInteger getBase_cost(){
+        return base_cost;
+    }
+
+    public BigInteger getBase_value(){
+        return base_value;
+    }
     ////////////////////GETTERS////////////////////////
 
     ////////////////////SETTERS////////////////////////

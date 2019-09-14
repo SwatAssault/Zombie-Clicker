@@ -227,7 +227,7 @@ public class Shop implements Screen {
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
         //                                                    base cost                               base value
         shopItem1 = new ShopItem(zc, "ДУБИНКА", new BigInteger("50"),1.25f, new BigInteger("1"),1.07f,"TAP DAMAGE", icons.get(0));
-        shopItem2 = new ShopItem(zc, "Предмет 2", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(1));
+        shopItem2 = new ShopItem(zc, "Предмет 2", new BigInteger("50"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(1));
         shopItem3 = new ShopItem(zc, "Предмет 3", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(2));
         shopItem4 = new ShopItem(zc, "Предмет 4", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(3));
         shopItem5 = new ShopItem(zc, "Предмет 5", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(4));
@@ -484,9 +484,9 @@ public class Shop implements Screen {
     }
 
     public void loadShopItem_1(){
-        shopItems_array.get(0).setItem_cost(new BigInteger(zombieClicker.getPreferencesManager().getSettings().getString("ShopItem1_cost", "50")));
-        shopItems_array.get(0).setItem_number(zombieClicker.getPreferencesManager().getSettings().getInteger("ShopItem1_itemNumber", 0));
-        shopItems_array.get(0).setItem_value(new BigInteger(zombieClicker.getPreferencesManager().getSettings().getString("ShopItem1_value", "1")));
+        shopItems_array.get(0).setItem_cost(new BigInteger(zombieClicker.getPreferencesManager().getSettings().getString("ShopItem1_cost", shopItems_array.get(0).getBase_cost().toString())));
+        shopItems_array.get(0).setItem_number(zombieClicker.getPreferencesManager().getSettings().getInteger("ShopItem1_itemNumber", shopItems_array.get(0).getItem_number()));
+        shopItems_array.get(0).setItem_value(new BigInteger(zombieClicker.getPreferencesManager().getSettings().getString("ShopItem1_value", shopItems_array.get(0).getBase_value().toString())));
     }
 
     public void saveAllShopItems(){
