@@ -66,8 +66,11 @@ public class Numerics {
     private int spin_counter;  //сколько можно крутануть колесо мавроди
     private TestSpine testSpine;
 
+    private final ZombieClicker zombieClicker;
+
     public Numerics(ZombieClicker zc) {
 
+        zombieClicker = zc;
         testSpine = new TestSpine(zc);
 
         //TODO загрузить из сохранения
@@ -114,6 +117,8 @@ public class Numerics {
         gold_multiplier = 1.0f;
         global_tap_count = new BigInteger("0");
         gold = new BigInteger("0");
+        //TODO Settings
+        setGold(new BigInteger(zombieClicker.getPreferencesManager().getSettings().getString("gold", "0")));
         zombie_kills = new BigInteger("0");
         boss_kills = 0;
         punch_power = new BigInteger("1");
@@ -235,6 +240,9 @@ public class Numerics {
 
     public void minus_Gold(BigInteger x) {
         gold = gold.subtract(x);
+        //TODO Settings
+        zombieClicker.getPreferencesManager().getSettings().putString("gold", gold.toString());
+        zombieClicker.getPreferencesManager().getSettings().flush();
     }
 
     public void minus_diamonds(int x) {
@@ -244,6 +252,9 @@ public class Numerics {
     public void plus_gold(BigInteger x) {
         x = x.multiply(BigInteger.valueOf((long) gold_multiplier));
         gold = gold.add(x);
+        //TODO Settings
+        zombieClicker.getPreferencesManager().getSettings().putString("gold", gold.toString());
+        zombieClicker.getPreferencesManager().getSettings().flush();
     }
 
     public void plus_zombie_kills(BigInteger x) {

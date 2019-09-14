@@ -225,7 +225,7 @@ public class Shop implements Screen {
         goback_bth.setPosition(10, 10);
 
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
-        //                                                     base cost                                 base value
+        //                                                    base cost                               base value
         shopItem1 = new ShopItem(zc, "ДУБИНКА", new BigInteger("50"),1.25f, new BigInteger("1"),1.07f,"TAP DAMAGE", icons.get(0));
         shopItem2 = new ShopItem(zc, "Предмет 2", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(1));
         shopItem3 = new ShopItem(zc, "Предмет 3", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(2));
@@ -250,6 +250,9 @@ public class Shop implements Screen {
         shopItems_array.add(shopItem9);
         shopItems_array.add(shopItem10);
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
+
+        //TODO Settings
+        loadAllShopItems();
 
         table = new Table();
         table.setWidth(474);
@@ -390,6 +393,10 @@ public class Shop implements Screen {
     public Array<OtherItem> getOtherItems_array(){
         return otherItems_array;
     }
+
+    public Array<ShopItem> getShopItems_array(){
+        return shopItems_array;
+    }
     ///////////////GETTERS//////////////////////
 
     ///////////////SETTERS//////////////////////
@@ -445,6 +452,7 @@ public class Shop implements Screen {
         for(int i = 0; i < items_amount; i++){
             shopItems_array.get(i).update_value_label();
             shopItems_array.get(i).update_cost_label();
+            shopItems_array.get(i).update_item_number();
         }
 
         //squad items
@@ -469,6 +477,30 @@ public class Shop implements Screen {
 
         batch.setProjectionMatrix(camera.combined);
     }
+
+    /////////////////////////SHOP ITEMS//////////////////////////
+    public void loadAllShopItems(){
+        loadShopItem_1();
+    }
+
+    public void loadShopItem_1(){
+        shopItems_array.get(0).setItem_cost(new BigInteger(zombieClicker.getPreferencesManager().getSettings().getString("ShopItem1_cost", "50")));
+        shopItems_array.get(0).setItem_number(zombieClicker.getPreferencesManager().getSettings().getInteger("ShopItem1_itemNumber", 0));
+        shopItems_array.get(0).setItem_value(new BigInteger(zombieClicker.getPreferencesManager().getSettings().getString("ShopItem1_value", "1")));
+    }
+
+    public void saveAllShopItems(){
+        saveShopItem_1();
+    }
+
+    public void saveShopItem_1(){
+        zombieClicker.getPreferencesManager().getSettings().putString("ShopItem1_cost", shopItems_array.get(0).getItem_cost().toString());
+        zombieClicker.getPreferencesManager().getSettings().putInteger("ShopItem1_itemNumber", shopItems_array.get(0).getItem_number());
+        zombieClicker.getPreferencesManager().getSettings().putString("ShopItem1_value", shopItems_array.get(0).getItem_value().toString());
+
+        zombieClicker.getPreferencesManager().getSettings().flush();
+    }
+    /////////////////////////SHOP ITEMS//////////////////////////
 
     @Override
     public void resize(int width, int height) {
