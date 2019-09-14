@@ -82,7 +82,6 @@ public class ShopItem {
         upgrade_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(item_cost));
         image = new Image(zombieClicker.get_assets().get_asset_manager().get("item1.png", Texture.class));
         this.icon_texture = icon_texture;
-//        this.icon_texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         icon = new Image(icon_texture);
 
         name_label = new Label(name_of_item, label_skin);
@@ -96,7 +95,6 @@ public class ShopItem {
                 if (!upgrade_btn.isDisabled()) {
                     zombieClicker.getNumerics().minus_Gold(item_cost);  //вычитаем бабло за покупку
                     item_number++;  //прибавляем 1 к счетчику сколько раз купили
-                    buy_counter_btn.setText(Integer.toString(item_number));
 
                     if(description_of_item.equals("TAP DAMAGE")){
                         zombieClicker.getNumerics().plus_punch_power(item_value);
@@ -107,6 +105,8 @@ public class ShopItem {
                     plusValue();   //увеличиваем прибавку на следующую покупку
                     plusItem_cost();     //увеличиваем цену на след покупку
 
+
+                    zombieClicker.getShop().saveAllShopItems();
                 }
             }
         });
@@ -132,8 +132,12 @@ public class ShopItem {
         upgrade_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(item_cost));
     }
 
-    public void update_value_label() {
+    public void update_value_label(){
         value_label.setText("+" + zombieClicker.getNumerics().bigInteger_to_string(item_value));
+    }
+
+    public void update_item_number(){
+        buy_counter_btn.setText(Integer.toString(item_number));
     }
 
     ////////////////////GETTERS////////////////////////
@@ -148,15 +152,23 @@ public class ShopItem {
     public BigInteger getItem_cost(){
         return  item_cost;
     }
+
+    public int getItem_number(){
+        return item_number;
+    }
+
+    public BigInteger getItem_value(){
+        return item_value;
+    }
     ////////////////////GETTERS////////////////////////
 
     ////////////////////SETTERS////////////////////////
-    public void setItem_value(long x){
-        item_value = BigInteger.valueOf(x);
+    public void setItem_value(BigInteger x){
+        item_value = x;
     }
 
-    public void setItem_cost(long x){
-        item_cost = BigInteger.valueOf(x);
+    public void setItem_cost(BigInteger x){
+        item_cost = x;
     }
 
     public void plusItem_cost(){
@@ -193,6 +205,10 @@ public class ShopItem {
 
     public void setBase_value(BigInteger base_value) {
         this.base_value = base_value;
+    }
+
+    public void setItem_number(int x){
+        item_number = x;
     }
     ////////////////////SETTERS////////////////////////
 

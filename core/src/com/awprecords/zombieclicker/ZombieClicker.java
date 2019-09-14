@@ -145,10 +145,10 @@ public class ZombieClicker extends Game {
 
     public void dates(){
         days_in_aRow = preferencesManager.getSettings().getInteger("days_in_aRow", 1);
-      //  lastLaunch_Month = preferencesManager.getSettings().getInteger("lastLaunch_Month", calendar.get(Calendar.MONTH) + 1);
-        lastLaunch_Month = 9;
-       // lastLaunch_Day = preferencesManager.getSettings().getInteger("lastLaunch_Day", calendar.get(Calendar.DAY_OF_MONTH));
-        lastLaunch_Day = 9;
+        lastLaunch_Month = preferencesManager.getSettings().getInteger("lastLaunch_Month", calendar.get(Calendar.MONTH) + 1);
+       // lastLaunch_Month = 9;
+        lastLaunch_Day = preferencesManager.getSettings().getInteger("lastLaunch_Day", calendar.get(Calendar.DAY_OF_MONTH));
+     //   lastLaunch_Day = 9;
 
         if(lastLaunch_Day < calendar.get(Calendar.DAY_OF_MONTH) || lastLaunch_Month != calendar.get(Calendar.MONTH) + 1 || veryFirstLaunch){
             firstLaunchToday = true;
@@ -199,6 +199,9 @@ public class ZombieClicker extends Game {
 
     @Override
     public void create() {
+        preferencesManager = new PreferencesManager(instance);
+        veryFirstLaunch = preferencesManager.getSettings().getBoolean("veryFirstLaunch", true);
+
         assets = new Assets();
         numerics = new Numerics(instance);
         soundManager = new SoundManager(instance);
@@ -212,10 +215,7 @@ public class ZombieClicker extends Game {
         hud = new HUD(instance);
         shop = new Shop(instance);
 
-        preferencesManager = new PreferencesManager(instance);
-        veryFirstLaunch = preferencesManager.getSettings().getBoolean("veryFirstLaunch", true);
         dates();
-
     }
 
     ////////////SET SCREEN METHODS/////////////

@@ -16,7 +16,6 @@ public class PreferencesManager {
 
     }
 
-
     public Preferences getSettings(){
         return settings;
     }
