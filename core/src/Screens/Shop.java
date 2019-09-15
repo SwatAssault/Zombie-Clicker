@@ -226,8 +226,8 @@ public class Shop implements Screen {
 
         /////////////////////SHOP ITEMS INITIALIZATION/////////////////////
         //                                                    base cost                               base value
-        shopItem1 = new ShopItem(zc, "ДУБИНКА", new BigInteger("50"),1.25f, new BigInteger("1"),1.07f,"TAP DAMAGE", icons.get(0));
-        shopItem2 = new ShopItem(zc, "Предмет 2", new BigInteger("50"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(1));
+        shopItem1 = new ShopItem(zc, "ДУБИНКА", new BigInteger("10"),1.25f, new BigInteger("1"),1.07f,"TAP DAMAGE", icons.get(0));
+        shopItem2 = new ShopItem(zc, "Предмет 2", new BigInteger("50"),1.07f, new BigInteger("5"),1.07f,"DPS", icons.get(1));
         shopItem3 = new ShopItem(zc, "Предмет 3", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(2));
         shopItem4 = new ShopItem(zc, "Предмет 4", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(3));
         shopItem5 = new ShopItem(zc, "Предмет 5", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(4));
@@ -237,7 +237,6 @@ public class Shop implements Screen {
         shopItem9 = new ShopItem(zc, "Предмет 9", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(8));
         shopItem10 = new ShopItem(zc, "Предмет 10", new BigInteger("150"),1.07f, new BigInteger("1"),1.1f,"DPS", icons.get(9));
 
-        //Заполняю объекты в массив, чтобы было легче работать
         shopItems_array = new Array<ShopItem>();
         shopItems_array.add(shopItem1);
         shopItems_array.add(shopItem2);
