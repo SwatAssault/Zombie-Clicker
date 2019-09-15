@@ -177,16 +177,13 @@ public class ZombieClicker extends Game {
             veryFirstLaunch = false;
             preferencesManager.getSettings().putBoolean("veryFirstLaunch", veryFirstLaunch);
             preferencesManager.getSettings().flush();
-            switch(days_in_aRow){
-
-            }
             setEveryDayRewardScreen(days_in_aRow);
         } else {
             _begin();
         }
 
         //TODO
-     //   setEveryDayRewardScreen(days_in_aRow);
+        setEveryDayRewardScreen(1);
     }
 
     public void _begin(){

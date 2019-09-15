@@ -239,8 +239,7 @@ public class Location {
     }
 
     public void plus_zombie_kill_reward(){
-      //  zombie_kill_reward = BigDecimal.valueOf(base_zombie_reward.floatValue() * Math.pow(multiplier_zombie_kill_reward, level_count)).toBigInteger();
-        zombie_kill_reward = BigDecimal.valueOf(zombie_health.floatValue() / 15).toBigInteger();
+        zombie_kill_reward = BigDecimal.valueOf(base_zombie_reward.floatValue() * Math.pow(multiplier_zombie_kill_reward, level_count)).toBigInteger();
     }
 
     public void setZombie_kill_reward(BigInteger zombie_kill_reward) {
