@@ -222,7 +222,7 @@ public class Location {
     ////////////////////// GETTER ///////////////////////////
 
     ////////////////////// SETTER ///////////////////////////
-    public void setMaxZombie_health() {
+    public void setMaxZombie_health(){
         this.zombie_health = new BigDecimal(max_zombie_health);
     }
 
@@ -290,6 +290,18 @@ public class Location {
 
     public void setMultiplier_BOSS_HP(double x) {
         multiplier_BOSS_HP = x;
+    }
+
+    public void setLevel_count(int x){
+        level_count = x;
+    }
+
+    public void set_zombie_HP(BigDecimal x){
+        zombie_health = x;
+    }
+
+    public void setMax_zombie_HP(BigInteger x){
+        max_zombie_health = x;
     }
     ////////////////////// SETTER ///////////////////////////
 }

@@ -3,6 +3,7 @@ package Numbers;
 import com.awprecords.zombieclicker.ZombieClicker;
 import com.badlogic.gdx.math.MathUtils;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -110,6 +111,9 @@ public class Numerics {
                 new Location(new BigInteger("20"), 1.16f, 1, new BigInteger("0"), new BigInteger("1020"), 1, new BigInteger("2"), 1.09f,
                         1, 1, 10, 3000, "Location 4", zc)
         ));
+
+        //TODO Settings
+        loadAllLocations();
 
         current_location = 0;
         spin_counter = 3;
@@ -552,4 +556,31 @@ public class Numerics {
         return testSpine;
     }
     ////////////////GETTERS//////////////////
+
+
+
+    //TODO Settings
+    ////////////////////SAVING LOCATIONS///////////////////
+    public void saveAllLocations(){
+        saveLocation_1();
+    }
+
+    public void saveLocation_1(){
+        zombieClicker.getPreferencesManager().getSettings().putInteger("Location1_level", location.get(0).getLevel_count());
+        zombieClicker.getPreferencesManager().getSettings().putString("Location1_zombie_HP", location.get(0).getZombie_health().toString());
+
+        zombieClicker.getPreferencesManager().getSettings().flush();
+    }
+
+    public void loadAllLocations(){
+        loadLocation1();
+    }
+
+    public void loadLocation1(){
+        location.get(0).setLevel_count(zombieClicker.getPreferencesManager().getSettings().getInteger("Location1_level", 1));
+        location.get(0).set_zombie_HP(new BigDecimal(zombieClicker.getPreferencesManager().getSettings().getString("Location1_zombie_HP", location.get(0).getBase_zombie_HP().toString())));
+        location.get(0).setMax_zombie_HP(location.get(0).getZombie_health().toBigInteger());
+        System.out.println(location.get(0).getZombie_health().toBigInteger());
+    }
+    ////////////////////SAVING LOCATIONS///////////////////
 }

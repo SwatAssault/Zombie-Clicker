@@ -97,6 +97,8 @@ public class AnimationManager {
                         for_deathBoss = true;
                     }
                 }
+                //TODO Settings
+                zombieClicker.getNumerics().saveAllLocations();
             }
         } else {
 
@@ -129,6 +131,8 @@ public class AnimationManager {
                         for_death = true;
                     }
                 }
+                //TODO Settings
+                zombieClicker.getNumerics().saveAllLocations();
             }
         }
 //        if (zombieClicker.getMainGame().get_is_mainButton_pressed()) {
