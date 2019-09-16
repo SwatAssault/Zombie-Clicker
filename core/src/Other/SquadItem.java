@@ -91,8 +91,6 @@ public class SquadItem {
         send_to_location_btn = new TextButton(send_btn_string, zombieClicker.get_assets().get_asset_manager().get("Squads/send_btn_skin.json", Skin.class));
         number_btn = new TextButton(Integer.toString(buy_number), zombieClicker.get_assets().get_asset_manager().get("Other/buy_counter_skin.json", Skin.class));
 
-        send_to_location_btn.setVisible(bought);
-
         mini_icons = new Array<Image>();
 
         buy_btn.addListener(new ClickListener(){
@@ -100,9 +98,7 @@ public class SquadItem {
             public void clicked(InputEvent event, float x, float y) {
                 if(!buy_btn.isDisabled()){
                     buy_number++;
-                    number_btn.setText(Integer.toString(buy_number));
                     zombieClicker.getNumerics().minus_Gold(squad_cost);
-                    send_to_location_btn.setVisible(true);
                     plus_cost();
                     if(!bought){
                         zombieClicker.getShop().setSpare_squads_counter(1);
@@ -111,9 +107,9 @@ public class SquadItem {
                     if(crit_chance < 100 && buy_number % 2 == 0){
                         crit_chance++;
                     }
-                    crit.setText("Crit. chance: " + Integer.toString(crit_chance) + "%");
-                    DPS.setText("DPS: +" + zombieClicker.getNumerics().bigInteger_to_string(dps));
                     bought = true;
+
+                    zombieClicker.getShop().saveAllSquadItems();
                 }
             }
         });
@@ -125,12 +121,13 @@ public class SquadItem {
                     if(!send_to_location_btn.isDisabled()){
                         disable_send_btn();
                         zombieClicker.setSquadsDistScreen(zombieClicker, getSquadItem());
-                    } else {
+                    } else { //cancel
                         activate_send_btn();
                         zombieClicker.getMyThread().remove_squad_from_location(getSquadItem(), status);
                         zombieClicker.getShop().setSpare_squads_counter(1);
                         status = 0;
                     }
+                zombieClicker.getShop().saveAllSquadItems();
             }
         });
 
@@ -163,6 +160,10 @@ public class SquadItem {
 
     public void update_buy_label(){
         buy_btn.setText(zombieClicker.getNumerics().bigInteger_to_string(squad_cost));
+        send_to_location_btn.setVisible(bought);
+        number_btn.setText(Integer.toString(buy_number));
+        crit.setText("Crit. chance: " + Integer.toString(crit_chance) + "%");
+        DPS.setText("DPS: +" + zombieClicker.getNumerics().bigInteger_to_string(dps));
     }
 
     public void plus_cost(){
@@ -231,6 +232,10 @@ public class SquadItem {
     public int getDrop_chance(){
         return drop_chance;
     }
+
+    public int getBuy_number(){
+        return buy_number;
+    }
     //////////////////GETTERS////////////////////////
 
 
@@ -261,6 +266,14 @@ public class SquadItem {
 
     public void setDrop_chance(int x){
         drop_chance = x;
+    }
+
+    public void setBuy_number(int x){
+        buy_number = x;
+    }
+
+    public void setDps(BigInteger x){
+        dps = x;
     }
     //////////////////SETTERS////////////////////////
 

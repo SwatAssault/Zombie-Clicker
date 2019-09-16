@@ -30,6 +30,7 @@ public class MyThread extends Thread {
 
         allSquads.add(location1_squads);
         allSquads.add(location2_squads);
+
     }
 
     public void run(){

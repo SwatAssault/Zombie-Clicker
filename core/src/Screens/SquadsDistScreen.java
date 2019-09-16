@@ -63,6 +63,7 @@ public class SquadsDistScreen implements Screen {
                 zombieClicker.getShop().setSpare_squads_counter(-1);
                 zombieClicker.setShopScreen();
                 Gdx.input.setInputProcessor(zombieClicker.getShop().getStage());
+                zombieClicker.getShop().saveAllSquadItems();
                 dispose();
             }
         });

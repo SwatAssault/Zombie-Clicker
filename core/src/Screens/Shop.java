@@ -300,7 +300,6 @@ public class Shop implements Screen {
         squad10 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
                 zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
 
-        //Заполняю объекты в массив, чтобы было легче работать
         squadItems_array = new Array<SquadItem>();
         squadItems_array.add(squad1);
         squadItems_array.add(squad2);
@@ -313,6 +312,9 @@ public class Shop implements Screen {
         squadItems_array.add(squad9);
         squadItems_array.add(squad10);
         /////////////////////SQUAD ITEMS INITIALIZATION/////////////////////
+
+        //TODO Settings
+        loadAllSquadItems();
 
         table_squads = new Table();
         table_squads.setWidth(item_widht);
@@ -500,6 +502,41 @@ public class Shop implements Screen {
         zombieClicker.getPreferencesManager().getSettings().flush();
     }
     /////////////////////////SHOP ITEMS//////////////////////////
+
+    /////////////////////////SQUAD ITEMS/////////////////////////
+    public void loadAllSquadItems(){
+        loadSquadItem_1();
+    }
+
+    public void loadSquadItem_1(){
+        squadItems_array.get(0).setBought(zombieClicker.getPreferencesManager().getSettings().getBoolean("SquadItem1_bought", false));
+        squadItems_array.get(0).setSquad_cost(new BigInteger(zombieClicker.getPreferencesManager().getSettings().getString("SquadItem1_cost", squadItems_array.get(0).getSquad_cost().toString())));
+        squadItems_array.get(0).setBuy_number(zombieClicker.getPreferencesManager().getSettings().getInteger("SquadItem1_number", 0));
+        squadItems_array.get(0).setDps(new BigInteger(zombieClicker.getPreferencesManager().getSettings().getString("SquadItem1_dps", squadItems_array.get(0).getDps().toString())));
+        squadItems_array.get(0).setCrit_chance(zombieClicker.getPreferencesManager().getSettings().getInteger("SquadItem1_crit", squadItems_array.get(0).getCrit_chance()));
+        squadItems_array.get(0).setStatus(zombieClicker.getPreferencesManager().getSettings().getInteger("SquadItem1_status", 0));
+
+        if(squadItems_array.get(0).getStatus() > 0){
+            squadItems_array.get(0).disable_send_btn();
+            zombieClicker.getMyThread().getAllSquads().get(squadItems_array.get(0).getStatus() - 1).add(squadItems_array.get(0));
+        }
+    }
+
+    public void saveAllSquadItems(){
+        saveSquadItem_1();
+    }
+
+    public void saveSquadItem_1(){
+        zombieClicker.getPreferencesManager().getSettings().putBoolean("SquadItem1_bought", squadItems_array.get(0).isBought());
+        zombieClicker.getPreferencesManager().getSettings().putString("SquadItem1_cost", squadItems_array.get(0).getSquad_cost().toString());
+        zombieClicker.getPreferencesManager().getSettings().putInteger("SquadItem1_number", squadItems_array.get(0).getBuy_number());
+        zombieClicker.getPreferencesManager().getSettings().putString("SquadItem1_dps", squadItems_array.get(0).getDps().toString());
+        zombieClicker.getPreferencesManager().getSettings().putInteger("SquadItem1_crit", squadItems_array.get(0).getCrit_chance());
+        zombieClicker.getPreferencesManager().getSettings().putInteger("SquadItem1_status", squadItems_array.get(0).getStatus());
+
+        zombieClicker.getPreferencesManager().getSettings().flush();
+    }
+    /////////////////////////SQUAD ITEMS/////////////////////////
 
     @Override
     public void resize(int width, int height) {
