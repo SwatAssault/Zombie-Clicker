@@ -118,13 +118,13 @@ public class Numerics {
 
         current_location = 0;
         spin_counter = 3;
-
         gold_multiplier = 1.0f;
-        global_tap_count = new BigInteger("0");
-       // gold = new BigInteger("0");
+
         //TODO Settings
         gold = new BigInteger(zombieClicker.getPreferencesManager().getSettings().getString("gold", "0"));
         diamonds = zombieClicker.getPreferencesManager().getSettings().getInteger("diamonds", 0);
+        global_tap_count = new BigInteger(zombieClicker.getPreferencesManager().getSettings().getString("global_tap_counter", "0"));
+
         zombie_kills = new BigInteger("0");
         boss_kills = 0;
         oneTrillion = new BigInteger("1000000000000"); //12
@@ -236,6 +236,8 @@ public class Numerics {
 
     public void plus_global_tap_count(BigInteger x) {
         global_tap_count = global_tap_count.add(x);
+        zombieClicker.getPreferencesManager().getSettings().putString("global_tap_counter", global_tap_count.toString());
+        zombieClicker.getPreferencesManager().getSettings().flush();
     }
 
     public void plus_diamonds(int x) {
