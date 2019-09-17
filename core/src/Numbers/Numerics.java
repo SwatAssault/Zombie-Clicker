@@ -568,6 +568,7 @@ public class Numerics {
     public void saveLocation_1(){
         zombieClicker.getPreferencesManager().getSettings().putInteger("Location1_level", location.get(0).getLevel_count());
         zombieClicker.getPreferencesManager().getSettings().putString("Location1_zombie_HP", location.get(0).getZombie_health().toString());
+        zombieClicker.getPreferencesManager().getSettings().putInteger("Location1_betweenBoss_counter", location.get(0).getCount_death_zombies_betweenBoss());
 
         zombieClicker.getPreferencesManager().getSettings().flush();
     }
@@ -580,7 +581,7 @@ public class Numerics {
         location.get(0).setLevel_count(zombieClicker.getPreferencesManager().getSettings().getInteger("Location1_level", 1));
         location.get(0).set_zombie_HP(new BigDecimal(zombieClicker.getPreferencesManager().getSettings().getString("Location1_zombie_HP", location.get(0).getBase_zombie_HP().toString())));
         location.get(0).setMax_zombie_HP(location.get(0).getZombie_health().toBigInteger());
-        System.out.println(location.get(0).getZombie_health().toBigInteger());
+        location.get(0).setCount_death_zombies_betweenBoss(zombieClicker.getPreferencesManager().getSettings().getInteger("Location1_betweenBoss_counter", 0));
     }
     ////////////////////SAVING LOCATIONS///////////////////
 }
