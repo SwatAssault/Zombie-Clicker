@@ -28,7 +28,7 @@ public class Numerics {
 
     private BigInteger global_tap_count;
     private BigInteger gold_from_taps;
-    private int diamonds = 100;                 //доп валюта
+    private int diamonds;                 //доп валюта
     private BigInteger zombie_kills;
     private double squads_reward_percent;     //сколько процентов от золота приносит убийство отрядов
     private double gold_multiplier;          //бонус на золото
@@ -114,19 +114,19 @@ public class Numerics {
 
         //TODO Settings
         loadAllLocations();
+        loadPlayerPower();
 
         current_location = 0;
         spin_counter = 3;
 
         gold_multiplier = 1.0f;
         global_tap_count = new BigInteger("0");
-        gold = new BigInteger("0");
+       // gold = new BigInteger("0");
         //TODO Settings
-        setGold(new BigInteger(zombieClicker.getPreferencesManager().getSettings().getString("gold", "0")));
+        gold = new BigInteger(zombieClicker.getPreferencesManager().getSettings().getString("gold", "0"));
+        diamonds = zombieClicker.getPreferencesManager().getSettings().getInteger("diamonds", 0);
         zombie_kills = new BigInteger("0");
         boss_kills = 0;
-        punch_power = new BigInteger("1");
-        passive_damage = new BigInteger("0");
         oneTrillion = new BigInteger("1000000000000"); //12
         oneQuadrillion = new BigInteger("1000000000000000");//15
         oneQuintillion = new BigInteger("1000000000000000000"); //18
@@ -147,7 +147,7 @@ public class Numerics {
         countCraftItem_4 = 10;
     }
 
-    //   XXX.XXXM(K,M,B,T,q,Q,s,S,O) FORMAT
+    //   XXX.XXM(K,M,B,T,q,Q,s,S,O) FORMAT
     public String bigInteger_to_string(BigInteger x) {
         String y;
         string_to_cut = x.toString();
@@ -240,6 +240,9 @@ public class Numerics {
 
     public void plus_diamonds(int x) {
         diamonds += x;
+        //TODO Settings
+        zombieClicker.getPreferencesManager().getSettings().putInteger("diamonds", diamonds);
+        zombieClicker.getPreferencesManager().getSettings().flush();
     }
 
     public void minus_Gold(BigInteger x) {
@@ -251,6 +254,9 @@ public class Numerics {
 
     public void minus_diamonds(int x) {
         diamonds -= x;
+        //TODO Settings
+        zombieClicker.getPreferencesManager().getSettings().putInteger("diamonds", diamonds);
+        zombieClicker.getPreferencesManager().getSettings().flush();
     }
 
     public void plus_gold(BigInteger x) {
@@ -558,6 +564,17 @@ public class Numerics {
     ////////////////GETTERS//////////////////
 
 
+    public void savePlayerPower(){
+        zombieClicker.getPreferencesManager().getSettings().putString("punch_power", punch_power.toString());
+        zombieClicker.getPreferencesManager().getSettings().putString("passive_power", passive_damage.toString());
+
+        zombieClicker.getPreferencesManager().getSettings().flush();
+    }
+
+    public void loadPlayerPower(){
+        punch_power = new BigInteger(zombieClicker.getPreferencesManager().getSettings().getString("punch_power", BigInteger.ONE.toString()));
+        passive_damage = new BigInteger(zombieClicker.getPreferencesManager().getSettings().getString("passive_power", BigInteger.ZERO.toString()));
+    }
 
     //TODO Settings
     ////////////////////SAVING LOCATIONS///////////////////

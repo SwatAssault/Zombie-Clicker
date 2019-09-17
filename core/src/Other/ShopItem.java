@@ -105,7 +105,7 @@ public class ShopItem {
                     plusValue();   //увеличиваем прибавку на следующую покупку
                     plusItem_cost();     //увеличиваем цену на след покупку
 
-
+                    zombieClicker.getNumerics().savePlayerPower();
                     zombieClicker.getShop().saveAllShopItems();
                 }
             }
