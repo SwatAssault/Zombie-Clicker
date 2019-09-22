@@ -71,8 +71,8 @@ public class MainGame implements Screen {
     private TextureRegion timeBossBarStart;
     private TextureRegion timeBossBarBody;
     private TextureRegion timeBossBarEnd;
-    private int timeBoss_positionX = 160;
-    private int timeBoss_positionY = 200;
+    private int timeBoss_positionX = 130;
+    private int timeBoss_positionY = 220;
     private double timeBossStart;
     private String timeStr;
 
@@ -104,11 +104,11 @@ public class MainGame implements Screen {
 
         hpBarbg = zombieClicker.get_assets().get_asset_manager().get("HP/hp_bg.png");
         hpBar = zombieClicker.get_assets().get_asset_manager().get("HP/hp.png");
-        hpBarStart = new TextureRegion(hpBar, 0, 0, 5, hpBar.getHeight());
-        hpBarBody = new TextureRegion(hpBar, 5, 0, 137, hpBar.getHeight());
-        hpBarEnd = new TextureRegion(hpBar, 5 + 137, 0, 5, hpBar.getHeight());
-        HP_positionX = 210;
-        HP_positionY = 240;
+        hpBarStart = new TextureRegion(hpBar, 0, 0, 2 + 16, hpBar.getHeight());
+        hpBarBody = new TextureRegion(hpBar, 2 + 16, 0, 264, hpBar.getHeight());
+        hpBarEnd = new TextureRegion(hpBar, 2 + 16 + 264, 0, 2 + 16, hpBar.getHeight());
+        HP_positionX = 130;
+        HP_positionY = 230;
 
         hud_icons_atlas = zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/hud_atlas.atlas");
 
@@ -118,9 +118,9 @@ public class MainGame implements Screen {
         stopwatch_icon.setPosition(timeBoss_positionX - 20, timeBoss_positionY - 20);
 
         timeBossBar = zombieClicker.get_assets().get_asset_manager().get("BossTime/time.png");
-        timeBossBarStart = new TextureRegion(timeBossBar, 0, 0, 1, timeBossBar.getHeight());
-        timeBossBarBody = new TextureRegion(timeBossBar, 1, 0, 243, timeBossBar.getHeight());
-        timeBossBarEnd = new TextureRegion(timeBossBar, 1 + 243, 0, 1, timeBossBar.getHeight());
+        timeBossBarStart = new TextureRegion(timeBossBar, 0, 0, 2 + 16, timeBossBar.getHeight());
+        timeBossBarBody = new TextureRegion(timeBossBar, 2 + 16, 0, 264, timeBossBar.getHeight());
+        timeBossBarEnd = new TextureRegion(timeBossBar, 2 + 16 + 264, 0, 2 + 16, timeBossBar.getHeight());
 
         mainButton = new Image();
         mainButton.setPosition(160, 300);
