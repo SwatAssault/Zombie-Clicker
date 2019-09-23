@@ -78,8 +78,11 @@ public class Assets {
 
         assetManager.load("Texture Atlases/icons_for_shop.atlas", TextureAtlas.class);
 
-        assetManager.load("Texture Atlases/icon_pistol.png", Texture.class);
-        assetManager.load("Texture Atlases/pirates.png", Texture.class);
+
+        assetManager.load("SquadIcons/icons_squad.atlas", TextureAtlas.class);
+
+//        assetManager.load("Texture Atlases/icon_pistol.png", Texture.class);
+//        assetManager.load("Texture Atlases/pirates.png", Texture.class);
         assetManager.update();
         assetManager.finishLoading();
     }
@@ -129,6 +132,7 @@ public class Assets {
     public void load_assets_for_Missions() {
         assetManager.load("Missions/accept_btn_skin.json", Skin.class);
         assetManager.load("Other/paper.png", Texture.class);
+        assetManager.load("Other/t.png", Texture.class);
         assetManager.load("Missions/dp_2.png", Texture.class);
         assetManager.load("Missions/cp_2.png", Texture.class);
         assetManager.load("Missions/reward.png", Texture.class);

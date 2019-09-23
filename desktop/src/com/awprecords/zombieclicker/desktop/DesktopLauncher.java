@@ -10,8 +10,8 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.height = 800;
 		config.width = 540;
-//		TexturePacker.process("C://Users//Gustav//Desktop//ZC//icons_for_magaz//130",
-//				"C://Users//Gustav//Desktop//ZC//icons_for_magaz//130//res", "icons_for_shop");
+//		TexturePacker.process("C://Users//Gustav//Desktop//ZC//squad_icon//130",
+//				"C://Users//Gustav//Desktop//ZC//squad_icon//130//res", "icons_squad");
 
 		new LwjglApplication(new ZombieClicker(), config);
 	}

@@ -106,6 +106,9 @@ public class Shop implements Screen {
     private TextureAtlas textureAtlas;
     private ArrayList<TextureAtlas.AtlasRegion> icons;
 
+    private TextureAtlas textureAtlasSquad;
+    private ArrayList<TextureAtlas.AtlasRegion> icons_squad;
+
     public Shop(final ZombieClicker zc) {
         zombieClicker = zc;
         camera = new OrthographicCamera();
@@ -278,27 +281,45 @@ public class Shop implements Screen {
         scrollPane.setZIndex(1);
 
         /////////////////////SQUAD ITEMS INITIALIZATION//////////////////////
-        //                                                                                    cost                                    dps                                       0-100%
-        squad1 = new SquadItem(zc, "ПИРАТЫ", "АТАКУЮТ ТОПОРАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 3, 0,
-                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/pirates.png", Texture.class));
-        squad2 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
-                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
-        squad3 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
-                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
-        squad4 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
-                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
-        squad5 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
-                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
-        squad6 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
-                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
-        squad7 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
-                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
-        squad8 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
-                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
-        squad9 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
-                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
-        squad10 = new SquadItem(zc, "ПОВАРЫ", "АТАКУЮТ ПОВАРЕШКАМИ", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
-                zombieClicker.get_assets().get_asset_manager().get("Texture Atlases/icon_pistol.png", Texture.class));
+        //
+        //
+        //
+        textureAtlasSquad = zombieClicker.get_assets().get_asset_manager().get("SquadIcons/icons_squad.atlas", TextureAtlas.class);
+        icons_squad = new ArrayList<TextureAtlas.AtlasRegion>();
+        icons_squad.add(textureAtlasSquad.findRegion("virus"));
+        icons_squad.add(textureAtlasSquad.findRegion("fizra"));
+        icons_squad.add(textureAtlasSquad.findRegion("survivors"));
+        icons_squad.add(textureAtlasSquad.findRegion("cook"));
+        icons_squad.add(textureAtlasSquad.findRegion("stud"));
+        icons_squad.add(textureAtlasSquad.findRegion("police"));
+        icons_squad.add(textureAtlasSquad.findRegion("crunch"));
+        icons_squad.add(textureAtlasSquad.findRegion("swat"));
+        icons_squad.add(textureAtlasSquad.findRegion("milit"));
+        icons_squad.add(textureAtlasSquad.findRegion("ufo"));
+        icons_squad.add(textureAtlasSquad.findRegion("mkpbsn"));
+        //                                                            cost                                    dps                                       0-100%
+        squad1 = new SquadItem(zc, "Паразиты z-156", "Пожирают зомби изнутри", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 3, 0,
+                icons_squad.get(0));
+        squad2 = new SquadItem(zc, "Физруки", "Запинывают замби мячами", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                icons_squad.get(1));
+        squad2 = new SquadItem(zc, "Выжившие", "Вооружены палками и камнями", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                icons_squad.get(2));
+        squad3 = new SquadItem(zc, "Повара", "Атакуют зомби поварешками и защищаются крышками от кастрюль", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                icons_squad.get(3));
+        squad4 = new SquadItem(zc, "Стая голодных студентов", "Голодный студент - опасный студент", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                icons_squad.get(4));
+        squad5 = new SquadItem(zc, "Полицейские", "Устранят любой митинг за круглую сумму", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                icons_squad.get(5));
+        squad6 = new SquadItem(zc, "Церковь", "С донатов собрали сильное оружие против зомби", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                icons_squad.get(6));
+        squad7 = new SquadItem(zc, "S.W.A.T", "Используют легкое вооружение армейского типа и специальные тактики в операциях с высоким риском", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                icons_squad.get(7));
+        squad8 = new SquadItem(zc, "Военные", "Имеют особое оружие и защиту от зомби", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                icons_squad.get(8));
+        squad9 = new SquadItem(zc, "НЛО", "Похищают зомби для опытов", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                icons_squad.get(9));
+        squad10 = new SquadItem(zc, "Межгалактический комитет по борьбе с нелегалами", "...", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+                icons_squad.get(10));
 
         squadItems_array = new Array<SquadItem>();
         squadItems_array.add(squad1);

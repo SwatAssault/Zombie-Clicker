@@ -3,6 +3,7 @@ package Other;
 
 import com.awprecords.zombieclicker.ZombieClicker;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -11,9 +12,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 
 import java.math.BigInteger;
+
+import javax.swing.GroupLayout;
 
 public class SquadItem {
 
@@ -57,7 +61,7 @@ public class SquadItem {
     private BigInteger base_dps;
     private double dps_koeff;
 
-    public SquadItem(final ZombieClicker zc, String name, String description, BigInteger base_cost, double cost_koeff, BigInteger base_dps, double dps_koeff, final int critchance, int dropchance, Texture _icon){
+    public SquadItem(final ZombieClicker zc, String name, String description, BigInteger base_cost, double cost_koeff, BigInteger base_dps, double dps_koeff, final int critchance, int dropchance, TextureAtlas.AtlasRegion _icon){
         zombieClicker = zc;
 
         this.base_cost = base_cost;
@@ -84,10 +88,17 @@ public class SquadItem {
 
         buy_btn = new TextButton("0", zombieClicker.get_assets().get_asset_manager().get("Buttons/buybtn.json", Skin.class));
         name_of_squad = new Label(name, zombieClicker.get_assets().get_asset_manager().get("LabelSkins/name_label_skin.json", Skin.class));
+        name_of_squad.setAlignment(Align.center);
+        name_of_squad.setWrap(true);
         description_label = new Label(description, zombieClicker.get_assets().get_asset_manager().get("Squads/desc_label_skin.json", Skin.class));
+        description_label.setAlignment(Align.bottomLeft);
+        description_label.setWrap(true);
         DPS = new Label("DPS: +" + zombieClicker.getNumerics().bigInteger_to_string(dps), zombieClicker.get_assets().get_asset_manager().get("LabelSkins/description_label_skin.json", Skin.class));
         crit = new Label("Crit. chance: " + Integer.toString(crit_chance) + "%", zombieClicker.get_assets().get_asset_manager().get("LabelSkins/description_label_skin.json", Skin.class));
         drop = new Label("Drop chance: " + Integer.toString(drop_chance) + "%", zombieClicker.get_assets().get_asset_manager().get("LabelSkins/description_label_skin.json", Skin.class));
+        DPS.setFontScale(0.8f);
+        crit.setFontScale(0.8f);
+        drop.setFontScale(0.8f);
         send_to_location_btn = new TextButton(send_btn_string, zombieClicker.get_assets().get_asset_manager().get("Squads/send_btn_skin.json", Skin.class));
         number_btn = new TextButton(Integer.toString(buy_number), zombieClicker.get_assets().get_asset_manager().get("Other/buy_counter_skin.json", Skin.class));
 
@@ -131,27 +142,36 @@ public class SquadItem {
             }
         });
 
-
         table.add(stack);
         stack.add(image);
         stack.add(intable);
-        intable.add(number_btn).expand().right().padTop(5);
+        stack.add(name_table);
+        name_table.add(name_of_squad).expandY().top().padTop(5).width(300);
+        name_table.row();
+
+
+        intable.add(number_btn).expand().right().padTop(10);
         intable.row();
-        intable.add(buy_btn).expand().right();
+        intable.add(buy_btn).expand().right().padTop(name_table.getPadY());
         intable.row();
         intable.add(send_to_location_btn).expand().right();
-        stack.add(name_table);
-        name_table.add(name_of_squad).expandY().top().padTop(10);
-        stack.add(abilities_table);
-        abilities_table.add(DPS).expandY().padTop(50);
-        abilities_table.row();
-        abilities_table.add(crit).expandY().padBottom(1);
-        abilities_table.row();
-        abilities_table.add(drop).expandY().padBottom(40);
-        stack.add(description_table);
-        description_table.add(description_label).expand().left().bottom();
+
+//        stack.add(abilities_table);
+        name_table.add(DPS).expandY().top().padBottom(5).height(1);
+        name_table.row();
+        name_table.add(crit).expandY().top().padBottom(5).height(1);
+        name_table.row();
+        name_table.add(drop).expandY().top().padBottom(5).height(1);
+//        name_table.add(abilities_table);
         stack.add(icon_table);
-        icon_table.add(icon).expand().left();
+        icon_table.add(icon).expand().align(Align.bottomLeft).padBottom(15);
+
+
+
+        stack.add(description_table);
+        description_table.add(description_label).expand().bottom().left().width(380);
+
+//        stack.debugAll();
     }
 
     public SquadItem getSquadItem(){
