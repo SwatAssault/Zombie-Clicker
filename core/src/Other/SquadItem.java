@@ -27,7 +27,6 @@ public class SquadItem {
     private Table table;
     private Table intable;
     private Table name_table;
-    private Table abilities_table;
     private Table description_table;
     private Table icon_table;
     private Image image;
@@ -36,7 +35,6 @@ public class SquadItem {
     private Label description_label;
     private Label DPS;
     private Label crit;
-    private Label drop;
     private int buy_number;
 
     private BigInteger dps;
@@ -55,13 +53,12 @@ public class SquadItem {
     private Array<Image> mini_icons;
 
     private int crit_chance;
-    private int drop_chance;
     private BigInteger base_cost;
     private double cost_koeff;
     private BigInteger base_dps;
     private double dps_koeff;
 
-    public SquadItem(final ZombieClicker zc, String name, String description, BigInteger base_cost, double cost_koeff, BigInteger base_dps, double dps_koeff, final int critchance, int dropchance, TextureAtlas.AtlasRegion _icon){
+    public SquadItem(final ZombieClicker zc, String name, String description, BigInteger base_cost, double cost_koeff, BigInteger base_dps, double dps_koeff, final int critchance, TextureAtlas.AtlasRegion _icon){
         zombieClicker = zc;
 
         this.base_cost = base_cost;
@@ -69,14 +66,12 @@ public class SquadItem {
         this.base_dps = base_dps;
         this.dps_koeff = dps_koeff;
         this.crit_chance = critchance;
-        this.drop_chance = dropchance;
 
         stack = new Stack();
         table = new Table();
         icon_table = new Table();
         intable = new Table();
         name_table = new Table();
-        abilities_table = new Table();
         description_table = new Table();
         image = new Image(zombieClicker.get_assets().get_asset_manager().get("Squads/squad_item_bg.png", Texture.class));
         icon = new Image(_icon);
@@ -95,10 +90,8 @@ public class SquadItem {
         description_label.setWrap(true);
         DPS = new Label("DPS: +" + zombieClicker.getNumerics().bigInteger_to_string(dps), zombieClicker.get_assets().get_asset_manager().get("LabelSkins/description_label_skin.json", Skin.class));
         crit = new Label("Crit. chance: " + Integer.toString(crit_chance) + "%", zombieClicker.get_assets().get_asset_manager().get("LabelSkins/description_label_skin.json", Skin.class));
-        drop = new Label("Drop chance: " + Integer.toString(drop_chance) + "%", zombieClicker.get_assets().get_asset_manager().get("LabelSkins/description_label_skin.json", Skin.class));
         DPS.setFontScale(0.8f);
         crit.setFontScale(0.8f);
-        drop.setFontScale(0.8f);
         send_to_location_btn = new TextButton(send_btn_string, zombieClicker.get_assets().get_asset_manager().get("Squads/send_btn_skin.json", Skin.class));
         number_btn = new TextButton(Integer.toString(buy_number), zombieClicker.get_assets().get_asset_manager().get("Other/buy_counter_skin.json", Skin.class));
 
@@ -155,23 +148,15 @@ public class SquadItem {
         intable.add(buy_btn).expand().right().padTop(name_table.getPadY());
         intable.row();
         intable.add(send_to_location_btn).expand().right();
-
-//        stack.add(abilities_table);
         name_table.add(DPS).expandY().top().padBottom(5).height(1);
         name_table.row();
         name_table.add(crit).expandY().top().padBottom(5).height(1);
-        name_table.row();
-        name_table.add(drop).expandY().top().padBottom(5).height(1);
-//        name_table.add(abilities_table);
         stack.add(icon_table);
-        icon_table.add(icon).expand().align(Align.bottomLeft).padBottom(15);
-
-
+        icon_table.add(icon).expand().left().padTop(20);
 
         stack.add(description_table);
         description_table.add(description_label).expand().bottom().left().width(380);
 
-//        stack.debugAll();
     }
 
     public SquadItem getSquadItem(){
@@ -249,10 +234,6 @@ public class SquadItem {
         return  crit_chance;
     }
 
-    public int getDrop_chance(){
-        return drop_chance;
-    }
-
     public int getBuy_number(){
         return buy_number;
     }
@@ -282,10 +263,6 @@ public class SquadItem {
 
     public void setCrit_chance(int x){
         crit_chance = x;
-    }
-
-    public void setDrop_chance(int x){
-        drop_chance = x;
     }
 
     public void setBuy_number(int x){

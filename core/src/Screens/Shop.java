@@ -297,28 +297,28 @@ public class Shop implements Screen {
         icons_squad.add(textureAtlasSquad.findRegion("milit"));
         icons_squad.add(textureAtlasSquad.findRegion("ufo"));
         icons_squad.add(textureAtlasSquad.findRegion("mkpbsn"));
-        //                                                            cost                                    dps                                       0-100%
-        squad1 = new SquadItem(zc, "Паразиты z-156", "Пожирают зомби изнутри", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 3, 0,
+        //                                                                                                 cost                                   dps                               0-100%
+        squad1 = new SquadItem(zc, "Паразиты z-156", "Пожирают зомби изнутри", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 3,
                 icons_squad.get(0));
-        squad2 = new SquadItem(zc, "Физруки", "Запинывают замби мячами", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+        squad2 = new SquadItem(zc, "Физруки", "Запинывают замби мячами", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0,
                 icons_squad.get(1));
-        squad2 = new SquadItem(zc, "Выжившие", "Вооружены палками и камнями", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+        squad2 = new SquadItem(zc, "Выжившие", "Вооружены палками и камнями", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0,
                 icons_squad.get(2));
-        squad3 = new SquadItem(zc, "Повара", "Атакуют зомби поварешками и защищаются крышками от кастрюль", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+        squad3 = new SquadItem(zc, "Повара", "Атакуют зомби поварешками и защищаются крышками от кастрюль", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0,
                 icons_squad.get(3));
-        squad4 = new SquadItem(zc, "Стая голодных студентов", "Голодный студент - опасный студент", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+        squad4 = new SquadItem(zc, "Стая голодных студентов", "Голодный студент - опасный студент", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0,
                 icons_squad.get(4));
-        squad5 = new SquadItem(zc, "Полицейские", "Устранят любой митинг за круглую сумму", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+        squad5 = new SquadItem(zc, "Полицейские", "Устранят любой митинг за круглую сумму", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0,
                 icons_squad.get(5));
-        squad6 = new SquadItem(zc, "Церковь", "С донатов собрали сильное оружие против зомби", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+        squad6 = new SquadItem(zc, "Церковь", "С донатов собрали сильное оружие против зомби", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0,
                 icons_squad.get(6));
-        squad7 = new SquadItem(zc, "S.W.A.T", "Используют легкое вооружение армейского типа и специальные тактики в операциях с высоким риском", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+        squad7 = new SquadItem(zc, "S.W.A.T", "Используют легкое вооружение армейского типа и специальные тактики в операциях с высоким риском", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0,
                 icons_squad.get(7));
-        squad8 = new SquadItem(zc, "Военные", "Имеют особое оружие и защиту от зомби", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+        squad8 = new SquadItem(zc, "Военные", "Имеют особое оружие и защиту от зомби", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0,
                 icons_squad.get(8));
-        squad9 = new SquadItem(zc, "НЛО", "Похищают зомби для опытов", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+        squad9 = new SquadItem(zc, "НЛО", "Похищают зомби для опытов", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0,
                 icons_squad.get(9));
-        squad10 = new SquadItem(zc, "Межгалактический комитет по борьбе с нелегалами", "...", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0, 0,
+        squad10 = new SquadItem(zc, "Межгалактический комитет по борьбе с нелегалами", "...", new BigInteger("10"),1.1f, new BigInteger("1"), 1.1f, 0,
                 icons_squad.get(10));
 
         squadItems_array = new Array<SquadItem>();
